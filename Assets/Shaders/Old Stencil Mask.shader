@@ -1,4 +1,4 @@
-﻿Shader "Custom/Stencil Mask"
+﻿Shader "Custom/Old Stencil Mask"
 {
     Properties
     {
@@ -9,9 +9,14 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue"="Geometry-100" }
+        Tags 
+        { 
+            "RenderType"="Opaque"
+            "RenderPipeline"="LightweightPipeline"
+            "Queue"="Geometry-100"
+        }
         ColorMask 0
-        ZWrite off
+        // ZWrite off
         LOD 200
 
         Stencil 
