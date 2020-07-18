@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   k_AssetVersion: 4
   m_RendererType: 0
-  m_RendererData: {fileID: 11400000, guid: 16e1b0c8dd0eb4d4e9cfb05b2656d38b, type: 2}
+  m_RendererData: {fileID: 11400000, guid: 5824a639e7ebf194da0a264e557412f7, type: 2}
   m_RequireDepthTexture: 0
   m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 1

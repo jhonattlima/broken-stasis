@@ -13,10 +13,10 @@
         { 
             "RenderType"="Opaque"
             "RenderPipeline"="LightweightPipeline"
-            "Queue"="Geometry-100"
+            "Queue"="Geometry+0"
         }
         ColorMask 0
-        // ZWrite off
+        ZWrite off
         LOD 200
 
         Stencil 
