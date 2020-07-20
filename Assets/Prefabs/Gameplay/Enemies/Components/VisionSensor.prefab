@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9019825868093043784}
   - component: {fileID: 1928332373258157549}
   - component: {fileID: 1928332373258157548}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VisionSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9feea21cbe56604db20bd15d97e71c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eyesTransform: {fileID: 0}

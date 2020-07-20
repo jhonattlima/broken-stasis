@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 777100843934684800}
   - component: {fileID: 4503437463494038227}
   - component: {fileID: 807203318527431380}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoiseSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

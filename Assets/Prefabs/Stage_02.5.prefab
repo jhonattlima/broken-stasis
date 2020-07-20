@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3199799844541934112}
   - component: {fileID: 9177052266577680089}
   - component: {fileID: 1460938076910205710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stage_02.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
