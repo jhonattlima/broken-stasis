@@ -1,7 +1,9 @@
-﻿namespace Enemy
+﻿using System;
+
+namespace Enemy
 {
     public interface IEnemy : IUpdateBehaviour
     {
-        void InitializeEnemy();
+        void InitializeEnemy(Action<int> p_onPlayerDamaged);
     }
 }

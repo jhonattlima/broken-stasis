@@ -18,13 +18,12 @@ namespace GameManagers
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
 
-
         private void Awake()
         {
             RegisterObjectsGraph();
 
             _player?.InitializePlayer();
-            _enemiesManager?.InitializeEnemies();
+            _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
         }
 
         private void RegisterObjectsGraph()

@@ -13,7 +13,7 @@ namespace Enemy
         private readonly IPatrolEnemy _patrolBehaviour;
         private readonly IFollowEnemy _followBehaviour;
         private readonly IAttackMeleeEnemy _attackMeleeBehaviour;
-        
+
         private readonly SensorNoise _noiseSensor;
         private readonly SensorVision _visionSensor;
 
@@ -51,9 +51,10 @@ namespace Enemy
 
         public void RunUpdate()
         {
-            if(!_isHearingPlayer && !_isViewingPlayer)
+            if (GameStateManager.currentState == GameState.GAMEOVER
+             || (!_isHearingPlayer && !_isViewingPlayer))
                 _patrolBehaviour.RunEnemyPatrol();
-            else if(_isViewingPlayer)
+            else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();
         }
 
@@ -61,13 +62,13 @@ namespace Enemy
         {
             _isHearingPlayer = true;
 
-            if(!_isViewingPlayer)
+            if (!_isViewingPlayer)
                 _followBehaviour.InvestigatePosition(p_playerPosition);
         }
 
         private void HandlePlayerRemainsInSoundSensor(Transform p_playerPosition)
         {
-            if(!_isViewingPlayer)
+            if (!_isViewingPlayer)
                 _followBehaviour.InvestigatePosition(p_playerPosition);
         }
 
@@ -79,8 +80,8 @@ namespace Enemy
         private void HandlePlayerEnteredVisionSensor(Transform p_playerPosition)
         {
             _isViewingPlayer = true;
-            
-            if(_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
+
+            if (_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
                 _stateManager.SetEnemyState(EnemyState.ATTACKING);
             else
                 _followBehaviour.SprintToPosition(p_playerPosition);
@@ -89,16 +90,16 @@ namespace Enemy
         private void HandlePlayerRemainsInVisionSensor(Transform p_playerPosition)
         {
             _isViewingPlayer = true;
-            
-            if(_stateManager.currentState == EnemyState.ATTACKING)
+
+            if (_stateManager.currentState == EnemyState.ATTACKING)
             {
-                _enemyAnimationEventHandler.OnAttackAnimationEnd = delegate() 
+                _enemyAnimationEventHandler.OnAttackAnimationEnd = delegate ()
                 {
-                    if(!_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
+                    if (!_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
                         _followBehaviour.SprintToPosition(p_playerPosition);
                 };
             }
-            else if(_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
+            else if (_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
                 _stateManager.SetEnemyState(EnemyState.ATTACKING);
             else
                 _followBehaviour.SprintToPosition(p_playerPosition);
@@ -107,7 +108,7 @@ namespace Enemy
         private void HandlePlayerLeftVisionSensor(Transform p_playerPosition)
         {
             _isViewingPlayer = false;
-        }  
+        }
 
         private void ClearEnemy()
         {
