@@ -9,7 +9,8 @@ namespace Player
         WALKING_SIDEWAYS,
         WALKING_BACKWARD,
         RUNNING_FORWARD,
-        RUNNING_SIDEWAYS
+        RUNNING_SIDEWAYS,
+        DEAD
     }
 
     public static class PlayerStatesManager

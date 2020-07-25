@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using VariableManagement;
 
 namespace Player
@@ -8,9 +7,12 @@ namespace Player
     {
         private int _playerMaxHealth;
         private int _playerCurrentHealth;
+        private readonly CharacterController _characterController;
 
-        public PlayerHealth()
+        public PlayerHealth(CharacterController p_characterController)
         {
+            _characterController = p_characterController;
+
             if(VariablesManager.playerVariables.maxHealth <= 0)
                 throw new System.Exception("Player max health variable is " + VariablesManager.playerVariables.maxHealth + "Minimum of life is 1.");
             
@@ -26,12 +28,18 @@ namespace Player
                 _playerCurrentHealth -= damage;
 
             if (_playerCurrentHealth == 0)
-                GameStateManager.SetGameState(GameState.GAMEOVER);
+                HandlePlayerDeath();
         }
 
         public void IncreaseHealth(int lifePoints)
         {
 
+        }
+
+        private void HandlePlayerDeath()
+        {        
+            PlayerStatesManager.SetPlayerState(PlayerState.DEAD);
+            GameStateManager.SetGameState(GameState.GAMEOVER);
         }
     }
 }

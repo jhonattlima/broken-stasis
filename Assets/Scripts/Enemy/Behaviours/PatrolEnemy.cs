@@ -76,20 +76,27 @@ namespace Enemy
 
         public void RunEnemyPatrol()
         {
-            if (_navigationAgent.remainingDistance < 0.2f && !_settingDestination)
-                SceneController.instance.StartCoroutine(PatrolToNextPoint());
+            if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.2f)
+                if (!_settingDestination)
+                    SceneController.instance.StartCoroutine(PatrolToNextPoint());
+        }
+
+        private bool IsEnemyPatrolling()
+        {
+            return (_stateManager.currentState == EnemyState.PATROLLING || _stateManager.currentState == EnemyState.IDLE);
         }
 
         private IEnumerator PatrolToNextPoint()
         {
             _settingDestination = true;
-            _navigationAgent.isStopped = false;
 
             _stateManager.SetEnemyState(EnemyState.IDLE);
 
             yield return new WaitForSeconds(_idleTime);
 
             _stateManager.SetEnemyState(EnemyState.PATROLLING);
+            
+            _navigationAgent.isStopped = false;
 
             _settingDestination = false;
         }

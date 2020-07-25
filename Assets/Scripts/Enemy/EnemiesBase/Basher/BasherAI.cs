@@ -1,4 +1,5 @@
 ﻿
+using Player;
 using UnityEngine;
 
 namespace Enemy
@@ -38,7 +39,7 @@ namespace Enemy
 
         public void InitializeEnemy()
         {
-            ClearEnemy();
+            ResetEnemyAI();
 
             _noiseSensor.onPlayerDetected += HandlePlayerEnteredSoundSensor;
             _noiseSensor.onPlayerRemainsDetected += HandlePlayerRemainsInSoundSensor;
@@ -51,8 +52,7 @@ namespace Enemy
 
         public void RunUpdate()
         {
-            if (GameStateManager.currentState == GameState.GAMEOVER
-             || (!_isHearingPlayer && !_isViewingPlayer))
+            if (!_isHearingPlayer && !_isViewingPlayer)
                 _patrolBehaviour.RunEnemyPatrol();
             else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();
@@ -110,7 +110,7 @@ namespace Enemy
             _isViewingPlayer = false;
         }
 
-        private void ClearEnemy()
+        public void ResetEnemyAI()
         {
             _isHearingPlayer = false;
             _isViewingPlayer = false;

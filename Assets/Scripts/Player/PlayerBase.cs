@@ -50,7 +50,7 @@ namespace Player
 
             _playerAnimator = new PlayerAnimator(_playerContainer.playerAnimator);
 
-            _playerHealth = new PlayerHealth();
+            _playerHealth = new PlayerHealth(_playerContainer.characterController);
         }
 
         public void RunFixedUpdate()

@@ -19,6 +19,8 @@ namespace Enemy
             RegisterObjectsGraph();
 
             _basherAI.InitializeEnemy();
+
+            GameStateManager.onStateChanged += HandleGameStateChanged;
         }
 
         private void RegisterObjectsGraph()
@@ -62,6 +64,18 @@ namespace Enemy
         public void RunUpdate()
         {
             _basherAI.RunUpdate();
+        }
+
+        private void HandleGameStateChanged(GameState p_gameState)
+        {
+            switch(p_gameState)
+            {
+                case GameState.GAMEOVER:
+                    _basherAI.ResetEnemyAI();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

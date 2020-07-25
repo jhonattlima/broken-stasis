@@ -38,6 +38,10 @@ namespace Player
                 case PlayerState.RUNNING_SIDEWAYS:
                     _animator.SetTrigger(RUNNING);
                     break;
+                case PlayerState.DEAD:
+                    // TODO 24/07/2020: Setar animação de player dead
+                    // _animator.SetTrigger(RUNNING);
+                    break;
             }
         }
 
