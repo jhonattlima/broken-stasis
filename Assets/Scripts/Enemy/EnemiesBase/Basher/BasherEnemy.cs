@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -7,16 +8,19 @@ namespace Enemy
         [SerializeField] private BasherContainer _basherContainer;
 
         private EnemyStatesManager _stateManager;
-
         private EnemyAnimator _enemyAnimator;
-
         private BasherAI _basherAI;
+        private Action<int> _onPlayerDamaged;
 
-        public void InitializeEnemy()
+        public void InitializeEnemy(Action<int> p_onPlayerDamaged)
         {
+            _onPlayerDamaged = p_onPlayerDamaged;
+            
             RegisterObjectsGraph();
 
             _basherAI.InitializeEnemy();
+
+            GameStateManager.onStateChanged += HandleGameStateChanged;
         }
 
         private void RegisterObjectsGraph()
@@ -48,7 +52,8 @@ namespace Enemy
                     _basherContainer.WeaponSensor,
                     _basherContainer.OriginPosition,
                     _basherContainer.AttackRange,
-                    _basherContainer.Damage
+                    _basherContainer.Damage,
+                    _onPlayerDamaged
                 ),
                 _basherContainer.NoiseSensor,
                 _basherContainer.VisionSensor,
@@ -59,6 +64,18 @@ namespace Enemy
         public void RunUpdate()
         {
             _basherAI.RunUpdate();
+        }
+
+        private void HandleGameStateChanged(GameState p_gameState)
+        {
+            switch(p_gameState)
+            {
+                case GameState.GAMEOVER:
+                    _basherAI.ResetEnemyAI();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

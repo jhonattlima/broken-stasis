@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 
@@ -13,9 +14,9 @@ namespace GameManagers
             _enemyList = p_enemyList;
         }
 
-        public void InitializeEnemies()
+        public void InitializeEnemies(Action<int> p_onPlayerDamaged)
         {
-            _enemyList.ForEach(enemy => enemy.InitializeEnemy());
+            _enemyList.ForEach(enemy => enemy.InitializeEnemy(p_onPlayerDamaged));
         }
 
         public void RunUpdate()

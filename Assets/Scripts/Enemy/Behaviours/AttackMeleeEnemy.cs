@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -8,6 +9,7 @@ namespace Enemy
         private readonly Transform _originPosition;
         private readonly float _attackRange;
         private readonly int _damage;
+        private readonly Action<int> _onPlayerDamaged;
 
         private readonly EnemyStatesManager _enemyStatesManager;
 
@@ -16,13 +18,16 @@ namespace Enemy
             SensorDamagePlayer p_weaponSensor,
             Transform p_originPosition,
             float p_attackRange,
-            int p_damage)
+            int p_damage,
+            Action<int> p_onPlayerDamaged
+            )
         {
             _enemyStatesManager = p_stateManager;
             _weaponSensor = p_weaponSensor;
             _originPosition = p_originPosition;
             _attackRange = p_attackRange;
             _damage = p_damage;
+            _onPlayerDamaged = p_onPlayerDamaged;
 
             InitializeAttackingBehaviour();
         }
@@ -54,8 +59,7 @@ namespace Enemy
             if (_weaponSensor.isTouchingPlayer)
             {
                 _weaponSensor.ResetSensorDetection();
-                // TODO: Trocar pelo sistema de saúde do player
-                Debug.Log("Hit Player");
+                _onPlayerDamaged?.Invoke(_damage);
             }
         }
     }

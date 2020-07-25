@@ -19,7 +19,7 @@ namespace Player
         private bool _movingBackward;
         private float _currentSpeed;
 
-        public PlayerMovement(  CharacterController p_charController,
+        public PlayerMovement(CharacterController p_charController,
                                 Transform p_playerTransform)
         {
             _charController = p_charController;
@@ -32,6 +32,8 @@ namespace Player
 
         public void RunFixedUpdate()
         {
+            if (GameStateManager.currentState != GameState.RUNNING) return;
+            
             CheckWalkingBackward();
             SetMovingState();
 
@@ -41,7 +43,7 @@ namespace Player
 
         private void HandleStateChanged(PlayerState p_playerState)
         {
-            switch(p_playerState)
+            switch (p_playerState)
             {
                 case PlayerState.RUNNING_FORWARD:
                 case PlayerState.RUNNING_SIDEWAYS:
@@ -82,7 +84,7 @@ namespace Player
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     if (_movingSideways) PlayerStatesManager.SetPlayerState(PlayerState.RUNNING_SIDEWAYS);
-                    else if(_movingBackward) PlayerStatesManager.SetPlayerState(PlayerState.WALKING_BACKWARD);
+                    else if (_movingBackward) PlayerStatesManager.SetPlayerState(PlayerState.WALKING_BACKWARD);
                     else PlayerStatesManager.SetPlayerState(PlayerState.RUNNING_FORWARD);
                 }
                 else

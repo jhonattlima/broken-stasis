@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001c4e5ee765e654d8e0548f0e75fd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 5055762982870825993}
+  characterController: {fileID: 5233220711743000704}
   playerTransform: {fileID: 8469297880012280757}
   playerAnimator: {fileID: 1946397596130836175}
   lowSoundCollider: {fileID: 1766278655470414697}
@@ -1436,7 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8469297880012280757}
   - component: {fileID: 1946397596130836175}
-  - component: {fileID: 5055762982870825993}
+  - component: {fileID: 5233220711743000704}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1482,7 +1482,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &5055762982870825993
+--- !u!143 &5233220711743000704
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
