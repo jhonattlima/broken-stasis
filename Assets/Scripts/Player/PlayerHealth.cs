@@ -29,6 +29,8 @@ namespace Player
 
             if (_playerCurrentHealth == 0)
                 HandlePlayerDeath();
+            else
+                PlayerStatesManager.SetPlayerState(PlayerState.HIT);
         }
 
         public void IncreaseHealth(int lifePoints)
