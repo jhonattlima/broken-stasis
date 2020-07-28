@@ -10,7 +10,8 @@ namespace Player
         WALKING_BACKWARD,
         RUNNING_FORWARD,
         RUNNING_SIDEWAYS,
-        DEAD
+        DEAD,
+        HIT
     }
 
     public static class PlayerStatesManager

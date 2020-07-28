@@ -8,6 +8,8 @@ namespace Player
         private const string WALKING = "Walking";
         private const string WALKING_BACKWARD = "Walking_Backward";
         private const string RUNNING = "Running";
+        private const string DEAD = "Dead";
+        private const string HIT = "Hit";
 
         private readonly Animator _animator;
 
@@ -39,8 +41,10 @@ namespace Player
                     _animator.SetTrigger(RUNNING);
                     break;
                 case PlayerState.DEAD:
-                    // TODO 24/07/2020: Setar animação de player dead
-                    // _animator.SetTrigger(RUNNING);
+                    _animator.SetTrigger(DEAD);
+                    break;
+                case PlayerState.HIT:
+                    _animator.SetTrigger(HIT);
                     break;
             }
         }
