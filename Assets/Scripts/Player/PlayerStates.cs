@@ -19,6 +19,7 @@ namespace Player
         public static PlayerState currentState { get; private set;}
 
         public static Action<PlayerState> onStateChanged;
+        public static Action<bool> onPlayerCrouching;
 
         public static void SetPlayerState (PlayerState p_newState)
         {

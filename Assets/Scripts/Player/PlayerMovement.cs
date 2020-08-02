@@ -17,6 +17,9 @@ namespace Player
 
         private bool _movingSideways;
         private bool _movingBackward;
+        private bool _running;
+        private bool _crouching;
+
         private float _currentSpeed;
 
         public PlayerMovement(CharacterController p_charController,
@@ -34,11 +37,14 @@ namespace Player
         {
             if (GameStateManager.currentState != GameState.RUNNING) return;
             
-            CheckWalkingBackward();
+            SetMovementVariables();
             SetMovingState();
 
             HandleMovement();
             HandleDirection();
+            HandleCrouching();
+
+            PlayerStatesManager.onPlayerCrouching(_crouching);
         }
 
         private void HandleStateChanged(PlayerState p_playerState)
@@ -47,10 +53,10 @@ namespace Player
             {
                 case PlayerState.RUNNING_FORWARD:
                 case PlayerState.RUNNING_SIDEWAYS:
-                    _currentSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.runningSpeedMultiplier;
+                    _currentSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.fastSpeedMultiplier;
                     break;
                 case PlayerState.WALKING_BACKWARD:
-                    _currentSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.backwardSpeedMultiplier;
+                    _currentSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.slowSpeedMultiplier;
                     break;
                 default:
                     _currentSpeed = VariablesManager.playerVariables.regularSpeed;
@@ -58,12 +64,15 @@ namespace Player
             }
         }
 
-
         private void HandleMovement()
         {
             Vector3 __moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-
-            _charController.SimpleMove(__moveDirection.normalized * _currentSpeed * Time.deltaTime);
+            float __crouchingSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.slowSpeedMultiplier;
+            
+            if(_crouching)
+                _charController.SimpleMove(__moveDirection.normalized * __crouchingSpeed * Time.deltaTime);
+            else    
+                _charController.SimpleMove(__moveDirection.normalized * _currentSpeed * Time.deltaTime);
         }
 
         private void HandleDirection()
@@ -76,12 +85,24 @@ namespace Player
             _playerTransform.rotation = Quaternion.Euler(new Vector3(0f, -__angle, 0f));
         }
 
+        private void HandleCrouching()
+        {
+            if(_crouching)  {
+                _charController.height = VariablesManager.playerVariables.playerHeightWhenCrouching;
+                _charController.center = new Vector3(_charController.center.x, - VariablesManager.playerVariables.playerHeightWhenCrouching / VariablesManager.playerVariables.playerHeightWhenUp, _charController.center.z);
+            }
+            else {
+                _charController.height = VariablesManager.playerVariables.playerHeightWhenUp;
+                _charController.center = new Vector3(_charController.center.x, 0, _charController.center.z);
+            }
+        }
+
         #region  CHECKERS
         private void SetMovingState()
         {
             if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (_running && !_crouching)
                 {
                     if (_movingSideways) PlayerStatesManager.SetPlayerState(PlayerState.RUNNING_SIDEWAYS);
                     else if (_movingBackward) PlayerStatesManager.SetPlayerState(PlayerState.WALKING_BACKWARD);
@@ -98,30 +119,33 @@ namespace Player
                 PlayerStatesManager.SetPlayerState(PlayerState.STATIC);
         }
 
-        private void CheckWalkingBackward()
+        private void SetMovementVariables()
         {
-            Vector3 direction = (_playerTransform.position - _previousPosition).normalized;
-            direction = Quaternion.AngleAxis(-90, Vector3.down) * direction;
-            float dotProduct = Vector3.Dot(direction, _playerTransform.forward.normalized);
+            Vector3 __direction = (_playerTransform.position - _previousPosition).normalized;
+            __direction = Quaternion.AngleAxis(-90, Vector3.down) * __direction;
+            float __dotProduct = Vector3.Dot(__direction, _playerTransform.forward.normalized);
 
-            if (dotProduct > 0.5)
+            if (__dotProduct > 0.5)
             {
                 // Debug.Log("forward");
                 _movingBackward = false;
                 _movingSideways = false;
             }
-            else if (dotProduct < 0)
+            else if (__dotProduct < 0)
             {
                 // Debug.Log("Backward");
                 _movingSideways = false;
                 _movingBackward = true;
             }
-            else if (dotProduct != 0)
+            else if (__dotProduct != 0)
             {
                 // Debug.Log("Side");
                 _movingSideways = true;
                 _movingBackward = false;
             }
+
+            _running = Input.GetKey(KeyCode.LeftShift);
+            _crouching = Input.GetButton("Crouch");
 
             _previousPosition = _playerTransform.position;
         }
