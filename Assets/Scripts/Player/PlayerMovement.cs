@@ -42,6 +42,7 @@ namespace Player
 
             HandleMovement();
             HandleDirection();
+            HandleCrouching();
 
             PlayerStatesManager.onPlayerCrouching(_crouching);
         }
@@ -63,7 +64,6 @@ namespace Player
             }
         }
 
-
         private void HandleMovement()
         {
             Vector3 __moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -83,6 +83,18 @@ namespace Player
             float __angle = Mathf.Atan2(__positionOnScreen.y - __mouseOnScreen.y, __positionOnScreen.x - __mouseOnScreen.x) * Mathf.Rad2Deg;
 
             _playerTransform.rotation = Quaternion.Euler(new Vector3(0f, -__angle, 0f));
+        }
+
+        private void HandleCrouching()
+        {
+            if(_crouching)  {
+                _charController.height = VariablesManager.playerVariables.playerHeightWhenCrouching;
+                _charController.center = new Vector3(_charController.center.x, - VariablesManager.playerVariables.playerHeightWhenCrouching / VariablesManager.playerVariables.playerHeightWhenUp, _charController.center.z);
+            }
+            else {
+                _charController.height = VariablesManager.playerVariables.playerHeightWhenUp;
+                _charController.center = new Vector3(_charController.center.x, 0, _charController.center.z);
+            }
         }
 
         #region  CHECKERS
