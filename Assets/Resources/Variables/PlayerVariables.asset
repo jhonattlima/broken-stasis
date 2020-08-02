@@ -16,3 +16,5 @@ MonoBehaviour:
   regularSpeed: 150
   slowSpeedMultiplier: 0.5
   fastSpeedMultiplier: 2
+  playerHeightWhenUp: 1.8
+  playerHeightWhenCrouching: 0.6
