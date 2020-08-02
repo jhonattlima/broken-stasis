@@ -7,7 +7,9 @@ namespace VariableManagement
     {
         public int maxHealth;
         public float regularSpeed;
-        public float backwardSpeedMultiplier;
-        public float runningSpeedMultiplier;
+        public float slowSpeedMultiplier;
+        public float fastSpeedMultiplier;
+        public float playerHeightWhenUp;
+        public float playerHeightWhenCrouching;
     }   
 }

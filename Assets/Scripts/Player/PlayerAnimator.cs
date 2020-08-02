@@ -11,6 +11,8 @@ namespace Player
         private const string DEAD = "Dead";
         private const string HIT = "Hit";
 
+        private const string CROUCHING = "Crouching";
+
         private readonly Animator _animator;
 
         public PlayerAnimator(Animator p_animator)
@@ -18,27 +20,35 @@ namespace Player
             _animator = p_animator;
 
             PlayerStatesManager.onStateChanged += HandleStateChanged;
+            PlayerStatesManager.onPlayerCrouching += HandlePlayerCrouching;
+        }
+
+        private void HandlePlayerCrouching(bool p_crouching)
+        {
+            _animator.SetBool(CROUCHING, p_crouching);
         }
 
         private void HandleStateChanged(PlayerState p_playerState)
         {
-            ResetAllTriggers();
+            ResetAllVariables();
 
             switch(p_playerState)
             {
                 case PlayerState.STATIC:
-                    _animator.SetTrigger(STATIC);
+                    // _animator.SetTrigger(STATIC);
+                    _animator.SetBool(STATIC, true);
                     break;
                 case PlayerState.WALKING_FORWARD:
                 case PlayerState.WALKING_SIDEWAYS:
-                    _animator.SetTrigger(WALKING);
+                    // _animator.SetTrigger(WALKING);
+                    _animator.SetBool(WALKING, true);
                     break;
                 case PlayerState.WALKING_BACKWARD:
-                    _animator.SetTrigger(WALKING_BACKWARD);
+                    _animator.SetBool(WALKING_BACKWARD, true);
                     break;
                 case PlayerState.RUNNING_FORWARD:
                 case PlayerState.RUNNING_SIDEWAYS:
-                    _animator.SetTrigger(RUNNING);
+                    _animator.SetBool(RUNNING, true);
                     break;
                 case PlayerState.DEAD:
                     _animator.SetTrigger(DEAD);
@@ -49,12 +59,12 @@ namespace Player
             }
         }
 
-        private void ResetAllTriggers()
+        private void ResetAllVariables()
         {
-            _animator.ResetTrigger(STATIC);
-            _animator.ResetTrigger(WALKING);
-            _animator.ResetTrigger(WALKING_BACKWARD);
-            _animator.ResetTrigger(RUNNING);
+            _animator.SetBool(STATIC, false);
+            _animator.SetBool(WALKING, false);
+            _animator.SetBool(WALKING_BACKWARD, false);
+            _animator.SetBool(RUNNING, false);
         }
     }
 }

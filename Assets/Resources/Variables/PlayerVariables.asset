@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   regularSpeed: 150
-  backwardSpeedMultiplier: 0.5
-  runningSpeedMultiplier: 2
+  slowSpeedMultiplier: 0.5
+  fastSpeedMultiplier: 2
+  playerHeightWhenUp: 1.8
+  playerHeightWhenCrouching: 0.6
