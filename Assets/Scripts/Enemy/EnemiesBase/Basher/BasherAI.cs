@@ -62,13 +62,25 @@ namespace Enemy
         {
             _isHearingPlayer = true;
 
-            if (!_isViewingPlayer)
-                _followBehaviour.InvestigatePosition(p_playerPosition);
+            HandleHearingPlayer(p_playerPosition);
         }
 
         private void HandlePlayerRemainsInSoundSensor(Transform p_playerPosition)
         {
-            if (!_isViewingPlayer)
+            HandleHearingPlayer(p_playerPosition);
+        }
+
+        private void HandleHearingPlayer(Transform p_playerPosition)
+        {
+            if (_stateManager.currentState == EnemyState.ATTACKING)
+            {
+                _enemyAnimationEventHandler.OnAttackAnimationEnd = delegate ()
+                {
+                    if (!_attackMeleeBehaviour.CanAttack(p_playerPosition.position) || !_isViewingPlayer)
+                        _followBehaviour.InvestigatePosition(p_playerPosition);
+                };
+            }
+            else if (!_isViewingPlayer)
                 _followBehaviour.InvestigatePosition(p_playerPosition);
         }
 
