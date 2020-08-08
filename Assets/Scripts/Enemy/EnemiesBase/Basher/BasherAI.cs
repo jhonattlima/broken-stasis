@@ -6,19 +6,17 @@ namespace Enemy
 {
     public class BasherAI : IEnemyAI
     {
-        private bool _isHearingPlayer;
-        private bool _isViewingPlayer;
-
         private readonly EnemyStatesManager _stateManager;
-
         private readonly IPatrolEnemy _patrolBehaviour;
         private readonly IFollowEnemy _followBehaviour;
         private readonly IAttackMeleeEnemy _attackMeleeBehaviour;
 
         private readonly SensorNoise _noiseSensor;
         private readonly SensorVision _visionSensor;
-
         private readonly EnemyAnimationEventHandler _enemyAnimationEventHandler;
+        
+        private bool _isHearingPlayer;
+        private bool _isViewingPlayer;
 
         public BasherAI(EnemyStatesManager p_stateManager,
             IPatrolEnemy p_patrolBehaviour,

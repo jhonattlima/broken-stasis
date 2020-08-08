@@ -12,6 +12,12 @@ namespace Enemy
         private BasherAI _basherAI;
         private Action<int> _onPlayerDamaged;
 
+        private void Awake()
+        {
+            if (_basherContainer == null)
+                throw new MissingComponentException("BasherContainer not found in BasherEnemy!");
+        }
+
         public void InitializeEnemy(Action<int> p_onPlayerDamaged)
         {
             _onPlayerDamaged = p_onPlayerDamaged;
@@ -29,35 +35,35 @@ namespace Enemy
 
             _enemyAnimator = new EnemyAnimator(
                 _stateManager,
-                _basherContainer.Animator
+                _basherContainer.animator
             );
 
             _basherAI = new BasherAI(
                 _stateManager,
                 new PatrolEnemy(
                     _stateManager,
-                    _basherContainer.NavigationAgent,
-                    _basherContainer.PatrolPointsGameObject,
-                    _basherContainer.IdleTime,
-                    _basherContainer.PatrolSpeedMultiplier
+                    _basherContainer.navigationAgent,
+                    _basherContainer.patrolPointsGameObject,
+                    _basherContainer.idleTime,
+                    _basherContainer.patrolSpeedMultiplier
                 ),
                 new FollowEnemy(
                     _stateManager,
-                    _basherContainer.NavigationAgent,
-                    _basherContainer.InvestigateSpeedMultiplier,
-                    _basherContainer.SprintSpeedMultiplier
+                    _basherContainer.navigationAgent,
+                    _basherContainer.investigateSpeedMultiplier,
+                    _basherContainer.sprintSpeedMultiplier
                 ),
                 new AttackMeleeEnemy(
                     _stateManager,
-                    _basherContainer.WeaponSensor,
-                    _basherContainer.OriginPosition,
-                    _basherContainer.AttackRange,
-                    _basherContainer.Damage,
+                    _basherContainer.weaponSensor,
+                    _basherContainer.originPosition,
+                    _basherContainer.attackRange,
+                    _basherContainer.damage,
                     _onPlayerDamaged
                 ),
-                _basherContainer.NoiseSensor,
-                _basherContainer.VisionSensor,
-                _basherContainer.EnemyAnimationEventHandler
+                _basherContainer.noiseSensor,
+                _basherContainer.visionSensor,
+                _basherContainer.enemyAnimationEventHandler
             );
         }
 

@@ -7,6 +7,12 @@ namespace Player
         [SerializeField] private Transform _headPosition;
         [SerializeField] private LayerMask _layersToDetect;
 
+        private void Awake()
+        {
+            if (_headPosition == null)
+                throw new MissingComponentException("HeadPosition not found in PlayerVision!");
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GameInternalTags.ENEMY) && HasDirectViewOfHiddenObject(other.gameObject))
