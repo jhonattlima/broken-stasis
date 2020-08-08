@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace System.Utilities
+namespace Utilities
 {
     public class SceneController : MonoBehaviour
     {

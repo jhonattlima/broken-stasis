@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 using VariableManagement;
 
 
@@ -66,7 +67,7 @@ namespace Player
 
         private void HandleMovement()
         {
-            Vector3 __moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            Vector3 __moveDirection = InputController.GamePlay.NavigationAxis();
             float __crouchingSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.slowSpeedMultiplier;
             
             if(_crouching)
@@ -78,7 +79,7 @@ namespace Player
         private void HandleDirection()
         {
             Vector2 __positionOnScreen = Camera.main.WorldToViewportPoint(_playerTransform.position);
-            Vector2 __mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            Vector2 __mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(InputController.GamePlay.MousePosition());
 
             float __angle = Mathf.Atan2(__positionOnScreen.y - __mouseOnScreen.y, __positionOnScreen.x - __mouseOnScreen.x) * Mathf.Rad2Deg;
 
@@ -100,7 +101,7 @@ namespace Player
         #region  CHECKERS
         private void SetMovingState()
         {
-            if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
+            if (InputController.GamePlay.NavigationAxis() != Vector3.zero)
             {
                 if (_running && !_crouching)
                 {
@@ -144,8 +145,8 @@ namespace Player
                 _movingBackward = false;
             }
 
-            _running = Input.GetKey(KeyCode.LeftShift);
-            _crouching = Input.GetButton("Crouch");
+            _running = InputController.GamePlay.Run();
+            _crouching = InputController.GamePlay.Crouch();
 
             _previousPosition = _playerTransform.position;
         }
