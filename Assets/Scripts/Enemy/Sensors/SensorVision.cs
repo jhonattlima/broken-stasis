@@ -11,6 +11,12 @@ namespace Enemy
         public Action<Transform> onPlayerRemainsDetected;
         public Action<Transform> onPlayerLeftDetection;
 
+        private void Awake()
+        {
+            if (_eyesTransform == null)
+                throw new MissingComponentException("EyesTransform not found in SensorVision!");
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfPlayer(other.gameObject))

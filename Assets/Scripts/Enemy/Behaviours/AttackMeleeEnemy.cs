@@ -10,7 +10,6 @@ namespace Enemy
         private readonly float _attackRange;
         private readonly int _damage;
         private readonly Action<int> _onPlayerDamaged;
-
         private readonly EnemyStatesManager _enemyStatesManager;
 
         public AttackMeleeEnemy(

@@ -3,6 +3,7 @@ using CameraScripts;
 using Enemy;
 using Player;
 using UnityEngine;
+using Utilities;
 
 namespace GameManagers
 {
@@ -20,6 +21,8 @@ namespace GameManagers
 
         private void Awake()
         {
+            InputController.GamePlay.InputEnabled = true;
+
             RegisterObjectsGraph();
 
             _player?.InitializePlayer();

@@ -467,20 +467,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9186cabef1080e4e915d95a55579e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationAgent: {fileID: 1103140238913231062}
-  Animator: {fileID: 6313622449097181118}
-  EnemyAnimationEventHandler: {fileID: 1916892489679733471}
-  PatrolPointsGameObject: {fileID: 6322751265128174515}
-  IdleTime: 0.75
-  PatrolSpeedMultiplier: 0.5
-  InvestigateSpeedMultiplier: 0.75
-  SprintSpeedMultiplier: 1
-  WeaponSensor: {fileID: 1592130139}
-  OriginPosition: {fileID: 6543408877400997234}
-  AttackRange: 1.75
-  Damage: 1
-  NoiseSensor: {fileID: 6669039273834062501}
-  VisionSensor: {fileID: 5583404525254980172}
+  navigationAgent: {fileID: 1103140238913231062}
+  animator: {fileID: 6313622449097181118}
+  enemyAnimationEventHandler: {fileID: 1916892489679733471}
+  patrolPointsGameObject: {fileID: 6322751265128174515}
+  idleTime: 0.75
+  patrolSpeedMultiplier: 0.5
+  investigateSpeedMultiplier: 0.75
+  sprintSpeedMultiplier: 1
+  weaponSensor: {fileID: 1592130139}
+  originPosition: {fileID: 6543408877400997234}
+  attackRange: 1.75
+  damage: 1
+  noiseSensor: {fileID: 6669039273834062501}
+  visionSensor: {fileID: 5583404525254980172}
 --- !u!1 &2102870846226437697
 GameObject:
   m_ObjectHideFlags: 0
