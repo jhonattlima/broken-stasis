@@ -66,6 +66,5 @@ namespace Interaction
             _journeyLength = Vector3.Distance(transform.position, _doorClosePosition);
             _startTime = Time.time;
         }
-
     }
 }
