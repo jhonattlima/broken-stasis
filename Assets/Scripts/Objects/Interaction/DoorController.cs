@@ -9,7 +9,7 @@ namespace Interaction
         [SerializeField] private float _maxDelayToUseDoor = 2;
         [SerializeField] private bool _isDoorOpen = false;
 
-        public Vector3 _targetPosition;
+        private Vector3 _targetPosition;
         private Vector3 _doorOpenPosition;
         private Vector3 _doorClosePosition;
         private float _journeyLength;
@@ -19,7 +19,7 @@ namespace Interaction
         private void Awake()
         {
             _doorClosePosition = transform.position;
-            _doorOpenPosition = new Vector3(_doorClosePosition.x + transform.localScale.x, _doorClosePosition.y, _doorClosePosition.z);
+            _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + transform.localScale.z);
 
             if (_isDoorOpen)
                 transform.position = _doorOpenPosition;
