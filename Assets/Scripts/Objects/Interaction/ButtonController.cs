@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 namespace Interaction
 {
@@ -22,39 +23,20 @@ namespace Interaction
 
         public void Interact()
         {
-            if (_isButtonActive && Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Player pressed  key to open.");
+            if (_isButtonActive && InputController.GamePlay.Interact())
                 _interactionObject.GetComponent<IInteractionObject>().Interact();
-            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag.Equals("Player"))
-            {
                 _isButtonActive = true;
-                Debug.Log("Player is close to the door");
-            }
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.tag.Equals("Player"))
-            {
                 _isButtonActive = false;
-                Debug.Log("Player is out of door range");
-            }
-        }
-
-        void OnGUI()
-        {
-            if (_isButtonActive)
-            {
-                var position = Camera.main.WorldToScreenPoint(transform.localPosition);
-                GUI.skin.box.wordWrap = true;
-                GUI.Box(new Rect(position.x, position.y, 100, 25), "Interact Controller");
-            }
         }
     }
 }

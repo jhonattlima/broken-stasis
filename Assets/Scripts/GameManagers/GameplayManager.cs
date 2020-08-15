@@ -3,6 +3,7 @@ using CameraScripts;
 using Enemy;
 using Player;
 using UnityEngine;
+using UnityEngine.AI;
 using Utilities;
 
 namespace GameManagers
