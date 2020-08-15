@@ -19,7 +19,7 @@ namespace Interaction
         private void Awake()
         {
             _doorClosePosition = transform.position;
-            _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + transform.localScale.z);
+            _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + transform.localScale.z * 3);
 
             if (_isDoorOpen)
                 transform.position = _doorOpenPosition;
