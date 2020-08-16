@@ -11,7 +11,8 @@ namespace Player
         RUNNING_FORWARD,
         RUNNING_SIDEWAYS,
         DEAD,
-        HIT
+        HIT,
+        PRESS_BUTTON
     }
 
     public static class PlayerStatesManager

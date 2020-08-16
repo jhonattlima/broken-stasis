@@ -29,7 +29,7 @@ namespace Utilities
             public static bool Interact()
             {
                 if(InputEnabled)
-                    return Input.GetButton("Interact");
+                    return Input.GetButtonDown("Interact");
                 else
                     return false;
             }

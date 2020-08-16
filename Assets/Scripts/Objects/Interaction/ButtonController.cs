@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 using Utilities;
 
 namespace Interaction
@@ -24,7 +25,10 @@ namespace Interaction
         public void Interact()
         {
             if (_isButtonActive && InputController.GamePlay.Interact())
+            {
+                PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
                 _interactionObject.GetComponent<IInteractionObject>().Interact();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
