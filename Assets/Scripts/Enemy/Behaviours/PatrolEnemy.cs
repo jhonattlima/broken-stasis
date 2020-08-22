@@ -89,15 +89,12 @@ namespace Enemy
         private IEnumerator PatrolToNextPoint()
         {
             _settingDestination = true;
-
             _stateManager.SetEnemyState(EnemyState.IDLE);
-
-            yield return new WaitForSeconds(_idleTime);
-
-            _stateManager.SetEnemyState(EnemyState.PATROLLING);
             
+            yield return new WaitForSeconds(_idleTime);
+            
+            _stateManager.SetEnemyState(EnemyState.PATROLLING);
             _navigationAgent.isStopped = false;
-
             _settingDestination = false;
         }
 

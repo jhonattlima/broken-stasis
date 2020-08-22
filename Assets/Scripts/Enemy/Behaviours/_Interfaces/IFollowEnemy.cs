@@ -6,5 +6,6 @@ namespace Enemy
     {
         void InvestigatePosition(Transform p_destinationPosition);
         void SprintToPosition(Transform p_destinationPosition);
+        void RunEnemyFollow();
     }
 }

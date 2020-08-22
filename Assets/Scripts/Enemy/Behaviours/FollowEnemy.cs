@@ -6,7 +6,7 @@ namespace Enemy
     public class FollowEnemy : IFollowEnemy
     {
         private readonly EnemyStatesManager _stateManager;
-        private readonly NavMeshAgent _navigationAgent;
+        private readonly NavMeshAgent _navMeshAgent;
         private readonly float _investigateSpeedMultiplier;
         private readonly float _sprintSpeedMultiplier;
 
@@ -21,13 +21,13 @@ namespace Enemy
             float p_sprintSpeedMultiplier)
         {
             _stateManager = p_stateManager;
-            _navigationAgent = p_navigationAgent;
+            _navMeshAgent = p_navigationAgent;
             _investigateSpeedMultiplier = p_investigateSpeedMultiplier;
             _sprintSpeedMultiplier = p_sprintSpeedMultiplier;
 
-            _initialSpeed = _navigationAgent.speed;
-            _initialAcceleration = _navigationAgent.acceleration;
-            _initialAngularSpeed = _navigationAgent.angularSpeed;
+            _initialSpeed = _navMeshAgent.speed;
+            _initialAcceleration = _navMeshAgent.acceleration;
+            _initialAngularSpeed = _navMeshAgent.angularSpeed;
 
             InitializeFollowBehaviour();
         }
@@ -42,14 +42,14 @@ namespace Enemy
             switch (p_enemyState)
             {
                 case EnemyState.INVESTIGATING:
-                    _navigationAgent.speed = _initialSpeed * _investigateSpeedMultiplier;
-                    _navigationAgent.acceleration = _initialAcceleration * _investigateSpeedMultiplier;
-                    _navigationAgent.angularSpeed = _initialAngularSpeed * _investigateSpeedMultiplier;
+                    _navMeshAgent.speed = _initialSpeed * _investigateSpeedMultiplier;
+                    _navMeshAgent.acceleration = _initialAcceleration * _investigateSpeedMultiplier;
+                    _navMeshAgent.angularSpeed = _initialAngularSpeed * _investigateSpeedMultiplier;
                     break;
                 case EnemyState.RUNNING:
-                    _navigationAgent.speed = _initialSpeed * _sprintSpeedMultiplier;
-                    _navigationAgent.acceleration = _initialAcceleration * _sprintSpeedMultiplier;
-                    _navigationAgent.angularSpeed = _initialAngularSpeed * _sprintSpeedMultiplier;
+                    _navMeshAgent.speed = _initialSpeed * _sprintSpeedMultiplier;
+                    _navMeshAgent.acceleration = _initialAcceleration * _sprintSpeedMultiplier;
+                    _navMeshAgent.angularSpeed = _initialAngularSpeed * _sprintSpeedMultiplier;
                     break;
                 case EnemyState.ATTACKING:
                     StopNavigation();
@@ -59,31 +59,32 @@ namespace Enemy
             }
         }
 
+        public void RunEnemyFollow() {
+            if((_navMeshAgent.remainingDistance < 0.2f))
+                _stateManager.SetEnemyState(EnemyState.IDLE);
+        }
+
         public void InvestigatePosition(Transform p_destinationPosition)
         {
+            _stateManager.SetEnemyState(EnemyState.INVESTIGATING);
             SetNavigationDestination(p_destinationPosition);
-
-            if (_stateManager.currentState != EnemyState.RUNNING)
-                _stateManager.SetEnemyState(EnemyState.INVESTIGATING);
         }
 
         public void SprintToPosition(Transform p_destinationPosition)
         {
-            SetNavigationDestination(p_destinationPosition);
-
             _stateManager.SetEnemyState(EnemyState.RUNNING);
-        }
-
-        private void StopNavigation()
-        {
-            _navigationAgent.isStopped = true;
+            SetNavigationDestination(p_destinationPosition);
         }
 
         private void SetNavigationDestination(Transform p_destinationPosition)
         {
-            _navigationAgent.isStopped = false;
+            _navMeshAgent.isStopped = false;
+            _navMeshAgent.SetDestination(p_destinationPosition.position);
+        }
 
-            _navigationAgent.SetDestination(p_destinationPosition.position);
+        private void StopNavigation()
+        {
+            _navMeshAgent.isStopped = true;
         }
     }
 }
