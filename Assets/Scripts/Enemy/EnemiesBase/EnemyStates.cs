@@ -22,7 +22,7 @@ namespace Enemy
             if(!currentState.Equals(p_newState))
             {
                 currentState = p_newState;
-                UnityEngine.Debug.Log(p_newState);
+                
                 if (onStateChanged != null) onStateChanged(currentState);
             }
         }

@@ -6,7 +6,7 @@ namespace Enemy
     public class FollowEnemy : IFollowEnemy
     {
         private readonly EnemyStatesManager _stateManager;
-        private readonly NavMeshAgent _navMeshAgent;
+        private readonly NavMeshAgent _navigationAgent;
         private readonly float _investigateSpeedMultiplier;
         private readonly float _sprintSpeedMultiplier;
 
@@ -21,13 +21,13 @@ namespace Enemy
             float p_sprintSpeedMultiplier)
         {
             _stateManager = p_stateManager;
-            _navMeshAgent = p_navigationAgent;
+            _navigationAgent = p_navigationAgent;
             _investigateSpeedMultiplier = p_investigateSpeedMultiplier;
             _sprintSpeedMultiplier = p_sprintSpeedMultiplier;
 
-            _initialSpeed = _navMeshAgent.speed;
-            _initialAcceleration = _navMeshAgent.acceleration;
-            _initialAngularSpeed = _navMeshAgent.angularSpeed;
+            _initialSpeed = _navigationAgent.speed;
+            _initialAcceleration = _navigationAgent.acceleration;
+            _initialAngularSpeed = _navigationAgent.angularSpeed;
 
             InitializeFollowBehaviour();
         }
@@ -42,14 +42,14 @@ namespace Enemy
             switch (p_enemyState)
             {
                 case EnemyState.INVESTIGATING:
-                    _navMeshAgent.speed = _initialSpeed * _investigateSpeedMultiplier;
-                    _navMeshAgent.acceleration = _initialAcceleration * _investigateSpeedMultiplier;
-                    _navMeshAgent.angularSpeed = _initialAngularSpeed * _investigateSpeedMultiplier;
+                    _navigationAgent.speed = _initialSpeed * _investigateSpeedMultiplier;
+                    _navigationAgent.acceleration = _initialAcceleration * _investigateSpeedMultiplier;
+                    _navigationAgent.angularSpeed = _initialAngularSpeed * _investigateSpeedMultiplier;
                     break;
                 case EnemyState.RUNNING:
-                    _navMeshAgent.speed = _initialSpeed * _sprintSpeedMultiplier;
-                    _navMeshAgent.acceleration = _initialAcceleration * _sprintSpeedMultiplier;
-                    _navMeshAgent.angularSpeed = _initialAngularSpeed * _sprintSpeedMultiplier;
+                    _navigationAgent.speed = _initialSpeed * _sprintSpeedMultiplier;
+                    _navigationAgent.acceleration = _initialAcceleration * _sprintSpeedMultiplier;
+                    _navigationAgent.angularSpeed = _initialAngularSpeed * _sprintSpeedMultiplier;
                     break;
                 case EnemyState.ATTACKING:
                     StopNavigation();
@@ -59,32 +59,31 @@ namespace Enemy
             }
         }
 
-        public void RunEnemyFollow() {
-            if((_navMeshAgent.remainingDistance < 0.2f))
-                _stateManager.SetEnemyState(EnemyState.IDLE);
-        }
-
         public void InvestigatePosition(Transform p_destinationPosition)
         {
-            _stateManager.SetEnemyState(EnemyState.INVESTIGATING);
             SetNavigationDestination(p_destinationPosition);
+
+            if (_stateManager.currentState != EnemyState.RUNNING)
+                _stateManager.SetEnemyState(EnemyState.INVESTIGATING);
         }
 
         public void SprintToPosition(Transform p_destinationPosition)
         {
-            _stateManager.SetEnemyState(EnemyState.RUNNING);
             SetNavigationDestination(p_destinationPosition);
-        }
 
-        private void SetNavigationDestination(Transform p_destinationPosition)
-        {
-            _navMeshAgent.isStopped = false;
-            _navMeshAgent.SetDestination(p_destinationPosition.position);
+            _stateManager.SetEnemyState(EnemyState.RUNNING);
         }
 
         private void StopNavigation()
         {
-            _navMeshAgent.isStopped = true;
+            _navigationAgent.isStopped = true;
+        }
+
+        private void SetNavigationDestination(Transform p_destinationPosition)
+        {
+            _navigationAgent.isStopped = false;
+
+            _navigationAgent.SetDestination(p_destinationPosition.position);
         }
     }
 }
