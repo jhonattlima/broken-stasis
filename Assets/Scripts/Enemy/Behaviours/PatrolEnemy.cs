@@ -76,7 +76,7 @@ namespace Enemy
 
         public void RunEnemyPatrol()
         {
-            if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.2f)
+            if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
                     SceneController.instance.StartCoroutine(PatrolToNextPoint());
         }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8726645808066448041
+--- !u!1 &7670767762801187302
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8726645808066448042}
-  - component: {fileID: 8726645808066448047}
-  - component: {fileID: 8726645808066448046}
-  - component: {fileID: 8726645808066448043}
-  - component: {fileID: 574062320447884820}
+  - component: {fileID: 6392277664709332595}
+  - component: {fileID: 4636087919025947815}
+  - component: {fileID: 4800767331683894287}
+  - component: {fileID: 2027493113077959216}
+  - component: {fileID: 2027493113077959219}
   m_Layer: 0
-  m_Name: Button
+  m_Name: "Port\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8726645808066448042
+--- !u!4 &6392277664709332595
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726645808066448041}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2, y: 0.5, z: -0.85}
-  m_LocalScale: {x: 0.4, y: 0.1, z: 0.4}
+  m_GameObject: {fileID: 7670767762801187302}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 1.1704832, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &8726645808066448047
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &4636087919025947815
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726645808066448041}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8726645808066448046
+  m_GameObject: {fileID: 7670767762801187302}
+  m_Mesh: {fileID: 4679390504295679099, guid: 5e59ce39e463b1341b72a9c781d24033, type: 3}
+--- !u!23 &4800767331683894287
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726645808066448041}
+  m_GameObject: {fileID: 7670767762801187302}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f0ffeabf91082c04f8c8216b3187ec01, type: 2}
+  - {fileID: 2100000, guid: 24d1d8266b43c394a98d9ef0fcf7393b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,30 +80,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &8726645808066448043
-CapsuleCollider:
+--- !u!65 &2027493113077959216
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726645808066448041}
+  m_GameObject: {fileID: 7670767762801187302}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.50000024
-  m_Height: 8
-  m_Direction: 1
-  m_Center: {x: 0.000000074505806, y: -2.0482624, z: 0.00000030761205}
---- !u!114 &574062320447884820
+  serializedVersion: 2
+  m_Size: {x: 0.0022484204, y: 0.020202234, z: 0.020443315}
+  m_Center: {x: 0.00000004301546, y: -0.000028708026, z: -0.0014272983}
+--- !u!114 &2027493113077959219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726645808066448041}
+  m_GameObject: {fileID: 7670767762801187302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02cf73b42cf0376489241ac94a88eb55, type: 3}
+  m_Script: {fileID: 11500000, guid: 03822f7d4ede74845a7568d24b062cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionObject: {fileID: 0}
+  _doorSpeed: 1
+  _maxDelayToUseDoor: 0
+  _isDoorOpen: 0
+  _targetPosition: {x: 0, y: 1.170483, z: 2}

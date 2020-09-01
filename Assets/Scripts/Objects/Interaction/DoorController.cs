@@ -9,17 +9,21 @@ namespace Interaction
         [SerializeField] private float _maxDelayToUseDoor = 2;
         [SerializeField] private bool _isDoorOpen = false;
 
-        public Vector3 _targetPosition;
+        private Vector3 _targetPosition;
         private Vector3 _doorOpenPosition;
         private Vector3 _doorClosePosition;
         private float _journeyLength;
         private float _startTime;
 
+        private BoxCollider _doorCollider;
+
         // If doorModel scale does not match with texture, change _doorOpenPosition attribuition
         private void Awake()
         {
+            _doorCollider = GetComponent<BoxCollider>();
+
             _doorClosePosition = transform.position;
-            _doorOpenPosition = new Vector3(_doorClosePosition.x + transform.localScale.x, _doorClosePosition.y, _doorClosePosition.z);
+            _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
 
             if (_isDoorOpen)
                 transform.position = _doorOpenPosition;
@@ -51,7 +55,6 @@ namespace Interaction
 
         private IEnumerator OpenDoor(float p_delay)
         {
-            // Debug.Log("Door is opening after " + delay + "seconds...");
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorOpenPosition;
             _journeyLength = Vector3.Distance(transform.position, _doorOpenPosition);
@@ -60,12 +63,10 @@ namespace Interaction
 
         private IEnumerator CloseDoor(float p_delay)
         {
-            // Debug.Log("Door is closing after " + delay + "seconds...");
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorClosePosition;
             _journeyLength = Vector3.Distance(transform.position, _doorClosePosition);
             _startTime = Time.time;
         }
-
     }
 }

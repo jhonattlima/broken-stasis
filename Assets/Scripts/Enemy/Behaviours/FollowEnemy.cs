@@ -59,6 +59,17 @@ namespace Enemy
             }
         }
 
+        public void RunFollowEnemy()
+        {
+            if(IsEnemyFollowing() && _navigationAgent.remainingDistance < 0.05f)
+                _stateManager.SetEnemyState(EnemyState.IDLE);
+        }
+
+        private bool IsEnemyFollowing()
+        {
+            return (_stateManager.currentState == EnemyState.RUNNING || _stateManager.currentState == EnemyState.INVESTIGATING);
+        }
+
         public void InvestigatePosition(Transform p_destinationPosition)
         {
             SetNavigationDestination(p_destinationPosition);
@@ -84,6 +95,6 @@ namespace Enemy
             _navigationAgent.isStopped = false;
 
             _navigationAgent.SetDestination(p_destinationPosition.position);
-        }
+        }        
     }
 }

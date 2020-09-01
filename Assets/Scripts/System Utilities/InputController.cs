@@ -13,7 +13,7 @@ namespace Utilities
             public static bool Run()
             {
                 if(InputEnabled)
-                    return Input.GetKey(KeyCode.LeftShift);
+                    return Input.GetButton("Run");
                 else
                     return false;
             }
@@ -22,6 +22,14 @@ namespace Utilities
             {
                 if(InputEnabled)
                     return Input.GetButton("Crouch");
+                else
+                    return false;
+            }
+
+            public static bool Interact()
+            {
+                if(InputEnabled)
+                    return Input.GetButtonDown("Interact");
                 else
                     return false;
             }
