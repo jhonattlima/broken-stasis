@@ -33,14 +33,18 @@ namespace Interaction
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag.Equals("Player"))
+            if (other.tag.Equals("PlayerInteractor"))
+            {
                 _isButtonActive = true;
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.tag.Equals("Player"))
+            if (other.tag.Equals("PlayerInteractor"))
+            {
                 _isButtonActive = false;
+            }
         }
     }
 }
