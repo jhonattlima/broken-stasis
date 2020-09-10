@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: cfef8b81c6de616408c4f2764fa13569
+guid: 51c76c7cceae2ef489ce8fdb50fa15ae
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: EMISSAO.010
-    second: {fileID: 2100000, guid: 6046878ab3eb4474d9ee7f32f129f578, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: METAL 1.010
-    second: {fileID: 2100000, guid: 24d1d8266b43c394a98d9ef0fcf7393b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: METAL 2.010
-    second: {fileID: 2100000, guid: b730befc1039aa84a975279cf40ef043, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: METAL 3.010
-    second: {fileID: 2100000, guid: 69e499db4def07c43a4adef93731477f, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

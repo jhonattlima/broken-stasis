@@ -50,10 +50,19 @@ namespace Enemy
 
         public void RunUpdate()
         {
-            if (!_isHearingPlayer && !_isViewingPlayer)
+            _followBehaviour.RunFollowEnemy();
+
+            if (CanPatrol())
                 _patrolBehaviour.RunEnemyPatrol();
             else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();
+        }
+
+        private bool CanPatrol()
+        {
+            return (_stateManager.currentState != EnemyState.INVESTIGATING 
+                    && _stateManager.currentState != EnemyState.RUNNING
+                    && _stateManager.currentState != EnemyState.ATTACKING);
         }
 
         private void HandlePlayerEnteredSoundSensor(Transform p_playerPosition)

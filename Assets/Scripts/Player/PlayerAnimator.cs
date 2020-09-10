@@ -10,6 +10,7 @@ namespace Player
         private const string RUNNING = "Running";
         private const string DEAD = "Dead";
         private const string HIT = "Hit";
+        private const string PRESS_BUTTON = "PressButton";
 
         private const string CROUCHING = "Crouching";
 
@@ -35,12 +36,10 @@ namespace Player
             switch(p_playerState)
             {
                 case PlayerState.STATIC:
-                    // _animator.SetTrigger(STATIC);
                     _animator.SetBool(STATIC, true);
                     break;
                 case PlayerState.WALKING_FORWARD:
                 case PlayerState.WALKING_SIDEWAYS:
-                    // _animator.SetTrigger(WALKING);
                     _animator.SetBool(WALKING, true);
                     break;
                 case PlayerState.WALKING_BACKWARD:
@@ -55,6 +54,9 @@ namespace Player
                     break;
                 case PlayerState.HIT:
                     _animator.SetTrigger(HIT);
+                    break;
+                case PlayerState.PRESS_BUTTON:
+                    _animator.SetTrigger(PRESS_BUTTON);
                     break;
             }
         }
