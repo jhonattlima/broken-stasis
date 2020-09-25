@@ -6,16 +6,11 @@ namespace Audio
 {
     public class AudioLibraryPopulator
     {
-        private string _path;
-
-        public AudioLibraryPopulator()
-        {
-            _path = AssetDatabase.GetAssetPath(Resources.Load<GameObject>("AudioClipParams/AudioClipPathReference"));
-        }   
         public void PopulateAudioAssets()
         {
             foreach(var __audioNameEnum in Enum.GetValues(typeof(AudioNameEnum)))
             {
+                Debug.Log("Audio name " + __audioNameEnum.ToString() + " Exists? " + AudioParamExists(__audioNameEnum.ToString()));
                 if(!AudioParamExists(__audioNameEnum.ToString()))
                     CreateAudioParam(__audioNameEnum.ToString());
             }
@@ -23,13 +18,13 @@ namespace Audio
 
         private bool AudioParamExists(string p_audioName)
         {
-            return false;
+            return Resources.Load<AudioClipParams>("AudioClipParams/"+p_audioName) != null;
         }
 
         private void CreateAudioParam(string p_audioName)
         {
-            AudioLibraryScriptableObject __newAudioClipUnit = new AudioLibraryScriptableObject();
-            AssetDatabase.CreateAsset(__newAudioClipUnit, "Assets/Scripts/System Utilities/Audio/Resources/AudioClipParams/"+p_audioName+".mat");
+            AudioClipParams __newAudioClipUnit = new AudioClipParams();
+            AssetDatabase.CreateAsset(__newAudioClipUnit, "Assets/Scripts/System Utilities/Audio/Resources/AudioClipParams/"+p_audioName+".asset");
         }
     }
 }
