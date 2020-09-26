@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Audio
 {
-    [CreateAssetMenu(fileName = "AudioClipParam")]
     public class AudioClipParams : ScriptableObject
     {
         public AudioClip audioFile;

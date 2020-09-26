@@ -3,7 +3,7 @@ namespace Audio
     [System.Serializable]
     public class AudioClipUnit
     {
-        public AudioNameEnum audioName;
+        public string audioName;
         public AudioClipParams audioClipParams;
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DOOR_SOUND
   m_EditorClassIdentifier: 
   audioFile: {fileID: 0}
-  volume: 0.93
+  volume: 0

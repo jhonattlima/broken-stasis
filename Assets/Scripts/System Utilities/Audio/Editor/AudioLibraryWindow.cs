@@ -14,19 +14,16 @@ namespace Audio
         private static AudioLibraryPopulator _audioLibraryPopulator;
 
         private static Vector2 _scrollPosition;
+        private static bool[] _collapseState;
 
-        [MenuItem("TFW Tools/Audio Library")]
+        [MenuItem("TFW Tools/Load Audio Library")]
         public static void Initialize()
         {
             if (_window == null)
                 _window = GetWindow();
 
-            UnityEditor.EditorApplication.projectChanged -= LoadAudioLibrary;
-            UnityEditor.EditorApplication.projectChanged += LoadAudioLibrary;
-
             _audioLibraryPopulator = new AudioLibraryPopulator();
-            
-            _audioLibraryPopulator.PopulateAudioAssets();
+            _audioLibraryPopulator.InitializeAudioLibrary();
         }
 
         public static AudioLibraryWindow GetWindow()
@@ -53,25 +50,31 @@ namespace Audio
         {
             _audioLibraryAsset = Resources.Load<AudioLibraryScriptableObject>("AudioLibrary");
 
-            _listAudioClips = _audioLibraryAsset.AudioLibrary.ToList();
+            _listAudioClips = _audioLibraryAsset.AudioLibrary;
+            
+            _collapseState = new bool[_listAudioClips.Count];
         }
 
         private void DrawAudioLibraryList()
         {
             for (int i = 0; i < _listAudioClips.Count; i++)
             {
-                // GUILayout.BeginHorizontal();
-                // {
-                //     GUILayout.Label(_listAudioClips[i].audioName.ToString());
-                // }
-                // GUILayout.EndHorizontal();
-
-                // GUILayout.BeginVertical(EditorStyles.helpBox);
-                // {
-                //     Editor.CreateEditor(_listAudioClips[i].audioClipParams).OnInspectorGUI();
-                // }
-                // GUILayout.EndVertical();
+                _collapseState[i] = EditorGUILayout.Foldout(_collapseState[i], _listAudioClips[i].audioName.ToString());
+                
+                if (_collapseState[i])
+                {
+                    GUILayout.BeginVertical(EditorStyles.helpBox);
+                    {
+                        Editor.CreateEditor(_listAudioClips[i].audioClipParams).OnInspectorGUI();
+                    }
+                    GUILayout.EndVertical();
+                }               
             }
+        }
+
+        public void OnInspectorUpdate()
+        {
+            this.Repaint();
         }
     }
 }

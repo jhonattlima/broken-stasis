@@ -3,8 +3,6 @@ namespace Audio
     public enum AudioNameEnum
     {
         BASHER_FOOTSTEPS,
-        DOOR_SOUND,
-        YADAYADA,
-        PAO
+        DOOR_SOUND
     }
 }
