@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BASHER_FOOTSTEPS
   m_EditorClassIdentifier: 
   audioFile: {fileID: 0}
-  volume: 0
+  volume: 0.308
