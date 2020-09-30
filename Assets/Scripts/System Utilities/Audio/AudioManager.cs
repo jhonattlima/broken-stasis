@@ -58,5 +58,48 @@ namespace Audio
 
             __audioSource.Play();
         }
+
+        public void Play(AudioNameEnum p_audio, Vector3 p_position)
+        {
+            AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
+
+            if (!__audioClipParams)
+            {
+                Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
+                return;
+            }
+
+            AudioSource.PlayClipAtPoint(__audioClipParams.audioFile, p_position, __audioClipParams.volume);
+        } 
+        
+        public void Stop(AudioNameEnum p_audio)
+        {
+            AudioClip __clip = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams.audioFile;
+
+            if(__clip != null)
+            {
+                AudioSource __audioSource = _audioSourcePool.GetAudioWithClip(__clip);
+
+                __audioSource?.Stop();
+            }
+        }
+
+        public void Pause(AudioNameEnum p_audio)
+        {
+            AudioClip __clip = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams.audioFile;
+
+            if(__clip != null)
+            {
+                AudioSource __audioSource = _audioSourcePool.GetAudioWithClip(__clip);
+
+                if(__audioSource != null)
+                {
+                    if(__audioSource.isPlaying)
+                        __audioSource.Pause();
+                    else
+                        __audioSource.Play();
+                }
+            }
+        }
     }
 }

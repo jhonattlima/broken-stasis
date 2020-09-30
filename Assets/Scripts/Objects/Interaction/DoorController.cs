@@ -56,7 +56,7 @@ namespace Interaction
 
         private IEnumerator OpenDoor(float p_delay)
         {
-            AudioManager.instance.Play(AudioNameEnum.DOOR_OPEN, false);
+            AudioManager.instance.Play(AudioNameEnum.DOOR_OPEN, true);
 
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorOpenPosition;

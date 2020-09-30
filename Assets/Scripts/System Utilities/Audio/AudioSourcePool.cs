@@ -38,5 +38,17 @@ namespace Audio
             return InstantiateNewAudioSource();
         }
 
+        public AudioSource GetAudioWithClip(AudioClip p_audioClip)
+        {
+            foreach (AudioSource __audioSource in _sourcesPool)
+            {
+                if (__audioSource.clip == p_audioClip)
+                    return __audioSource;
+            }
+
+            return null;
+        }
+        
+
     }
 }

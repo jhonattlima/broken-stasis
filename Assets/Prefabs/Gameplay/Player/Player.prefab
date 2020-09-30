@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128356314}
-  - component: {fileID: 1412779841}
   m_Layer: 11
   m_Name: Visible Area
   m_TagString: Untagged
@@ -33,19 +32,6 @@ Transform:
   m_Father: {fileID: 8469297880012280757}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1412779841
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128356313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &611796756
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +418,7 @@ GameObject:
   - component: {fileID: 1856077617}
   - component: {fileID: 1856077619}
   - component: {fileID: 1856077618}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player Interaction Point
   m_TagString: PlayerInteractor
   m_Icon: {fileID: 0}
@@ -1513,6 +1499,7 @@ GameObject:
   - component: {fileID: 8469297880012280757}
   - component: {fileID: 1946397596130836175}
   - component: {fileID: 5233220711743000704}
+  - component: {fileID: 923789733}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1576,6 +1563,14 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!81 &923789733
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887430702864212390}
+  m_Enabled: 1
 --- !u!1 &4893744370162210243
 GameObject:
   m_ObjectHideFlags: 0
