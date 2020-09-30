@@ -7,9 +7,8 @@ namespace Audio
     {
         private List<AudioSource> _sourcesPool = new List<AudioSource>();
         private Transform _poolParent;
-        private GameObject _audiosourcePool;
 
-        public AudioSourcePool(GameObject p_audioSourcePool, Transform p_poolParent)
+        public AudioSourcePool(Transform p_poolParent)
         {
             _poolParent = p_poolParent;
 
@@ -18,7 +17,8 @@ namespace Audio
 
         private AudioSource InstantiateNewAudioSource()
         {
-            GameObject __newAudioSourceGameObject = MonoBehaviour.Instantiate(new GameObject("AudioSource " + _sourcesPool.Count + 1), _poolParent);
+            GameObject __newAudioSourceGameObject = new GameObject("AudioSource " + _sourcesPool.Count + 1);
+            __newAudioSourceGameObject.transform.SetParent(_poolParent);
 
             __newAudioSourceGameObject.AddComponent<AudioSource>();
 
