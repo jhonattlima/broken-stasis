@@ -38,17 +38,17 @@ namespace Audio
             return InstantiateNewAudioSource();
         }
 
-        public AudioSource GetAudioWithClip(AudioClip p_audioClip)
+        public List<AudioSource> GetAudiosWithClip(AudioClip p_audioClip)
         {
+            List<AudioSource> __audioSources = new List<AudioSource>();
+            
             foreach (AudioSource __audioSource in _sourcesPool)
             {
                 if (__audioSource.clip == p_audioClip)
-                    return __audioSource;
+                    __audioSources.Add(__audioSource);
             }
 
-            return null;
+            return __audioSources;
         }
-        
-
     }
 }

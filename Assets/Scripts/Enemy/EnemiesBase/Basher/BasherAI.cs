@@ -1,5 +1,5 @@
 ﻿
-using Player;
+using Audio;
 using UnityEngine;
 
 namespace Enemy
@@ -18,13 +18,17 @@ namespace Enemy
         private bool _isHearingPlayer;
         private bool _isViewingPlayer;
 
+        private Vector3 _basherPosition;
+        private AudioSource _idleSound;
+
         public BasherAI(EnemyStatesManager p_stateManager,
             IPatrolEnemy p_patrolBehaviour,
             IFollowEnemy p_followBehaviour,
             IAttackMeleeEnemy p_attackMeleeBehaviour,
             SensorNoise p_noiseSensor,
             SensorVision p_visionSensor,
-            EnemyAnimationEventHandler p_enemyAnimationEventHandler)
+            EnemyAnimationEventHandler p_enemyAnimationEventHandler,
+            Vector3 p_basherPosition)
         {
             _stateManager = p_stateManager;
             _patrolBehaviour = p_patrolBehaviour;
@@ -33,6 +37,7 @@ namespace Enemy
             _noiseSensor = p_noiseSensor;
             _visionSensor = p_visionSensor;
             _enemyAnimationEventHandler = p_enemyAnimationEventHandler;
+            _basherPosition = p_basherPosition;
         }
 
         public void InitializeEnemy()
@@ -46,6 +51,32 @@ namespace Enemy
             _visionSensor.onPlayerDetected += HandlePlayerEnteredVisionSensor;
             _visionSensor.onPlayerRemainsDetected += HandlePlayerRemainsInVisionSensor;
             _visionSensor.onPlayerLeftDetection += HandlePlayerLeftVisionSensor;
+
+            _enemyAnimationEventHandler.OnStep += delegate ()
+            {
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_STEP, _basherPosition);
+            };
+            _enemyAnimationEventHandler.OnAttack += delegate ()
+            {
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherPosition);
+            };
+
+            _stateManager.onStateChanged += HandleStateChanged;
+
+            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherPosition, true);
+        }
+
+        private void HandleStateChanged(EnemyState p_enemyState)
+        {
+            switch (p_enemyState)
+            {
+                case EnemyState.ATTACKING:
+                    _idleSound.Pause();
+                    break;
+                default:
+                    _idleSound.Play();
+                    break;
+            }
         }
 
         public void RunUpdate()

@@ -12,24 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a137356714bf44b96a6e5dd6bc3b5f, type: 3}
   m_Name: AudioLibrary
   m_EditorClassIdentifier: 
-  AudioLibrary:
-  - audioName: BASHER_ATTACK
-    audioClipParams: {fileID: 11400000, guid: 6d8e4b98ae782ca49b42f5862e17c054, type: 2}
-  - audioName: BASHER_IDLE
-    audioClipParams: {fileID: 11400000, guid: 9526cf62ed0fb2c43bfb8b6f0a64a1cb, type: 2}
-  - audioName: BASHER_RUN_STEP
-    audioClipParams: {fileID: 11400000, guid: 3f70fc27d152dbd4c972f663804a3031, type: 2}
-  - audioName: BASHER_WALK_STEP
-    audioClipParams: {fileID: 11400000, guid: 16ecc6e1918443c49876ce8422dd466b, type: 2}
-  - audioName: DOOR_OPEN
-    audioClipParams: {fileID: 11400000, guid: 41b9325a8290f954b879faf39ae87b33, type: 2}
-  - audioName: DOOR_CLOSE
-    audioClipParams: {fileID: 11400000, guid: 47006831cd1c3ea40bf0aba181f09f12, type: 2}
-  - audioName: PLAYER_HIT
-    audioClipParams: {fileID: 11400000, guid: dc69b0709ca28f44a9bed92be94f484d, type: 2}
-  - audioName: PLAYER_RUN_STEP
-    audioClipParams: {fileID: 11400000, guid: c4d15cd85a62a654a950455c0931a487, type: 2}
-  - audioName: PLAYER_WALK_STEP
-    audioClipParams: {fileID: 11400000, guid: 8b0f36c8bbaf8004bb18e40fd3ecc186, type: 2}
-  - audioName: SOUND_TRACK
-    audioClipParams: {fileID: 11400000, guid: 3fdec33aebf8cd34f80850156aa9f2af, type: 2}
+  AudioLibrary: []

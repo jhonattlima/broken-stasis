@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 using VariableManagement;
 
 namespace Player
@@ -30,7 +31,10 @@ namespace Player
             if (_playerCurrentHealth == 0)
                 HandlePlayerDeath();
             else
+            {
+                AudioManager.instance.Play(AudioNameEnum.PLAYER_HIT);
                 PlayerStatesManager.SetPlayerState(PlayerState.HIT);
+            }
         }
 
         public void IncreaseHealth(int lifePoints)
@@ -39,7 +43,9 @@ namespace Player
         }
 
         private void HandlePlayerDeath()
-        {        
+        {
+            AudioManager.instance.Play(AudioNameEnum.PLAYER_DIE);
+
             PlayerStatesManager.SetPlayerState(PlayerState.DEAD);
             GameStateManager.SetGameState(GameState.GAMEOVER);
         }

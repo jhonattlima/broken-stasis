@@ -40,7 +40,7 @@ namespace Audio
             DontDestroyOnLoad(_audioManagerGameObject);
         }
 
-        public void Play(AudioNameEnum p_audio, bool p_loop)
+        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false)
         {
             AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
 
@@ -49,27 +49,40 @@ namespace Audio
             if (!__audioClipParams)
             {
                 Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
-                return;
+                return null;
             }
 
             __audioSource.loop = p_loop;
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
+            __audioSource.spatialBlend = 0f;
 
             __audioSource.Play();
+
+            return __audioSource;
         }
 
-        public void Play(AudioNameEnum p_audio, Vector3 p_position)
+        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false)
         {
+            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
+            __audioSource.gameObject.transform.position = p_position;
+
             AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
 
             if (!__audioClipParams)
             {
                 Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
-                return;
+                return null;
             }
 
-            AudioSource.PlayClipAtPoint(__audioClipParams.audioFile, p_position, __audioClipParams.volume);
+            __audioSource.loop = p_loop;
+            __audioSource.clip = __audioClipParams.audioFile;
+            __audioSource.volume = __audioClipParams.volume;
+            __audioSource.spatialBlend = 1f;
+
+            __audioSource.Play();
+
+            return __audioSource;
         } 
         
         public void Stop(AudioNameEnum p_audio)
@@ -78,9 +91,8 @@ namespace Audio
 
             if(__clip != null)
             {
-                AudioSource __audioSource = _audioSourcePool.GetAudioWithClip(__clip);
-
-                __audioSource?.Stop();
+                foreach(AudioSource __audioSource in _audioSourcePool.GetAudiosWithClip(__clip))
+                    __audioSource?.Stop();
             }
         }
 
@@ -90,14 +102,17 @@ namespace Audio
 
             if(__clip != null)
             {
-                AudioSource __audioSource = _audioSourcePool.GetAudioWithClip(__clip);
-
-                if(__audioSource != null)
+                foreach(AudioSource __audioSource in _audioSourcePool.GetAudiosWithClip(__clip))
                 {
-                    if(__audioSource.isPlaying)
-                        __audioSource.Pause();
-                    else
-                        __audioSource.Play();
+                    __audioSource?.Stop();
+
+                    if(__audioSource != null)
+                    {
+                        if(__audioSource.isPlaying)
+                            __audioSource.Pause();
+                        else
+                            __audioSource.Play();
+                    }
                 }
             }
         }

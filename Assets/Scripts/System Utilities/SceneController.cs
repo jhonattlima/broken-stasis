@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 
 namespace Utilities
 {
@@ -10,6 +11,8 @@ namespace Utilities
         {
             if(instance == null)
                 instance = this;
+
+            AudioManager.instance.Play(AudioNameEnum.SOUND_TRACK, true);
 
             DontDestroyOnLoad(instance);
         }

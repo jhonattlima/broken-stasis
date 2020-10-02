@@ -39,7 +39,7 @@ namespace Player
         {
             _playerMovement = new PlayerMovement(
                 _playerContainer.characterController,
-                _playerContainer.playerTransform
+                _playerContainer.playerTransform                
             );
 
             _playerSoundColliderActivator = new PlayerSoundColliderActivator(
@@ -48,7 +48,8 @@ namespace Player
                 _playerContainer.loudSoundCollider
             );
 
-            _playerAnimator = new PlayerAnimator(_playerContainer.playerAnimator);
+            _playerAnimator = new PlayerAnimator(_playerContainer.playerAnimator,
+                                                    _playerContainer.playerAnimationEventHandler);
 
             _playerHealth = new PlayerHealth(_playerContainer.characterController);
         }

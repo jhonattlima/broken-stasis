@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: BASHER_ATTACK
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 0}
-  volume: 0
+  audioFile: {fileID: 8300000, guid: dda479d1e5ce65043af8eec3283daa3c, type: 3}
+  volume: 0.702

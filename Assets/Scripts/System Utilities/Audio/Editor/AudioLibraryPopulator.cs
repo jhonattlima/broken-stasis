@@ -13,9 +13,10 @@ namespace Audio
             PopulateAudioAssets();
 
             LoadLibrary();
-            BuildLibrary();
             
             RemoveMissingAudios();
+            
+            BuildLibrary();
         }
 
         private static void LoadLibrary()

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: SOUND_TRACK
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 0}
-  volume: 0
+  audioFile: {fileID: 8300000, guid: ea07d3d766a52204aab3e259ad0237e1, type: 3}
+  volume: 0.622

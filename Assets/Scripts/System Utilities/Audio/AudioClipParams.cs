@@ -6,6 +6,6 @@ namespace Audio
     {
         public AudioClip audioFile;
         [Range(0.0f, 1.0f)]
-        public float volume;
+        public float volume = 1f;
     }
 }

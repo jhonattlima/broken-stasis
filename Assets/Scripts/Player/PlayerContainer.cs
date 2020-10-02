@@ -12,6 +12,7 @@ namespace Player
         [Header("Animator")]
         [Space(5)]
         public Animator playerAnimator;
+        public PlayerAnimationEventHandler playerAnimationEventHandler;
 
         [Header("Sound Colliders")]
         [Space(5)]

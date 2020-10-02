@@ -63,7 +63,8 @@ namespace Enemy
                 ),
                 _basherContainer.noiseSensor,
                 _basherContainer.visionSensor,
-                _basherContainer.enemyAnimationEventHandler
+                _basherContainer.enemyAnimationEventHandler,
+                gameObject.transform.position
             );
         }
 
