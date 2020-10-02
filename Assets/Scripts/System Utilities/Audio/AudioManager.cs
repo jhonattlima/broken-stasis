@@ -10,6 +10,7 @@ namespace Audio
         private static GameObject _audioManagerGameObject;
         private static GameObject _audioSourcePoolGameObject;
         private static AudioSourcePool _audioSourcePool;
+        private static AudioLibraryPopulator _audioLibraryPopulator;
 
         public static AudioManager instance
         {
@@ -25,6 +26,9 @@ namespace Audio
 
         private static void InitializeAudioManager()
         {
+            _audioLibraryPopulator = new AudioLibraryPopulator();
+            _audioLibraryPopulator.InitializeAudioLibrary();
+            
             _audioLibrary = Resources.Load<AudioLibraryScriptableObject>("AudioLibrary");
 
             _audioManagerGameObject = new GameObject("AudioManager");
