@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 
 namespace Player
 {
@@ -15,13 +16,21 @@ namespace Player
         private const string CROUCHING = "Crouching";
 
         private readonly Animator _animator;
+        private readonly PlayerAnimationEventHandler _animationEventHandler;
 
-        public PlayerAnimator(Animator p_animator)
+        public PlayerAnimator(Animator p_animator,
+                                PlayerAnimationEventHandler p_animationEventHandler)
         {
             _animator = p_animator;
+            _animationEventHandler = p_animationEventHandler;
 
             PlayerStatesManager.onStateChanged += HandleStateChanged;
             PlayerStatesManager.onPlayerCrouching += HandlePlayerCrouching;
+
+            _animationEventHandler.OnStep += delegate()
+            {
+                AudioManager.instance.Play(AudioNameEnum.PLAYER_STEP);
+            };
         }
 
         private void HandlePlayerCrouching(bool p_crouching)

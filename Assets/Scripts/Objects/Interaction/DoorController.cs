@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Audio;
 using UnityEngine;
 
 namespace Interaction
@@ -55,6 +56,8 @@ namespace Interaction
 
         private IEnumerator OpenDoor(float p_delay)
         {
+            AudioManager.instance.Play(AudioNameEnum.DOOR_OPEN, false);
+
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorOpenPosition;
             _journeyLength = Vector3.Distance(transform.position, _doorOpenPosition);
@@ -63,6 +66,8 @@ namespace Interaction
 
         private IEnumerator CloseDoor(float p_delay)
         {
+            AudioManager.instance.Play(AudioNameEnum.DOOR_CLOSE, false);
+
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorClosePosition;
             _journeyLength = Vector3.Distance(transform.position, _doorClosePosition);
