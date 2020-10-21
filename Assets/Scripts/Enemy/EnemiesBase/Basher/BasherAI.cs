@@ -83,7 +83,7 @@ namespace Enemy
         {
             _followBehaviour.RunFollowEnemy();
 
-            if (CanPatrol())
+            if (CanPatrol() || GameStateManager.currentState == GameState.GAMEOVER)
                 _patrolBehaviour.RunEnemyPatrol();
             else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();

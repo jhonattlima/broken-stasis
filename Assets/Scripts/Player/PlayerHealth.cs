@@ -8,12 +8,9 @@ namespace Player
     {
         private int _playerMaxHealth;
         private int _playerCurrentHealth;
-        private readonly CharacterController _characterController;
 
-        public PlayerHealth(CharacterController p_characterController)
+        public PlayerHealth()
         {
-            _characterController = p_characterController;
-
             if(VariablesManager.playerVariables.maxHealth <= 0)
                 throw new System.Exception("Player max health variable is " + VariablesManager.playerVariables.maxHealth + "Minimum of life is 1.");
             
