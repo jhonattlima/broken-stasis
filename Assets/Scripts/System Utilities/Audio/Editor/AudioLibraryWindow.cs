@@ -54,6 +54,7 @@ namespace Audio
             _audioLibraryAsset = Resources.Load<AudioLibraryScriptableObject>("AudioLibrary");
 
             _listAudioClips = _audioLibraryAsset.AudioLibrary;
+            _listAudioClips.Sort((a, b)=> a.audioName.CompareTo(b.audioName));
             
             _collapseState = new bool[_listAudioClips.Count];
         }
