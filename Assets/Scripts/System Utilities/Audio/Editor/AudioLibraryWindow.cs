@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -24,6 +25,8 @@ namespace Audio
 
             _audioLibraryPopulator = new AudioLibraryPopulator();
             _audioLibraryPopulator.InitializeAudioLibrary();
+
+            LoadAudioLibrary();
         }
 
         public static AudioLibraryWindow GetWindow()
@@ -33,7 +36,7 @@ namespace Audio
 
         public void OnGUI()
         {
-            if (_listAudioClips == null)
+            if (_listAudioClips == null || _listAudioClips.Count != Enum.GetValues(typeof(AudioNameEnum)).Length)
                 LoadAudioLibrary();
 
             _scrollPosition = GUILayout.BeginScrollView(_scrollPosition);
