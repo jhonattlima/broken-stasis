@@ -21,8 +21,13 @@ namespace Player
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag(GameInternalTags.ENEMY) && HasDirectViewOfHiddenObject(other.gameObject))
-                other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            if (other.CompareTag(GameInternalTags.ENEMY))
+            {
+                if(HasDirectViewOfHiddenObject(other.gameObject))
+                    other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                else
+                    other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            } 
         }
 
         private void OnTriggerExit(Collider other)
@@ -37,10 +42,14 @@ namespace Player
             Vector3 __toPosition = p_hiddenGameObject.transform.position;
             Vector3 __direction = __toPosition - _headPosition.position;
 
-            // Debug.DrawRay(_headPosition.position, __direction, Color.magenta);
         
             if(Physics.Raycast(_headPosition.position,__direction,out __hit, 50f, _layersToDetect))
+            {
+                // if(__hit.collider.CompareTag(GameInternalTags.ENEMY))
+                //     Debug.DrawRay(_headPosition.position, __direction, Color.magenta);
+                
                 return __hit.collider.CompareTag(GameInternalTags.ENEMY);
+            }
 
             return false;
         }
