@@ -72,13 +72,13 @@ namespace Player
             switch(_playerHealthState)
             {
                 case PlayerHealthState.FINE:
-                    _heartBeatAudio.pitch = 0.5f;
+                    _heartBeatAudio.pitch = 1f;
                     break;
                 case PlayerHealthState.DANGER:
-                    _heartBeatAudio.pitch = 0.75f;
+                    _heartBeatAudio.pitch = 1.25f;
                     break;
                 case PlayerHealthState.CRITICAL:
-                    _heartBeatAudio.pitch = 1f;
+                    _heartBeatAudio.pitch = 1.5f;
                     break;
                 case PlayerHealthState.DEAD:
                     _heartBeatAudio.Stop();

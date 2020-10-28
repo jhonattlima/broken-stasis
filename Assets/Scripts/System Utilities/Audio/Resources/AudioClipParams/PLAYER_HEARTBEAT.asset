@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: PLAYER_HEARTBEAT
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 0}
-  volume: 1
+  audioFile: {fileID: 8300000, guid: 08651ee7d0f1c414b99b1492c13e84c8, type: 3}
+  volume: 0.69
