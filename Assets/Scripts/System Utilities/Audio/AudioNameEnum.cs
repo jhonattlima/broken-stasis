@@ -10,6 +10,7 @@ namespace Audio
         SOUND_TRACK,
         PLAYER_DIE,
         PLAYER_STEP,
-        BASHER_STEP
+        BASHER_STEP,
+        PLAYER_HEARTBEAT
     }
 }
