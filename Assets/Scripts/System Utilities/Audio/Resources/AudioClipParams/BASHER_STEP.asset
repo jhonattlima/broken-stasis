@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BASHER_STEP
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: ae38413285f89e54f9d407c4dc64f423, type: 3}
-  volume: 0.418
+  volume: 0.05

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DOOR_CLOSE
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: b99c13a255d436f468731648c25e020e, type: 3}
-  volume: 0.758
+  volume: 0.5

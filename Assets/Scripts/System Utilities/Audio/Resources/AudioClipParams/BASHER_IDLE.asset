@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BASHER_IDLE
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: 8d4985012f9562b4bac8943d2e5938be, type: 3}
-  volume: 0.443
+  volume: 0.1
