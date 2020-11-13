@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DOOR_OPEN
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: 4b59ad6ce64dd534cb24c78ccc0a5804, type: 3}
+  audioMixerGroup: {fileID: 6988149502019105432, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 0.5
