@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PLAYER_HEARTBEAT
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: 08651ee7d0f1c414b99b1492c13e84c8, type: 3}
+  audioMixerGroup: {fileID: -1557843067892748795, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 0.69

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: BASHER_STEP
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: ae38413285f89e54f9d407c4dc64f423, type: 3}
+  audioMixerGroup: {fileID: 4322169948599928627, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 0.418

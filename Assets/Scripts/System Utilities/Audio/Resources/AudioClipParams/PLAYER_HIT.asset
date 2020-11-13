@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PLAYER_HIT
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: f744feb20faea6244a078ae69478c284, type: 3}
+  audioMixerGroup: {fileID: -1557843067892748795, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 0.512
