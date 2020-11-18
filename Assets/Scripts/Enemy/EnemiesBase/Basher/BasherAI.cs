@@ -83,7 +83,6 @@ namespace Enemy
 
         public void RunUpdate()
         {
-                            Debug.Log("bunda");
             _followBehaviour.RunFollowEnemy();
 
             if (CanPatrol() || GameStateManager.currentState == GameState.GAMEOVER)
