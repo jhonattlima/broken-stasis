@@ -35,11 +35,9 @@ namespace Enemy
             _patrolPointsGameObject = p_patrolPointsGameObject;
             _idleTime = p_idleTime;
             _patrolSpeedMultiplier = p_patrolSpeedMultiplier;
-
-            InitializePatrolBehaviour();
         }
 
-        private void InitializePatrolBehaviour()
+        public void InitializePatrolBehaviour()
         {
             _patrolIndex = 0;
             _settingDestination = false;

@@ -9,7 +9,7 @@ namespace Enemy
 
         private EnemyStatesManager _stateManager;
         private EnemyAnimator _enemyAnimator;
-        private BasherAI _basherAI;
+        private IEnemyAI _basherAI;
         private Action<int> _onPlayerDamaged;
 
         private void Awake()
@@ -21,7 +21,7 @@ namespace Enemy
         public void InitializeEnemy(Action<int> p_onPlayerDamaged)
         {
             _onPlayerDamaged = p_onPlayerDamaged;
-            
+
             RegisterObjectsGraph();
 
             _basherAI.InitializeEnemy();
@@ -66,6 +66,14 @@ namespace Enemy
                 _basherContainer.enemyAnimationEventHandler,
                 gameObject.transform.position
             );
+
+            if (_basherContainer.basherType.Equals(BasherType.STASIS))
+            {
+                _basherAI = new BasherStasisAI(
+                    _basherAI,
+                    _basherContainer.stasisSensor
+                );
+            }
         }
 
         public void RunUpdate()
@@ -75,7 +83,7 @@ namespace Enemy
 
         private void HandleGameStateChanged(GameState p_gameState)
         {
-            switch(p_gameState)
+            switch (p_gameState)
             {
                 case GameState.GAMEOVER:
                     _basherAI.ResetEnemyAI();

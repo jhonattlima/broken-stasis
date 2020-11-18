@@ -64,6 +64,8 @@ namespace Enemy
             _stateManager.onStateChanged += HandleStateChanged;
 
             _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherPosition, true);
+            
+            _patrolBehaviour.InitializePatrolBehaviour();
         }
 
         private void HandleStateChanged(EnemyState p_enemyState)
@@ -81,6 +83,7 @@ namespace Enemy
 
         public void RunUpdate()
         {
+                            Debug.Log("bunda");
             _followBehaviour.RunFollowEnemy();
 
             if (CanPatrol() || GameStateManager.currentState == GameState.GAMEOVER)
