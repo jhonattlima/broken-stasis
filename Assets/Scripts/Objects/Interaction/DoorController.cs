@@ -23,13 +23,13 @@ namespace Interaction
         {
             _doorCollider = GetComponent<BoxCollider>();
 
-            _doorClosePosition = transform.position;
+            _doorClosePosition = transform.localPosition;
             _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
 
             if (_isDoorOpen)
-                transform.position = _doorOpenPosition;
+                transform.localPosition = _doorOpenPosition;
 
-            _targetPosition = transform.position;
+            _targetPosition = transform.localPosition;
             _startTime = Time.time;
         }
 
@@ -40,7 +40,7 @@ namespace Interaction
             float __distCovered = (Time.time - _startTime) * _doorSpeed;
             float __fractionOfJourney = __distCovered / _journeyLength;
             if (!float.IsNaN(__fractionOfJourney))
-                transform.position = Vector3.Lerp(transform.position, _targetPosition, __fractionOfJourney);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, _targetPosition, __fractionOfJourney);
         }
 
         public void Interact()
@@ -60,7 +60,7 @@ namespace Interaction
 
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorOpenPosition;
-            _journeyLength = Vector3.Distance(transform.position, _doorOpenPosition);
+            _journeyLength = Vector3.Distance(transform.localPosition, _doorOpenPosition);
             _startTime = Time.time;
         }
 
@@ -70,7 +70,7 @@ namespace Interaction
 
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorClosePosition;
-            _journeyLength = Vector3.Distance(transform.position, _doorClosePosition);
+            _journeyLength = Vector3.Distance(transform.localPosition, _doorClosePosition);
             _startTime = Time.time;
         }
     }

@@ -11,6 +11,7 @@ namespace Audio
         PLAYER_DIE,
         PLAYER_STEP,
         BASHER_STEP,
+        BASHER_SCREAM,
         PLAYER_HEARTBEAT
     }
 }

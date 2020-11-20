@@ -64,6 +64,8 @@ namespace Enemy
             _stateManager.onStateChanged += HandleStateChanged;
 
             _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherPosition, true);
+            
+            _patrolBehaviour.InitializePatrolBehaviour();
         }
 
         private void HandleStateChanged(EnemyState p_enemyState)

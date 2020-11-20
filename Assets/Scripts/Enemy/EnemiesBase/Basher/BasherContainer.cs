@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-
 namespace Enemy
 {
     public class BasherContainer : MonoBehaviour
     {
         public NavMeshAgent navigationAgent;
+
+        [Header("Basher Type")]
+        [Space(5)]
+        public BasherType basherType;
 
         [Header("Animator References")]
         [Space(5)]
@@ -34,6 +37,7 @@ namespace Enemy
         [Space(5)]
         public SensorNoise noiseSensor;
         public SensorVision visionSensor;
+        public SensorVision stasisSensor;
 
         private void Awake()
         {
