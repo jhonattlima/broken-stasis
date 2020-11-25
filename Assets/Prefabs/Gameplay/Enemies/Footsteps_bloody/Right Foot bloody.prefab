@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4282724132031290729}
   - component: {fileID: 3645896150561247852}
   m_Layer: 0
-  m_Name: Right Foot
+  m_Name: Right Foot bloody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
