@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameManagers;
+using UnityEngine;
 
 namespace Interaction
 {
@@ -6,7 +7,7 @@ namespace Interaction
     {
         public override void Interact()
         {
-            Debug.Log("Picked suit.");
+            GameHudManager.instance.itemCollectedHud.ShowAutoHideNotification("Collected Suit");
         }
     }
 }

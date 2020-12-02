@@ -1,28 +1,43 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using Utilities;
 using VariableManagement;
 
 public class NotificationUI : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private Text _notificationText;
+    [SerializeField] private TextMeshProUGUI _notificationText;
+    [SerializeField] private NotificationUIAnimationEventHandler _notificationEventHandler;
 
     private const string SHOW_ANIMATION = "Show";
     private const string HIDE_ANIMATION = "Hide";
+
+    private Queue<KeyValuePair<string, float>> _notificationQueue = new Queue<KeyValuePair<string, float>>();
+    private bool _isVisible = false;
 
     private float _defaultNotificationDuration;
 
     private void Awake()
     {
         _defaultNotificationDuration = VariablesManager.uiVariables.defaultNotificationDuration;
+
+        _notificationEventHandler.OnHideAnimationEnd = delegate()
+        {
+            _isVisible = false;
+
+            ShowNextNotification();
+        };
     }
 
-    public void ShowNotification(string p_text)
+    private void ShowNextNotification()
     {
-        _notificationText.text = p_text;
+        if (_notificationQueue.Count > 0)
+        {
+            KeyValuePair<string, float> __nextNotifcation = _notificationQueue.Dequeue();
 
-        _animator.Play(SHOW_ANIMATION);
+            ShowAutoHideNotification(__nextNotifcation.Key, __nextNotifcation.Value);
+        }
     }
 
     public void ShowAutoHideNotification(string p_text)
@@ -32,33 +47,41 @@ public class NotificationUI : MonoBehaviour
 
     public void ShowAutoHideNotification(string p_text, float p_duration)
     {
-        float __duration; 
+        float __duration = p_duration; 
+
+        if(_isVisible || _notificationQueue.Count > 0)
+        {
+            _notificationQueue.Enqueue(new KeyValuePair<string, float>(p_text, p_duration));
+
+            return;
+        }
+
+        _isVisible = true;
         
         _notificationText.text = p_text;
 
         _animator.Play(SHOW_ANIMATION);
 
-        if(p_duration != _defaultNotificationDuration)
-            __duration = p_duration;
-        else
-            __duration = CalculateAutoHideTime(p_text);
-
-        TFWToolKit.Timer(__duration, delegate () 
+        _notificationEventHandler.OnShowAnimationEnd = delegate()
         {
-            _animator.Play(HIDE_ANIMATION); 
-        });
+            if(p_duration == _defaultNotificationDuration)
+                __duration = CalculateAutoHideTime(p_text);
+
+            TFWToolKit.Timer(__duration, delegate () 
+            {
+                _animator.Play(HIDE_ANIMATION); 
+            });
+        };
     }
 
     private float CalculateAutoHideTime(string p_text)
     {
         int __wordCount = p_text.Split(' ').Length;
-        float __readingSpeed = VariablesManager.uiVariables.defaultReadingWPM / 60f;
+        float __readingSpeed = (60f / VariablesManager.uiVariables.defaultReadingWPM) * __wordCount;
 
-        return __wordCount * __readingSpeed;
-    }
-
-    public void HideNotification()
-    {
-        _animator.Play(HIDE_ANIMATION);
+        if(__readingSpeed < _defaultNotificationDuration)
+            return _defaultNotificationDuration;
+        
+        return __readingSpeed;
     }
 }
