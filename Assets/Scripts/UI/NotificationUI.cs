@@ -10,66 +10,64 @@ public class NotificationUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _notificationText;
     [SerializeField] private NotificationUIAnimationEventHandler _notificationEventHandler;
 
-    private const string SHOW_ANIMATION = "Show";
-    private const string HIDE_ANIMATION = "Hide";
+    private const string SHOW_NOTIFICATION_ANIMATION = "Show";
+    private const string HIDE_NOTIFICATION_ANIMATION = "Hide";
 
     private Queue<KeyValuePair<string, float>> _notificationQueue = new Queue<KeyValuePair<string, float>>();
     private bool _isVisible = false;
-
     private float _defaultNotificationDuration;
 
     private void Awake()
     {
         _defaultNotificationDuration = VariablesManager.uiVariables.defaultNotificationDuration;
 
-        _notificationEventHandler.OnHideAnimationEnd = delegate()
+        _notificationEventHandler.OnHideAnimationEnd = delegate ()
         {
             _isVisible = false;
-
-            ShowNextNotification();
+            DisplayNextNotification();
         };
     }
 
-    private void ShowNextNotification()
+    private void DisplayNextNotification()
     {
         if (_notificationQueue.Count > 0)
         {
             KeyValuePair<string, float> __nextNotifcation = _notificationQueue.Dequeue();
-
-            ShowAutoHideNotification(__nextNotifcation.Key, __nextNotifcation.Value);
+            DisplayNotification(__nextNotifcation.Key, __nextNotifcation.Value);
         }
     }
 
-    public void ShowAutoHideNotification(string p_text)
+    public void CallNotification(string p_text)
     {
-        ShowAutoHideNotification(p_text, _defaultNotificationDuration);
+        CallNotification(p_text, _defaultNotificationDuration);
     }
 
-    public void ShowAutoHideNotification(string p_text, float p_duration)
+    public void CallNotification(string p_text, float p_duration)
     {
-        float __duration = p_duration; 
-
-        if(_isVisible || _notificationQueue.Count > 0)
+        if (_isVisible || _notificationQueue.Count > 0)
         {
             _notificationQueue.Enqueue(new KeyValuePair<string, float>(p_text, p_duration));
-
             return;
         }
+        DisplayNotification(p_text, p_duration);
+    }
 
+    private void DisplayNotification(string p_text, float p_duration)
+    {
         _isVisible = true;
-        
         _notificationText.text = p_text;
 
-        _animator.Play(SHOW_ANIMATION);
+        _animator.Play(SHOW_NOTIFICATION_ANIMATION);
 
-        _notificationEventHandler.OnShowAnimationEnd = delegate()
+        _notificationEventHandler.OnShowAnimationEnd = delegate ()
         {
-            if(p_duration == _defaultNotificationDuration)
+            float __duration = p_duration;
+            if (p_duration == _defaultNotificationDuration)
                 __duration = CalculateAutoHideTime(p_text);
 
-            TFWToolKit.Timer(__duration, delegate () 
+            TFWToolKit.Timer(__duration, delegate ()
             {
-                _animator.Play(HIDE_ANIMATION); 
+                _animator.Play(HIDE_NOTIFICATION_ANIMATION);
             });
         };
     }
@@ -79,9 +77,9 @@ public class NotificationUI : MonoBehaviour
         int __wordCount = p_text.Split(' ').Length;
         float __readingSpeed = (60f / VariablesManager.uiVariables.defaultReadingWPM) * __wordCount;
 
-        if(__readingSpeed < _defaultNotificationDuration)
+        if (__readingSpeed < _defaultNotificationDuration)
             return _defaultNotificationDuration;
-        
+
         return __readingSpeed;
     }
 }

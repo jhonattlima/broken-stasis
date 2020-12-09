@@ -7,7 +7,7 @@ namespace Interaction
     {
         public override void Interact()
         {
-            GameHudManager.instance.itemCollectedHud.ShowAutoHideNotification("Collected Suit");
+            GameHudManager.instance.itemCollectedHud.CallNotification("Collected Suit");
         }
     }
 }
