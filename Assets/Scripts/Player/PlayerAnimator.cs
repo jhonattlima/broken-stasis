@@ -33,6 +33,10 @@ namespace Player
             {
                 AudioManager.instance.Play(AudioNameEnum.PLAYER_STEP);
             };
+            _animationEventHandler.OnCutsceneEnd += delegate ()
+            {
+                GameStateManager.SetGameState(GameState.RUNNING);
+            };
         }
 
         private void HandlePlayerCrouching(bool p_crouching)

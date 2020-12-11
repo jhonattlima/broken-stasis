@@ -50,7 +50,7 @@ namespace Enemy
             _initialAcceleration = _navigationAgent.acceleration;
             _initialAngularSpeed = _navigationAgent.angularSpeed;
 
-            PatrolToNextPoint();
+            SceneController.instance.StartCoroutine(PatrolToNextPoint());
         }
 
         private void HandleStateChanged(EnemyState p_enemyState)
@@ -76,7 +76,7 @@ namespace Enemy
         {
             if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
-                    PatrolToNextPoint();
+                    SceneController.instance.StartCoroutine(PatrolToNextPoint());
         }
 
         private bool IsEnemyPatrolling()
@@ -84,27 +84,25 @@ namespace Enemy
             return (_stateManager.currentState == EnemyState.PATROLLING || _stateManager.currentState == EnemyState.IDLE);
         }
 
-        private void PatrolToNextPoint()
+        private IEnumerator PatrolToNextPoint()
         {
             _settingDestination = true;
 
             _stateManager.SetEnemyState(EnemyState.IDLE);
 
-            TFWToolKit.Timer(_idleTime, delegate () 
-            {
-                _stateManager.SetEnemyState(EnemyState.PATROLLING);
-                
-                _navigationAgent.isStopped = false;
+            yield return new WaitForSeconds(_idleTime);
 
-                _settingDestination = false;
-            });
+            _stateManager.SetEnemyState(EnemyState.PATROLLING);
+            
+            _navigationAgent.isStopped = false;
 
+            _settingDestination = false;
         }
 
         private void StopPatrolling()
         {
             _settingDestination = false;
-            PatrolToNextPoint();
+            SceneController.instance.StopCoroutine(PatrolToNextPoint());
         }
 
         private void SetPatrolDestination()
