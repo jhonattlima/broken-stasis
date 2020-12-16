@@ -12,7 +12,9 @@ namespace Player
         RUNNING_SIDEWAYS,
         DEAD,
         HIT,
-        PRESS_BUTTON
+        PRESS_BUTTON,
+        PICK_ITEM_ON_GROUND,
+        PICK_ITEM
     }
 
     public static class PlayerStatesManager

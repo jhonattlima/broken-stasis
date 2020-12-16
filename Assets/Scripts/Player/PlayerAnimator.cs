@@ -12,6 +12,8 @@ namespace Player
         private const string DEAD = "Dead";
         private const string HIT = "Hit";
         private const string PRESS_BUTTON = "PressButton";
+        private const string PICK_ITEM = "PickItem";
+        private const string PICK_ITEM_ON_GROUND = "PickItemOnGround";
 
         private const string CROUCHING = "Crouching";
 
@@ -30,6 +32,10 @@ namespace Player
             _animationEventHandler.OnStep += delegate()
             {
                 AudioManager.instance.Play(AudioNameEnum.PLAYER_STEP);
+            };
+            _animationEventHandler.OnCutsceneEnd += delegate ()
+            {
+                GameStateManager.SetGameState(GameState.RUNNING);
             };
         }
 
@@ -66,6 +72,12 @@ namespace Player
                     break;
                 case PlayerState.PRESS_BUTTON:
                     _animator.SetTrigger(PRESS_BUTTON);
+                    break;
+                case PlayerState.PICK_ITEM:
+                    _animator.SetTrigger(PICK_ITEM);
+                    break;
+                case PlayerState.PICK_ITEM_ON_GROUND:
+                    _animator.SetTrigger(PICK_ITEM_ON_GROUND);
                     break;
             }
         }
