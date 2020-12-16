@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Audio;
 
 namespace Interaction
 {
@@ -14,6 +15,7 @@ namespace Interaction
 
         public override void Interact()
         {
+            AudioManager.instance.Play(AudioNameEnum.ITEM_PICKUP);
             if (itemHeight.Equals(ItemHeight.GROUND))
             {
                 Debug.Log("Picked collectable item on ground.");
