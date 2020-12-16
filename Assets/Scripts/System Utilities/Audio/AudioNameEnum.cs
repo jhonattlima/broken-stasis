@@ -12,6 +12,7 @@ namespace Audio
         PLAYER_STEP,
         BASHER_STEP,
         BASHER_SCREAM,
-        PLAYER_HEARTBEAT
+        PLAYER_HEARTBEAT,
+        ITEM_PICKUP
     }
 }
