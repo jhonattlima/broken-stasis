@@ -22,7 +22,10 @@ namespace GameManagers
 
         private void Awake()
         {
-            InputController.GamePlay.InputEnabled = true;
+            LoadingView.instance.FadeOut(delegate()
+            {
+                InputController.GamePlay.InputEnabled = true;
+            });
 
             RegisterObjectsGraph();
 
