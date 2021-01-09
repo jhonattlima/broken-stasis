@@ -4,47 +4,22 @@ using Utilities;
 
 namespace Interaction
 {
-    public class ButtonController : MonoBehaviour, IInteractionObject
+    public class ButtonController : InteractionObjectWithColliders
     {
-        [SerializeField] private GameObject _interactionObject;
-        public bool _isButtonActive = false;
+        [SerializeField] private GameObject _interactionGameObject;
+        private IInteractionObject _interactionObject;
 
         private void Awake()
         {
-            if (_interactionObject == null)
+            if (_interactionGameObject == null)
                 throw new MissingComponentException("Interaction object not found!");
+            _interactionObject = _interactionGameObject.GetComponent<IInteractionObject>();
         }
 
-        public void RunUpdate()
+        public override void Interact()
         {
-            Interact();
-        }
-
-        public void RunFixedUpdate() { }
-
-        public void Interact()
-        {
-            if (_isButtonActive && InputController.GamePlay.Interact())
-            {
-                PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
-                _interactionObject.GetComponent<IInteractionObject>().Interact();
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.tag.Equals("PlayerInteractor"))
-            {
-                _isButtonActive = true;
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.tag.Equals("PlayerInteractor"))
-            {
-                _isButtonActive = false;
-            }
+            PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
+            _interactionObject.Interact();
         }
     }
 }

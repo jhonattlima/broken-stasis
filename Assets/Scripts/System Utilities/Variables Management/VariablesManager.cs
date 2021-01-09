@@ -26,5 +26,16 @@ namespace VariableManagement
                 return _cameraVariables;
             }
         }
+
+        private static UIVariablesScriptableObject _uiVariables;
+        public static UIVariablesScriptableObject uiVariables 
+        {
+            get
+            {
+                if(_uiVariables == null) _uiVariables = Resources.Load<UIVariablesScriptableObject>("Variables/UIVariables");
+
+                return _uiVariables;
+            }
+        }
     }
 }
