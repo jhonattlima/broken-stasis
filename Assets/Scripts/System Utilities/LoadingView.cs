@@ -5,18 +5,29 @@ using UnityEngine;
 public class LoadingView : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-
-    public static LoadingView instance;
     
     private static Action _onFadeIn;
     private static Action _onFadeOut;
 
-    private void Awake()
-    {      
-        if(instance == null)
-            instance = this;
+    private static LoadingView _instance;
+
+    public static LoadingView instance
+    {
+        get
+        {
+            return _instance ?? (_instance = InstanceInitialize());
+        }
+    }
+    
+    private static LoadingView InstanceInitialize()
+    {
+        GameObject _loadingViewGameObject = Resources.Load<GameObject>("LoadingView");
         
-        DontDestroyOnLoad(this);
+        _instance = Instantiate(_loadingViewGameObject).GetComponent<LoadingView>();
+
+        DontDestroyOnLoad(_instance);
+
+        return _instance;
     }
 
     public void InstantBlackScreen()
