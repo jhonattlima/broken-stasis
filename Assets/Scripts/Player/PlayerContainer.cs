@@ -9,10 +9,16 @@ namespace Player
         public CharacterController characterController;
         public Transform playerTransform;
 
-        [Header("Animator")]
+        [Header("Suit")]
         [Space(5)]
-        public Animator playerAnimator;
-        public PlayerAnimationEventHandler playerAnimationEventHandler;
+        public GameObject suit1GameObject;
+        public Animator suit1Animator;
+        public PlayerAnimationEventHandler suit1AnimationEventHandler;
+
+        public GameObject nakedGameObject;
+        public Animator nakedAnimator;
+        public PlayerAnimationEventHandler nakedAnimationEventHandler;
+
 
         [Header("Sound Colliders")]
         [Space(5)]
@@ -26,7 +32,7 @@ namespace Player
                 throw new MissingComponentException("CharacterController not found in PlayerContainer!");
             if (playerTransform == null)
                 throw new MissingComponentException("PlayerTransform not found in PlayerContainer!");
-            if (playerAnimator == null)
+            if (suit1Animator == null)
                 throw new MissingComponentException("PlayerAnimator not found in PlayerContainer!");
             if (lowSoundCollider == null)
                 throw new MissingComponentException("LowSoundCollider not found in PlayerContainer!");

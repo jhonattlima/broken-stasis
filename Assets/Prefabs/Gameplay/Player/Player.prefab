@@ -789,7 +789,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8469297880012280757}
+  m_Father: {fileID: 6791541286941378938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5044613163541318298
@@ -966,6 +966,38 @@ Transform:
   m_Father: {fileID: 7576688770721937090}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 64.31988, y: 109.21747, z: -149.7013}
+--- !u!1 &1471752349430599368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6791541286941378938}
+  m_Layer: 11
+  m_Name: Suit_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6791541286941378938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471752349430599368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 940300406349766240}
+  - {fileID: 8783116535244692680}
+  m_Father: {fileID: 8469297880012280757}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1531789000516905259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,8 +1552,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 940300406349766240}
-  - {fileID: 8783116535244692680}
+  - {fileID: 6791541286941378938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1939,7 +1970,7 @@ Transform:
   - {fileID: 2712716808401466019}
   - {fileID: 2590440985079083431}
   - {fileID: 128356314}
-  m_Father: {fileID: 8469297880012280757}
+  m_Father: {fileID: 6791541286941378938}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7307799600018245196

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Player
 {
@@ -18,6 +19,11 @@ namespace Player
         private PlayerAnimator _playerAnimator;
         private PlayerSoundColliderActivator _playerSoundColliderActivator;
         #endregion
+
+        private void Awake()
+        {
+
+        }
 
         public PlayerBase(PlayerContainer p_playerContainer)
         {
@@ -39,7 +45,7 @@ namespace Player
         {
             _playerMovement = new PlayerMovement(
                 _playerContainer.characterController,
-                _playerContainer.playerTransform                
+                _playerContainer.playerTransform
             );
 
             _playerSoundColliderActivator = new PlayerSoundColliderActivator(
@@ -47,11 +53,15 @@ namespace Player
                 _playerContainer.mediumSoundCollider,
                 _playerContainer.loudSoundCollider
             );
-
-            _playerAnimator = new PlayerAnimator(_playerContainer.playerAnimator,
-                                                    _playerContainer.playerAnimationEventHandler);
+            RegisterPlayerAnimator(_playerContainer.nakedAnimator, _playerContainer.nakedAnimationEventHandler);
 
             _playerHealth = new PlayerHealth();
+        }
+
+        public void RegisterPlayerAnimator(Animator p_animator, PlayerAnimationEventHandler p_playerAnimationEventHandler)
+        {
+            _playerAnimator = new PlayerAnimator(p_animator,
+                                                    p_playerAnimationEventHandler);
         }
 
         public void RunFixedUpdate()

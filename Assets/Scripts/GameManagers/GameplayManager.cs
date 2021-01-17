@@ -10,8 +10,7 @@ namespace GameManagers
 {
     public class GameplayManager : MonoBehaviour
     {
-        [SerializeField] private PlayerContainer _nakedPlayerContainer;
-        [SerializeField] private PlayerContainer _suit1PlayerContainer;
+        [SerializeField] private PlayerContainer _playerContainer;
         [SerializeField] private CameraContainer _cameraContainer;
         [SerializeField] private GameObject _levelGameObjects;
         [SerializeField] private GameObject _enemiesGameObjects;
@@ -20,8 +19,8 @@ namespace GameManagers
         private CameraFollowPlayer _cameraFollowPlayer;
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
-        private PlayerSuitEnum _playerSuitEnum;
         public static GameplayManager instance;
+        private PlayerSuitEnum _playerSuitEnum;
 
         private void Awake()
         {
@@ -33,10 +32,8 @@ namespace GameManagers
                 InputController.GamePlay.InputEnabled = true;
             });
 
-            RegisterObjectsGraph(_nakedPlayerContainer);
-            _playerSuitEnum = PlayerSuitEnum.NAKED;
+            RegisterObjectsGraph(_playerContainer);
 
-            _player?.InitializePlayer();
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
         }
 
@@ -51,6 +48,8 @@ namespace GameManagers
         {
             if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
             if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
+
+            _player?.InitializePlayer();
         }
 
         private void FixedUpdate()
@@ -66,22 +65,28 @@ namespace GameManagers
             _enemiesManager?.RunUpdate();
         }
 
-        public void ChangePlayerGameObject(PlayerSuitEnum p_playersuitEnum)
+        public void ChangePlayerSuit(PlayerSuitEnum p_playerSuitEnum)
         {
-            if(p_playersuitEnum == _playerSuitEnum) return;
+            if (p_playerSuitEnum == _playerSuitEnum) return;
 
-            switch (p_playersuitEnum)
+            switch (p_playerSuitEnum)
             {
                 case PlayerSuitEnum.NAKED:
                 {
+                    _player.RegisterPlayerAnimator(_playerContainer.nakedAnimator, _playerContainer.suit1AnimationEventHandler);
+                    _playerContainer.suit1GameObject.SetActive(false);
+                    _playerContainer.nakedGameObject.SetActive(true);
                     break;
                 }
                 case PlayerSuitEnum.SUIT1:
                 {
+                    _player.RegisterPlayerAnimator(_playerContainer.suit1Animator, _playerContainer.suit1AnimationEventHandler);
+                    _playerContainer.nakedGameObject.SetActive(false);
+                    _playerContainer.suit1GameObject.SetActive(true);
                     break;
                 }
             }
-            _playerSuitEnum = p_playersuitEnum;
+            _playerSuitEnum = p_playerSuitEnum;
         }
     }
 }
