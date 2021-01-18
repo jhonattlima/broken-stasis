@@ -6,11 +6,10 @@ public class LoadingView : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     
+    private const float DEFAULT_ANIMATOR_SPEED = 1;
     private static Action _onFadeIn;
     private static Action _onFadeOut;
-
     private static LoadingView _instance;
-
     public static LoadingView instance
     {
         get
@@ -35,14 +34,16 @@ public class LoadingView : MonoBehaviour
         _animator.Play("InstantBlackScreen");
     }
 
-    public void FadeIn(Action p_onFinish)
+    public void FadeIn(Action p_onFinish, float p_speed = 1)
     {
+        _animator.speed = p_speed;
         _onFadeIn = p_onFinish;
         _animator.Play("BlackFadeIn");
     }
 
-    public void FadeOut(Action p_onFinish)
+    public void FadeOut(Action p_onFinish, float p_speed = 1)
     {
+        _animator.speed = p_speed;
         _onFadeOut = p_onFinish;
         _animator.Play("BlackFadeOut");
     }
@@ -53,6 +54,7 @@ public class LoadingView : MonoBehaviour
         _onFadeIn?.Invoke();
         
         _onFadeIn = null;
+        _animator.speed = DEFAULT_ANIMATOR_SPEED;
     }
 
     [UsedImplicitly]
@@ -61,5 +63,6 @@ public class LoadingView : MonoBehaviour
         _onFadeOut?.Invoke();
         
         _onFadeOut = null;
+        _animator.speed = DEFAULT_ANIMATOR_SPEED;
     }
 }
