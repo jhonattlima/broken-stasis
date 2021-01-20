@@ -10,20 +10,15 @@ namespace Player
 
         //TODO 23/07/2020 -> Implement player health gain
         public Action<int> onPlayerHealthIncrease;
+        public Action<PlayerSuitEnum> onSuitChange;
         #endregion
 
         #region PRIVATE FIELDS
         private PlayerContainer _playerContainer;
         private PlayerHealth _playerHealth;
         private PlayerMovement _playerMovement;
-        private PlayerAnimator _playerAnimator;
         private PlayerSoundColliderActivator _playerSoundColliderActivator;
         #endregion
-
-        private void Awake()
-        {
-
-        }
 
         public PlayerBase(PlayerContainer p_playerContainer)
         {
@@ -39,6 +34,7 @@ namespace Player
 
             onPlayerDamaged += _playerHealth.ReceiveDamage;
             onPlayerHealthIncrease += _playerHealth.IncreaseHealth;
+            onSuitChange = HandleSuitChange;
         }
 
         private void RegisterObjectsGraph()
@@ -53,20 +49,31 @@ namespace Player
                 _playerContainer.mediumSoundCollider,
                 _playerContainer.loudSoundCollider
             );
-            RegisterPlayerAnimator(_playerContainer.nakedAnimator, _playerContainer.nakedAnimationEventHandler);
+
+            RegisterPlayerAnimator();
 
             _playerHealth = new PlayerHealth();
         }
 
-        public void RegisterPlayerAnimator(Animator p_animator, PlayerAnimationEventHandler p_playerAnimationEventHandler)
+        private void RegisterPlayerAnimator()
         {
-            _playerAnimator = new PlayerAnimator(p_animator,
-                                                    p_playerAnimationEventHandler);
+            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            {
+                PlayerAnimator __playerAnimator = new PlayerAnimator(__playerSuit.suitAnimator, __playerSuit.suitAnimationEventHandler);
+            }
         }
 
         public void RunFixedUpdate()
         {
             _playerMovement.RunFixedUpdate();
+        }
+
+        private void HandleSuitChange(PlayerSuitEnum p_playerSuit)
+        {
+            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            {
+                __playerSuit.suitGameObject.SetActive(__playerSuit.suitType == p_playerSuit);
+            }
         }
     }
 }

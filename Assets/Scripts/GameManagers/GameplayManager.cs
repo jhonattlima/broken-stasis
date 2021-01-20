@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CameraScripts;
 using Enemy;
 using Player;
@@ -10,6 +11,10 @@ namespace GameManagers
 {
     public class GameplayManager : MonoBehaviour
     {
+# region GAME_EVENTS
+        public Action<PlayerSuitEnum> onPlayerSuitChange;
+#endregion
+
         [SerializeField] private PlayerContainer _playerContainer;
         [SerializeField] private CameraContainer _cameraContainer;
         [SerializeField] private GameObject _levelGameObjects;
@@ -20,7 +25,6 @@ namespace GameManagers
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
         public static GameplayManager instance;
-        private PlayerSuitEnum _playerSuitEnum;
 
         private void Awake()
         {
@@ -50,6 +54,8 @@ namespace GameManagers
             if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
 
             _player?.InitializePlayer();
+            
+            onPlayerSuitChange = _player?.onSuitChange;
         }
 
         private void FixedUpdate()
@@ -63,30 +69,6 @@ namespace GameManagers
         {
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
-        }
-
-        public void ChangePlayerSuit(PlayerSuitEnum p_playerSuitEnum)
-        {
-            if (p_playerSuitEnum == _playerSuitEnum) return;
-
-            switch (p_playerSuitEnum)
-            {
-                case PlayerSuitEnum.NAKED:
-                {
-                    _player.RegisterPlayerAnimator(_playerContainer.nakedAnimator, _playerContainer.suit1AnimationEventHandler);
-                    _playerContainer.suit1GameObject.SetActive(false);
-                    _playerContainer.nakedGameObject.SetActive(true);
-                    break;
-                }
-                case PlayerSuitEnum.SUIT1:
-                {
-                    _player.RegisterPlayerAnimator(_playerContainer.suit1Animator, _playerContainer.suit1AnimationEventHandler);
-                    _playerContainer.nakedGameObject.SetActive(false);
-                    _playerContainer.suit1GameObject.SetActive(true);
-                    break;
-                }
-            }
-            _playerSuitEnum = p_playerSuitEnum;
         }
     }
 }

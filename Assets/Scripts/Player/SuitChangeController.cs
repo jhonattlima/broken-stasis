@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using Audio;
 using GameManagers;
-using UnityEngine;
 using Utilities;
 
 public class SuitChangeController
@@ -10,14 +8,17 @@ public class SuitChangeController
     private const float FADE_IN_ANIMATOR_SPEED = 0.5f;
     private const float FADE_OUT_ANIMATOR_SPEED = 0.1f;
 
-    public void ChangeSuit(PlayerSuitEnum p_playerSuitEnum)
+    public void ChangeSuit(PlayerSuitEnum p_playerSuitEnum, Action p_onFaded)
     {
         InputController.GamePlay.InputEnabled = false;
-        LoadingView.instance.FadeIn(
-            delegate ()
+        
+        
+        LoadingView.instance.FadeIn(delegate ()
             {
-                GameplayManager.instance.ChangePlayerSuit(p_playerSuitEnum);
-                Debug.Log("FINISHED FADE IN");
+                p_onFaded?.Invoke();
+
+                GameHudManager.instance.itemCollectedHud.CallNotification("Collected Suit");
+                GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
 
                 AudioManager.instance.Play(AudioNameEnum.ITEM_PICKUP);
                 // Esperar o som parar de tocar
@@ -26,11 +27,11 @@ public class SuitChangeController
                 LoadingView.instance.FadeOut(delegate ()
                     {
                         InputController.GamePlay.InputEnabled = true;
-                        GameHudManager.instance.itemCollectedHud.CallNotification("Collected Suit");
-                        Debug.Log("FINISHED FADE OUT");
                     }
-                    , FADE_OUT_ANIMATOR_SPEED);
+                    , FADE_OUT_ANIMATOR_SPEED
+                );
             }
-            , FADE_IN_ANIMATOR_SPEED);
+            , FADE_IN_ANIMATOR_SPEED
+        );
     }
 }

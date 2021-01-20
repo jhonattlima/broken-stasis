@@ -2,6 +2,14 @@
 
 namespace Player
 {
+    [System.Serializable]
+    public struct PlayerSuitData
+    {
+        public PlayerSuitEnum suitType;
+        public GameObject suitGameObject;
+        public Animator suitAnimator;
+        public PlayerAnimationEventHandler suitAnimationEventHandler;
+    }
     public class PlayerContainer : MonoBehaviour
     {
         [Header("Movement Reference")]
@@ -9,16 +17,9 @@ namespace Player
         public CharacterController characterController;
         public Transform playerTransform;
 
-        [Header("Suit")]
+        [Header("Suits")]
         [Space(5)]
-        public GameObject suit1GameObject;
-        public Animator suit1Animator;
-        public PlayerAnimationEventHandler suit1AnimationEventHandler;
-
-        public GameObject nakedGameObject;
-        public Animator nakedAnimator;
-        public PlayerAnimationEventHandler nakedAnimationEventHandler;
-
+        public PlayerSuitData[] suits;
 
         [Header("Sound Colliders")]
         [Space(5)]
@@ -32,8 +33,8 @@ namespace Player
                 throw new MissingComponentException("CharacterController not found in PlayerContainer!");
             if (playerTransform == null)
                 throw new MissingComponentException("PlayerTransform not found in PlayerContainer!");
-            if (suit1Animator == null)
-                throw new MissingComponentException("PlayerAnimator not found in PlayerContainer!");
+            if (suits == null)
+                throw new MissingComponentException("PlayerSuits not found in PlayerContainer!");
             if (lowSoundCollider == null)
                 throw new MissingComponentException("LowSoundCollider not found in PlayerContainer!");
             if (mediumSoundCollider == null)

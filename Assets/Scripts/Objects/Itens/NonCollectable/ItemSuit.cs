@@ -1,20 +1,36 @@
-﻿using Audio;
-using GameManagers;
-using Player;
+﻿using Player;
+using UnityEngine;
 
 namespace Interaction
 {
     public class ItemSuit : InteractionObjectWithColliders
     {
-        private SuitChangeController _suitChangeController = new SuitChangeController();
+        [SerializeField] private GameObject _suitModel;
+
+        private bool _activated;
+        private SuitChangeController _suitChangeController;
+
+        private void Awake()
+        {
+            _suitChangeController = new SuitChangeController();
+
+            _activated = false;
+        }
+
 
         public override void Interact()
         {
-
-            PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM_ON_GROUND);
-            
-            // 
-            _suitChangeController.ChangeSuit(PlayerSuitEnum.SUIT1);
+            Debug.Log("interacted with suit");
+            if(!_activated)
+            {
+                PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM_ON_GROUND);
+                
+                _suitChangeController.ChangeSuit(PlayerSuitEnum.SUIT1, delegate()
+                {
+                    _suitModel.SetActive(false);
+                    _activated = true;
+                });
+            }
         }
     }
 }
