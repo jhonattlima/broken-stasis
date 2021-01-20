@@ -7,5 +7,7 @@ namespace VariableManagement
     {
         public float defaultNotificationDuration;
         public int defaultReadingWPM;
+        public float defaultFadeInSpeed;
+        public float defaultFadeOutSpeed;
     }
 }

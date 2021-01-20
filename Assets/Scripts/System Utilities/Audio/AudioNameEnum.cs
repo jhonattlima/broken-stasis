@@ -13,6 +13,7 @@ namespace Audio
         BASHER_STEP,
         BASHER_SCREAM,
         PLAYER_HEARTBEAT,
-        ITEM_PICKUP
+        ITEM_PICKUP,
+        SUIT_PICKUP
     }
 }
