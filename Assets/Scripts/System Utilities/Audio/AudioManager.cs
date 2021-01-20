@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Utilities;
 
 namespace Audio
 {
@@ -44,7 +46,7 @@ namespace Audio
             DontDestroyOnLoad(_audioManagerGameObject);
         }
 
-        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false)
+        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null)
         {
             AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
 
@@ -62,6 +64,9 @@ namespace Audio
             __audioSource.spatialBlend = 0f;
 
             __audioSource.Play();
+
+            if(p_onAudioEnd != null)
+                TFWToolKit.Timer(__audioSource.clip.length, p_onAudioEnd);
 
             return __audioSource;
         }

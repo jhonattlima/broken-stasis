@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CameraScripts;
 using Enemy;
 using Player;
@@ -10,6 +11,10 @@ namespace GameManagers
 {
     public class GameplayManager : MonoBehaviour
     {
+# region GAME_EVENTS
+        public Action<PlayerSuitEnum> onPlayerSuitChange;
+#endregion
+
         [SerializeField] private PlayerContainer _playerContainer;
         [SerializeField] private CameraContainer _cameraContainer;
         [SerializeField] private GameObject _levelGameObjects;
@@ -19,26 +24,38 @@ namespace GameManagers
         private CameraFollowPlayer _cameraFollowPlayer;
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
+        public static GameplayManager instance;
 
         private void Awake()
         {
-            LoadingView.instance.FadeOut(delegate()
+            if (instance == null)
+                instance = this;
+
+            LoadingView.instance.FadeOut(delegate ()
             {
                 InputController.GamePlay.InputEnabled = true;
             });
 
-            RegisterObjectsGraph();
+            RegisterObjectsGraph(_playerContainer);
 
-            _player?.InitializePlayer();
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
         }
 
-        private void RegisterObjectsGraph()
+        private void RegisterObjectsGraph(PlayerContainer p_playercontainer)
         {
-            if(_playerContainer != null) _player = new PlayerBase(_playerContainer);
-            if(_playerContainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(_playerContainer.playerTransform, _cameraContainer.cameraTransform);
-            if(_levelGameObjects != null) _levelObjectManager = new LevelObjectManager(_levelGameObjects.GetComponentsInChildren<IInteractionObject>().ToList());
-            if(_enemiesGameObjects != null) _enemiesManager = new EnemiesManager(_enemiesGameObjects.GetComponentsInChildren<IEnemy>().ToList());
+            RegisterPlayerGraph(p_playercontainer);
+            if (_levelGameObjects != null) _levelObjectManager = new LevelObjectManager(_levelGameObjects.GetComponentsInChildren<IInteractionObject>().ToList());
+            if (_enemiesGameObjects != null) _enemiesManager = new EnemiesManager(_enemiesGameObjects.GetComponentsInChildren<IEnemy>().ToList());
+        }
+
+        private void RegisterPlayerGraph(PlayerContainer p_playercontainer)
+        {
+            if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
+            if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
+
+            _player?.InitializePlayer();
+            
+            onPlayerSuitChange = _player?.onSuitChange;
         }
 
         private void FixedUpdate()
