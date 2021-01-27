@@ -31,11 +31,6 @@ namespace GameManagers
             if (instance == null)
                 instance = this;
 
-            LoadingView.instance.FadeOut(delegate ()
-            {
-                InputController.GamePlay.InputEnabled = true;
-            });
-
             RegisterObjectsGraph(_playerContainer);
 
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
