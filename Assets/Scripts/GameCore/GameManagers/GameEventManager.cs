@@ -17,10 +17,11 @@ namespace GameManagers
             {
                 if(p_gameEvent == gameEvent.gameEventType)
                 {
-                    gameEvent.RunPermanentEvents();
 
                     if(p_runSingleTimeEvents)
                         gameEvent.RunSingleTimeEvents();
+                    else
+                        gameEvent.RunPermanentEvents();
                 }
             }
         }

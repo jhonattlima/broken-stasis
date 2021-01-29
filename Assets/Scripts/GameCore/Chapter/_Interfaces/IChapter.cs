@@ -8,6 +8,6 @@ public interface IChapter
 
     List<IGameEvent> gameEvents { get; }
 
-    event Action onChapterStart;
-    event Action onChapterEnd;
+    void ChapterStart();
+    void ChapterEnd();
 }

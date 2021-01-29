@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Utilities;
 
 public class Chapter_1 : MonoBehaviour, IChapter
 {
     [SerializeField] private ChapterType _chapterType;
-    
     public ChapterType chapterType 
     {
         get
@@ -15,18 +15,15 @@ public class Chapter_1 : MonoBehaviour, IChapter
         }
     }
 
-    public List<IGameEvent> gameEvents => throw new NotImplementedException();
-
-    public event Action onChapterStart;
-    public event Action onChapterEnd;
-
-    private void Awake()
+    public List<IGameEvent> gameEvents
     {
-        onChapterStart = HandleChapterStart;
-        onChapterEnd = HandleChapterEnd;
+        get
+        {
+            return gameObject.GetComponentsInChildren<IGameEvent>().ToList();
+        }
     }
 
-    private void HandleChapterStart()
+    public void ChapterStart()
     {
         LoadingView.instance.FadeOut(delegate ()
         {
@@ -34,8 +31,8 @@ public class Chapter_1 : MonoBehaviour, IChapter
         });
     }
 
-    private void HandleChapterEnd()
+    public void ChapterEnd()
     {
-        
+        Debug.Log("FINISHED CHAPTER 1");
     }
 }

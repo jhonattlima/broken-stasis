@@ -16,13 +16,6 @@ namespace Utilities
             AudioManager.instance.Play(AudioNameEnum.SOUND_TRACK, true);
 
             DontDestroyOnLoad(instance);
-
-            CreateGameEventManager();
-        }
-
-        private void CreateGameEventManager()
-        {
-            GameEventManager.SetGameEvents(ChapterManager.instance.GetGameEvents());
         }
     }
 }

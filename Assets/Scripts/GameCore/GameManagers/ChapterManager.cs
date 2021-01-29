@@ -27,6 +27,8 @@ namespace GameManagers
         {
             _chapters = gameObject.GetComponentsInChildren<IChapter>().ToList();
 
+            GameEventManager.SetGameEvents(ChapterManager.instance.GetGameEvents());
+
             foreach (IChapter __chapter in _chapters)
             {
                 if (__chapter.chapterType == _initialChapter)
@@ -40,7 +42,7 @@ namespace GameManagers
 
             RunPreviousGameEvents();
 
-            _currentChapter.onChapterStart?.Invoke();
+            _currentChapter.ChapterStart();
         }
 
         private void RunPreviousGameEvents()
@@ -59,13 +61,16 @@ namespace GameManagers
 
         public void GoToNextChapter()
         {
-            _currentChapter.onChapterEnd?.Invoke();
+            _currentChapter.ChapterEnd();
+
+            if(_currentChapterIndex + 1 == _chapters.Count)
+                return;
 
             _currentChapterIndex++;
 
             _currentChapter = _chapters[_currentChapterIndex];
 
-            _currentChapter.onChapterStart?.Invoke();
+            _currentChapter.ChapterStart();
         }
        
         public List<IGameEvent> GetGameEvents()
