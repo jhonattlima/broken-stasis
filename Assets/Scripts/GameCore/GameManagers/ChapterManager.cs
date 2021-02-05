@@ -13,6 +13,14 @@ namespace GameManagers
         private IChapter _currentChapter;
         private int _currentChapterIndex;
 
+        public IChapter currentChapter
+        {
+            get
+            {
+                return _currentChapter;
+            }
+        }
+
         private void Awake()
         {
             if (instance == null)

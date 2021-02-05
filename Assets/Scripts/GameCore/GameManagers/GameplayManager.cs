@@ -3,6 +3,7 @@ using System.Linq;
 using CameraScripts;
 using Enemy;
 using Player;
+using SaveSystem;
 using UnityEngine;
 using UnityEngine.AI;
 using Utilities;
@@ -64,6 +65,15 @@ namespace GameManagers
         {
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
+        }
+
+        public GameSaveData GetCurrentGameData()
+        {
+            GameSaveData __gameSaveData = _player.GetPlayerSaveData();
+
+            __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
+
+            return __gameSaveData;
         }
     }
 }

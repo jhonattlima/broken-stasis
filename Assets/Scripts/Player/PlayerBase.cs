@@ -1,4 +1,5 @@
 ﻿using System;
+using SaveSystem;
 using UnityEngine;
 
 namespace Player
@@ -74,6 +75,30 @@ namespace Player
             {
                 __playerSuit.suitGameObject.SetActive(__playerSuit.suitType == p_playerSuit);
             }
+        }
+
+        private PlayerSuitEnum GetActiveSuit()
+        {
+            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            {
+                if(__playerSuit.suitGameObject.active)
+                {
+                    return __playerSuit.suitType;
+                }
+            }
+
+            return PlayerSuitEnum.NAKED;
+        }
+
+        public GameSaveData GetPlayerSaveData()
+        {
+            GameSaveData __gameSaveData = new GameSaveData();
+
+            __gameSaveData.playerSuit = GetActiveSuit();
+            __gameSaveData.playerPosition = _playerContainer.playerTransform.position;
+            __gameSaveData.playerHealth = _playerHealth.GetPlayerHealth();
+            
+            return __gameSaveData;
         }
     }
 }
