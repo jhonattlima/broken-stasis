@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466a07504ae1ac948bf3f130f922d93a, type: 3}
   m_Name: TextAIVariables
   m_EditorClassIdentifier: 
-  ACT1_DOOR_LOCKED_MESSAGE: 
+  ACT1_DOOR_LOCKED_MESSAGE: 'SAFETY PROTOCOL #13C: Minimal protection required.'

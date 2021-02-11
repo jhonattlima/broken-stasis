@@ -239,6 +239,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1404977307}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &340644028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1404977307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340644024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03822f7d4ede74845a7568d24b062cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &361263552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6322751264629611716, guid: 54ea31f6a100d2c4da77b3b3fbdf0790,
@@ -1568,6 +1580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chapterType: 0
+  _doorController: {fileID: 340644028}
 --- !u!1 &2042219265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameEventType: 0
-  _doorController: {fileID: 0}
   _suitModel: {fileID: 1261448751}
 --- !u!1001 &804970685390890189
 PrefabInstance:
