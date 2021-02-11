@@ -37,5 +37,16 @@ namespace VariableManagement
                 return _uiVariables;
             }
         }
+
+        private static TextAIScriptableObject _textAIVariables;
+        public static TextAIScriptableObject textAIVariables 
+        {
+            get
+            {
+                if(_textAIVariables  == null) _textAIVariables  = Resources.Load<TextAIScriptableObject>("Variables/TextAIVariables");
+
+                return _textAIVariables ;
+            }
+        }
     }
 }

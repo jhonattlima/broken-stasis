@@ -1,4 +1,5 @@
 ﻿using GameManagers;
+using Interaction;
 using UnityEngine;
 
 public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
