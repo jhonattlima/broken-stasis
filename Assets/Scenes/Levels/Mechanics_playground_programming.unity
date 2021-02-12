@@ -1156,6 +1156,11 @@ PrefabInstance:
       propertyPath: isLocked
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
+        type: 3}
+      propertyPath: _isDoorOpen
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c75b292c5996fc49bb9eecf2bd9421d, type: 3}
 --- !u!4 &1404977308 stripped
@@ -1661,6 +1666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameEventType: 0
   _suitModel: {fileID: 1261448751}
+  _doorController: {fileID: 340644028}
 --- !u!1001 &804970685390890189
 PrefabInstance:
   m_ObjectHideFlags: 0
