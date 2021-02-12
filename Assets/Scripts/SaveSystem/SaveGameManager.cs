@@ -7,20 +7,28 @@ namespace SaveSystem
     public static class SaveGameManager
     {
         public static GameSaveData gameSaveData;
-        private const string FILE_PATH = "/SaveData/SaveFile.jua";
+
+        private const string FILE_PATH = "/Savedata";
+        private const string FILE_NAME = "/SaveFile.jua";
 
         public static void SaveGame()
         {
             string __saveDataJson = JsonUtility.ToJson(gameSaveData, true);
             byte[] __bytes = System.Text.Encoding.UTF8.GetBytes(__saveDataJson);
 
-            File.WriteAllBytes(Application.dataPath + FILE_PATH, __bytes);
+            if (!Directory.Exists(Application.dataPath + FILE_PATH))
+                Directory.CreateDirectory(Application.dataPath + FILE_PATH);
+
+            File.WriteAllBytes(Application.dataPath + FILE_PATH + FILE_NAME, __bytes);
         }
 
         public static void LoadGame()
         {
-            byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH);
-            string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes);;
+            // TODO Wiser check for data to load game
+            if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME)) return;
+
+            byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
+            string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
 
             gameSaveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
         }
@@ -29,7 +37,7 @@ namespace SaveSystem
         public static void ClearSaveGame()
         {
             gameSaveData = new GameSaveData();
-            File.Delete(Application.dataPath + FILE_PATH);
+            File.Delete(Application.dataPath + FILE_NAME);
         }
     }
 }
