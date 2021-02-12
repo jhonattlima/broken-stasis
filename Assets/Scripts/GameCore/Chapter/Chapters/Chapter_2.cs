@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameManagers;
+using SaveSystem;
 using UnityEngine;
 using Utilities;
 
@@ -34,6 +36,9 @@ public class Chapter_2 : MonoBehaviour, IChapter
         _playerCharacterController.enabled = false;
         _playerCharacterController.transform.position = _startPosition;
         _playerCharacterController.enabled = true;
+
+        SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
+        SaveGameManager.SaveGame();
 
         InputController.GamePlay.InputEnabled = true;
     }

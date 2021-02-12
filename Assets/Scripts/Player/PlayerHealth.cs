@@ -38,7 +38,7 @@ namespace Player
                 _playerCurrentHealth = 0;
             else
                 _playerCurrentHealth -= p_damage;
-
+            
             if (_playerCurrentHealth == 0)
                 HandlePlayerDeath();
             else
@@ -52,6 +52,14 @@ namespace Player
             HandleHeartBeat();
         }
 
+        public void SetPlayerHealth(int p_health)
+        {
+            _playerCurrentHealth = p_health;
+            _playerHealthState = (PlayerHealthState) _playerCurrentHealth;
+            
+            HandleHeartBeat();
+        }
+
         public void IncreaseHealth(int p_lifePoints)
         {
             _playerCurrentHealth = p_lifePoints;
@@ -62,6 +70,11 @@ namespace Player
             _playerHealthState = (PlayerHealthState) _playerCurrentHealth;
 
             HandleHeartBeat();
+        }
+
+        public int GetPlayerHealth()
+        {
+            return _playerCurrentHealth;
         }
 
         private void HandleHeartBeat()
