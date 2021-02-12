@@ -6,6 +6,7 @@ public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
 {
     [SerializeField] private GameEventType _gameEventType;
     [SerializeField] private GameObject _suitModel;
+    [SerializeField] private DoorController _doorController;
     
     private SuitChangeController _suitChangeController;
     
@@ -37,6 +38,7 @@ public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
         _suitModel.SetActive(false);
 
         GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
+        _doorController.isLocked = false;
     }
 
     public void RunSingleTimeEvents()

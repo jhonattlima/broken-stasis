@@ -11,6 +11,7 @@ public class Chapter_1 : MonoBehaviour, IChapter
 {
     [SerializeField] private ChapterType _chapterType;
     [SerializeField] private DoorController _doorController;
+    
     public ChapterType chapterType 
     {
         get
@@ -38,12 +39,10 @@ public class Chapter_1 : MonoBehaviour, IChapter
         _doorController.onDoorLocked = delegate() {
             GameHudManager.instance.itemCollectedHud.CallNotification(VariablesManager.textAIVariables.ACT1_DOOR_LOCKED_MESSAGE);
         };
-
     }
 
     public void ChapterEnd()
     {
-        _doorController.isLocked = false;
         Debug.Log("FINISHED CHAPTER 1");
     }
 }
