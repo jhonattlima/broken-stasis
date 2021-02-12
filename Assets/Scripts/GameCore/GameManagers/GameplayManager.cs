@@ -37,6 +37,13 @@ namespace GameManagers
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
         }
 
+        private void Start()
+        {
+            // TODO: Transferir lógica de load e inicialização para classe superior
+            LoadSaveGame();
+            ChapterManager.instance.InitializeChapters();
+        }
+
         private void RegisterObjectsGraph(PlayerContainer p_playercontainer)
         {
             RegisterPlayerGraph(p_playercontainer);
@@ -67,6 +74,16 @@ namespace GameManagers
             _enemiesManager?.RunUpdate();
         }
 
+        //TODO: Transferir para classe adequada (não é papel do GameplayManager)
+        private void LoadSaveGame()
+        {
+            SaveGameManager.LoadGame();
+
+            ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
+            _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
+        }
+
+        //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         public GameSaveData GetCurrentGameData()
         {
             GameSaveData __gameSaveData = _player.GetPlayerSaveData();

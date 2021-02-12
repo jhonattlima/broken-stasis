@@ -52,6 +52,14 @@ namespace Player
             HandleHeartBeat();
         }
 
+        public void SetPlayerHealth(int p_health)
+        {
+            _playerCurrentHealth = p_health;
+            _playerHealthState = (PlayerHealthState) _playerCurrentHealth;
+            
+            HandleHeartBeat();
+        }
+
         public void IncreaseHealth(int p_lifePoints)
         {
             _playerCurrentHealth = p_lifePoints;

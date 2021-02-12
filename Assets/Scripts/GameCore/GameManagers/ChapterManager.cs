@@ -6,7 +6,7 @@ namespace GameManagers
 {
     public class ChapterManager : MonoBehaviour
     {
-        [SerializeField] private ChapterType _initialChapter;
+        public ChapterType initialChapter;
         public static ChapterManager instance;
 
         private List<IChapter> _chapters = new List<IChapter>();
@@ -27,11 +27,9 @@ namespace GameManagers
                 instance = this;
 
             DontDestroyOnLoad(instance);
-            
-            InitializeChapters();
         }
 
-        private void InitializeChapters()
+        public void InitializeChapters()
         {
             _chapters = gameObject.GetComponentsInChildren<IChapter>().ToList();
 
@@ -39,7 +37,7 @@ namespace GameManagers
 
             foreach (IChapter __chapter in _chapters)
             {
-                if (__chapter.chapterType == _initialChapter)
+                if (__chapter.chapterType == initialChapter)
                 {
                     _currentChapter = __chapter;
                     _currentChapterIndex = _chapters.FindIndex(c => c.Equals(__chapter));

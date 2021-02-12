@@ -1,6 +1,5 @@
 ﻿using System;
 using SaveSystem;
-using UnityEngine;
 
 namespace Player
 {
@@ -99,6 +98,13 @@ namespace Player
             __gameSaveData.playerHealth = _playerHealth.GetPlayerHealth();
             
             return __gameSaveData;
+        }
+
+        public void SetPlayerSaveData(GameSaveData p_gameSaveData)
+        {
+            _playerContainer.playerTransform.position = p_gameSaveData.playerPosition;
+            HandleSuitChange(p_gameSaveData.playerSuit);
+            _playerHealth.SetPlayerHealth(p_gameSaveData.playerHealth);
         }
     }
 }
