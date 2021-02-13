@@ -41,7 +41,7 @@ namespace GameManagers
         {
             // TODO: Transferir lógica de load e inicialização para classe superior
             LoadSaveGame();
-            ChapterManager.instance.InitializeChapters();
+            ChapterManager.instance?.InitializeChapters();
         }
 
         private void RegisterObjectsGraph(PlayerContainer p_playercontainer)
@@ -79,6 +79,8 @@ namespace GameManagers
         {
             SaveGameManager.LoadGame();
 
+            if(SaveGameManager.gameSaveData == null) return;
+            
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
         }
