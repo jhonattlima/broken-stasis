@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Audio;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ namespace Interaction
 {
     public class DoorController : MonoBehaviour, IInteractionObject
     {
+        public bool isLocked;
+        public Action onDoorLocked;
+
         [SerializeField] private float _doorSpeed = 0.00001f;
         [SerializeField] private float _maxDelayToUseDoor = 2;
         [SerializeField] private bool _isDoorOpen = false;
@@ -15,7 +19,6 @@ namespace Interaction
         private Vector3 _doorClosePosition;
         private float _journeyLength;
         private float _startTime;
-
         private BoxCollider _doorCollider;
 
         // If doorModel scale does not match with texture, change _doorOpenPosition attribuition
@@ -45,8 +48,13 @@ namespace Interaction
 
         public void Interact()
         {
+            if (isLocked)
+            {
+                onDoorLocked?.Invoke();
+                return;
+            }
             _isDoorOpen = !_isDoorOpen;
-            float __delay = Random.Range(0f, _maxDelayToUseDoor);
+            float __delay = UnityEngine.Random.Range(0f, _maxDelayToUseDoor);
             StopAllCoroutines();
             if (_isDoorOpen)
                 StartCoroutine(OpenDoor(__delay));
