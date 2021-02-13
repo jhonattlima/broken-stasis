@@ -25,7 +25,13 @@ namespace SaveSystem
         public static void LoadGame()
         {
             // TODO Wiser check for data to load game
-            if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME)) return;
+            if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
+            {
+                if(gameSaveData == null)
+                    gameSaveData = new GameSaveData();
+                
+                return;   
+            }
 
             byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
             string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
@@ -37,7 +43,9 @@ namespace SaveSystem
         public static void ClearSaveGame()
         {
             gameSaveData = new GameSaveData();
-            File.Delete(Application.dataPath + FILE_NAME);
+
+            if(File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
+                File.Delete(Application.dataPath + FILE_PATH + FILE_NAME);
         }
     }
 }
