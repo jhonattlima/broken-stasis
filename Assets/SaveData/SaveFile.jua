@@ -8,13 +8,13 @@
     "playerSuit": 1,
     "doorsList": [
         {
-            "instanceID": -12462
+            "instanceID": -8622
         },
         {
-            "instanceID": -15372
+            "instanceID": 24352
         },
         {
-            "instanceID": -16098
+            "instanceID": -7614
         }
     ],
     "chapter": 1

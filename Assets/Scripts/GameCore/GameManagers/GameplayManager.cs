@@ -79,9 +79,8 @@ namespace GameManagers
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         private void LoadSaveGame()
         {
-            SaveGameManager.LoadGame();
-
-            if(SaveGameManager.gameSaveData == null) return;
+            if(!SaveGameManager.LoadGame())
+                return;
             
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
