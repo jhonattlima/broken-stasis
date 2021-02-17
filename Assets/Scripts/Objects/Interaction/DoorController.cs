@@ -8,11 +8,11 @@ namespace Interaction
     public class DoorController : MonoBehaviour, IInteractionObject
     {
         public bool isLocked;
+        public bool isDoorOpen;
         public Action onDoorLocked;
 
         [SerializeField] private float _doorSpeed = 0.00001f;
         [SerializeField] private float _maxDelayToUseDoor = 2;
-        [SerializeField] private bool _isDoorOpen = false;
 
         private Vector3 _targetPosition;
         private Vector3 _doorOpenPosition;
@@ -29,7 +29,7 @@ namespace Interaction
             _doorClosePosition = transform.localPosition;
             _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
 
-            if (_isDoorOpen)
+            if (isDoorOpen)
                 transform.localPosition = _doorOpenPosition;
 
             _targetPosition = transform.localPosition;
@@ -53,10 +53,11 @@ namespace Interaction
                 onDoorLocked?.Invoke();
                 return;
             }
-            _isDoorOpen = !_isDoorOpen;
+            isDoorOpen = !isDoorOpen;
             float __delay = UnityEngine.Random.Range(0f, _maxDelayToUseDoor);
             StopAllCoroutines();
-            if (_isDoorOpen)
+            
+            if (isDoorOpen)
                 StartCoroutine(OpenDoor(__delay));
             else
                 StartCoroutine(CloseDoor(__delay));

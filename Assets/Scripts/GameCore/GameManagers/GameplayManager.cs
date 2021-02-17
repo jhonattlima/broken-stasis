@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CameraScripts;
 using Enemy;
+using Interaction;
 using Player;
 using SaveSystem;
 using UnityEngine;
@@ -77,12 +79,20 @@ namespace GameManagers
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         private void LoadSaveGame()
         {
-            SaveGameManager.LoadGame();
-
-            if(SaveGameManager.gameSaveData == null) return;
+            if(!SaveGameManager.LoadGame())
+                return;
             
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
+            
+            List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
+            if(__doors.Count > 0 && SaveGameManager.gameSaveData.doorsList.Count > 0)
+            {
+                for(int i = 0; i < __doors.Count; i++)
+                {
+                    __doors[i].isDoorOpen = SaveGameManager.gameSaveData.doorsList[i].isDoorOpen;
+                }
+            }
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
@@ -91,6 +101,7 @@ namespace GameManagers
             GameSaveData __gameSaveData = _player.GetPlayerSaveData();
 
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
+            __gameSaveData.doorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
 
             return __gameSaveData;
         }

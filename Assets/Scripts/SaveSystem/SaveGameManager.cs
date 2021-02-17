@@ -22,7 +22,7 @@ namespace SaveSystem
             File.WriteAllBytes(Application.dataPath + FILE_PATH + FILE_NAME, __bytes);
         }
 
-        public static void LoadGame()
+        public static bool LoadGame()
         {
             // TODO Wiser check for data to load game
             if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
@@ -30,13 +30,15 @@ namespace SaveSystem
                 if(gameSaveData == null)
                     gameSaveData = new GameSaveData();
                 
-                return;   
+                return false;   
             }
 
             byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
             string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
 
             gameSaveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
+
+            return true;
         }
 
         [MenuItem("TFW Tools/Utilities/Clear Save Data")]
