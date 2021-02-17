@@ -1,0 +1,21 @@
+{
+    "playerHealth": 3,
+    "playerPosition": {
+        "x": 0.0,
+        "y": 0.8999999761581421,
+        "z": -3.0
+    },
+    "playerSuit": 1,
+    "doorsList": [
+        {
+            "instanceID": -12462
+        },
+        {
+            "instanceID": -15372
+        },
+        {
+            "instanceID": -16098
+        }
+    ],
+    "chapter": 1
+}

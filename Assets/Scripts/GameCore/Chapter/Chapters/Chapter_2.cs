@@ -37,8 +37,12 @@ public class Chapter_2 : MonoBehaviour, IChapter
         _playerCharacterController.transform.position = _startPosition;
         _playerCharacterController.enabled = true;
 
-        SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
-        SaveGameManager.SaveGame();
+        if(SaveGameManager.gameSaveData.chapter != chapterType)
+        {
+            SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
+            SaveGameManager.SaveGame();
+        }
+
 
         InputController.GamePlay.InputEnabled = true;
     }
