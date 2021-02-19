@@ -13,6 +13,8 @@ namespace SaveSystem
 
         public static void SaveGame()
         {
+            Debug.Log(gameSaveData.doorsList.ToString());
+            Debug.Log(gameSaveData.doorsList.Count);
             string __saveDataJson = JsonUtility.ToJson(gameSaveData, true);
             byte[] __bytes = System.Text.Encoding.UTF8.GetBytes(__saveDataJson);
 
@@ -24,7 +26,6 @@ namespace SaveSystem
 
         public static bool LoadGame()
         {
-            // TODO Wiser check for data to load game
             if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
             {
                 if(gameSaveData == null)

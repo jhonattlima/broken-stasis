@@ -28,13 +28,18 @@ namespace Interaction
 
             _doorClosePosition = transform.localPosition;
             _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
+            SetDoorState();
+        }
 
+        public void SetDoorState()
+        {
             if (isDoorOpen)
                 transform.localPosition = _doorOpenPosition;
 
             _targetPosition = transform.localPosition;
             _startTime = Time.time;
         }
+
 
         public void RunUpdate() { }
 
