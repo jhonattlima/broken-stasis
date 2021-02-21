@@ -1,5 +1,8 @@
-﻿public enum NotificationUIAnimationEventEnum
+﻿namespace UI
 {
-    ON_SHOW_END,
-    ON_HIDE_END
+    public enum NotificationUIAnimationEventEnum
+    {
+        ON_SHOW_END,
+        ON_HIDE_END
+    }
 }

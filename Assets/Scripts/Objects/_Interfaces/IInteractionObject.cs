@@ -1,4 +1,9 @@
-﻿public interface IInteractionObject : IUpdateBehaviour, IFixedUpdateBehaviour
+﻿using Utilities;
+
+namespace Interaction
 {
-    void Interact();
+    public interface IInteractionObject : IUpdateBehaviour, IFixedUpdateBehaviour
+    {
+        void Interact();
+    }
 }

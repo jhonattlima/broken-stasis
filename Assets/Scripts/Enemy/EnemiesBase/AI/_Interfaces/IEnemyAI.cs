@@ -1,4 +1,6 @@
-﻿namespace Enemy
+﻿using Utilities;
+
+namespace Enemy
 {
     public interface IEnemyAI : IUpdateBehaviour
     {

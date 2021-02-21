@@ -7,7 +7,7 @@ namespace Enemy
     {
         [SerializeField] private BasherContainer _basherContainer;
 
-        private EnemyStatesManager _stateManager;
+        private EnemyStateManager _stateManager;
         private EnemyAnimator _enemyAnimator;
         private IEnemyAI _basherAI;
         private Action<int> _onPlayerDamaged;
@@ -31,7 +31,7 @@ namespace Enemy
 
         private void RegisterObjectsGraph()
         {
-            _stateManager = new EnemyStatesManager();
+            _stateManager = new EnemyStateManager();
 
             _enemyAnimator = new EnemyAnimator(
                 _stateManager,
@@ -67,7 +67,7 @@ namespace Enemy
                 gameObject.transform.position
             );
 
-            if (_basherContainer.basherType.Equals(BasherType.STASIS))
+            if (_basherContainer.basherType.Equals(BasherTypeEnum.STASIS))
             {
                 _basherAI = new BasherStasisAI(
                     _basherAI,

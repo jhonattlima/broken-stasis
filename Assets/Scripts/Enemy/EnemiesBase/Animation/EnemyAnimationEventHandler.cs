@@ -12,7 +12,7 @@ namespace Enemy
 
         public void HandleAnimationEvent(EnemyAnimationEventEnum p_eventName)
         {
-            switch(p_eventName)
+            switch (p_eventName)
             {
                 case EnemyAnimationEventEnum.ON_ATTACK_END:
                     OnAttackAnimationEnd?.Invoke();

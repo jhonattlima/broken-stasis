@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Audio;
+using GameManager;
 using UnityEngine;
 
 namespace Interaction
@@ -56,7 +57,7 @@ namespace Interaction
             isDoorOpen = !isDoorOpen;
             float __delay = UnityEngine.Random.Range(0f, _maxDelayToUseDoor);
             StopAllCoroutines();
-            
+
             if (isDoorOpen)
                 StartCoroutine(OpenDoor(__delay));
             else

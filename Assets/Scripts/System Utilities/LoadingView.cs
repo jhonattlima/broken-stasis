@@ -2,67 +2,70 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class LoadingView : MonoBehaviour
+namespace Utilities
 {
-    [SerializeField] private Animator _animator;
-    
-    private const float DEFAULT_ANIMATOR_SPEED = 1;
-    private static Action _onFadeIn;
-    private static Action _onFadeOut;
-    private static LoadingView _instance;
-    public static LoadingView instance
+    public class LoadingView : MonoBehaviour
     {
-        get
+        [SerializeField] private Animator _animator;
+
+        private const float DEFAULT_ANIMATOR_SPEED = 1;
+        private static Action _onFadeIn;
+        private static Action _onFadeOut;
+        private static LoadingView _instance;
+        public static LoadingView instance
         {
-            return _instance ?? (_instance = InstanceInitialize());
+            get
+            {
+                return _instance ?? (_instance = InstanceInitialize());
+            }
         }
-    }
-    
-    private static LoadingView InstanceInitialize()
-    {
-        GameObject _loadingViewGameObject = Resources.Load<GameObject>("LoadingView");
-        
-        _instance = Instantiate(_loadingViewGameObject).GetComponent<LoadingView>();
 
-        DontDestroyOnLoad(_instance);
+        private static LoadingView InstanceInitialize()
+        {
+            GameObject _loadingViewGameObject = Resources.Load<GameObject>("LoadingView");
 
-        return _instance;
-    }
+            _instance = Instantiate(_loadingViewGameObject).GetComponent<LoadingView>();
 
-    public void InstantBlackScreen()
-    {
-        _animator.Play("InstantBlackScreen");
-    }
+            DontDestroyOnLoad(_instance);
 
-    public void FadeIn(Action p_onFinish, float p_speed = 1)
-    {
-        _animator.speed = p_speed;
-        _onFadeIn = p_onFinish;
-        _animator.Play("BlackFadeIn");
-    }
+            return _instance;
+        }
 
-    public void FadeOut(Action p_onFinish, float p_speed = 1)
-    {
-        _animator.speed = p_speed;
-        _onFadeOut = p_onFinish;
-        _animator.Play("BlackFadeOut");
-    }
+        public void InstantBlackScreen()
+        {
+            _animator.Play("InstantBlackScreen");
+        }
 
-    [UsedImplicitly]
-    private void FinishedFadeInAnimation()
-    {
-        _onFadeIn?.Invoke();
-        
-        _onFadeIn = null;
-        _animator.speed = DEFAULT_ANIMATOR_SPEED;
-    }
+        public void FadeIn(Action p_onFinish, float p_speed = 1)
+        {
+            _animator.speed = p_speed;
+            _onFadeIn = p_onFinish;
+            _animator.Play("BlackFadeIn");
+        }
 
-    [UsedImplicitly]
-    private void FinishedFadeOutAnimation()
-    {
-        _onFadeOut?.Invoke();
-        
-        _onFadeOut = null;
-        _animator.speed = DEFAULT_ANIMATOR_SPEED;
+        public void FadeOut(Action p_onFinish, float p_speed = 1)
+        {
+            _animator.speed = p_speed;
+            _onFadeOut = p_onFinish;
+            _animator.Play("BlackFadeOut");
+        }
+
+        [UsedImplicitly]
+        private void FinishedFadeInAnimation()
+        {
+            _onFadeIn?.Invoke();
+
+            _onFadeIn = null;
+            _animator.speed = DEFAULT_ANIMATOR_SPEED;
+        }
+
+        [UsedImplicitly]
+        private void FinishedFadeOutAnimation()
+        {
+            _onFadeOut?.Invoke();
+
+            _onFadeOut = null;
+            _animator.speed = DEFAULT_ANIMATOR_SPEED;
+        }
     }
 }

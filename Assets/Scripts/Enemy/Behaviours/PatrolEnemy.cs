@@ -4,12 +4,13 @@ using System.Linq;
 using Utilities;
 using UnityEngine;
 using UnityEngine.AI;
+using GameManager;
 
 namespace Enemy
 {
     public class PatrolEnemy : IPatrolEnemy
     {
-        private readonly EnemyStatesManager _stateManager;
+        private readonly EnemyStateManager _stateManager;
         private readonly NavMeshAgent _navigationAgent;
         private readonly GameObject _patrolPointsGameObject;
         private readonly float _idleTime;
@@ -24,7 +25,7 @@ namespace Enemy
         private float _initialAngularSpeed;
 
         public PatrolEnemy(
-            EnemyStatesManager p_stateManager,
+            EnemyStateManager p_stateManager,
             NavMeshAgent p_navigationAgent,
             GameObject p_patrolPointsGameObject,
             float p_idleTime,
@@ -50,21 +51,21 @@ namespace Enemy
             _initialAcceleration = _navigationAgent.acceleration;
             _initialAngularSpeed = _navigationAgent.angularSpeed;
 
-            SceneController.instance.StartCoroutine(PatrolToNextPoint());
+            SceneManager.instance.StartCoroutine(PatrolToNextPoint());
         }
 
-        private void HandleStateChanged(EnemyState p_enemyState)
+        private void HandleStateChanged(EnemyStateEnum p_enemyState)
         {
             switch (p_enemyState)
             {
-                case EnemyState.IDLE:
+                case EnemyStateEnum.IDLE:
                     ResetSpeed();
                     break;
-                case EnemyState.PATROLLING:
+                case EnemyStateEnum.PATROLLING:
                     SetPatrolDestination();
                     break;
-                case EnemyState.INVESTIGATING:
-                case EnemyState.RUNNING:
+                case EnemyStateEnum.INVESTIGATING:
+                case EnemyStateEnum.RUNNING:
                     StopPatrolling();
                     break;
                 default:
@@ -76,24 +77,24 @@ namespace Enemy
         {
             if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
-                    SceneController.instance.StartCoroutine(PatrolToNextPoint());
+                    SceneManager.instance.StartCoroutine(PatrolToNextPoint());
         }
 
         private bool IsEnemyPatrolling()
         {
-            return (_stateManager.currentState == EnemyState.PATROLLING || _stateManager.currentState == EnemyState.IDLE);
+            return (_stateManager.currentState == EnemyStateEnum.PATROLLING || _stateManager.currentState == EnemyStateEnum.IDLE);
         }
 
         private IEnumerator PatrolToNextPoint()
         {
             _settingDestination = true;
 
-            _stateManager.SetEnemyState(EnemyState.IDLE);
+            _stateManager.SetEnemyState(EnemyStateEnum.IDLE);
 
             yield return new WaitForSeconds(_idleTime);
 
-            _stateManager.SetEnemyState(EnemyState.PATROLLING);
-            
+            _stateManager.SetEnemyState(EnemyStateEnum.PATROLLING);
+
             _navigationAgent.isStopped = false;
 
             _settingDestination = false;
@@ -102,7 +103,7 @@ namespace Enemy
         private void StopPatrolling()
         {
             _settingDestination = false;
-            SceneController.instance.StopCoroutine(PatrolToNextPoint());
+            SceneManager.instance.StopCoroutine(PatrolToNextPoint());
         }
 
         private void SetPatrolDestination()

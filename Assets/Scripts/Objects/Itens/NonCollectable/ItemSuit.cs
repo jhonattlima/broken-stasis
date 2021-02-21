@@ -1,6 +1,6 @@
-﻿using GameManagers;
+﻿using CoreEvent;
+using GameManager;
 using Player;
-using UnityEngine;
 
 namespace Interaction
 {
@@ -13,14 +13,13 @@ namespace Interaction
             _activated = false;
         }
 
-
         public override void Interact()
         {
-            if(!_activated)
+            if (!_activated)
             {
                 PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM_ON_GROUND);
-                
-                GameEventManager.RunGameEvent(GameEventType.DRESS_PLAYER);
+
+                GameEventManager.RunGameEvent(GameEventTypeEnum.DRESS_PLAYER);
 
                 _activated = true;
             }

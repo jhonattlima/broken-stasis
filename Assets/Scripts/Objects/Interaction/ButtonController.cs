@@ -1,7 +1,5 @@
 ﻿using Player;
 using UnityEngine;
-using Utilities;
-
 namespace Interaction
 {
     public class ButtonController : InteractionObjectWithColliders

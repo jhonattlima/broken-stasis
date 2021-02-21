@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Audio;
+﻿using Audio;
+using GameManager;
 using UnityEngine;
 
 namespace Enemy

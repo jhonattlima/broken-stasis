@@ -8,7 +8,7 @@ namespace Enemy
 
         [Header("Basher Type")]
         [Space(5)]
-        public BasherType basherType;
+        public BasherTypeEnum basherType;
 
         [Header("Animator References")]
         [Space(5)]

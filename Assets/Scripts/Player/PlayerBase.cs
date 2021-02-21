@@ -1,5 +1,6 @@
 ﻿using System;
 using SaveSystem;
+using Utilities;
 
 namespace Player
 {
@@ -57,7 +58,7 @@ namespace Player
 
         private void RegisterPlayerAnimator()
         {
-            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
             {
                 PlayerAnimator __playerAnimator = new PlayerAnimator(__playerSuit.suitAnimator, __playerSuit.suitAnimationEventHandler);
             }
@@ -70,7 +71,7 @@ namespace Player
 
         private void HandleSuitChange(PlayerSuitEnum p_playerSuit)
         {
-            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
             {
                 __playerSuit.suitGameObject.SetActive(__playerSuit.suitType == p_playerSuit);
             }
@@ -78,9 +79,9 @@ namespace Player
 
         private PlayerSuitEnum GetActiveSuit()
         {
-            foreach(PlayerSuitData __playerSuit in _playerContainer.suits)
+            foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
             {
-                if(__playerSuit.suitGameObject.active)
+                if (__playerSuit.suitGameObject.active)
                 {
                     return __playerSuit.suitType;
                 }
@@ -96,7 +97,7 @@ namespace Player
             __gameSaveData.playerSuit = GetActiveSuit();
             __gameSaveData.playerPosition = _playerContainer.playerTransform.position;
             __gameSaveData.playerHealth = _playerHealth.GetPlayerHealth();
-            
+
             return __gameSaveData;
         }
 
