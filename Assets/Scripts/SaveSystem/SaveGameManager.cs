@@ -24,7 +24,6 @@ namespace SaveSystem
 
         public static bool LoadGame()
         {
-            // TODO Wiser check for data to load game
             if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
             {
                 if(gameSaveData == null)
