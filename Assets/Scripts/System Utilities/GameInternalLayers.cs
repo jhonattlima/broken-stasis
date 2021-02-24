@@ -1,6 +1,9 @@
-﻿public static class GameInternalLayers
+﻿namespace Utilities
 {
-    public static string PLAYER = "Player";
-    public static string ENEMY = "Enemy";
+    public static class GameInternalLayers
+    {
+        public static string PLAYER = "Player";
+        public static string ENEMY = "Enemy";
+    }
 }
 

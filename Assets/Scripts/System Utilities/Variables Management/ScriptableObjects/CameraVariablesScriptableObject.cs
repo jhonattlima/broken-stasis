@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VariableManagement
+namespace Utilities.VariableManagement
 {
     // [CreateAssetMenu(fileName = "CameraVariables")]
     public class CameraVariablesScriptableObject : ScriptableObject

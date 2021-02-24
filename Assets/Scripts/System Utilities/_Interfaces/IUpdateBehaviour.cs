@@ -1,4 +1,7 @@
-﻿public interface IUpdateBehaviour
+﻿namespace Utilities
 {
-    void RunUpdate();
+    public interface IUpdateBehaviour
+    {
+        void RunUpdate();
+    }
 }

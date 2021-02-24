@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using Interaction;
+using CoreEvent.Chapters;
+using Player.Item;
 using UnityEngine;
 
 namespace SaveSystem
@@ -30,6 +30,6 @@ namespace SaveSystem
 
         public List<GameSaveDoorState> doorsList = new List<GameSaveDoorState>();
 
-        public ChapterType chapter = ChapterType.CHAPTER_1;
+        public ChapterTypeEnum chapter = ChapterTypeEnum.CHAPTER_1;
     }
 }

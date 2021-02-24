@@ -1,7 +1,10 @@
 ﻿using System;
+using Enemy.EnemyState;
+using Enemy.Sensors;
 using UnityEngine;
+using Utilities;
 
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public class AttackMeleeEnemy : IUpdateBehaviour, IAttackMeleeEnemy
     {
@@ -10,10 +13,10 @@ namespace Enemy
         private readonly float _attackRange;
         private readonly int _damage;
         private readonly Action<int> _onPlayerDamaged;
-        private readonly EnemyStatesManager _enemyStatesManager;
+        private readonly EnemyStateManager _enemyStatesManager;
 
         public AttackMeleeEnemy(
-            EnemyStatesManager p_stateManager,
+            EnemyStateManager p_stateManager,
             SensorDamagePlayer p_weaponSensor,
             Transform p_originPosition,
             float p_attackRange,
@@ -36,11 +39,11 @@ namespace Enemy
             _enemyStatesManager.onStateChanged += HandleStateChanged;
         }
 
-        private void HandleStateChanged(EnemyState p_enemyState)
+        private void HandleStateChanged(EnemyStateEnum p_enemyState)
         {
             switch (p_enemyState)
             {
-                case EnemyState.ATTACKING:
+                case EnemyStateEnum.ATTACKING:
                     _weaponSensor.ResetSensorDetection();
                     break;
                 default:

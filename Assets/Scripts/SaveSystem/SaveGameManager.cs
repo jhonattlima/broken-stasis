@@ -26,10 +26,10 @@ namespace SaveSystem
         {
             if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
             {
-                if(gameSaveData == null)
+                if (gameSaveData == null)
                     gameSaveData = new GameSaveData();
-                
-                return false;   
+
+                return false;
             }
 
             byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
@@ -45,7 +45,7 @@ namespace SaveSystem
         {
             gameSaveData = new GameSaveData();
 
-            if(File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
+            if (File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
                 File.Delete(Application.dataPath + FILE_PATH + FILE_NAME);
         }
     }

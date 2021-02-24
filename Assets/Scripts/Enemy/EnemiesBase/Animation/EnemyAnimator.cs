@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Enemy.EnemyState;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class EnemyAnimator
     {
@@ -10,10 +10,10 @@ namespace Enemy
         private const string RUNNING = "Running";
         private const string ATTACKING = "Attacking";
 
-        private EnemyStatesManager _stateManager;
+        private EnemyStateManager _stateManager;
         private Animator _animator;
 
-        public EnemyAnimator(EnemyStatesManager p_stateManager, Animator p_animator)
+        public EnemyAnimator(EnemyStateManager p_stateManager, Animator p_animator)
         {
             _stateManager = p_stateManager;
             _animator = p_animator;
@@ -21,25 +21,25 @@ namespace Enemy
             _stateManager.onStateChanged += HandleStateChanged;
         }
 
-        private void HandleStateChanged(EnemyState p_enemyState)
+        private void HandleStateChanged(EnemyStateEnum p_enemyState)
         {
             ResetAllTriggers();
 
-            switch(p_enemyState)
+            switch (p_enemyState)
             {
-                case EnemyState.IDLE:
+                case EnemyStateEnum.IDLE:
                     _animator.SetTrigger(IDLE);
                     break;
-                case EnemyState.INVESTIGATING:
-                case EnemyState.PATROLLING:
+                case EnemyStateEnum.INVESTIGATING:
+                case EnemyStateEnum.PATROLLING:
                     _animator.SetTrigger(WALKING);
                     break;
-                case EnemyState.RUNNING:
+                case EnemyStateEnum.RUNNING:
                     _animator.SetTrigger(RUNNING);
                     break;
-                case EnemyState.ATTACKING:
+                case EnemyStateEnum.ATTACKING:
                     _animator.SetTrigger(ATTACKING);
-                    break; 
+                    break;
             }
         }
 

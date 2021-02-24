@@ -3,7 +3,7 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
-namespace VariableManagement
+namespace Utilities.VariableManagement
 {
     public class VariablesWindow : EditorWindow
     {

@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace VariableManagement
+namespace Utilities.VariableManagement
 {
     public static class VariablesManager
     {
