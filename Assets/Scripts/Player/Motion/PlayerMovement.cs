@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using GameManagers;
+using UnityEngine;
 using Utilities;
-using VariableManagement;
+using Utilities.VariableManagement;
 
-
-namespace Player
+namespace Player.Motion
 {
     public class PlayerMovement : IFixedUpdateBehaviour
     {

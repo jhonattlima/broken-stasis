@@ -1,4 +1,4 @@
-namespace CoreEvent
+namespace CoreEvent.Chapters
 {
     public enum ChapterTypeEnum
     {

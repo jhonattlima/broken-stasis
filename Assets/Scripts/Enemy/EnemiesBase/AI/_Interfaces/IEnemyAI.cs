@@ -1,6 +1,6 @@
 ﻿using Utilities;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public interface IEnemyAI : IUpdateBehaviour
     {

@@ -1,7 +1,8 @@
+using Enemy.EnemyState;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public class FollowEnemy : IFollowEnemy
     {

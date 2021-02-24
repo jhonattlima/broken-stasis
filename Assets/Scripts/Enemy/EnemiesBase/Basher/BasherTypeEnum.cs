@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public enum BasherTypeEnum
     {

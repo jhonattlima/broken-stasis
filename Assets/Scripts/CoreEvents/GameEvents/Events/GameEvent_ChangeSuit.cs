@@ -1,9 +1,9 @@
-﻿using GameManager;
-using Interaction;
-using Player;
+﻿using GameManagers;
+using Objects.Interaction;
+using Player.Item;
 using UnityEngine;
 
-namespace CoreEvent
+namespace CoreEvent.GameEvents
 {
     public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
     {

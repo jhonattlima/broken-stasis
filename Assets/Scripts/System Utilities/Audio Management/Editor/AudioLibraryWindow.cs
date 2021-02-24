@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Audio;
 using UnityEditor;
 using UnityEngine;
+using Utilities.VariableManagement;
 
-namespace Audio
+namespace Utilities.Audio
 {
     public class AudioLibraryWindow : EditorWindow
     {

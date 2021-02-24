@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Enemy.EnemyState
 {
     public enum EnemyStateEnum
     {

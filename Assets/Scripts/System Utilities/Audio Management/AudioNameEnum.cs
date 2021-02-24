@@ -1,4 +1,4 @@
-namespace Audio
+namespace Utilities.Audio
 {
     public enum AudioNameEnum
     {

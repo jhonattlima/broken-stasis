@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Utilities;
-using VariableManagement;
+using Utilities.VariableManagement;
+
 namespace Camera
 {
     public class CameraFollowPlayer : IFixedUpdateBehaviour

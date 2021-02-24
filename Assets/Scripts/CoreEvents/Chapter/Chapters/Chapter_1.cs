@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using GameManager;
-using Interaction;
+using CoreEvent.GameEvents;
+using GameManagers;
+using Objects.Interaction;
+using UI;
 using UnityEngine;
 using Utilities;
-using VariableManagement;
+using Utilities.VariableManagement;
 
-namespace CoreEvent
+namespace CoreEvent.Chapters
 {
     public class Chapter_1 : MonoBehaviour, IChapter
     {

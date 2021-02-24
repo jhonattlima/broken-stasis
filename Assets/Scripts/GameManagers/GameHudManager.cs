@@ -1,7 +1,7 @@
 ﻿using UI;
 using UnityEngine;
 
-namespace GameManager
+namespace GameManagers
 {
     public class GameHudManager : MonoBehaviour
     {

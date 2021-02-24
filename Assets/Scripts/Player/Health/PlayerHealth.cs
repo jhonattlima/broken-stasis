@@ -1,9 +1,10 @@
-﻿using Audio;
-using GameManager;
+﻿using GameManagers;
+using Player.Motion;
 using UnityEngine;
-using VariableManagement;
+using Utilities.Audio;
+using Utilities.VariableManagement;
 
-namespace Player
+namespace Player.Health
 {
     public class PlayerHealth
     {

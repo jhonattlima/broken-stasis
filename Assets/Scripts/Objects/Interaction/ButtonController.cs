@@ -1,6 +1,7 @@
-﻿using Player;
+﻿using Player.Motion;
 using UnityEngine;
-namespace Interaction
+
+namespace Objects.Interaction
 {
     public class ButtonController : InteractionObjectWithColliders
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Enemy
+namespace Enemy.EnemyState
 {
     public class EnemyStateManager
     {

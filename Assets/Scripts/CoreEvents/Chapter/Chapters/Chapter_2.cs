@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GameManager;
+using CoreEvent.GameEvents;
+using GameManagers;
 using SaveSystem;
 using UnityEngine;
 using Utilities;
 
-namespace CoreEvent
+namespace CoreEvent.Chapters
 {
     public class Chapter_2 : MonoBehaviour, IChapter
     {

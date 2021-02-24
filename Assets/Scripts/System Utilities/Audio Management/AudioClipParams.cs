@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audio
+namespace Utilities.Audio
 {
     public class AudioClipParams : ScriptableObject
     {

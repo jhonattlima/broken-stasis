@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Audio
+namespace Utilities.VariableManagement
 {
  
     // [CreateAssetMenu(fileName = "AudioVariables")]   

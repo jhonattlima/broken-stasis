@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 
-namespace GameManager
+namespace GameManagers
 {
     public class EnemiesManager : MonoBehaviour
     {

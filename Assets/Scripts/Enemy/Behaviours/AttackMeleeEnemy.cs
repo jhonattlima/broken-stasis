@@ -1,8 +1,10 @@
 ﻿using System;
+using Enemy.EnemyState;
+using Enemy.Sensors;
 using UnityEngine;
 using Utilities;
 
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public class AttackMeleeEnemy : IUpdateBehaviour, IAttackMeleeEnemy
     {

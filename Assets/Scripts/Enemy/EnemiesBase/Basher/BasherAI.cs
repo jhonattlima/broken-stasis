@@ -1,9 +1,12 @@
 ﻿
-using Audio;
-using GameManager;
+using Enemy.Behaviours;
+using Enemy.EnemyState;
+using Enemy.Sensors;
+using GameManagers;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class BasherAI : IEnemyAI
     {

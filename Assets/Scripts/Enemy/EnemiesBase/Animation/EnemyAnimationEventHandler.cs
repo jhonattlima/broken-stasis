@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyAnimationEventHandler : MonoBehaviour

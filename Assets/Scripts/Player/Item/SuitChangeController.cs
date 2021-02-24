@@ -1,10 +1,11 @@
 ﻿using System;
-using Audio;
-using GameManager;
+using GameManagers;
+using UI;
 using Utilities;
-using VariableManagement;
+using Utilities.Audio;
+using Utilities.VariableManagement;
 
-namespace Player
+namespace Player.Item
 {
     public class SuitChangeController
     {

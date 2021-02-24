@@ -1,4 +1,4 @@
-namespace Player
+namespace Player.Animation
 {
     public enum PlayerAnimationEventEnum
     {

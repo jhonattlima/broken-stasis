@@ -1,7 +1,10 @@
 ﻿using System;
+using Enemy.Behaviours;
+using Enemy.EnemyState;
+using GameManagers;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class BasherEnemy : MonoBehaviour, IEnemy
     {

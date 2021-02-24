@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Player
+namespace Player.Animation
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationEventHandler : MonoBehaviour

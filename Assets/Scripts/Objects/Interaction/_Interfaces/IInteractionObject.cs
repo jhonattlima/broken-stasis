@@ -1,6 +1,6 @@
 ﻿using Utilities;
 
-namespace Interaction
+namespace Objects.Interaction
 {
     public interface IInteractionObject : IUpdateBehaviour, IFixedUpdateBehaviour
     {

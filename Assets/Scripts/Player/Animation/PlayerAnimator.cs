@@ -1,8 +1,9 @@
-﻿using Audio;
-using GameManager;
+﻿using GameManagers;
+using Player.Motion;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Player
+namespace Player.Animation
 {
     public class PlayerAnimator
     {

@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Utilities;
 using UnityEngine;
 using UnityEngine.AI;
-using GameManager;
+using GameManagers;
+using Enemy.EnemyState;
 
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public class PatrolEnemy : IPatrolEnemy
     {

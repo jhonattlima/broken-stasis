@@ -1,4 +1,4 @@
-namespace CoreEvent
+namespace CoreEvent.GameEvents
 {
     public enum GameEventTypeEnum
     {

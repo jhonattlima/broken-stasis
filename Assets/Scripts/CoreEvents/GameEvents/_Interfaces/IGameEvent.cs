@@ -1,5 +1,5 @@
 
-namespace CoreEvent
+namespace CoreEvent.GameEvents
 {
     public interface IGameEvent
     {

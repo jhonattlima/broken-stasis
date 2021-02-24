@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Utilities
+namespace UI
 {
     public class LoadingView : MonoBehaviour
     {

@@ -1,8 +1,9 @@
-﻿using CoreEvent;
-using GameManager;
-using Player;
+﻿using CoreEvent.GameEvents;
+using GameManagers;
+using Objects.Interaction;
+using Player.Motion;
 
-namespace Interaction
+namespace Objects.Items
 {
     public class ItemSuit : InteractionObjectWithColliders
     {

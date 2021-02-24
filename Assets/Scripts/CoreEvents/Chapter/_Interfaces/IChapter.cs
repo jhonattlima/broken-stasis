@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
+using CoreEvent.GameEvents;
 
-namespace CoreEvent
+namespace CoreEvent.Chapters
 {
     public interface IChapter
     {

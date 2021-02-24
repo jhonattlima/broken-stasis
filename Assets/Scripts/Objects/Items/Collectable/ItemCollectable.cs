@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using Audio;
-using GameManager;
+using GameManagers;
+using Utilities.Audio;
+using Objects.Interaction;
 
-namespace Interaction
+namespace Objects.Items
 {
     public class ItemCollectable : InteractionObjectWithColliders
     {

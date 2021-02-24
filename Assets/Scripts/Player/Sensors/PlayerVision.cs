@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Utilities;
 
-namespace Player
+namespace Player.Sensors
 {
     public class PlayerVision : MonoBehaviour
     {

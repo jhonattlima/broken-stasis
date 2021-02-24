@@ -1,10 +1,10 @@
 ﻿using System;
-using Audio;
 using UnityEngine;
 using Utilities;
-using VariableManagement;
+using Utilities.Audio;
+using Utilities.VariableManagement;
 
-namespace GameManager
+namespace GameManagers
 {
     public class AudioManager : MonoBehaviour
     {

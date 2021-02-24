@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Audio
+namespace Utilities.Audio
 {
     public class AudioSourcePool
     {

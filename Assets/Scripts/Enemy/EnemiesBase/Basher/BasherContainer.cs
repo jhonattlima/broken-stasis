@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using Enemy.Sensors;
+using UnityEngine;
 using UnityEngine.AI;
-namespace Enemy
+
+namespace Enemy.EnemiesBase
 {
     public class BasherContainer : MonoBehaviour
     {

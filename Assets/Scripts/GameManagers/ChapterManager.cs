@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CoreEvent;
+using CoreEvent.Chapters;
+using CoreEvent.GameEvents;
 using UnityEngine;
 
-namespace GameManager
+namespace GameManagers
 {
     public class ChapterManager : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-namespace Interaction
+namespace Objects.Items
 {
     public enum ItemHeightEnum
     {

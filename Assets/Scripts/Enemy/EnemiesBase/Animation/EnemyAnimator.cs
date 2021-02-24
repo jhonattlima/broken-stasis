@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Enemy.EnemyState;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class EnemyAnimator
     {

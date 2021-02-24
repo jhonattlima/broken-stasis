@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using GameManager;
+using GameManagers;
 using UnityEngine;
 
 namespace Utilities

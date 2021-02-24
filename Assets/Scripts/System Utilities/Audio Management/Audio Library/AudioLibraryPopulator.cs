@@ -1,8 +1,9 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using Utilities.VariableManagement;
 
-namespace Audio
+namespace Utilities.Audio
 {
     public class AudioLibraryPopulator
     {

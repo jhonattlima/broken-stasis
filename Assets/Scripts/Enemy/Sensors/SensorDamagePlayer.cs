@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Utilities;
 
-namespace Enemy
+namespace Enemy.Sensors
 {
     public class SensorDamagePlayer : MonoBehaviour
     {

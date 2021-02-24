@@ -1,7 +1,7 @@
-﻿using Audio;
-using UnityEngine;
+﻿using UnityEngine;
+using Utilities.Audio;
 
-namespace GameManager
+namespace GameManagers
 {
     public class SceneManager : MonoBehaviour
     {

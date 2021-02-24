@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Audio;
-using GameManager;
+using GameManagers;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Interaction
+namespace Objects.Interaction
 {
     public class DoorController : MonoBehaviour, IInteractionObject
     {

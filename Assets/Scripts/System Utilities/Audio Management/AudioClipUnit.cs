@@ -1,4 +1,4 @@
-namespace Audio
+namespace Utilities.Audio
 {
     [System.Serializable]
     public class AudioClipUnit

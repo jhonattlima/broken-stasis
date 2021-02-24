@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Utilities;
 
-namespace Interaction
+namespace Objects.Interaction
 {
     public abstract class InteractionObjectWithColliders : MonoBehaviour, IInteractionObject
     {

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Camera;
 using Enemy;
-using Interaction;
+using Objects.Interaction;
 using Player;
+using Player.Item;
 using SaveSystem;
 using UnityEngine;
 
-namespace GameManager
+namespace GameManagers
 {
     public class GameplayManager : MonoBehaviour
     {

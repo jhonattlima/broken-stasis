@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Player.Motion;
+using UnityEngine;
 
-namespace Player
+namespace Player.Sensors
 {
     public class PlayerSoundColliderActivator
     {

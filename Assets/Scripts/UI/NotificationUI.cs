@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 using Utilities;
-using VariableManagement;
+using Utilities.VariableManagement;
 
 namespace UI
 {

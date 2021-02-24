@@ -1,26 +1,28 @@
 ﻿using System;
-
-public enum GameState
+namespace GameManagers
 {
-    RUNNING,
-    PAUSED,
-    GAMEOVER,
-    CUTSCENE
-}
-
-public static class GameStateManager
-{
-    public static GameState currentState { get; private set; }
-
-    public static Action<GameState> onStateChanged;
-
-    public static void SetGameState(GameState p_newState)
+    public enum GameState
     {
-        if (currentState != p_newState)
-        {
-            currentState = p_newState;
+        RUNNING,
+        PAUSED,
+        GAMEOVER,
+        CUTSCENE
+    }
 
-            if (onStateChanged != null) onStateChanged(currentState);
+    public static class GameStateManager
+    {
+        public static GameState currentState { get; private set; }
+
+        public static Action<GameState> onStateChanged;
+
+        public static void SetGameState(GameState p_newState)
+        {
+            if (currentState != p_newState)
+            {
+                currentState = p_newState;
+
+                if (onStateChanged != null) onStateChanged(currentState);
+            }
         }
     }
 }

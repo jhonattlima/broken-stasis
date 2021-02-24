@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Interaction;
+using Objects.Interaction;
 using Utilities;
 
-namespace GameManager
+namespace GameManagers
 {
     public class LevelObjectManager : IFixedUpdateBehaviour, IUpdateBehaviour
     {
