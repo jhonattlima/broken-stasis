@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Camera;
 using Enemy;
@@ -11,7 +12,6 @@ namespace GameManager
 {
     public class GameplayManager : MonoBehaviour
     {
-
         #region GAME_EVENTS
         public Action<PlayerSuitEnum> onPlayerSuitChange;
         #endregion
@@ -83,14 +83,22 @@ namespace GameManager
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
 
-            // List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            // if (__doors.Count > 0 && SaveGameManager.gameSaveData.doorsList.Count > 0)
-            // {
-            //     for (int i = 0; i < __doors.Count; i++)
-            //     {
-            //         __doors[i].isDoorOpen = SaveGameManager.gameSaveData.doorsList[i].isDoorOpen;
-            //     }
-            // }
+            if (SaveGameManager.gameSaveData.doorsList == null)
+                return;
+
+            List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
+            foreach (GameSaveDoorState __savedDoorState in SaveGameManager.gameSaveData.doorsList)
+            {
+                foreach (DoorController __ingameDoor in __doors)
+                {
+                    if (__ingameDoor.transform.parent.name == __savedDoorState.parentName)
+                    {
+                        __ingameDoor.isDoorOpen = __savedDoorState.isDoorOpen;
+                        __ingameDoor.isLocked = __savedDoorState.isDoorLocked;
+                        __ingameDoor.SetDoorState();
+                    }
+                }
+            }
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
@@ -99,7 +107,11 @@ namespace GameManager
             GameSaveData __gameSaveData = _player.GetPlayerSaveData();
 
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
-            __gameSaveData.doorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
+
+            var __ingameDoorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
+            __gameSaveData.doorsList = new List<GameSaveDoorState>();
+            foreach (DoorController door in __ingameDoorsList)
+                __gameSaveData.doorsList.Add(new GameSaveDoorState(door.transform.parent.name, door.isDoorOpen, door.isLocked));
 
             return __gameSaveData;
         }
