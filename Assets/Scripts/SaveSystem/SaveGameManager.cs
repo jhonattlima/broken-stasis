@@ -13,8 +13,6 @@ namespace SaveSystem
 
         public static void SaveGame()
         {
-            Debug.Log(gameSaveData.doorsList.ToString());
-            Debug.Log(gameSaveData.doorsList.Count);
             string __saveDataJson = JsonUtility.ToJson(gameSaveData, true);
             byte[] __bytes = System.Text.Encoding.UTF8.GetBytes(__saveDataJson);
 

@@ -21,7 +21,6 @@ namespace Interaction
         private float _startTime;
         private BoxCollider _doorCollider;
 
-        // If doorModel scale does not match with texture, change _doorOpenPosition attribuition
         private void Awake()
         {
             _doorCollider = GetComponent<BoxCollider>();
