@@ -41,7 +41,7 @@ namespace CoreEvent.Chapters
             _doorController.isLocked = true;
             _doorController.onDoorLocked = delegate ()
             {
-                GameHudManager.instance.itemCollectedHud.CallNotification(VariablesManager.textAIVariables.ACT1_DOOR_LOCKED_MESSAGE);
+                GameHudManager.instance.itemCollectedHud.ShowText(VariablesManager.textAIVariables.ACT1_DOOR_LOCKED_MESSAGE);
             };
         }
 

@@ -6,7 +6,7 @@ using Utilities.VariableManagement;
 
 namespace UI
 {
-    public class NotificationUI : MonoBehaviour
+    public class NotificationUI : MonoBehaviour, IUIAutoHideText
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private TextMeshProUGUI _notificationText;
@@ -39,12 +39,7 @@ namespace UI
             }
         }
 
-        public void CallNotification(string p_text)
-        {
-            CallNotification(p_text, _defaultNotificationDuration);
-        }
-
-        public void CallNotification(string p_text, float p_duration)
+        public void ShowText(string p_text, float p_duration = 0)
         {
             if (_isVisible || _notificationQueue.Count > 0)
             {
@@ -84,5 +79,6 @@ namespace UI
 
             return __readingSpeed;
         }
+
     }
 }
