@@ -19,7 +19,6 @@ namespace UI
                 return _instance ?? (_instance = InstanceInitialize());
             }
         }
-
         private static LoadingView InstanceInitialize()
         {
             GameObject _loadingViewGameObject = Resources.Load<GameObject>("LoadingView");

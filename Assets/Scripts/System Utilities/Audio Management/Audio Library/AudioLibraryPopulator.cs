@@ -9,9 +9,9 @@ namespace Utilities.Audio
     {
         private static AudioLibraryScriptableObject _audioLibrary;
 
-        private const string AUDIO_CLIP_PARAM_SCRIPT_OBJECT_PATH = "AudioClipParamAssets/";
-        private const string AUDIO_LIB_SCRIPT_OBJECT_PATH = "Assets/Scripts/System Utilities/Audio Management/Resources/AudioLibrary.asset";
-        private const string AUDIO_CLIP_PARAM_ASSET_PATH = "Assets/Scripts/System Utilities/Audio Management/Resources/AudioClipParams/";
+        private const string AUDIO_CLIP_PARAM_RESOURCES_PATH = "AudioClipParams/";
+        private const string AUDIO_LIBRARY_FULL_PATH = "Assets/Scripts/System Utilities/Audio Management/Resources/AudioLibrary.asset";
+        private const string AUDIO_CLIP_PARAM_FULL_PATH = "Assets/Scripts/System Utilities/Audio Management/Resources/AudioClipParams/";
 
         public void InitializeAudioLibrary()
         {
@@ -28,7 +28,7 @@ namespace Utilities.Audio
             if (_audioLibrary == null)
             {
                 _audioLibrary = new AudioLibraryScriptableObject();
-                AssetDatabase.CreateAsset(_audioLibrary, AUDIO_LIB_SCRIPT_OBJECT_PATH);
+                AssetDatabase.CreateAsset(_audioLibrary, AUDIO_LIBRARY_FULL_PATH);
             }
         }
 
@@ -48,29 +48,29 @@ namespace Utilities.Audio
                 AudioClipUnit __audioClipUnit = new AudioClipUnit()
                 {
                     audioName = __audioNameEnum.ToString(),
-                    audioClipParams = Resources.Load<AudioClipParams>(AUDIO_CLIP_PARAM_SCRIPT_OBJECT_PATH + __audioNameEnum.ToString())
+                    audioClipParams = Resources.Load<AudioClipParams>(AUDIO_CLIP_PARAM_RESOURCES_PATH + __audioNameEnum.ToString())
                 };
 
                 AddAudioClipsToLibrary(__audioNameEnum, __audioClipUnit);
             }
         }
 
-        private static void AddAudioClipsToLibrary(object __audioNameEnum, AudioClipUnit __audioClipUnit)
+        private static void AddAudioClipsToLibrary(object p_audioNameEnum, AudioClipUnit p_audioClipUnit)
         {
             bool __shouldAddNewEntry = true;
             foreach (var __audioClipUnitInLib in _audioLibrary.AudioLibrary)
             {
-                if (__audioClipUnitInLib.audioName == __audioNameEnum.ToString())
+                if (__audioClipUnitInLib.audioName == p_audioNameEnum.ToString())
                     __shouldAddNewEntry = false;
             }
 
             if (__shouldAddNewEntry)
             {
-                _audioLibrary.AudioLibrary.Add(__audioClipUnit);
+                _audioLibrary.AudioLibrary.Add(p_audioClipUnit);
             }
             else
             {
-                _audioLibrary.AudioLibrary[_audioLibrary.AudioLibrary.FindIndex(__index => __index.audioName.Equals(__audioNameEnum.ToString()))] = __audioClipUnit;
+                _audioLibrary.AudioLibrary[_audioLibrary.AudioLibrary.FindIndex(__index => __index.audioName.Equals(p_audioNameEnum.ToString()))] = p_audioClipUnit;
             }
         }
 
@@ -80,7 +80,7 @@ namespace Utilities.Audio
             {
                 if (!Enum.IsDefined(typeof(AudioNameEnum), __audioClipUnitInLib.audioName.ToString()))
                 {
-                    AssetDatabase.DeleteAsset(AUDIO_CLIP_PARAM_ASSET_PATH + __audioClipUnitInLib.audioName + ".asset");
+                    AssetDatabase.DeleteAsset(AUDIO_CLIP_PARAM_FULL_PATH + __audioClipUnitInLib.audioName + ".asset");
 
                     _audioLibrary.AudioLibrary.Remove(__audioClipUnitInLib);
                 }
@@ -89,13 +89,13 @@ namespace Utilities.Audio
 
         private bool AudioParamExists(string p_audioName)
         {
-            return Resources.Load<AudioClipParams>(AUDIO_CLIP_PARAM_SCRIPT_OBJECT_PATH + p_audioName) != null;
+            return Resources.Load<AudioClipParams>(AUDIO_CLIP_PARAM_RESOURCES_PATH + p_audioName) != null;
         }
 
         private void CreateAudioParam(string p_audioName)
         {
             AudioClipParams __newAudioClipUnit = new AudioClipParams();
-            AssetDatabase.CreateAsset(__newAudioClipUnit, AUDIO_CLIP_PARAM_ASSET_PATH + p_audioName + ".asset");
+            AssetDatabase.CreateAsset(__newAudioClipUnit, AUDIO_CLIP_PARAM_FULL_PATH + p_audioName + ".asset");
         }
     }
 }

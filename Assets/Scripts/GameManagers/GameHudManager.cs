@@ -1,11 +1,13 @@
-﻿using UI;
+﻿using UI.Dialog;
+using UI.Notification;
 using UnityEngine;
 
 namespace GameManagers
 {
     public class GameHudManager : MonoBehaviour
     {
-        public NotificationUI itemCollectedHud;
+        public NotificationUI notificationHud;
+        public UIDialog uiDialogHud;
 
         public static GameHudManager instance;
 
@@ -13,6 +15,11 @@ namespace GameManagers
         {
             if (instance == null)
                 instance = this;
+        }
+
+        private void Update()
+        {
+            uiDialogHud.RunUpdate();
         }
     }
 }

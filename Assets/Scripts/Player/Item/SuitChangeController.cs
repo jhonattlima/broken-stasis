@@ -17,7 +17,7 @@ namespace Player.Item
                 {
                     p_onFaded?.Invoke();
 
-                    GameHudManager.instance.itemCollectedHud.CallNotification("Collected Suit");
+                    GameHudManager.instance.notificationHud.ShowText("Collected Suit");
                     GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
 
                     AudioManager.instance.Play(AudioNameEnum.SUIT_PICKUP, false, delegate ()
