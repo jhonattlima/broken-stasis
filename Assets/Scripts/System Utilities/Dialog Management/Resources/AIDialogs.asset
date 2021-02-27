@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d35a1500bfd4bd4d9d7409ca87de09d, type: 3}
   m_Name: AIDialogs
   m_EditorClassIdentifier: 
-  GameDialog: []
+  GameDialogs:
+  - dialogName: ACT_01_LOCKED_DOOR
+    conversation: {fileID: 11400000, guid: 1270a8182c130f14aa47db7677a1c321, type: 2}
+  - dialogName: ACT_01_WAKE_UP_MESSAGE
+    conversation: {fileID: 11400000, guid: adf8e2278bd98bd4da0068d63df1ce70, type: 2}

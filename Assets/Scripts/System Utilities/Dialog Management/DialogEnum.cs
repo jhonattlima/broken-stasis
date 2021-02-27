@@ -2,7 +2,7 @@ namespace Utilities.UI
 {
     public enum DialogEnum
     {
-        WAKE_UP_MESSAGE,
-        LOCKED_DOOR,
+        ACT_01_WAKE_UP_MESSAGE,
+        ACT_01_LOCKED_DOOR,
     }
 }

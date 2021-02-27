@@ -1,9 +1,9 @@
+using UnityEngine;
+
 namespace Utilities.UI
 {
-    [System.Serializable]
-    public class DialogTextConversation
+    public class DialogTextConversation : ScriptableObject
     {
-        public DialogEnum dialog;
         public DialogTextUnit[] conversationTexts;
     }
 }

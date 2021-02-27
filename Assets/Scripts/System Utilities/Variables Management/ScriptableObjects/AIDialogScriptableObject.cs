@@ -7,6 +7,6 @@ namespace Utilities.VariableManagement
     [CreateAssetMenu(fileName = "AIDialogs")]
     public class AIDialogScriptableObject : ScriptableObject
     {
-        public List<DialogTextConversation> GameDialog;
+        public List<DialogConversationUnit> GameDialogs;
     }
 }

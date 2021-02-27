@@ -5,16 +5,15 @@ using UnityEngine;
 using Utilities.UI;
 using Utilities.VariableManagement;
 
-namespace Utilities.Audio
+namespace Utilities.Dialog
 {
     public class AIDialogsWindows : EditorWindow
     {
         private static AIDialogsWindows _window;
         private static AIDialogScriptableObject _dialogsLibraryAsset;
-        private static List<DialogTextConversation> _listDialogConversations;
+        private static List<DialogConversationUnit> _listDialogConversations;
         
-        //TODO: CRIAR AIDialogLibraryPopulator
-        // private static AudioLibraryPopulator _audioLibraryPopulator;
+        private static DialogsPopulator _dialogLibraryPopulator;
 
         private static Vector2 _scrollPosition;
         private static bool[] _collapseState;
@@ -25,8 +24,8 @@ namespace Utilities.Audio
             if (_window == null)
                 _window = GetWindow();
 
-            // _audioLibraryPopulator = new AudioLibraryPopulator();
-            // _audioLibraryPopulator.InitializeAudioLibrary();
+            _dialogLibraryPopulator = new DialogsPopulator();
+            _dialogLibraryPopulator.InitializeAudioLibrary();
 
             LoadDialogsLibrary();
         }
@@ -45,7 +44,6 @@ namespace Utilities.Audio
             {
                 if (_listDialogConversations != null && _listDialogConversations.Count > 0)
                 {
-        //TODO: CONTINUAR A PARTIR DAQUI
                     DrawDialogsLibraryList();
                 }
             }
@@ -54,25 +52,25 @@ namespace Utilities.Audio
 
         private static void LoadDialogsLibrary()
         {
-            _dialogsLibraryAsset = Resources.Load<AIDialogScriptableObject>("AI Dialogs");
+            _dialogsLibraryAsset = Resources.Load<AIDialogScriptableObject>("AIDialogs");
 
-            _listAudioClips = _audioLibraryAsset.AudioLibrary;
-            _listAudioClips.Sort((a, b) => a.audioName.CompareTo(b.audioName));
+            _listDialogConversations = _dialogsLibraryAsset.GameDialogs;
+            _listDialogConversations.Sort((a, b) => a.dialogName.CompareTo(b.dialogName));
 
-            _collapseState = new bool[_listAudioClips.Count];
+            _collapseState = new bool[_listDialogConversations.Count];
         }
 
-        private void DrawAudioLibraryList()
+        private void DrawDialogsLibraryList()
         {
-            for (int i = 0; i < _listAudioClips.Count; i++)
+            for (int i = 0; i < _listDialogConversations.Count; i++)
             {
-                _collapseState[i] = EditorGUILayout.Foldout(_collapseState[i], _listAudioClips[i].audioName.ToString());
+                _collapseState[i] = EditorGUILayout.Foldout(_collapseState[i], _listDialogConversations[i].dialogName.ToString());
 
                 if (_collapseState[i])
                 {
                     GUILayout.BeginVertical(EditorStyles.helpBox);
                     {
-                        Editor.CreateEditor(_listAudioClips[i].audioClipParams).OnInspectorGUI();
+                        Editor.CreateEditor(_listDialogConversations[i].conversation).OnInspectorGUI();
                     }
                     GUILayout.EndVertical();
                 }
