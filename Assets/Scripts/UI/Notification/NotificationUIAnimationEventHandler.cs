@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UI
+namespace UI.Notification
 {
     [RequireComponent(typeof(Animator))]
     public class NotificationUIAnimationEventHandler : MonoBehaviour

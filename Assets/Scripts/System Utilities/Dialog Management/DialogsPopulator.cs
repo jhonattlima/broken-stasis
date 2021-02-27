@@ -14,7 +14,7 @@ namespace Utilities.Dialog
         private const string DIALOG_LIB_FULL_PATH = "Assets/Scripts/System Utilities/Dialog Management/Resources/AIDialogs.asset";
         private const string DIALOG_CONVERSATION_FULL_PATH = "Assets/Scripts/System Utilities/Dialog Management/Resources/DialogConversations/";
 
-        public void InitializeAudioLibrary()
+        public void InitializeDialogLibrary()
         {
             PopulateDialogAssets();
             LoadLibrary();

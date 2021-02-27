@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NotificationBarUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6174552873843414224, guid: 87d91dd936d800f46838c2952a3d102f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25.000122
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d91dd936d800f46838c2952a3d102f, type: 3}
 --- !u!224 &4532356839048179084 stripped
@@ -278,6 +283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogBoxUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052808620059739757, guid: 882c59997460ab445a82046efdb8f6dc,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882c59997460ab445a82046efdb8f6dc, type: 3}

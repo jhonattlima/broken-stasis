@@ -4,7 +4,7 @@ namespace UI
 {
     public interface IUIDialogText
     {
-        void InitializeDialog(DialogTextConversation p_dialogConversation);
+        void InitializeDialog(DialogEnum p_dialogName);
         void Show();
     }
 }

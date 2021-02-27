@@ -25,7 +25,7 @@ namespace Utilities.Dialog
                 _window = GetWindow();
 
             _dialogLibraryPopulator = new DialogsPopulator();
-            _dialogLibraryPopulator.InitializeAudioLibrary();
+            _dialogLibraryPopulator.InitializeDialogLibrary();
 
             LoadDialogsLibrary();
         }

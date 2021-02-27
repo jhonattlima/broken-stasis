@@ -54,6 +54,19 @@ namespace Utilities
                     return Vector3.zero;
             }
         }
+
+        public static class UI
+        {
+            public static bool InputEnabled { get; set; }
+
+            public static bool SkipDialog()
+            {
+                if (InputEnabled)
+                    return Input.GetButtonDown("SkipDialog");
+                else
+                    return false;
+            }
+        }
     }
 }
 

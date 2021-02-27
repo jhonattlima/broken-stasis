@@ -4,7 +4,7 @@ using UnityEngine;
 using Utilities;
 using Utilities.VariableManagement;
 
-namespace UI
+namespace UI.Notification
 {
     public class NotificationUI : MonoBehaviour, IUIAutoHideText
     {

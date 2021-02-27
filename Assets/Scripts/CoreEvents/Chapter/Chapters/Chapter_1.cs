@@ -6,7 +6,7 @@ using Objects.Interaction;
 using UI;
 using UnityEngine;
 using Utilities;
-using Utilities.VariableManagement;
+using Utilities.UI;
 
 namespace CoreEvent.Chapters
 {
@@ -33,15 +33,20 @@ namespace CoreEvent.Chapters
 
         public void ChapterStart()
         {
+            GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
+            
             LoadingView.instance.FadeOut(delegate ()
             {
-                InputController.GamePlay.InputEnabled = true;
+                InputController.UI.InputEnabled = true;
+
+                GameHudManager.instance.uiDialogHud.Show();
             });
 
             _doorController.isLocked = true;
             _doorController.onDoorLocked = delegate ()
             {
-                GameHudManager.instance.itemCollectedHud.ShowText(VariablesManager.textAIVariables.ACT1_DOOR_LOCKED_MESSAGE);
+                GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_01_LOCKED_DOOR);
+                GameHudManager.instance.uiDialogHud.Show();
             };
         }
 
