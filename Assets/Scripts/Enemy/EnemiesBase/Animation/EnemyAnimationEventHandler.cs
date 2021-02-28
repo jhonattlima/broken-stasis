@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyAnimationEventHandler : MonoBehaviour
@@ -12,7 +12,7 @@ namespace Enemy
 
         public void HandleAnimationEvent(EnemyAnimationEventEnum p_eventName)
         {
-            switch(p_eventName)
+            switch (p_eventName)
             {
                 case EnemyAnimationEventEnum.ON_ATTACK_END:
                     OnAttackAnimationEnd?.Invoke();

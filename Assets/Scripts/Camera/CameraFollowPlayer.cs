@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using VariableManagement;
+using Utilities;
+using Utilities.VariableManagement;
 
-namespace CameraScripts
+namespace Camera
 {
     public class CameraFollowPlayer : IFixedUpdateBehaviour
     {
@@ -18,7 +19,7 @@ namespace CameraScripts
         {
             get
             {
-                Ray __ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray __ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit __hit;
                 Physics.Raycast(__ray, out __hit, 50f);
                 return __hit.point;

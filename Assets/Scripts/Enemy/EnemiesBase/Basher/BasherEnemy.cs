@@ -1,13 +1,16 @@
 ﻿using System;
+using Enemy.Behaviours;
+using Enemy.EnemyState;
+using GameManagers;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class BasherEnemy : MonoBehaviour, IEnemy
     {
         [SerializeField] private BasherContainer _basherContainer;
 
-        private EnemyStatesManager _stateManager;
+        private EnemyStateManager _stateManager;
         private EnemyAnimator _enemyAnimator;
         private IEnemyAI _basherAI;
         private Action<int> _onPlayerDamaged;
@@ -31,7 +34,7 @@ namespace Enemy
 
         private void RegisterObjectsGraph()
         {
-            _stateManager = new EnemyStatesManager();
+            _stateManager = new EnemyStateManager();
 
             _enemyAnimator = new EnemyAnimator(
                 _stateManager,
@@ -67,7 +70,7 @@ namespace Enemy
                 gameObject.transform.position
             );
 
-            if (_basherContainer.basherType.Equals(BasherType.STASIS))
+            if (_basherContainer.basherType.Equals(BasherTypeEnum.STASIS))
             {
                 _basherAI = new BasherStasisAI(
                     _basherAI,

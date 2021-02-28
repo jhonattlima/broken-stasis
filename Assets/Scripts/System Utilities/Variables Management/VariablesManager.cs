@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace VariableManagement
+namespace Utilities.VariableManagement
 {
     public static class VariablesManager
     {
@@ -35,17 +35,6 @@ namespace VariableManagement
                 if(_uiVariables == null) _uiVariables = Resources.Load<UIVariablesScriptableObject>("Variables/UIVariables");
 
                 return _uiVariables;
-            }
-        }
-
-        private static TextAIScriptableObject _textAIVariables;
-        public static TextAIScriptableObject textAIVariables 
-        {
-            get
-            {
-                if(_textAIVariables  == null) _textAIVariables  = Resources.Load<TextAIScriptableObject>("Variables/TextAIVariables");
-
-                return _textAIVariables ;
             }
         }
     }
