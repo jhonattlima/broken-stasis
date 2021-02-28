@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GameManagers;
 using UnityEngine;
 
 namespace Utilities
@@ -8,7 +9,7 @@ namespace Utilities
     {
         public static void Timer(float p_duration, Action p_callback)
         {
-            SceneController.instance.StartCoroutine(TimerCoRoutine(p_duration, p_callback));
+            SceneManager.instance.StartCoroutine(TimerCoRoutine(p_duration, p_callback));
         }
 
         private static IEnumerator TimerCoRoutine(float p_duration, Action p_callback)

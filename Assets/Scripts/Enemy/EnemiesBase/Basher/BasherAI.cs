@@ -1,12 +1,16 @@
 ﻿
-using Audio;
+using Enemy.Behaviours;
+using Enemy.EnemyState;
+using Enemy.Sensors;
+using GameManagers;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Enemy
+namespace Enemy.EnemiesBase
 {
     public class BasherAI : IEnemyAI
     {
-        private readonly EnemyStatesManager _stateManager;
+        private readonly EnemyStateManager _stateManager;
         private readonly IPatrolEnemy _patrolBehaviour;
         private readonly IFollowEnemy _followBehaviour;
         private readonly IAttackMeleeEnemy _attackMeleeBehaviour;
@@ -21,7 +25,7 @@ namespace Enemy
         private Vector3 _basherPosition;
         private AudioSource _idleSound;
 
-        public BasherAI(EnemyStatesManager p_stateManager,
+        public BasherAI(EnemyStateManager p_stateManager,
             IPatrolEnemy p_patrolBehaviour,
             IFollowEnemy p_followBehaviour,
             IAttackMeleeEnemy p_attackMeleeBehaviour,
@@ -68,11 +72,11 @@ namespace Enemy
             _patrolBehaviour.InitializePatrolBehaviour();
         }
 
-        private void HandleStateChanged(EnemyState p_enemyState)
+        private void HandleStateChanged(EnemyStateEnum p_enemyState)
         {
             switch (p_enemyState)
             {
-                case EnemyState.ATTACKING:
+                case EnemyStateEnum.ATTACKING:
                     _idleSound.Pause();
                     break;
                 default:
@@ -93,9 +97,9 @@ namespace Enemy
 
         private bool CanPatrol()
         {
-            return (_stateManager.currentState != EnemyState.INVESTIGATING 
-                    && _stateManager.currentState != EnemyState.RUNNING
-                    && _stateManager.currentState != EnemyState.ATTACKING);
+            return (_stateManager.currentState != EnemyStateEnum.INVESTIGATING 
+                    && _stateManager.currentState != EnemyStateEnum.RUNNING
+                    && _stateManager.currentState != EnemyStateEnum.ATTACKING);
         }
 
         private void HandlePlayerEnteredSoundSensor(Transform p_playerPosition)
@@ -112,7 +116,7 @@ namespace Enemy
 
         private void HandleHearingPlayer(Transform p_playerPosition)
         {
-            if (_stateManager.currentState == EnemyState.ATTACKING)
+            if (_stateManager.currentState == EnemyStateEnum.ATTACKING)
             {
                 _enemyAnimationEventHandler.OnAttackAnimationEnd = delegate ()
                 {
@@ -134,7 +138,7 @@ namespace Enemy
             _isViewingPlayer = true;
 
             if (_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
-                _stateManager.SetEnemyState(EnemyState.ATTACKING);
+                _stateManager.SetEnemyState(EnemyStateEnum.ATTACKING);
             else
                 _followBehaviour.SprintToPosition(p_playerPosition);
         }
@@ -143,7 +147,7 @@ namespace Enemy
         {
             _isViewingPlayer = true;
 
-            if (_stateManager.currentState == EnemyState.ATTACKING)
+            if (_stateManager.currentState == EnemyStateEnum.ATTACKING)
             {
                 _enemyAnimationEventHandler.OnAttackAnimationEnd = delegate ()
                 {
@@ -152,7 +156,7 @@ namespace Enemy
                 };
             }
             else if (_attackMeleeBehaviour.CanAttack(p_playerPosition.position))
-                _stateManager.SetEnemyState(EnemyState.ATTACKING);
+                _stateManager.SetEnemyState(EnemyStateEnum.ATTACKING);
             else
                 _followBehaviour.SprintToPosition(p_playerPosition);
         }

@@ -1,4 +1,7 @@
-﻿public interface IFixedUpdateBehaviour
+﻿namespace Utilities
 {
-    void RunFixedUpdate();
+    public interface IFixedUpdateBehaviour
+    {
+        void RunFixedUpdate();
+    }
 }
