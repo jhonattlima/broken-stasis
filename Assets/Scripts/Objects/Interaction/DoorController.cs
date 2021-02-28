@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Audio;
+using GameManagers;
 using UnityEngine;
+using Utilities.Audio;
 
-namespace Interaction
+namespace Objects.Interaction
 {
     public class DoorController : MonoBehaviour, IInteractionObject
     {
@@ -21,20 +22,24 @@ namespace Interaction
         private float _startTime;
         private BoxCollider _doorCollider;
 
-        // If doorModel scale does not match with texture, change _doorOpenPosition attribuition
         private void Awake()
         {
             _doorCollider = GetComponent<BoxCollider>();
 
             _doorClosePosition = transform.localPosition;
             _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
+            SetDoorState();
+        }
 
+        public void SetDoorState()
+        {
             if (isDoorOpen)
                 transform.localPosition = _doorOpenPosition;
 
             _targetPosition = transform.localPosition;
             _startTime = Time.time;
         }
+
 
         public void RunUpdate() { }
 
@@ -56,7 +61,7 @@ namespace Interaction
             isDoorOpen = !isDoorOpen;
             float __delay = UnityEngine.Random.Range(0f, _maxDelayToUseDoor);
             StopAllCoroutines();
-            
+
             if (isDoorOpen)
                 StartCoroutine(OpenDoor(__delay));
             else

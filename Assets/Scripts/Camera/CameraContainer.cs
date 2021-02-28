@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CameraScripts
+namespace Camera
 {
     public class CameraContainer : MonoBehaviour
     {
