@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public interface IFollowEnemy
     {

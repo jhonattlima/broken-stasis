@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Player.Animation;
+using Player.Item;
+using UnityEngine;
 
 namespace Player
 {

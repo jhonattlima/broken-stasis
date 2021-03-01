@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using Utilities;
 
-namespace Enemy
+namespace Enemy.Sensors
 {
     public class SensorNoise : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Enemy.Behaviours
 {
     public interface IPatrolEnemy
     {
