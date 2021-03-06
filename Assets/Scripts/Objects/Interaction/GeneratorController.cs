@@ -5,7 +5,7 @@ namespace Objects.Interaction
 {
     public class GeneratorController : InteractionObjectWithColliders
     {
-        private void Awake()
+        private void Start()
         {
             GameHudManager.instance.minigameHud.onMinigameSuccess = HandleMinigameSuccess;
             GameHudManager.instance.minigameHud.onMinigameFailed = HandleMinigameFailed;

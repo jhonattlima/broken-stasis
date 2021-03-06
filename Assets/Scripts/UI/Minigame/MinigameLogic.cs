@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,21 +12,24 @@ namespace UI.Minigame
         private Image[] _codeImages;
         private Button[] _buttons;
         private TextMeshProUGUI _countdownText;
+        private Sprite _completedImage;
 
         private const string CODE_SPRITES_PATH = "";
         private List<Sprite> _codeSprites;
 
-        public MinigameStateEnum state { get; private set; }
+        public Action<MinigameStateEnum> onMinigameFinished;
 
         public MinigameLogic(
             Image[] p_codeImages,
             Button[] p_buttons,
-            TextMeshProUGUI p_countdownText
+            TextMeshProUGUI p_countdownText,
+            Sprite p_completedImage
         )
         {
             _codeImages = p_codeImages;
             _buttons = p_buttons;
             _countdownText = p_countdownText;
+            _completedImage = p_completedImage;
         }
 
         public void InitializeMinigame()
@@ -42,9 +46,43 @@ namespace UI.Minigame
             for (int i = 0; i < _codeImages.Length; i++)
                 _codeImages[i].sprite = __codeImages[i];
 
-            // InitializeBotões (funções onClick)
+            InitializeButtons();
+
+            _buttons[0].Select();
 
             // reseta countdown
+        }
+
+        private void InitializeButtons()
+        {
+            foreach(Button __button in _buttons)
+            {
+                __button.onClick.AddListener(delegate{HandleOnButtonClick(__button.image.sprite.name);});
+            }
+        }
+
+        private void HandleOnButtonClick(string p_imageName)
+        {
+            for(int i=0; i<_codeImages.Length; i++)
+            {
+                // Se é uma img de código e não uma completa
+                if(_codeImages[i].sprite.name != _completedImage.name)
+                {
+                    // deu match do código
+                    if(_codeImages[i].sprite.name == p_imageName)
+                    {
+                        _codeImages[i].sprite = _completedImage;
+                        CheckCompletion();
+                    }
+                    return;
+                }
+            }
+        }
+
+        private void CheckCompletion()
+        {
+            if(_codeImages[_codeImages.Length - 1].sprite.name == _completedImage.name)
+                onMinigameFinished?.Invoke(MinigameStateEnum.SUCCESSFULL);
         }
 
         public void StartCountDown()
