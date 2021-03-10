@@ -5,6 +5,40 @@ using UnityEngine;
 
 namespace CoreEvent.GameEvents
 {
+    public class GameEvent_GeneratorMinigameComplete : MonoBehaviour, IGameEvent
+    {
+        [SerializeField] private GameEventTypeEnum _gameEventType;
+        [SerializeField] private Collider _minigameCollider;
+        [SerializeField] private Collider _flashlightCollider;
+
+        public GameEventTypeEnum gameEventType
+        {
+            get
+            {
+                return _gameEventType;
+            }
+        }
+
+        private bool _hasRun;
+        public bool hasRun
+        {
+            get
+            {
+                return _hasRun;
+            }
+        }
+
+        public void RunPermanentEvents()
+        {
+            _minigameCollider.enabled = false;
+            _flashlightCollider.enabled = true;
+        }
+
+        public void RunSingleTimeEvents()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
     public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
     {
         [SerializeField] private GameEventTypeEnum _gameEventType;
