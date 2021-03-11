@@ -2,6 +2,7 @@ namespace CoreEvent.GameEvents
 {
     public enum GameEventTypeEnum
     {
-        DRESS_PLAYER
+        DRESS_PLAYER,
+        COMPLETE_MINIGAME
     }
 }
