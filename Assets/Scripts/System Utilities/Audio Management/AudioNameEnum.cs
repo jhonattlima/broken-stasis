@@ -14,6 +14,8 @@ namespace Utilities.Audio
         BASHER_SCREAM,
         PLAYER_HEARTBEAT,
         ITEM_PICKUP,
-        SUIT_PICKUP
+        SUIT_PICKUP,
+        FAILED_MINIGAME,
+        SUCCESS_MINIGAME
     }
 }

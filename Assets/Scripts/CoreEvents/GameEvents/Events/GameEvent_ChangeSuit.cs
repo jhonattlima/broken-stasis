@@ -10,6 +10,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameEventTypeEnum _gameEventType;
         [SerializeField] private GameObject _suitModel;
         [SerializeField] private DoorController _doorController;
+        [SerializeField] private GeneratorController _generatorController;
 
         private SuitChangeController _suitChangeController;
 
@@ -42,6 +43,7 @@ namespace CoreEvent.GameEvents
 
             GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
             _doorController.isLocked = false;
+            _generatorController.SetEnabled(true);
         }
 
         public void RunSingleTimeEvents()
