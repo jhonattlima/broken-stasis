@@ -73,7 +73,6 @@ namespace UI.Minigame
             {
                 if(_codeImages[i].sprite.name != _completedImage.name)
                 {
-                    Debug.Log("i " + i + " | ButtonImageName " + p_imageName + " | CodeImage " + _codeImages[i].sprite.name);
                     if(_codeImages[i].sprite.name == p_imageName)
                     {
                         _codeImages[i].sprite = _completedImage;

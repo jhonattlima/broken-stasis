@@ -1,10 +1,23 @@
 ﻿
+using CoreEvent.GameEvents;
 using GameManagers;
 
 namespace Objects.Interaction
 {
     public class GeneratorController : InteractionObjectWithColliders
     {
+        private bool _enabled;
+
+        private void Awake()
+        {
+            _enabled = false;
+        }
+
+        public void SetEnabled(bool p_enabled)
+        {
+            _enabled = p_enabled;
+        }
+
         private void Start()
         {
             GameHudManager.instance.minigameHud.onMinigameSuccess = HandleMinigameSuccess;
@@ -13,12 +26,13 @@ namespace Objects.Interaction
 
         public override void Interact()
         {
-            GameHudManager.instance.minigameHud.ShowMinigame();
+            if(_enabled)
+                GameHudManager.instance.minigameHud.ShowMinigame();
         }
 
         private void HandleMinigameSuccess()
         {
-            // chama game event success
+            GameEventManager.RunGameEvent(GameEventTypeEnum.COMPLETE_MINIGAME);
         }
 
         private void HandleMinigameFailed()

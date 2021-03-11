@@ -5,45 +5,12 @@ using UnityEngine;
 
 namespace CoreEvent.GameEvents
 {
-    public class GameEvent_GeneratorMinigameComplete : MonoBehaviour, IGameEvent
-    {
-        [SerializeField] private GameEventTypeEnum _gameEventType;
-        [SerializeField] private Collider _minigameCollider;
-        [SerializeField] private Collider _flashlightCollider;
-
-        public GameEventTypeEnum gameEventType
-        {
-            get
-            {
-                return _gameEventType;
-            }
-        }
-
-        private bool _hasRun;
-        public bool hasRun
-        {
-            get
-            {
-                return _hasRun;
-            }
-        }
-
-        public void RunPermanentEvents()
-        {
-            _minigameCollider.enabled = false;
-            _flashlightCollider.enabled = true;
-        }
-
-        public void RunSingleTimeEvents()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
     public class GameEvent_ChangeSuit : MonoBehaviour, IGameEvent
     {
         [SerializeField] private GameEventTypeEnum _gameEventType;
         [SerializeField] private GameObject _suitModel;
         [SerializeField] private DoorController _doorController;
+        [SerializeField] private GeneratorController _generatorController;
 
         private SuitChangeController _suitChangeController;
 
@@ -76,6 +43,7 @@ namespace CoreEvent.GameEvents
 
             GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
             _doorController.isLocked = false;
+            _generatorController.SetEnabled(true);
         }
 
         public void RunSingleTimeEvents()

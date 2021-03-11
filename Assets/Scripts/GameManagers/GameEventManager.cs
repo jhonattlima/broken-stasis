@@ -18,7 +18,6 @@ namespace GameManagers
             {
                 if(p_gameEvent == gameEvent.gameEventType)
                 {
-
                     if(p_runSingleTimeEvents)
                         gameEvent.RunSingleTimeEvents();
                     else
