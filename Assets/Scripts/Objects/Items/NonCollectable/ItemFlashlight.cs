@@ -1,5 +1,7 @@
+using GameManagers;
 using Objects.Interaction;
 using Player.Motion;
+using Utilities.UI;
 
 namespace Objects.Items
 {
@@ -21,11 +23,19 @@ namespace Objects.Items
 
         public override void Interact()
         {
-            if (!_collected && _enabled)
+            if (!_collected)
             {
-                PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
+                if(_enabled)
+                {
+                    PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
 
-                _collected = true;
+                    _collected = true;
+                }
+                else
+                {
+                    GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_02_FLASHLIGHT_UNAVAILABLE);
+                    GameHudManager.instance.uiDialogHud.Show();
+                }
             }
         }
     }
