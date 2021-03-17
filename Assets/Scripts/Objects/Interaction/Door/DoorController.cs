@@ -8,12 +8,15 @@ namespace Objects.Interaction
 {
     public class DoorController : MonoBehaviour, IInteractionObject
     {
-        public bool isLocked;
+        public bool isLocked { get; private set; }
         public bool isDoorOpen;
         public Action onDoorLocked;
 
         [SerializeField] private float _doorSpeed = 0.00001f;
         [SerializeField] private float _maxDelayToUseDoor = 2;
+        [SerializeField] private MeshRenderer _lockIndicatorMeshRenderer;
+        [SerializeField] private Material _lockedDoorMaterial;
+        [SerializeField] private Material _unlockedDoorMaterial;
 
         private Vector3 _targetPosition;
         private Vector3 _doorOpenPosition;
@@ -39,7 +42,6 @@ namespace Objects.Interaction
             _targetPosition = transform.localPosition;
             _startTime = Time.time;
         }
-
 
         public void RunUpdate() { }
 
@@ -86,6 +88,18 @@ namespace Objects.Interaction
             _targetPosition = _doorClosePosition;
             _journeyLength = Vector3.Distance(transform.localPosition, _doorClosePosition);
             _startTime = Time.time;
+        }
+
+        public void LockDoor()
+        {
+            this.isLocked = true;
+            this._lockIndicatorMeshRenderer.material = _lockedDoorMaterial;
+        }
+
+        public void UnlockDoor()
+        {
+            this.isLocked = false;
+            this._lockIndicatorMeshRenderer.material = _unlockedDoorMaterial;
         }
     }
 }

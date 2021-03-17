@@ -42,7 +42,7 @@ namespace CoreEvent.Chapters
                 GameHudManager.instance.uiDialogHud.Show();
             });
 
-            _doorController.isLocked = true;
+            _doorController.LockDoor();
             _doorController.onDoorLocked = delegate ()
             {
                 GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_01_LOCKED_DOOR);
