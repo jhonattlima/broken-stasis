@@ -1,4 +1,5 @@
 ﻿using UI.Dialog;
+using UI.Minigame;
 using UI.Notification;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace GameManagers
     {
         public NotificationUI notificationHud;
         public UIDialog uiDialogHud;
+        public MinigameUI minigameHud;
 
         public static GameHudManager instance;
 
