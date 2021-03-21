@@ -95,7 +95,12 @@ namespace GameManagers
                     if (__ingameDoor.transform.parent.name == __savedDoorState.parentName)
                     {
                         __ingameDoor.isDoorOpen = __savedDoorState.isDoorOpen;
-                        __ingameDoor.isLocked = __savedDoorState.isDoorLocked;
+
+                        if (__savedDoorState.isDoorLocked)
+                            __ingameDoor.LockDoor();
+                        else
+                            __ingameDoor.UnlockDoor();
+
                         __ingameDoor.SetDoorState();
                     }
                 }

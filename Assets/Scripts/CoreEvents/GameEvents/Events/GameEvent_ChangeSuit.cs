@@ -42,7 +42,7 @@ namespace CoreEvent.GameEvents
             _suitModel.SetActive(false);
 
             GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
-            _doorController.isLocked = false;
+            _doorController.UnlockDoor();
             _generatorController.SetEnabled(true);
         }
 
