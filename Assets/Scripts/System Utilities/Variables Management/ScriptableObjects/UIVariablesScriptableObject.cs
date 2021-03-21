@@ -9,5 +9,6 @@ namespace Utilities.VariableManagement
         public int defaultReadingWPM;
         public float defaultFadeInSpeed;
         public float defaultFadeOutSpeed;
+        public float generatorMinigameDuration;
     }
 }
