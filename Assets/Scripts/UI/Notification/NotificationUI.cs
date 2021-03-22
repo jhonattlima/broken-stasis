@@ -59,7 +59,10 @@ namespace UI.Notification
             _notificationEventHandler.OnShowAnimationEnd = delegate ()
             {
                 float __duration = p_duration;
-                if (p_duration == _defaultNotificationDuration)
+                
+                if(p_duration < _defaultNotificationDuration)
+                    __duration = _defaultNotificationDuration;
+                else if (p_duration == _defaultNotificationDuration)
                     __duration = CalculateAutoHideTime(p_text);
 
                 TFWToolKit.Timer(__duration, delegate ()
