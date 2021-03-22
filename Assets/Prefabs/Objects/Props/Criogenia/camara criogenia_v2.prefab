@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6740957934937549910}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0124137, y: 0.9985066, z: -1.4372697}
+  m_LocalPosition: {x: 0.46785387, y: 0, z: 0.2056694}
   m_LocalScale: {x: 0.55587834, y: 0.55587834, z: 0.55587834}
   m_Children: []
   m_Father: {fileID: 7545975547052546090}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5a376d13f59348f4a93218ffabeb1feb, type: 2}
-  - {fileID: 2100000, guid: 5a376d13f59348f4a93218ffabeb1feb, type: 2}
+  - {fileID: 6540357980167128935, guid: 8fb6f04ccb8f61346811c8085b1723da, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.8360145, y: 3.3717299, z: 0.9325919}
-  m_Center: {x: -0.8741044, y: -0.055262208, z: 0.37098384}
+  m_Center: {x: -0.8741044, y: -0.055262208, z: 0.37098575}
 --- !u!1 &7202206241897677456
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7202206241897677456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.11147, y: 4, z: -7.568568}
+  m_LocalPosition: {x: -15.532581, y: 4.967855, z: -22.95545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5435750116748147155}
@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7436159913997439704}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5237849, y: 1.7284685, z: -1.6377642}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7545975547052546090}
@@ -185,7 +185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e6c0552051870e4d9fc4b1c67944368, type: 2}
+  - {fileID: 6540357980167128935, guid: 8fb6f04ccb8f61346811c8085b1723da, type: 3}
   - {fileID: 2100000, guid: 7e6c0552051870e4d9fc4b1c67944368, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -218,5 +218,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1072366, y: 1.9283915, z: 0.4602748}
-  m_Center: {x: 0.017146617, y: -0.76159966, z: -0.020105585}
+  m_Size: {x: 1.1072367, y: 1.9283912, z: 0.46027482}
+  m_Center: {x: -0.0056767464, y: 0.0010174811, z: -0.025557138}
