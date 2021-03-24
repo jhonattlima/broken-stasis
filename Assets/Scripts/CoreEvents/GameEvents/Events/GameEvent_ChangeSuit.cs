@@ -1,6 +1,6 @@
 ﻿using GameManagers;
-using Objects.Interaction;
-using Player.Item;
+using Gameplay.Objects.Interaction;
+using Gameplay.Player.Item;
 using UnityEngine;
 
 namespace CoreEvent.GameEvents

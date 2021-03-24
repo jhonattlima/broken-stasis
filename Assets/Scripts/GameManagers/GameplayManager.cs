@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Camera;
-using Enemy;
-using Objects.Interaction;
-using Player;
-using Player.Item;
+using Gameplay.Camera;
+using Gameplay.Enemy;
+using Gameplay.Objects.Interaction;
+using Gameplay.Player;
+using Gameplay.Player.Item;
 using SaveSystem;
 using UnityEngine;
 

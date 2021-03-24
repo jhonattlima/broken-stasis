@@ -2,7 +2,7 @@
 using System.Linq;
 using CoreEvent.GameEvents;
 using GameManagers;
-using Objects.Interaction;
+using Gameplay.Objects.Interaction;
 using UI;
 using UnityEngine;
 using Utilities;

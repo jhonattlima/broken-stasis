@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreEvent.Chapters;
-using Player.Item;
+using Gameplay.Player.Item;
 using UnityEngine;
 
 namespace SaveSystem

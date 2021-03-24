@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Objects.Interaction;
+using Gameplay.Objects.Interaction;
 using Utilities;
 
 namespace GameManagers
