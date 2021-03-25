@@ -1,5 +1,5 @@
-using Objects.Interaction;
-using Objects.Items;
+using Gameplay.Objects.Interaction;
+using Gameplay.Objects.Items;
 using UnityEngine;
 
 namespace CoreEvent.GameEvents

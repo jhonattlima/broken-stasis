@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Enemy;
+using Gameplay.Enemy;
 using UnityEngine;
 
 namespace GameManagers
