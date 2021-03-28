@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5057728922861703849}
   - component: {fileID: 659001317466713141}
   m_Layer: 0
-  m_Name: sooquetes
+  m_Name: Block_with_four_holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6776931882659882613}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 30.19683, y: 4.165551, z: 0.10201979}
+  m_LocalPosition: {x: -56.088894, y: 2.21, z: 16.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6776931882659882613}
-  m_Mesh: {fileID: -3171155820666816927, guid: 80dbd24d12143f14dbe88233f1d94463, type: 3}
+  m_Mesh: {fileID: 7412332784613704087, guid: f9624aa5283deaa40b10ae1cb05517fc, type: 3}
 --- !u!23 &5057728922861703849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,4 +94,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.47252643, y: 0.510853, z: 0.21480319}
-  m_Center: {x: -0.000000067055225, y: -0.001582667, z: -0.05814931}
+  m_Center: {x: -0.000000059604645, y: -0.0015826521, z: 0.10917713}

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5454924800561187620}
   - component: {fileID: 3956640470484136210}
   - component: {fileID: 7337567621852679659}
+  - component: {fileID: 3164433493257896401}
   m_Layer: 0
-  m_Name: cilindro2
+  m_Name: Coil_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9072660794948057399}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.246895, y: 4.2078896, z: -6.853555}
+  m_LocalPosition: {x: -55.567986, y: -2.6968064, z: 31.381691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9072660794948057399}
-  m_Mesh: {fileID: 6223533449811835606, guid: bfcff5754769eb04ca38137c6878b928, type: 3}
+  m_Mesh: {fileID: -7678450827256030490, guid: 3f0a33c60e0c1ee47976d679c10a70ef, type: 3}
 --- !u!23 &7337567621852679659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -80,3 +81,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3164433493257896401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072660794948057399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41577876, y: 0.41577864, z: 0.7005035}
+  m_Center: {x: 0, y: 0.20788932, z: 0}
