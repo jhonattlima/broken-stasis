@@ -39,6 +39,7 @@ namespace GameManagers
 
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
             
+            // TODO: Evitar FindObjects (mesmo que chamado só uma vez)
             _lightPriorityManager = new LightPriorityManager(
                 GameObject.FindObjectsOfType<Light>().ToList<Light>(),
                 _playerContainer.playerLights.ToList<Light>()

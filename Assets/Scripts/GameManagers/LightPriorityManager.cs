@@ -26,7 +26,7 @@ namespace GameManagers
 
             _lightDistanceData.Sort((light1, light2) => light1.distanceFromCamera.CompareTo(light2.distanceFromCamera));
             
-            // SetLightsRenderMode();
+            SetLightsRenderMode();
         }
 
         private void SetLightsRenderMode()
