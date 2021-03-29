@@ -26,6 +26,8 @@ namespace GameManagers
         private CameraFollowPlayer _cameraFollowPlayer;
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
+        private LightPriorityManager _lightPriorityManager;
+        
         public static GameplayManager instance;
 
         private void Awake()
@@ -36,6 +38,11 @@ namespace GameManagers
             RegisterObjectsGraph(_playerContainer);
 
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
+            
+            _lightPriorityManager = new LightPriorityManager(
+                GameObject.FindObjectsOfType<Light>().ToList<Light>(),
+                _playerContainer.playerLights.ToList<Light>()
+            );
         }
 
         private void Start()
@@ -67,6 +74,7 @@ namespace GameManagers
             _player?.RunFixedUpdate();
             _cameraFollowPlayer?.RunFixedUpdate();
             _levelObjectManager?.RunFixedUpdate();
+            _lightPriorityManager?.RunFixedUpdate();
         }
 
         private void Update()
