@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1003068360575629766
+--- !u!1 &1314518847906112955
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6456079113206738827}
-  - component: {fileID: 7905789384257944225}
-  - component: {fileID: 1178863374028647211}
-  - component: {fileID: 2873247595262366407}
+  - component: {fileID: 2031534556121305929}
+  - component: {fileID: 1176312577425806628}
+  - component: {fileID: 7792755122881635006}
+  - component: {fileID: 5874804980001068395}
   m_Layer: 0
-  m_Name: maca 02
+  m_Name: Hospital_bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6456079113206738827
+--- !u!4 &2031534556121305929
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003068360575629766}
+  m_GameObject: {fileID: 1314518847906112955}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000038675287, y: -0.119926915, z: 1.2756504}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2922447217164565984}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7905789384257944225
+--- !u!33 &1176312577425806628
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003068360575629766}
-  m_Mesh: {fileID: 3988926846225588735, guid: 7093549fd83d3794d8af9616e7e99814, type: 3}
---- !u!23 &1178863374028647211
+  m_GameObject: {fileID: 1314518847906112955}
+  m_Mesh: {fileID: 2532423020381988037, guid: 7462a47bec51f0c438e3083d970d004a, type: 3}
+--- !u!23 &7792755122881635006
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003068360575629766}
+  m_GameObject: {fileID: 1314518847906112955}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,8 +59,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 216e2ff668a6660409798614241fd258, type: 2}
-  - {fileID: -2245771969655937576, guid: 7093549fd83d3794d8af9616e7e99814, type: 3}
+  - {fileID: 2100000, guid: d796ce8234064244c985e3b4ba929f97, type: 2}
+  - {fileID: 2100000, guid: d796ce8234064244c985e3b4ba929f97, type: 2}
+  - {fileID: 2100000, guid: d796ce8234064244c985e3b4ba929f97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,19 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2873247595262366407
+--- !u!65 &5874804980001068395
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003068360575629766}
+  m_GameObject: {fileID: 1314518847906112955}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1628228, y: 0.607534, z: 2.4850614}
-  m_Center: {x: -0.00001937151, y: 0.20852815, z: -1.0492564}
+  m_Size: {x: 1.0033013, y: 0.9819713, z: 2.612938}
+  m_Center: {x: 0, y: 0.49098566, z: 0}
 --- !u!1 &2221901457336750067
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2922447217164565984}
   m_Layer: 0
-  m_Name: maca
+  m_Name: Hospital_bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,15 +119,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2221901457336750067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.862486, y: 2.144878, z: -5.0730286}
+  m_LocalPosition: {x: -57.300407, y: -2.1953416, z: 33.232765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6370035937117517349}
-  - {fileID: 6456079113206738827}
+  - {fileID: 2031534556121305929}
+  - {fileID: 1243181701082329083}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8735743299637265561
+--- !u!1 &4582767445657742137
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,46 +135,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6370035937117517349}
-  - component: {fileID: 6005905315722348081}
-  - component: {fileID: 7814305768209535169}
-  - component: {fileID: 2671417380338897774}
+  - component: {fileID: 1243181701082329083}
+  - component: {fileID: 3181281710999991037}
+  - component: {fileID: 5630076936358995024}
+  - component: {fileID: 4622360875352344033}
   m_Layer: 0
-  m_Name: maca 01
+  m_Name: Hospital_bed cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6370035937117517349
+--- !u!4 &1243181701082329083
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735743299637265561}
+  m_GameObject: {fileID: 4582767445657742137}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00000038675287, y: 0.65229726, z: 1.2756504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2922447217164565984}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6005905315722348081
+--- !u!33 &3181281710999991037
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735743299637265561}
-  m_Mesh: {fileID: -2328353947432463577, guid: 7093549fd83d3794d8af9616e7e99814, type: 3}
---- !u!23 &7814305768209535169
+  m_GameObject: {fileID: 4582767445657742137}
+  m_Mesh: {fileID: 6546109152143079986, guid: 7462a47bec51f0c438e3083d970d004a, type: 3}
+--- !u!23 &5630076936358995024
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735743299637265561}
+  m_GameObject: {fileID: 4582767445657742137}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -185,9 +186,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d796ce8234064244c985e3b4ba929f97, type: 2}
-  - {fileID: 5968012357810984889, guid: 7093549fd83d3794d8af9616e7e99814, type: 3}
-  - {fileID: 3688438380950312245, guid: 7093549fd83d3794d8af9616e7e99814, type: 3}
+  - {fileID: 2100000, guid: 216e2ff668a6660409798614241fd258, type: 2}
+  - {fileID: 2100000, guid: 216e2ff668a6660409798614241fd258, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -208,16 +208,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2671417380338897774
+--- !u!65 &4622360875352344033
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735743299637265561}
+  m_GameObject: {fileID: 4582767445657742137}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0033013, y: 0.9819714, z: 2.6129377}
-  m_Center: {x: 0.0027721077, y: -0.2975512, z: 0.04354489}
+  m_Size: {x: 1.1628228, y: 0.607534, z: 2.4850614}
+  m_Center: {x: -0.00001937151, y: 0.20852815, z: -1.0492564}

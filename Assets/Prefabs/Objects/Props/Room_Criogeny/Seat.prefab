@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2479049962908342999}
   - component: {fileID: 2175475964238532698}
   m_Layer: 0
-  m_Name: banco
+  m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205109442838720011}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.41, y: 4.405687, z: 26.200157}
+  m_LocalPosition: {x: -56.664238, y: -5.1747475, z: 29.940004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205109442838720011}
-  m_Mesh: {fileID: 9221970516278625364, guid: c344f1bb26eaded40b7f91b8b5e7009f, type: 3}
+  m_Mesh: {fileID: -6827640314013697367, guid: a74408f99fbce8a4e8d97daaba0dcd7f, type: 3}
 --- !u!23 &2479049962908342999
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92,4 +92,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.49722922, y: 0.508146, z: 3.2245574}
-  m_Center: {x: 0, y: -0.15161383, z: -0.000000059604645}
+  m_Center: {x: 0, y: 0.254073, z: 0}

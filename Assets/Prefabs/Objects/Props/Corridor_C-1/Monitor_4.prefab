@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4704017391745460621}
   - component: {fileID: 1576185771882328819}
   m_Layer: 0
-  m_Name: monitor4
+  m_Name: Monitor_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6505725180173666392}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.31325, y: 4.306495, z: -1.034152}
+  m_LocalPosition: {x: -54.44318, y: -1.8749554, z: 18.584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6505725180173666392}
-  m_Mesh: {fileID: 3282448890498658168, guid: 0ed1940b25dd23b419eaeff89de6184f, type: 3}
+  m_Mesh: {fileID: 3282448890498658168, guid: 4896386ddb8197e45a9f9d7ffe6c8620, type: 3}
 --- !u!23 &4704017391745460621
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92,5 +92,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.92113006, y: 0.61290354, z: 0.07658449}
-  m_Center: {x: -0.000032112002, y: -0.00004348159, z: 0.0016626008}
+  m_Size: {x: 0.92113006, y: 0.6129035, z: 0.07658449}
+  m_Center: {x: 0, y: 0.30645174, z: 0}

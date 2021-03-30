@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7598741827849042519}
   - component: {fileID: 2662342235290915499}
   m_Layer: 0
-  m_Name: lixo
+  m_Name: Trash_bin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8247457741840817026}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.36394, y: -0.1589837, z: 8.726269}
+  m_LocalPosition: {x: -57.06468, y: -3.7800326, z: 23.20021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8247457741840817026}
-  m_Mesh: {fileID: 6302123787578957097, guid: b1e354a54496d92479d9fef9ac041b8e, type: 3}
+  m_Mesh: {fileID: 4863174980734236577, guid: ad5a9489777b91547966e6405731a468, type: 3}
 --- !u!23 &7598741827849042519
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -91,5 +91,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.39436477, y: 0.47247803, z: 0.39436477}
-  m_Center: {x: 0, y: -0.004794076, z: 0}
+  m_Size: {x: 0.39436477, y: 0.472478, z: 0.39436477}
+  m_Center: {x: 0, y: 0.236239, z: 0}

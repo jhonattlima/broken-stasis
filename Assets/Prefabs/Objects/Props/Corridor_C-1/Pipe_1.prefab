@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 150979781054676339}
   - component: {fileID: 6523964418383833525}
   m_Layer: 0
-  m_Name: encanameto
+  m_Name: Pipe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883829844313475503}
   m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 29.366463, y: 4.193471, z: -1.8467155}
+  m_LocalPosition: {x: -51.188313, y: -1.0550389, z: 17.434574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883829844313475503}
-  m_Mesh: {fileID: -4556131398028509258, guid: 44f386351b2a44b4591dc5459925d6b1, type: 3}
+  m_Mesh: {fileID: 538858327693894329, guid: 3465e09aee5a8c948bb09730688b5ac1, type: 3}
 --- !u!23 &150979781054676339
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,4 +94,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4481964, y: 3.2561874, z: 0.4966936}
-  m_Center: {x: 0.00000029057264, y: 0.0000010132788, z: -0.05487594}
+  m_Center: {x: 0.0000003054738, y: 0.0000011324881, z: -0.25136682}

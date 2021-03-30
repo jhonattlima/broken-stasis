@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4561687273191296771}
   - component: {fileID: 4937620573750142706}
   m_Layer: 0
-  m_Name: ventoinha
+  m_Name: Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2842484309098429407}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 31.06446, y: 4.1618223, z: 0.01737833}
+  m_LocalPosition: {x: -52.23221, y: 2.4, z: 17.80064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2842484309098429407}
-  m_Mesh: {fileID: -1417828610266927718, guid: 99a3d1be5baae6d419fa9f5ac229768d, type: 3}
+  m_Mesh: {fileID: -8748156175479226893, guid: 23d8a9d2b98a231439707a14d12feb30, type: 3}
 --- !u!23 &4561687273191296771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,4 +94,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4719116, y: 0.4719116, z: 0.22340283}
-  m_Center: {x: 0, y: -0.0029058827, z: -0.050120633}
+  m_Center: {x: 0, y: -0.0029059348, z: 0.115055814}
