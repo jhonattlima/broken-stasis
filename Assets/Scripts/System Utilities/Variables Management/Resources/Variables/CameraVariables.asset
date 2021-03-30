@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CameraVariables
   m_EditorClassIdentifier: 
   cameraDistanceFromPlayer: 0.4
+  renderedLightsInCamera: 8

@@ -23,6 +23,10 @@ namespace Gameplay.Player
         [Space(5)]
         public PlayerSuitData[] suits;
 
+        [Header("Lights")]
+        [Space(5)]
+        public Light[] playerLights;
+
         [Header("Sound Colliders")]
         [Space(5)]
         public Collider lowSoundCollider;

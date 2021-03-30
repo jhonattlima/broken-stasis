@@ -6,5 +6,6 @@ namespace Utilities.VariableManagement
     public class CameraVariablesScriptableObject : ScriptableObject
     {
         public float cameraDistanceFromPlayer;
+        public int renderedLightsInCamera;
     }   
 }
