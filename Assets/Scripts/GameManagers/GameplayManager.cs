@@ -39,11 +39,12 @@ namespace GameManagers
 
             _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
             
+            // NOTE: Not using lightpriorityManager for the moment
             // TODO: Evitar FindObjects (mesmo que chamado só uma vez)
-            _lightPriorityManager = new LightPriorityManager(
-                GameObject.FindObjectsOfType<Light>().ToList<Light>(),
-                _playerContainer.playerLights.ToList<Light>()
-            );
+            // _lightPriorityManager = new LightPriorityManager(
+            //     GameObject.FindObjectsOfType<Light>().ToList<Light>(),
+            //     _playerContainer.playerLights.ToList<Light>()
+            // );
         }
 
         private void Start()
@@ -75,7 +76,8 @@ namespace GameManagers
             _player?.RunFixedUpdate();
             _cameraFollowPlayer?.RunFixedUpdate();
             _levelObjectManager?.RunFixedUpdate();
-            _lightPriorityManager?.RunFixedUpdate();
+            // NOTE: Not using lightpriorityManager for the moment
+            // _lightPriorityManager?.RunFixedUpdate();
         }
 
         private void Update()
