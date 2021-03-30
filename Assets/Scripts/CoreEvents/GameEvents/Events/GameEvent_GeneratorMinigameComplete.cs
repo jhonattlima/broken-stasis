@@ -1,3 +1,4 @@
+using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
 using UnityEngine;
@@ -41,6 +42,7 @@ namespace CoreEvent.GameEvents
         public void RunSingleTimeEvents()
         {
             RunPermanentEvents();
+            GameHudManager.instance.notificationHud.ShowText("Lantern batteries now available in Dressing Room");
             _hasRun = true;
         }
     }
