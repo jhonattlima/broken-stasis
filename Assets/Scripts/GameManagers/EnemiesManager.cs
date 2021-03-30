@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Gameplay.Enemy;
 using UnityEngine;
+using Utilities;
 
 namespace GameManagers
 {
-    public class EnemiesManager : MonoBehaviour
+    public class EnemiesManager : MonoBehaviour, IUpdateBehaviour
     {
         private readonly List<IEnemy> _enemyList;
 
