@@ -17,8 +17,6 @@ namespace Gameplay.Player.Item
             get { return _lanternState; }
         }
 
-        
-
         public void Enable()
         {
             _lanternState.enabled = true;
