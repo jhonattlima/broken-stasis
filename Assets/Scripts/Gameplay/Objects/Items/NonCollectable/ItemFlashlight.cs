@@ -28,7 +28,7 @@ namespace Gameplay.Objects.Items
                 if(_enabled)
                 {
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
-
+                    GameplayManager.instance.onActivatePlayerIllumination(true);
                     _collected = true;
                 }
                 else

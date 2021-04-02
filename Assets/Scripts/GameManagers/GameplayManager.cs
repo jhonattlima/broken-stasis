@@ -15,6 +15,7 @@ namespace GameManagers
     {
         #region GAME_EVENTS
         public Action<PlayerSuitEnum> onPlayerSuitChange;
+        public Action<bool> onActivatePlayerIllumination;
         #endregion
 
         [SerializeField] private PlayerContainer _playerContainer;
@@ -69,6 +70,7 @@ namespace GameManagers
             _player?.InitializePlayer();
 
             onPlayerSuitChange = _player?.onSuitChange;
+            onActivatePlayerIllumination = _player?.onActivateIllumination;
         }
 
         private void FixedUpdate()
@@ -82,6 +84,7 @@ namespace GameManagers
 
         private void Update()
         {
+            _player?.RunUpdate();
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
         }

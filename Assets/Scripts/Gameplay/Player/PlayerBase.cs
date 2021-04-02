@@ -9,7 +9,7 @@ using Utilities;
 
 namespace Gameplay.Player
 {
-    public class PlayerBase : IFixedUpdateBehaviour
+    public class PlayerBase : IFixedUpdateBehaviour, IUpdateBehaviour
     {
         #region PUBLIC FIELDS
         public Action<int> onPlayerDamaged;
@@ -17,6 +17,7 @@ namespace Gameplay.Player
         //TODO 23/07/2020 -> Implement player health gain
         public Action<int> onPlayerHealthIncrease;
         public Action<PlayerSuitEnum> onSuitChange;
+        public Action<bool> onActivateIllumination;
         #endregion
 
         #region PRIVATE FIELDS
@@ -24,6 +25,7 @@ namespace Gameplay.Player
         private PlayerHealth _playerHealth;
         private PlayerMovement _playerMovement;
         private PlayerSoundColliderActivator _playerSoundColliderActivator;
+        private PlayerItemController _playerItemController;
         #endregion
 
         public PlayerBase(PlayerContainer p_playerContainer)
@@ -41,6 +43,7 @@ namespace Gameplay.Player
             onPlayerDamaged += _playerHealth.ReceiveDamage;
             onPlayerHealthIncrease += _playerHealth.IncreaseHealth;
             onSuitChange = HandleSuitChange;
+            onActivateIllumination = _playerItemController.onActivatePlayerIllumination;
         }
 
         private void RegisterObjectsGraph()
@@ -56,6 +59,12 @@ namespace Gameplay.Player
                 _playerContainer.loudSoundCollider
             );
 
+            _playerItemController = new PlayerItemController(
+                new PlayerIlluminationController(
+                    _playerContainer.playerIlluminationGameObject
+                )
+            );
+
             RegisterPlayerAnimator();
 
             _playerHealth = new PlayerHealth();
@@ -67,6 +76,11 @@ namespace Gameplay.Player
             {
                 PlayerAnimator __playerAnimator = new PlayerAnimator(__playerSuit.suitAnimator, __playerSuit.suitAnimationEventHandler);
             }
+        }
+        
+        public void RunUpdate()
+        {
+            _playerItemController.RunUpdate();
         }
 
         public void RunFixedUpdate()

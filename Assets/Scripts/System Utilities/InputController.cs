@@ -34,6 +34,14 @@ namespace Utilities
                     return false;
             }
 
+            public static bool ToggleIllumination()
+            {
+                if (InputEnabled)
+                    return Input.GetButtonDown("Toggle Illumination");
+                else
+                    return false;
+            }
+
             public static Vector3 MousePosition()
             {
                 if (InputEnabled)
