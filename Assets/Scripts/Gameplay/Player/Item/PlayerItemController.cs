@@ -27,5 +27,15 @@ namespace Gameplay.Player.Item
         {
             _playerIllumination.SetActive(p_active);
         }
+
+        public IlluminationState GetIlluminationState()
+        {
+            return _playerIllumination.lanternState;
+        }
+
+        public void SetIlluminationState(IlluminationState p_illuminationState)
+        {
+            _playerIllumination.lanternState = p_illuminationState;
+        }
     }
 }

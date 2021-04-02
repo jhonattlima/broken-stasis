@@ -29,6 +29,7 @@ namespace Gameplay.Objects.Items
                 {
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
                     GameplayManager.instance.onActivatePlayerIllumination(true);
+                    ChapterManager.instance.GoToNextChapter();
                     _collected = true;
                 }
                 else

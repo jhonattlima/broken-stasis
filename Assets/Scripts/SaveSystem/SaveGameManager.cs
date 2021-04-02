@@ -45,6 +45,8 @@ namespace SaveSystem
         {
             gameSaveData = new GameSaveData();
 
+            EditorUtility.DisplayDialog("Save Game Cleared", "Deleted Save Game at " + Application.dataPath + FILE_PATH + FILE_NAME, "OK");
+
             if (File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
                 File.Delete(Application.dataPath + FILE_PATH + FILE_NAME);
         }

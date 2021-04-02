@@ -88,6 +88,7 @@ namespace Gameplay.Player
             _playerMovement.RunFixedUpdate();
         }
 
+        // TODO: Transferir para PlayerItemController
         private void HandleSuitChange(PlayerSuitEnum p_playerSuit)
         {
             foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
@@ -96,6 +97,7 @@ namespace Gameplay.Player
             }
         }
 
+        // TODO: Transferir para PlayerItemController
         private PlayerSuitEnum GetActiveSuit()
         {
             foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
@@ -116,6 +118,7 @@ namespace Gameplay.Player
             __gameSaveData.playerSuit = GetActiveSuit();
             __gameSaveData.playerPosition = _playerContainer.playerTransform.position;
             __gameSaveData.playerHealth = _playerHealth.GetPlayerHealth();
+            __gameSaveData.playerIlluminationState = _playerItemController.GetIlluminationState();
 
             return __gameSaveData;
         }
@@ -125,6 +128,7 @@ namespace Gameplay.Player
             _playerContainer.playerTransform.position = p_gameSaveData.playerPosition;
             HandleSuitChange(p_gameSaveData.playerSuit);
             _playerHealth.SetPlayerHealth(p_gameSaveData.playerHealth);
+            _playerItemController.SetIlluminationState(p_gameSaveData.playerIlluminationState);
         }
     }
 }

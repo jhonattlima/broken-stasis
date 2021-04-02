@@ -27,6 +27,7 @@ namespace SaveSystem
         public int playerHealth = 3;
         public Vector3 playerPosition = Vector3.zero;
         public PlayerSuitEnum playerSuit = PlayerSuitEnum.NAKED;
+        public IlluminationState playerIlluminationState = new IlluminationState();
 
         public List<GameSaveDoorState> doorsList = new List<GameSaveDoorState>();
 
