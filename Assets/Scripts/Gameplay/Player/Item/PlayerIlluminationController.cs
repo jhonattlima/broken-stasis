@@ -1,19 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gameplay.Player.Item
 {
-    [Serializable]
-    public struct IlluminationState
-    {
-        public bool enabled;
-        public bool toggledOn;
-    }
 
     public class PlayerIlluminationController
     {
         private readonly GameObject _illuminationObject;
-        private IlluminationState _illuminationState;
+        private PlayerIlluminationState _illuminationState;
 
         public PlayerIlluminationController(GameObject p_illumination)
         {
@@ -21,7 +14,7 @@ namespace Gameplay.Player.Item
             _illuminationObject.SetActive(false);
         }
 
-        public IlluminationState lanternState
+        public PlayerIlluminationState lanternState
         {
             get 
             { 
