@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Gameplay.Player.Item
 {
+    [Serializable]
     public struct IlluminationState
     {
         public bool enabled;
