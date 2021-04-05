@@ -26,6 +26,7 @@ namespace Gameplay.Player
         [Header("Lights")]
         [Space(5)]
         public Light[] playerLights;
+        public GameObject playerIlluminationGameObject;
 
         [Header("Sound Colliders")]
         [Space(5)]

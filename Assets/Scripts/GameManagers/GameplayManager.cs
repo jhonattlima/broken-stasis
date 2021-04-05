@@ -15,6 +15,7 @@ namespace GameManagers
     {
         #region GAME_EVENTS
         public Action<PlayerSuitEnum> onPlayerSuitChange;
+        public Action<bool> onActivatePlayerIllumination;
         #endregion
 
         [SerializeField] private PlayerContainer _playerContainer;
@@ -69,6 +70,7 @@ namespace GameManagers
             _player?.InitializePlayer();
 
             onPlayerSuitChange = _player?.onSuitChange;
+            onActivatePlayerIllumination = _player?.onActivateIllumination;
         }
 
         private void FixedUpdate()
@@ -82,6 +84,7 @@ namespace GameManagers
 
         private void Update()
         {
+            _player?.RunUpdate();
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
         }
@@ -99,7 +102,7 @@ namespace GameManagers
                 return;
 
             List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            foreach (GameSaveDoorState __savedDoorState in SaveGameManager.gameSaveData.doorsList)
+            foreach (DoorSaveData __savedDoorState in SaveGameManager.gameSaveData.doorsList)
             {
                 foreach (DoorController __ingameDoor in __doors)
                 {
@@ -126,9 +129,15 @@ namespace GameManagers
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
 
             var __ingameDoorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            __gameSaveData.doorsList = new List<GameSaveDoorState>();
+            __gameSaveData.doorsList = new List<DoorSaveData>();
             foreach (DoorController door in __ingameDoorsList)
-                __gameSaveData.doorsList.Add(new GameSaveDoorState(door.transform.parent.name, door.isDoorOpen, door.isLocked));
+            {
+                DoorSaveData doorState= new DoorSaveData();
+                doorState.parentName = door.transform.parent.name;
+                doorState.isDoorOpen = door.isDoorOpen;
+                doorState.isDoorLocked = door.isLocked;
+                __gameSaveData.doorsList.Add(doorState);
+            }
 
             return __gameSaveData;
         }
