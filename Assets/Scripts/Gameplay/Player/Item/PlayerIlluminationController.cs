@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SaveSystem.Player;
+using UnityEngine;
 
 namespace Gameplay.Player.Item
 {
@@ -6,7 +7,7 @@ namespace Gameplay.Player.Item
     public class PlayerIlluminationController
     {
         private readonly GameObject _illuminationObject;
-        private PlayerIlluminationState _illuminationState;
+        private PlayerIlluminationSaveData _illuminationState;
 
         public PlayerIlluminationController(GameObject p_illumination)
         {
@@ -14,7 +15,7 @@ namespace Gameplay.Player.Item
             _illuminationObject.SetActive(false);
         }
 
-        public PlayerIlluminationState lanternState
+        public PlayerIlluminationSaveData lanternState
         {
             get 
             { 

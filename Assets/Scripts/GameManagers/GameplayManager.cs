@@ -102,7 +102,7 @@ namespace GameManagers
                 return;
 
             List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            foreach (DoorState __savedDoorState in SaveGameManager.gameSaveData.doorsList)
+            foreach (DoorSaveData __savedDoorState in SaveGameManager.gameSaveData.doorsList)
             {
                 foreach (DoorController __ingameDoor in __doors)
                 {
@@ -129,10 +129,10 @@ namespace GameManagers
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
 
             var __ingameDoorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            __gameSaveData.doorsList = new List<DoorState>();
+            __gameSaveData.doorsList = new List<DoorSaveData>();
             foreach (DoorController door in __ingameDoorsList)
             {
-                DoorState doorState= new DoorState();
+                DoorSaveData doorState= new DoorSaveData();
                 doorState.parentName = door.transform.parent.name;
                 doorState.isDoorOpen = door.isDoorOpen;
                 doorState.isDoorLocked = door.isLocked;

@@ -21,7 +21,6 @@ namespace SaveSystem
                 Directory.CreateDirectory(Application.dataPath + FILE_PATH);
 
             File.WriteAllBytes(Application.dataPath + FILE_PATH + FILE_NAME, __bytes);
-            GameHudManager.instance.notificationHud.ShowText("Saved Game");
         }
 
         public static bool LoadGame()
@@ -38,7 +37,6 @@ namespace SaveSystem
             string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
 
             gameSaveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
-            GameHudManager.instance.notificationHud.ShowText("Loaded Game");
 
             return true;
         }

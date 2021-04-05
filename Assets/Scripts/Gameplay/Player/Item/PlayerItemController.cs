@@ -1,4 +1,5 @@
 using System;
+using SaveSystem.Player;
 using Utilities;
 
 namespace Gameplay.Player.Item
@@ -28,12 +29,12 @@ namespace Gameplay.Player.Item
             _playerIllumination.SetActive(p_active);
         }
 
-        public PlayerIlluminationState GetIlluminationState()
+        public PlayerIlluminationSaveData GetIlluminationState()
         {
             return _playerIllumination.lanternState;
         }
 
-        public void SetIlluminationState(PlayerIlluminationState p_illuminationState)
+        public void SetIlluminationState(PlayerIlluminationSaveData p_illuminationState)
         {
             _playerIllumination.lanternState = p_illuminationState;
         }

@@ -1,9 +1,9 @@
 using System;
 
-namespace Gameplay.Player.Item
+namespace SaveSystem.Player
 {
     [Serializable]
-    public struct PlayerIlluminationState
+    public struct PlayerIlluminationSaveData
     {
         public bool enabled;
         public bool toggledOn;

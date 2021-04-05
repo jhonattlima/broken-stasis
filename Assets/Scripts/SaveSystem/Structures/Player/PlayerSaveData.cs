@@ -2,14 +2,14 @@ using System;
 using Gameplay.Player.Item;
 using UnityEngine;
 
-namespace SaveSystem
+namespace SaveSystem.Player
 {
     [Serializable]
-    public struct Playerstate
+    public struct PlayerSaveData
     {
         public int health;
         public Vector3 position;
         public PlayerSuitEnum suit;
-        public PlayerIlluminationState playerIlluminationState;
+        public PlayerIlluminationSaveData playerIlluminationState;
     }
 }

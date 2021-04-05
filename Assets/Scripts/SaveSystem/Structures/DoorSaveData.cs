@@ -3,7 +3,7 @@ using System;
 namespace SaveSystem
 {
     [Serializable]
-    public struct DoorState
+    public struct DoorSaveData
     {
         public String parentName;
         public bool isDoorOpen;

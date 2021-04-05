@@ -42,7 +42,7 @@ namespace CoreEvent.GameEvents
             _suitModel.SetActive(false);
 
             GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
-            GameplayManager.instance.onActivatePlayerIllumination(true);
+            GameplayManager.instance.onActivatePlayerIllumination(false);
 
             _doorController.UnlockDoor();
             _generatorController.SetEnabled(true);

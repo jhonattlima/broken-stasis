@@ -115,20 +115,20 @@ namespace Gameplay.Player
         {
             GameSaveData __gameSaveData = new GameSaveData();
 
-            __gameSaveData.playerstate.suit = GetActiveSuit();
-            __gameSaveData.playerstate.position = _playerContainer.playerTransform.position;
-            __gameSaveData.playerstate.health = _playerHealth.GetPlayerHealth();
-            __gameSaveData.playerstate.playerIlluminationState = _playerItemController.GetIlluminationState();
+            __gameSaveData.playerData.suit = GetActiveSuit();
+            __gameSaveData.playerData.position = _playerContainer.playerTransform.position;
+            __gameSaveData.playerData.health = _playerHealth.GetPlayerHealth();
+            __gameSaveData.playerData.playerIlluminationState = _playerItemController.GetIlluminationState();
 
             return __gameSaveData;
         }
 
         public void SetPlayerSaveData(GameSaveData p_gameSaveData)
         {
-            _playerContainer.playerTransform.position = p_gameSaveData.playerstate.position;
-            HandleSuitChange(p_gameSaveData.playerstate.suit);
-            _playerHealth.SetPlayerHealth(p_gameSaveData.playerstate.health);
-            _playerItemController.SetIlluminationState(p_gameSaveData.playerstate.playerIlluminationState);
+            _playerContainer.playerTransform.position = p_gameSaveData.playerData.position;
+            HandleSuitChange(p_gameSaveData.playerData.suit);
+            _playerHealth.SetPlayerHealth(p_gameSaveData.playerData.health);
+            _playerItemController.SetIlluminationState(p_gameSaveData.playerData.playerIlluminationState);
         }
     }
 }
