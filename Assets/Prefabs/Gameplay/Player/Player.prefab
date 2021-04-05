@@ -1133,6 +1133,7 @@ MonoBehaviour:
   playerLights:
   - {fileID: 804970684112841824}
   - {fileID: 804970685634146835}
+  playerIlluminationGameObject: {fileID: 804970684139505723}
   lowSoundCollider: {fileID: 1416594866711445535}
   mediumSoundCollider: {fileID: 8375649685116218462}
   loudSoundCollider: {fileID: 2297871008824157344}
