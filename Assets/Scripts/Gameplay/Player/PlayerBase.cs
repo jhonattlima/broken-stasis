@@ -9,7 +9,7 @@ using Utilities;
 
 namespace Gameplay.Player
 {
-    public class PlayerBase : IFixedUpdateBehaviour
+    public class PlayerBase : IFixedUpdateBehaviour, IUpdateBehaviour
     {
         #region PUBLIC FIELDS
         public Action<int> onPlayerDamaged;
@@ -17,6 +17,7 @@ namespace Gameplay.Player
         //TODO 23/07/2020 -> Implement player health gain
         public Action<int> onPlayerHealthIncrease;
         public Action<PlayerSuitEnum> onSuitChange;
+        public Action<bool> onActivateIllumination;
         #endregion
 
         #region PRIVATE FIELDS
@@ -24,6 +25,7 @@ namespace Gameplay.Player
         private PlayerHealth _playerHealth;
         private PlayerMovement _playerMovement;
         private PlayerSoundColliderActivator _playerSoundColliderActivator;
+        private PlayerItemController _playerItemController;
         #endregion
 
         public PlayerBase(PlayerContainer p_playerContainer)
@@ -41,6 +43,7 @@ namespace Gameplay.Player
             onPlayerDamaged += _playerHealth.ReceiveDamage;
             onPlayerHealthIncrease += _playerHealth.IncreaseHealth;
             onSuitChange = HandleSuitChange;
+            onActivateIllumination = _playerItemController.onActivatePlayerIllumination;
         }
 
         private void RegisterObjectsGraph()
@@ -56,6 +59,12 @@ namespace Gameplay.Player
                 _playerContainer.loudSoundCollider
             );
 
+            _playerItemController = new PlayerItemController(
+                new PlayerIlluminationController(
+                    _playerContainer.playerIlluminationGameObject
+                )
+            );
+
             RegisterPlayerAnimator();
 
             _playerHealth = new PlayerHealth();
@@ -68,12 +77,18 @@ namespace Gameplay.Player
                 PlayerAnimator __playerAnimator = new PlayerAnimator(__playerSuit.suitAnimator, __playerSuit.suitAnimationEventHandler);
             }
         }
+        
+        public void RunUpdate()
+        {
+            _playerItemController.RunUpdate();
+        }
 
         public void RunFixedUpdate()
         {
             _playerMovement.RunFixedUpdate();
         }
 
+        // TODO: Transferir para PlayerItemController
         private void HandleSuitChange(PlayerSuitEnum p_playerSuit)
         {
             foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
@@ -82,6 +97,7 @@ namespace Gameplay.Player
             }
         }
 
+        // TODO: Transferir para PlayerItemController
         private PlayerSuitEnum GetActiveSuit()
         {
             foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
@@ -99,18 +115,20 @@ namespace Gameplay.Player
         {
             GameSaveData __gameSaveData = new GameSaveData();
 
-            __gameSaveData.playerSuit = GetActiveSuit();
-            __gameSaveData.playerPosition = _playerContainer.playerTransform.position;
-            __gameSaveData.playerHealth = _playerHealth.GetPlayerHealth();
+            __gameSaveData.playerData.suit = GetActiveSuit();
+            __gameSaveData.playerData.position = _playerContainer.playerTransform.position;
+            __gameSaveData.playerData.health = _playerHealth.GetPlayerHealth();
+            __gameSaveData.playerData.playerIlluminationState = _playerItemController.GetIlluminationState();
 
             return __gameSaveData;
         }
 
         public void SetPlayerSaveData(GameSaveData p_gameSaveData)
         {
-            _playerContainer.playerTransform.position = p_gameSaveData.playerPosition;
-            HandleSuitChange(p_gameSaveData.playerSuit);
-            _playerHealth.SetPlayerHealth(p_gameSaveData.playerHealth);
+            _playerContainer.playerTransform.position = p_gameSaveData.playerData.position;
+            HandleSuitChange(p_gameSaveData.playerData.suit);
+            _playerHealth.SetPlayerHealth(p_gameSaveData.playerData.health);
+            _playerItemController.SetIlluminationState(p_gameSaveData.playerData.playerIlluminationState);
         }
     }
 }

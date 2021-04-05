@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: "Bom dia cuz\xE3o"
+    text: "Bom dia vacil\xE3o"
   - speaker: 0
     text: Se liga que agora o bicho vai pegar
   - speaker: 0
