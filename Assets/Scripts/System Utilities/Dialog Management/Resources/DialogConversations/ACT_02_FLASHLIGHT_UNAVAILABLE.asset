@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: STORAGE LOCKED - Manual generator reboot required.
+    text: 'BATTERY STORAGE LOCKED - Recharge energy: 0%.'

@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: "Bom dia vacil\xE3o"
+    text: 'Oxygen level: .......................97.3%.'
   - speaker: 0
-    text: Se liga que agora o bicho vai pegar
+    text: 'Gavitational field: .......................stable.'
   - speaker: 0
-    text: ...
+    text: 'Propulsion speed: .......................stable.'
   - speaker: 0
-    text: vc
+    text: "Energy level: .......................5%. \nOperating on auxiliar energy
+      generator."
+  - speaker: 0
+    text: Urgency manual repair by human reanimation protocol activated.
+  - speaker: 0
+    text: 'Welcome back to life, Dr. Atom.
+
+      Please engaje to manual repair
+      protocol.'
