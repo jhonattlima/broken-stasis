@@ -1316,6 +1316,7 @@ GameObject:
   - component: {fileID: 6037902389124700224}
   - component: {fileID: 7234236406293174245}
   - component: {fileID: 4864411958178046767}
+  - component: {fileID: 943108021}
   m_Layer: 0
   m_Name: Room_stasis
   m_TagString: Untagged
@@ -1386,6 +1387,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &943108021
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377414380496274170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4375977229356325272, guid: 33e22ca412e964a4c8d15a5207f8080c, type: 3}
 --- !u!1001 &6360742345864544787
 PrefabInstance:
   m_ObjectHideFlags: 0

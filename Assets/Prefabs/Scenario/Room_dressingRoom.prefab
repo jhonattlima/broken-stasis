@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 8667516554994017477}
   - component: {fileID: 5757553018433399648}
   - component: {fileID: 7494579937662443434}
+  - component: {fileID: 740233741}
   m_Layer: 0
   m_Name: Room_dressingRoom
   m_TagString: Untagged
@@ -1142,6 +1143,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &740233741
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8287437841949802111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6047501299115656078, guid: eaea90547c6d36a41b8de17e943f2008, type: 3}
 --- !u!1001 &12990039
 PrefabInstance:
   m_ObjectHideFlags: 0
