@@ -20,7 +20,7 @@ namespace Gameplay.Player.Item
                     GameHudManager.instance.notificationHud.ShowText("Collected Suit");
                     GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
 
-                    AudioManager.instance.Play(AudioNameEnum.SUIT_PICKUP, false, delegate ()
+                    AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false, delegate ()
                     {
                         LoadingView.instance.FadeOut(delegate ()
                             {
