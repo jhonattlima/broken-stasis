@@ -1,5 +1,6 @@
 using GameManagers;
 using Gameplay.Objects.Interaction;
+using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using Utilities.UI;
 
@@ -28,7 +29,7 @@ namespace Gameplay.Objects.Items
                 if(_enabled)
                 {
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
-                    GameplayManager.instance.onActivatePlayerIllumination(true);
+                    GameplayManager.instance.onPlayerCollectedItem(ItemEnum.FLASHLIGHT_BATTERY);
                     ChapterManager.instance.GoToNextChapter();
                     _collected = true;
                 }
