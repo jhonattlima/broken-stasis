@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
-  m_Name: ITEM_LANTERN_TURN_ON
+  m_Name: ITEM_LANTERN_PICKUP_DENIED
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 0}
+  audioFile: {fileID: 8300000, guid: bae33a362ff07034c9ae4111fbaafc97, type: 3}
   audioMixerGroup: {fileID: 0}
   volume: 1

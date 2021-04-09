@@ -32,21 +32,18 @@ namespace CoreEvent.Chapters
         }
 
         public void ChapterStart()
-        {
-            GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
-            
+        {   
             LoadingView.instance.FadeOut(delegate ()
             {
                 InputController.UI.InputEnabled = true;
 
-                GameHudManager.instance.uiDialogHud.Show();
+                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
             });
 
             _doorController.LockDoor();
             _doorController.onDoorLocked = delegate ()
             {
-                GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_01_LOCKED_DOOR);
-                GameHudManager.instance.uiDialogHud.Show();
+                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_LOCKED_DOOR);
             };
         }
 

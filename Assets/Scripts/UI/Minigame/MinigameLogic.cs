@@ -67,7 +67,7 @@ namespace UI.Minigame
             }
         }
 
-        private void ResetButtons()
+        private void resetButtons()
         {
             foreach(Button __button in _buttons)
             {
@@ -77,7 +77,6 @@ namespace UI.Minigame
 
         private void HandleOnButtonClick(string p_imageName)
         {
-            AudioManager.instance.Play(AudioNameEnum.GENERATOR_MINIGAME_SELECT);
             for(int i=0; i<_codeImages.Length; i++)
             {
                 if(_codeImages[i].sprite.name != _completedImage.name)
@@ -89,7 +88,6 @@ namespace UI.Minigame
                     }
                     else
                         CallFailedFinish();
-
                     return;
                 }
             }
@@ -100,11 +98,13 @@ namespace UI.Minigame
             if(_codeImages[_codeImages.Length - 1].sprite.name == _completedImage.name)
             {
                 TFWToolKit.CancelTimer(_countdownTimer);
-                ResetButtons();
+                resetButtons();
                 
                 AudioManager.instance.Play(AudioNameEnum.GENERATOR_MINIGAME_SUCCESS);
 
                 onMinigameFinished?.Invoke(MinigameStateEnum.SUCCESSFULL);
+            } else {
+                AudioManager.instance.Play(AudioNameEnum.GENERATOR_MINIGAME_SELECT);
             }
         }
 
@@ -113,7 +113,7 @@ namespace UI.Minigame
             AudioManager.instance.Play(AudioNameEnum.GENERATOR_MINIGAME_FAILED);
 
             TFWToolKit.CancelTimer(_countdownTimer);
-            ResetButtons();
+            resetButtons();
 
             onMinigameFinished?.Invoke(MinigameStateEnum.FAILED);
         }

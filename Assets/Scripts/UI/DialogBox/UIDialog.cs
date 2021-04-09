@@ -29,8 +29,14 @@ namespace UI.Dialog
         private Queue<DialogTextUnit> _conversationQueue = new Queue<DialogTextUnit>();
         private string _currentDialogText = "";
         private bool _visible = false;
+
+        public void StartDialog(DialogEnum p_dialogName)
+        {
+            InitializeDialog(p_dialogName);
+            Show();
+        }
         
-        public void InitializeDialog(DialogEnum p_dialogName)
+        private void InitializeDialog(DialogEnum p_dialogName)
         {
             _conversationQueue.Clear();
 
@@ -55,7 +61,7 @@ namespace UI.Dialog
             }
         }
 
-        public void Show()
+        private void Show()
         {
             if(!_visible)
             {

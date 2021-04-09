@@ -43,8 +43,7 @@ namespace CoreEvent.GameEvents
         public void RunSingleTimeEvents()
         {
             RunPermanentEvents();
-            GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_02_MINIGAME_COMPLETE);
-            GameHudManager.instance.uiDialogHud.Show();
+            GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_02_MINIGAME_COMPLETE);
             _hasRun = true;
         }
     }

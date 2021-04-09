@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: GENERATOR_MINIGAME_FAILED
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: 4099a451a7a28584cb6fd3f090afa1b2, type: 3}
+  audioFile: {fileID: 8300000, guid: 3ae6aa095193f3a468656f57062e5831, type: 3}
   audioMixerGroup: {fileID: 0}
   volume: 1

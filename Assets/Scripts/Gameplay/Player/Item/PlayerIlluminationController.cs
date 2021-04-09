@@ -1,5 +1,7 @@
-﻿using SaveSystem.Player;
+﻿using GameManagers;
+using SaveSystem.Player;
 using UnityEngine;
+using Utilities.Audio;
 
 namespace Gameplay.Player.Item
 {
@@ -40,6 +42,7 @@ namespace Gameplay.Player.Item
             if(_illuminationState.enabled)
             {
                 _illuminationState.toggledOn = !_illuminationState.toggledOn;
+                AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_CLICK);
                 _illuminationObject.SetActive(_illuminationState.toggledOn);
             }
         }

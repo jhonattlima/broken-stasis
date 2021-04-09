@@ -1,6 +1,8 @@
+using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Player.Motion;
+using Utilities.Audio;
 using Utilities.UI;
 
 namespace Gameplay.Objects.Items
@@ -25,17 +27,21 @@ namespace Gameplay.Objects.Items
         {
             if (!_collected)
             {
-                if(_enabled)
+                if (_enabled)
                 {
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
-                    GameplayManager.instance.onActivatePlayerIllumination(true);
-                    ChapterManager.instance.GoToNextChapter();
-                    _collected = true;
+                    AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP, false, delegate ()
+                    {
+                        GameHudManager.instance.notificationHud.ShowText("Collected flashlight batteries (Toogle: press [F]", 5);
+                        _collected = true;
+                        GameplayManager.instance.onActivatePlayerIllumination(true);
+                        GameEventManager.RunGameEvent(GameEventTypeEnum.GENERATOR_EXPLOSION);
+                    });
                 }
                 else
                 {
-                    GameHudManager.instance.uiDialogHud.InitializeDialog(DialogEnum.ACT_02_FLASHLIGHT_UNAVAILABLE);
-                    GameHudManager.instance.uiDialogHud.Show();
+                    AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP_DENIED);
+                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_02_FLASHLIGHT_UNAVAILABLE);
                 }
             }
         }
