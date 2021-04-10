@@ -32,7 +32,7 @@ namespace Gameplay.Objects.Interaction
 
         private void HandleMinigameSuccess()
         {
-            GameEventManager.RunGameEvent(GameEventTypeEnum.COMPLETE_MINIGAME);
+            GameEventManager.RunGameEvent(GameEventTypeEnum.GENERATOR_COMPLETE_MINIGAME);
         }
 
         private void HandleMinigameFailed()

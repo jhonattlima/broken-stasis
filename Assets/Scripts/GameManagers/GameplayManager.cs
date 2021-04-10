@@ -54,13 +54,15 @@ namespace GameManagers
         {
             // TODO: Transferir lógica de load e inicialização para classe superior
             LoadSaveGame();
+            
+            if(_inventoryController == null)
+                RegisterInventoryController(new List<ItemEnum>());
+            
             ChapterManager.instance?.InitializeChapters();
         }
 
         private void RegisterObjectsGraph(PlayerContainer p_playercontainer)
         {
-            _inventoryController = new InventoryController(new List<ItemEnum>());
-            
             RegisterPlayerGraph(p_playercontainer);
 
             if (_levelGameObjects != null) _levelObjectManager = new LevelObjectManager(_levelGameObjects.GetComponentsInChildren<IInteractionObject>().ToList());
@@ -75,7 +77,6 @@ namespace GameManagers
             _player?.InitializePlayer();
 
             onPlayerSuitChange = _player?.onSuitChange;
-            onPlayerCollectedItem = _inventoryController?.onPlayerCollectedItem;
         }
 
         private void FixedUpdate()
@@ -91,6 +92,13 @@ namespace GameManagers
         {
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
+            _player?.RunUpdate();
+        }
+
+        private void RegisterInventoryController(List<ItemEnum> p_list)
+        {
+            _inventoryController = new InventoryController(p_list);
+            onPlayerCollectedItem = _inventoryController?.onPlayerCollectedItem;
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
@@ -100,6 +108,9 @@ namespace GameManagers
                 return;
 
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
+
+            RegisterInventoryController(SaveGameManager.gameSaveData.inventoryList);
+            
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
 
             if (SaveGameManager.gameSaveData.doorsList == null)
@@ -131,6 +142,8 @@ namespace GameManagers
             GameSaveData __gameSaveData = _player.GetPlayerSaveData();
 
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
+
+            __gameSaveData.inventoryList = _inventoryController.inventoryList;
 
             var __ingameDoorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
             __gameSaveData.doorsList = new List<DoorSaveData>();

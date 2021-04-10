@@ -1,10 +1,10 @@
-﻿using Utilities.UI;
+﻿using System;
+using Utilities.UI;
 
 namespace UI
 {
     public interface IUIDialogText
     {
-        void InitializeDialog(DialogEnum p_dialogName);
-        void Show();
+        void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null);
     }
 }

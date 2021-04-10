@@ -116,6 +116,8 @@ namespace Gameplay.Player
         {
             GameSaveData __gameSaveData = new GameSaveData();
 
+            _playerIlluminationController.SetActive(GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.FLASHLIGHT_BATTERY));
+
             __gameSaveData.playerData.suit = GetActiveSuit();
             __gameSaveData.playerData.position = _playerContainer.playerTransform.position;
             __gameSaveData.playerData.health = _playerHealth.GetPlayerHealth();

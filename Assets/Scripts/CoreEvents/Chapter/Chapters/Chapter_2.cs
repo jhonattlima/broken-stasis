@@ -30,7 +30,6 @@ namespace CoreEvent.Chapters
             }
         }
 
-
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 2");
@@ -44,7 +43,6 @@ namespace CoreEvent.Chapters
                 SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
                 SaveGameManager.SaveGame();
             }
-
 
             InputController.GamePlay.InputEnabled = true;
         }
