@@ -32,7 +32,7 @@ namespace Gameplay.Objects.Items
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
                     AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP, false, delegate ()
                     {
-                        GameHudManager.instance.notificationHud.ShowText("Collected flashlight batteries (Toogle: press [F]", 5);
+                        GameHudManager.instance.notificationHud.ShowText("Collected flashlight batteries");
                         _collected = true;
                         GameplayManager.instance.onActivatePlayerIllumination(true);
                         GameEventManager.RunGameEvent(GameEventTypeEnum.GENERATOR_EXPLOSION);

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GENERATOR_MINIGAME_SUCCESS
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: 378255e25fa7ea348bb355d31e5c5db7, type: 3}
-  audioMixerGroup: {fileID: 0}
+  audioMixerGroup: {fileID: 4424642910374946641, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1

@@ -54,7 +54,10 @@ namespace CoreEvent.GameEvents
             TurnOffAllLights();
             AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
             {
-                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING);
+                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
+                {
+                    GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
+                });
                 RunPermanentEvents();
 
                 // Start Chapter 3
