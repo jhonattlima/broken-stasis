@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
@@ -29,8 +30,17 @@ namespace UI.Dialog
         private Queue<DialogTextUnit> _conversationQueue = new Queue<DialogTextUnit>();
         private string _currentDialogText = "";
         private bool _visible = false;
+        private Action _dialogEndCallback;
+
+        public void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null)
+        {
+            _dialogEndCallback = p_onDialogEnd;
+
+            InitializeDialog(p_dialogName);
+            Show();
+        }
         
-        public void InitializeDialog(DialogEnum p_dialogName)
+        private void InitializeDialog(DialogEnum p_dialogName)
         {
             _conversationQueue.Clear();
 
@@ -55,7 +65,7 @@ namespace UI.Dialog
             }
         }
 
-        public void Show()
+        private void Show()
         {
             if(!_visible)
             {
@@ -115,6 +125,9 @@ namespace UI.Dialog
         private void EndDialog()
         {
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
+
+            // TODO: Set callback to be called on animation end (like AnimationEventHandlers)
+            _dialogEndCallback?.Invoke();
         }
 
         public void RunUpdate()

@@ -30,7 +30,6 @@ namespace CoreEvent.Chapters
             }
         }
 
-
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 3");
@@ -45,9 +44,11 @@ namespace CoreEvent.Chapters
 
                 SaveGameManager.SaveGame();
             }
-
-
             InputController.GamePlay.InputEnabled = true;
+
+            // TODO
+            // Activate keycard item
+            // Activate surprise basher
         }
 
         public void ChapterEnd()

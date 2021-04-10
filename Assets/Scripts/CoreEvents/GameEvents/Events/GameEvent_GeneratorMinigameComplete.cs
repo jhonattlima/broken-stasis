@@ -2,6 +2,7 @@ using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
 using UnityEngine;
+using Utilities.UI;
 
 namespace CoreEvent.GameEvents
 {
@@ -42,7 +43,7 @@ namespace CoreEvent.GameEvents
         public void RunSingleTimeEvents()
         {
             RunPermanentEvents();
-            GameHudManager.instance.notificationHud.ShowText("Lantern batteries now available in Dressing Room");
+            GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_02_MINIGAME_COMPLETE);
             _hasRun = true;
         }
     }

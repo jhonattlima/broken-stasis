@@ -4,6 +4,8 @@ namespace Utilities.UI
     {
         ACT_01_WAKE_UP_MESSAGE,
         ACT_01_LOCKED_DOOR,
-        ACT_02_FLASHLIGHT_UNAVAILABLE
+        ACT_02_FLASHLIGHT_UNAVAILABLE,
+        ACT_02_MINIGAME_COMPLETE,
+        ACT_03_NO_POWER_WARNING
     }
 }
