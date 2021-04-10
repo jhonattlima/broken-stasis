@@ -1,6 +1,7 @@
 using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Interaction;
+using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using Utilities.Audio;
 using Utilities.UI;
@@ -34,7 +35,7 @@ namespace Gameplay.Objects.Items
                     {
                         GameHudManager.instance.notificationHud.ShowText("Collected flashlight batteries");
                         _collected = true;
-                        GameplayManager.instance.onActivatePlayerIllumination(true);
+                        GameplayManager.instance.onPlayerCollectedItem(ItemEnum.FLASHLIGHT_BATTERY);
                         GameEventManager.RunGameEvent(GameEventTypeEnum.GENERATOR_EXPLOSION);
                     });
                 }

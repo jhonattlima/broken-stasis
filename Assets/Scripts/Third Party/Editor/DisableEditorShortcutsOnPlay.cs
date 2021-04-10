@@ -8,7 +8,7 @@ public class DisableEditorShortcutsOnPlay
 
     static DisableEditorShortcutsOnPlay ()
     {
-        EditorApplication.playModeStateChanged += DetectPlayModeState;
+        // EditorApplication.playModeStateChanged += DetectPlayModeState;
     }
 
     private static void DetectPlayModeState (PlayModeStateChange state)

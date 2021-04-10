@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreEvent.GameEvents;
 using GameManagers;
+using Gameplay.Objects.Interaction;
 using SaveSystem;
 using UnityEngine;
 using Utilities;
@@ -13,6 +14,7 @@ namespace CoreEvent.Chapters
         [SerializeField] private ChapterTypeEnum _chapterType;
         [SerializeField] private Vector3 _startPosition;
         [SerializeField] private CharacterController _playerCharacterController;
+        [SerializeField] private ItemKeyCard _itemKeyCard;
 
         public ChapterTypeEnum chapterType
         {
@@ -46,8 +48,8 @@ namespace CoreEvent.Chapters
             }
             InputController.GamePlay.InputEnabled = true;
 
+            _itemKeyCard.SetEnabled(true);
             // TODO
-            // Activate keycard item
             // Activate surprise basher
         }
 
