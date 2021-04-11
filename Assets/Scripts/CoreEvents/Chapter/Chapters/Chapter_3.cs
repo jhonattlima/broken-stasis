@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreEvent.GameEvents;
 using GameManagers;
-using Gameplay.Objects.Interaction;
+using Gameplay.Objects.Items;
 using SaveSystem;
 using UnityEngine;
 using Utilities;

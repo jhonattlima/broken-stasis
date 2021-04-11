@@ -43,7 +43,7 @@ namespace CoreEvent.GameEvents
 
             GameplayManager.instance.onPlayerSuitChange(PlayerSuitEnum.SUIT1);
 
-            _doorController.UnlockDoor();
+            _doorController.UnlockDoorLock();
             _generatorController.SetEnabled(true);
         }
 

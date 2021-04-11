@@ -16,7 +16,7 @@ namespace UI.Dialog
         [SerializeField] private Animator _hudAnimator;
         [SerializeField] private TextMeshProUGUI _speakerText;
         [SerializeField] private TextMeshProUGUI _dialogText;
-        [SerializeField] private DialogBoxUIAnimationEventHandler _dialogEventHandler;
+        [SerializeField] private UIAnimationEventHandler _dialogEventHandler;
 
         private const string SHOW_DIALOG_HUD_ANIMATION = "Show";
         private const string HIDE_DIALOG_HUD_ANIMATION = "Hide";
