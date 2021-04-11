@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d11bbb27f5c2f2343a227b7476ef793a
+guid: 05a5bd877f467534d931e216bd7472a4
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: armario aereo.02
-    second: {fileID: 2100000, guid: 844a577232050ba4aaa2dd13530f6907, type: 2}
+      name: CHAO_C1
+    second: {fileID: 2100000, guid: af2c076863bae764e867a871efcaadad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: caixa 01
-    second: {fileID: 2100000, guid: 844a577232050ba4aaa2dd13530f6907, type: 2}
+      name: PAREDE 01
+    second: {fileID: 2100000, guid: fd66b35e802eec146b7f90f91005933e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
