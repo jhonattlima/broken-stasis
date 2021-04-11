@@ -1,10 +1,11 @@
 ﻿
 using GameManagers;
+using Gameplay.Objects.Interaction;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using UnityEngine;
 
-namespace Gameplay.Objects.Interaction
+namespace Gameplay.Objects.Items
 {
     public class ItemKeyCard : InteractionObjectWithColliders
     {

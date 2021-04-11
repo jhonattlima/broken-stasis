@@ -1,4 +1,5 @@
 ﻿using UI.Dialog;
+using UI.EndGamePuzzle;
 using UI.Minigame;
 using UI.Notification;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace GameManagers
         public NotificationUI notificationHud;
         public UIDialog uiDialogHud;
         public MinigameUI minigameHud;
-
+        public EndGameUI endGameUI;
+        
         public static GameHudManager instance;
 
         private void Awake()
