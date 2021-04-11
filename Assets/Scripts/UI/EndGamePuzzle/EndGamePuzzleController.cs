@@ -21,19 +21,29 @@ namespace UI.EndGamePuzzle
             get { return _loadingProgress; }
         }
 
-        private void Awake()
+        private IEnumerator _loadCoRoutine;
+
+        public EndGamePuzzleController()
         {
-            _loadingProgress = new PuzzleLoadingProgress();
+            _loadingProgress = new PuzzleLoadingProgress()
+            {
+                currentBar = 1,
+                currentBarProgress = 0f
+            };
+
+            _loadCoRoutine = LoadingCoRoutine();
         }
 
         public void StartLoading()
         {
-            SceneManager.instance.StartCoroutine(LoadingCoRoutine());
+            SceneManager.instance.StartCoroutine(_loadCoRoutine);
+            
+            GameHudManager.instance.endGameUI.ShowUI();
         }
 
         public void StopLoading()
         {
-            SceneManager.instance.StopCoroutine(LoadingCoRoutine());
+            StopLoadingBar();
 
             GameHudManager.instance.endGameUI.ResetBar(_loadingProgress.currentBar - 1);
         }
@@ -45,7 +55,7 @@ namespace UI.EndGamePuzzle
             
             _loadingProgress.currentBarProgress = 0f;
 
-            while(_loadingProgress.currentBarProgress < LOAD_PERCENTAGE_SPLIT)
+            while(_loadingProgress.currentBarProgress < 1f)
             {
                 _loadingProgress.currentBarProgress += __percentagePerIteration;
 
@@ -54,7 +64,6 @@ namespace UI.EndGamePuzzle
                 yield return new WaitForSeconds(__secondsPerIteration);
             }
 
-            _loadingProgress.currentBar++;
             LoadingBarCompleted();
 
             yield return null;
@@ -62,12 +71,24 @@ namespace UI.EndGamePuzzle
 
         private void LoadingBarCompleted()
         {
+            StopLoadingBar();
+           
             onBarCompleted?.Invoke(_loadingProgress.currentBar);
 
-            if(_loadingProgress.currentBar < TOTAL_BARS_COUNT)
-                SceneManager.instance.StartCoroutine(LoadingCoRoutine());
+            _loadingProgress.currentBar++;
+
+            if (_loadingProgress.currentBar <= TOTAL_BARS_COUNT)
+                SceneManager.instance.StartCoroutine(_loadCoRoutine);
             else
                 onAllBarsCompleted?.Invoke();
+
+        }
+
+        private void StopLoadingBar()
+        {
+            SceneManager.instance.StopCoroutine(_loadCoRoutine);
+
+            _loadCoRoutine = LoadingCoRoutine();
         }
     }
 }

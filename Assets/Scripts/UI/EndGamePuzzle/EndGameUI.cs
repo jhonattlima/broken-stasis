@@ -16,7 +16,7 @@ namespace UI.EndGamePuzzle
         private const string HIDE_ENDGAME_HUD_ANIMATION = "Hide";
 
         // TODO: Extract this consts to variables
-        private const float RESET_DURATION = 0.25f;
+        private const float RESET_DURATION = 1f;
         private const float RESET_PERCENTAGE_SPLIT = 100f;
 
         private void Awake()
@@ -26,6 +26,16 @@ namespace UI.EndGamePuzzle
 
             foreach(Image __loadingBar in _loadingBars)
                 __loadingBar.fillAmount = 0f;
+        }
+        
+        public void ShowUI()
+        {
+            _hudAnimator.Play(SHOW_ENDGAME_HUD_ANIMATION);
+        }
+
+        public void HideUI()
+        {
+            _hudAnimator.Play(HIDE_ENDGAME_HUD_ANIMATION);
         }
 
         public void UpdateBar(int p_barIndex, float p_fillAmmount)
@@ -43,7 +53,6 @@ namespace UI.EndGamePuzzle
             float __secondsPerIteration = RESET_DURATION / RESET_PERCENTAGE_SPLIT;
             float __percentagePerIteration = 1 / RESET_PERCENTAGE_SPLIT;
             
-
             while(_loadingBars[p_barIndex].fillAmount > 0)
             {
                 _loadingBars[p_barIndex].fillAmount -= __percentagePerIteration;
@@ -51,7 +60,7 @@ namespace UI.EndGamePuzzle
                 yield return new WaitForSeconds(__secondsPerIteration);
             }
 
-            _hudAnimator.Play(HIDE_ENDGAME_HUD_ANIMATION);
+            HideUI();
 
             yield return null;
         }

@@ -16,6 +16,7 @@ namespace Gameplay.Player.Animation
         private const string PRESS_BUTTON = "PressButton";
         private const string PICK_ITEM = "PickItem";
         private const string PICK_ITEM_ON_GROUND = "PickItemOnGround";
+        private const string INTERACT_WITH_ENDLEVEL_DOOR = "EndLevelDoorInteraction";
 
         private const string CROUCHING = "Crouching";
 
@@ -68,9 +69,11 @@ namespace Gameplay.Player.Animation
                     break;
                 case PlayerState.DEAD:
                     _animator.SetTrigger(DEAD);
+                    _animator.SetBool(INTERACT_WITH_ENDLEVEL_DOOR, false);
                     break;
                 case PlayerState.HIT:
                     _animator.SetTrigger(HIT);
+                    _animator.SetBool(INTERACT_WITH_ENDLEVEL_DOOR, false);
                     break;
                 case PlayerState.PRESS_BUTTON:
                     _animator.SetTrigger(PRESS_BUTTON);
@@ -80,6 +83,12 @@ namespace Gameplay.Player.Animation
                     break;
                 case PlayerState.PICK_ITEM_ON_GROUND:
                     _animator.SetTrigger(PICK_ITEM_ON_GROUND);
+                    break;
+                case PlayerState.INTERACT_WITH_ENDLEVEL_DOOR:
+                    _animator.SetBool(INTERACT_WITH_ENDLEVEL_DOOR, true);
+                    break;
+                case PlayerState.EXITED_ENDLEVEL_DOOR_AREA:
+                    _animator.SetBool(INTERACT_WITH_ENDLEVEL_DOOR, false);
                     break;
             }
         }

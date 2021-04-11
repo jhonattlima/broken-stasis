@@ -128,7 +128,7 @@ namespace GameManagers
                         if (__savedDoorState.isDoorLocked)
                             __ingameDoor.LockDoor();
                         else
-                            __ingameDoor.UnlockDoor();
+                            __ingameDoor.UnlockDoorLock();
 
                         __ingameDoor.SetDoorState();
                     }
