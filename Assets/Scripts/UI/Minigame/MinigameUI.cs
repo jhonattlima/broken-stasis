@@ -13,7 +13,7 @@ namespace UI.Minigame
         [SerializeField] private Button[] _buttons;
         [SerializeField] private TextMeshProUGUI _countdownText;
         [SerializeField] private Sprite _collectedImage;
-        [SerializeField] private MinigameUIAnimationEventHandler _minigameEventHandler;
+        [SerializeField] private UIAnimationEventHandler _minigameEventHandler;
 
         private MinigameLogic _minigameLogic;
         private MinigameStateEnum _minigameEndState = MinigameStateEnum.NONE;
