@@ -15,7 +15,7 @@ namespace GameManagers
     {
         #region GAME_EVENTS
         public Action<PlayerSuitEnum> onPlayerSuitChange;
-        public Action<bool> onActivatePlayerIllumination;
+        public Action<ItemEnum> onPlayerCollectedItem;
         #endregion
 
         [SerializeField] private PlayerContainer _playerContainer;
@@ -24,6 +24,8 @@ namespace GameManagers
         [SerializeField] private GameObject _enemiesGameObjects;
 
         private PlayerBase _player;
+        private InventoryController _inventoryController;
+        public InventoryController inventoryController { get { return _inventoryController; } }
         private CameraFollowPlayer _cameraFollowPlayer;
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
@@ -52,12 +54,17 @@ namespace GameManagers
         {
             // TODO: Transferir lógica de load e inicialização para classe superior
             LoadSaveGame();
+            
+            if(_inventoryController == null)
+                RegisterInventoryController(new List<ItemEnum>());
+            
             ChapterManager.instance?.InitializeChapters();
         }
 
         private void RegisterObjectsGraph(PlayerContainer p_playercontainer)
         {
             RegisterPlayerGraph(p_playercontainer);
+
             if (_levelGameObjects != null) _levelObjectManager = new LevelObjectManager(_levelGameObjects.GetComponentsInChildren<IInteractionObject>().ToList());
             if (_enemiesGameObjects != null) _enemiesManager = new EnemiesManager(_enemiesGameObjects.GetComponentsInChildren<IEnemy>().ToList());
         }
@@ -70,7 +77,6 @@ namespace GameManagers
             _player?.InitializePlayer();
 
             onPlayerSuitChange = _player?.onSuitChange;
-            onActivatePlayerIllumination = _player?.onActivateIllumination;
         }
 
         private void FixedUpdate()
@@ -84,9 +90,15 @@ namespace GameManagers
 
         private void Update()
         {
-            _player?.RunUpdate();
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
+            _player?.RunUpdate();
+        }
+
+        private void RegisterInventoryController(List<ItemEnum> p_list)
+        {
+            _inventoryController = new InventoryController(p_list);
+            onPlayerCollectedItem = _inventoryController?.onPlayerCollectedItem;
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
@@ -96,6 +108,9 @@ namespace GameManagers
                 return;
 
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
+
+            RegisterInventoryController(SaveGameManager.gameSaveData.inventoryList);
+            
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
 
             if (SaveGameManager.gameSaveData.doorsList == null)
@@ -113,7 +128,7 @@ namespace GameManagers
                         if (__savedDoorState.isDoorLocked)
                             __ingameDoor.LockDoor();
                         else
-                            __ingameDoor.UnlockDoor();
+                            __ingameDoor.UnlockDoorLock();
 
                         __ingameDoor.SetDoorState();
                     }
@@ -128,11 +143,13 @@ namespace GameManagers
 
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
 
+            __gameSaveData.inventoryList = _inventoryController.inventoryList;
+
             var __ingameDoorsList = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
             __gameSaveData.doorsList = new List<DoorSaveData>();
             foreach (DoorController door in __ingameDoorsList)
             {
-                DoorSaveData doorState= new DoorSaveData();
+                DoorSaveData doorState = new DoorSaveData();
                 doorState.parentName = door.transform.parent.name;
                 doorState.isDoorOpen = door.isDoorOpen;
                 doorState.isDoorLocked = door.isLocked;

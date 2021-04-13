@@ -14,7 +14,9 @@ namespace Gameplay.Player.Motion
         HIT,
         PRESS_BUTTON,
         PICK_ITEM_ON_GROUND,
-        PICK_ITEM
+        PICK_ITEM,
+        INTERACT_WITH_ENDLEVEL_DOOR,
+        EXITED_ENDLEVEL_DOOR_AREA
     }
 
     public static class PlayerStatesManager

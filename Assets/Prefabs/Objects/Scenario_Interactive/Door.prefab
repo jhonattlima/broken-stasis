@@ -296,6 +296,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 4983834024742075335, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: _lockIndicatorsMeshRenderer.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983834024742075335, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: _lockIndicatorsMeshRenderer.Array.data[0]
+      value: 
+      objectReference: {fileID: 4193833393472025607}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31d8c629e2d28c489a38da6272a43d1, type: 3}
 --- !u!1 &7819623363231152504 stripped
@@ -307,6 +317,12 @@ GameObject:
 --- !u!4 &3875259262862844663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2047289978446553163, guid: d31d8c629e2d28c489a38da6272a43d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3003549825313358524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4193833393472025607 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1413494659844372155, guid: d31d8c629e2d28c489a38da6272a43d1,
     type: 3}
   m_PrefabInstance: {fileID: 3003549825313358524}
   m_PrefabAsset: {fileID: 0}

@@ -10,7 +10,7 @@ namespace UI.Notification
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private TextMeshProUGUI _notificationText;
-        [SerializeField] private NotificationUIAnimationEventHandler _notificationEventHandler;
+        [SerializeField] private UIAnimationEventHandler _notificationEventHandler;
 
         private const string SHOW_NOTIFICATION_ANIMATION = "Show";
         private const string HIDE_NOTIFICATION_ANIMATION = "Hide";

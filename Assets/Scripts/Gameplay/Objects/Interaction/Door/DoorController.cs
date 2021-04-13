@@ -14,7 +14,7 @@ namespace Gameplay.Objects.Interaction
 
         [SerializeField] private float _doorSpeed = 0.00001f;
         [SerializeField] private float _maxDelayToUseDoor = 2;
-        [SerializeField] private MeshRenderer _lockIndicatorMeshRenderer;
+        [SerializeField] private MeshRenderer[] _lockIndicatorsMeshRenderer;
         [SerializeField] private Material _lockedDoorMaterial;
         [SerializeField] private Material _unlockedDoorMaterial;
 
@@ -24,6 +24,8 @@ namespace Gameplay.Objects.Interaction
         private float _journeyLength;
         private float _startTime;
         private BoxCollider _doorCollider;
+        private int _totalLocks;
+        private int _currentLockIndex;
 
         private void Awake()
         {
@@ -32,6 +34,9 @@ namespace Gameplay.Objects.Interaction
             _doorClosePosition = transform.localPosition;
             _doorOpenPosition = new Vector3(_doorClosePosition.x, _doorClosePosition.y, _doorClosePosition.z + _doorCollider.size.z);
             SetDoorState();
+
+            _totalLocks = _lockIndicatorsMeshRenderer.Length;
+            _currentLockIndex = 0;
         }
 
         public void SetDoorState()
@@ -92,14 +97,23 @@ namespace Gameplay.Objects.Interaction
 
         public void LockDoor()
         {
-            this.isLocked = true;
-            this._lockIndicatorMeshRenderer.material = _lockedDoorMaterial;
+            isLocked = true;
+            _currentLockIndex = 0;
+
+            for(int i = 0; i < _totalLocks; i++)
+            {
+                _lockIndicatorsMeshRenderer[i].material = _lockedDoorMaterial;
+            }
         }
 
-        public void UnlockDoor()
+        public void UnlockDoorLock()
         {
-            this.isLocked = false;
-            this._lockIndicatorMeshRenderer.material = _unlockedDoorMaterial;
+            _lockIndicatorsMeshRenderer[_currentLockIndex].material = _unlockedDoorMaterial;
+
+            if(_currentLockIndex < _totalLocks - 1)
+                _currentLockIndex++;
+            else
+                isLocked = false;
         }
     }
 }
