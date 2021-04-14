@@ -1,15 +1,49 @@
-﻿using GameManagers;
+﻿using System.Collections;
+using GameManagers;
+using Gameplay.Objects.Interaction;
 using UnityEngine;
 using Utilities;
 using Utilities.VariableManagement;
 
 namespace Gameplay.Player.Motion
 {
+    public class PlayerTunnelBehaviour : MonoBehaviour
+    {
+        private readonly CharacterController _charController;
+        public bool playerCrouching { get; private set; }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag(GameInternalTags.TUNNEL) && playerCrouching)
+            {
+                // StartCoroutine(MoveInTunnel(other));
+            }
+                
+        }
+
+        public void SetCrouching (bool p_crouching)
+        {
+            playerCrouching = p_crouching;
+        }
+
+        // TODO
+        // private IEnumerator MoveInTunnel(Collider p_other)
+        // {
+            // Pega o gameobject do collider e detecta o outro collider do tunel
+            // Mantem animação de crouching
+            // Move charactercontroller para o outro tunel
+            // Locka inputs
+        // }
+    }
+
+
+
     public class PlayerMovement : IFixedUpdateBehaviour
     {
         #region PRIVATE READONLY FIELDS
         private readonly CharacterController _charController;
         private readonly Transform _playerTransform;
+        private readonly PlayerTunnelBehaviour _playerTunnelBehaviour;
         #endregion PRIVATE READONLY FIELDS
 
         #region PRIVATE FIELDS
