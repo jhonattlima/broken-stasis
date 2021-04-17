@@ -3,7 +3,17 @@ guid: 644a5f62353536542bea6ce7e05d1202
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CHAO_C1
+    second: {fileID: 2100000, guid: af2c076863bae764e867a871efcaadad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAREDE 01
+    second: {fileID: 2100000, guid: fd66b35e802eec146b7f90f91005933e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
