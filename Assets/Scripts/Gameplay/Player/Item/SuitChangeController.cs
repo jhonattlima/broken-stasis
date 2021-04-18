@@ -1,6 +1,7 @@
 ﻿using System;
 using GameManagers;
 using UI;
+using UnityEngine;
 using Utilities;
 using Utilities.Audio;
 using Utilities.VariableManagement;
@@ -11,7 +12,7 @@ namespace Gameplay.Player.Item
     {
         public void ChangeSuit(PlayerSuitEnum p_playerSuitEnum, Action p_onFaded)
         {
-            InputController.GamePlay.InputEnabled = false;
+            GameStateManager.SetGameState(GameState.CUTSCENE);
 
             LoadingView.instance.FadeIn(delegate ()
                 {
@@ -24,7 +25,8 @@ namespace Gameplay.Player.Item
                     {
                         LoadingView.instance.FadeOut(delegate ()
                             {
-                                InputController.GamePlay.InputEnabled = true;
+                                Debug.Log("Played fadeOut");
+                                GameStateManager.SetGameState(GameState.RUNNING);
                             }
                             , VariablesManager.uiVariables.defaultFadeOutSpeed
                         );
