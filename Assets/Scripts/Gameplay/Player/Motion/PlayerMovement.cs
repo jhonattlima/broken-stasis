@@ -1,42 +1,90 @@
 ﻿using System.Collections;
+using System.Linq;
 using GameManagers;
-using Gameplay.Objects.Interaction;
 using UnityEngine;
 using Utilities;
 using Utilities.VariableManagement;
 
 namespace Gameplay.Player.Motion
 {
-    public class PlayerTunnelBehaviour : MonoBehaviour
+    public class PlayerTunnelBehaviour
     {
-        private readonly CharacterController _charController;
-        public bool playerCrouching { get; private set; }
+        private CharacterController _charController;
+        private Transform _playerTransform;
+        private Collider _interactorCollider;
+        private bool _playerIsCrouching;
+        private bool _isCrossingTunnels = false;
+        float __crouchingSpeed = VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.slowSpeedMultiplier;
 
-        private void OnTriggerStay(Collider other)
+        public PlayerTunnelBehaviour(CharacterController p_characterControler,
+                                     Transform p_playerTransform,
+                                     bool p_playerIsCrouching)
         {
-            if (other.gameObject.CompareTag(GameInternalTags.TUNNEL) && playerCrouching)
+            this._charController = p_characterControler;
+            this._playerTransform = p_playerTransform;
+            this._playerIsCrouching = p_playerIsCrouching;
+
+            // TODO -> assign HandleTriggers to a collision detector somehow
+            
+            // Debug.Log("Instantiated");
+        }
+
+        private void HandleOnTriggerEnter(Collider other)
+        {
+            // Debug.Log("entered");
+            if (!other.CompareTag(GameInternalTags.TUNNEL) || !_playerIsCrouching || _isCrossingTunnels) return;
+
+            // TODO -> for some reason we're using SceneManager to start coroutines, we need to refactor this
+            SceneManager.instance.StartCoroutine(CrouchToPosition(GetSiblingGameObject(other.gameObject).transform.position));
+        }
+
+        private void HandleOnTriggerExit(Collider other)
+        {
+            // Debug.Log("exit");
+            if (!other.CompareTag(GameInternalTags.TUNNEL)) return;
+            _isCrossingTunnels = false;
+        }
+
+        private GameObject GetSiblingGameObject(GameObject p_SourceGameObject)
+        {
+            return p_SourceGameObject.transform.parent.gameObject
+            .GetComponentsInChildren<BoxCollider>()
+            .ToList()
+            .Where(obj => !obj.gameObject.GetInstanceID().Equals(p_SourceGameObject.GetInstanceID()))
+            .First()
+            .gameObject;
+        }
+
+        private IEnumerator CrouchToPosition(Vector3 p_targetPosition)
+        {
+            // Lock inputs
+            GameStateManager.SetGameState(GameState.CUTSCENE);
+            // Look to destiny
+            LooktoPosition(p_targetPosition);
+            _isCrossingTunnels = true;
+
+            // Crouch animation
+            PlayerStatesManager.SetPlayerState(PlayerState.WALKING_FORWARD);
+            _playerIsCrouching = true;
+
+            // Move charactercontroller to the other point
+            while(_playerTransform.position != p_targetPosition)
             {
-                // StartCoroutine(MoveInTunnel(other));
+                _charController.SimpleMove(p_targetPosition.normalized * __crouchingSpeed * Time.deltaTime);
+                yield return null;
             }
-                
+
+            GameStateManager.SetGameState(GameState.RUNNING);
         }
 
-        public void SetCrouching (bool p_crouching)
+        private void LooktoPosition(Vector2 p_targetPosition)
         {
-            playerCrouching = p_crouching;
+            Vector2 __positionOnScreen = UnityEngine.Camera.main.WorldToViewportPoint(_playerTransform.position);
+            float __angle = Mathf.Atan2(__positionOnScreen.y - p_targetPosition.y, __positionOnScreen.x - p_targetPosition.x) * Mathf.Rad2Deg;
+
+            _playerTransform.rotation = Quaternion.Euler(new Vector3(0f, -__angle, 0f));
         }
-
-        // TODO
-        // private IEnumerator MoveInTunnel(Collider p_other)
-        // {
-            // Pega o gameobject do collider e detecta o outro collider do tunel
-            // Mantem animação de crouching
-            // Move charactercontroller para o outro tunel
-            // Locka inputs
-        // }
     }
-
-
 
     public class PlayerMovement : IFixedUpdateBehaviour
     {
@@ -54,7 +102,6 @@ namespace Gameplay.Player.Motion
         private bool _movingBackward;
         private bool _running;
         private bool _crouching;
-
         private float _currentSpeed;
 
         public PlayerMovement(CharacterController p_charController,
@@ -62,6 +109,7 @@ namespace Gameplay.Player.Motion
         {
             _charController = p_charController;
             _playerTransform = p_playerTransform;
+            _playerTunnelBehaviour = new PlayerTunnelBehaviour(p_charController, p_playerTransform, _crouching);
 
             _movingSideways = false;
             _movingBackward = false;
@@ -112,10 +160,14 @@ namespace Gameplay.Player.Motion
 
         private void HandleDirection()
         {
-            Vector2 __positionOnScreen = UnityEngine.Camera.main.WorldToViewportPoint(_playerTransform.position);
             Vector2 __mouseOnScreen = (Vector2)UnityEngine.Camera.main.ScreenToViewportPoint(InputController.GamePlay.MousePosition());
+            LooktoPosition(__mouseOnScreen);
+        }
 
-            float __angle = Mathf.Atan2(__positionOnScreen.y - __mouseOnScreen.y, __positionOnScreen.x - __mouseOnScreen.x) * Mathf.Rad2Deg;
+        private void LooktoPosition(Vector2 p_targetPosition)
+        {
+            Vector2 __positionOnScreen = UnityEngine.Camera.main.WorldToViewportPoint(_playerTransform.position);
+            float __angle = Mathf.Atan2(__positionOnScreen.y - p_targetPosition.y, __positionOnScreen.x - p_targetPosition.x) * Mathf.Rad2Deg;
 
             _playerTransform.rotation = Quaternion.Euler(new Vector3(0f, -__angle, 0f));
         }
