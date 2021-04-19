@@ -18,6 +18,8 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _lights;
         [SerializeField] private GameObject _milestone_1_doors;
         [SerializeField] private GameObject _milestone_2_doors;
+        [SerializeField] private GameObject _environmentLightExplosion;
+        [SerializeField] private GameObject _eventLightBlink;
 
         public GameEventTypeEnum gameEventType
         {
@@ -43,12 +45,14 @@ namespace CoreEvent.GameEvents
 
         public void RunPermanentEvents()
         {
+            _environmentLightExplosion.SetActive(false);
+            _eventLightBlink.SetActive(false);
             ChangeGeneratorRoom();
             ChangeCorridorC5();
             TurnOffAllLights();
             OpenDoors();
         }
-        
+
         public void RunSingleTimeEvents()
         {
             TurnOffAllLights();
@@ -61,7 +65,7 @@ namespace CoreEvent.GameEvents
                 RunPermanentEvents();
 
                 // Start Chapter 3
-                ChapterManager.instance.GoToNextChapter();  
+                ChapterManager.instance.GoToNextChapter();
             });
             _hasRun = true;
         }
