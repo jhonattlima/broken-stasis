@@ -7,6 +7,7 @@ using Gameplay.Player.Motion;
 using Gameplay.Player.Sensors;
 using SaveSystem;
 using Utilities;
+using Utilities.VariableManagement;
 
 namespace Gameplay.Player
 {
@@ -51,9 +52,15 @@ namespace Gameplay.Player
                 _playerContainer.playerIlluminationGameObject
             );
 
+            _playerContainer.playerTunnelBehaviour.InitializePlayerTunnelBehaviour(
+                VariablesManager.playerVariables.regularSpeed * VariablesManager.playerVariables.slowSpeedMultiplier,
+                _playerContainer.playerTransform,
+                _playerContainer.characterController);
+
             _playerMovement = new PlayerMovement(
                 _playerContainer.characterController,
-                _playerContainer.playerTransform
+                _playerContainer.playerTransform,
+                _playerContainer.playerTunnelBehaviour
             );
 
             _playerSoundColliderActivator = new PlayerSoundColliderActivator(

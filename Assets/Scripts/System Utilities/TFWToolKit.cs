@@ -8,6 +8,16 @@ namespace Utilities
 {
     public static class TFWToolKit
     {
+        public static void StartCoroutine(IEnumerator p_coroutine)
+        {
+            SceneManager.instance.StartCoroutine(p_coroutine);
+        }
+
+        public static void StopCoroutine(IEnumerator p_coroutine)
+        {
+            SceneManager.instance.StopCoroutine(p_coroutine);
+        }
+
         public static void CancelTimer(Coroutine p_timerCoroutine)
         {
             SceneManager.instance.StopCoroutine(p_timerCoroutine);

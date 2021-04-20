@@ -11,6 +11,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameEventTypeEnum _gameEventType;
         [SerializeField] private GeneratorController _generatorController;
         [SerializeField] private ItemFlashlight _itemFlashlight;
+        [SerializeField] private GameObject _eventLightBlink;
 
         public GameEventTypeEnum gameEventType
         {
@@ -38,6 +39,7 @@ namespace CoreEvent.GameEvents
         {
             _generatorController.SetEnabled(false);
             _itemFlashlight.SetEnabled(true);
+            _eventLightBlink.SetActive(true);
         }
 
         public void RunSingleTimeEvents()
