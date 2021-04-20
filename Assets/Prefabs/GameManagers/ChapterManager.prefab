@@ -47,9 +47,24 @@ MonoBehaviour:
   _roomGenerator: {fileID: 0}
   _generatorInterface: {fileID: 0}
   _roomGeneratorExploded: {fileID: 0}
+  _itemFlashlight: {fileID: 0}
   _corridorC5: {fileID: 0}
   _corridorC5WithBlood: {fileID: 0}
-  _lights: {fileID: 0}
+  _allLights:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _scenarioCovers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _dressingRoomLights: {fileID: 0}
   _milestone_1_doors: {fileID: 0}
   _milestone_2_doors: {fileID: 0}
 --- !u!1 &1763847185611562750
@@ -95,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82554f59a718d24e87f6e082a0afc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chapterType: 2
-  _startPosition: {x: -5.9604, y: 0, z: -15.25}
+  _chapterType: 3
+  _startPosition: {x: 1.03, y: 0.9, z: 3.35}
   _playerCharacterController: {fileID: 0}
+  _itemKeyCard: {fileID: 0}
 --- !u!1 &8052083270082628140
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc7f5e431e74474981196793955fd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chapterType: 1
-  _startPosition: {x: 0, y: 0.9, z: -3}
+  _chapterType: 2
+  _startPosition: {x: 0.25, y: 0.9, z: 0.51}
   _playerCharacterController: {fileID: 0}
 --- !u!1 &8052083270176505576
 GameObject:
@@ -237,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b62969b4dbf3e45a058d86a1f01488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chapterType: 0
+  _chapterType: 1
   _doorController: {fileID: 0}
 --- !u!1 &8052083270922509227
 GameObject:
@@ -285,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6b714d22343ac40936f047f3cceca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialChapter: 0
+  initialChapter: 1
 --- !u!1 &8052083271395300620
 GameObject:
   m_ObjectHideFlags: 0

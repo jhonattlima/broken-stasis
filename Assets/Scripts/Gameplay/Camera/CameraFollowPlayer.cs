@@ -33,7 +33,7 @@ namespace Gameplay.Camera
                 float __distToMove = Vector3.Distance(_mousePosInWorld, _playerTransform.position) * VariablesManager.cameraVariables.cameraDistanceFromPlayer;
                 Vector3 __distanceVectorNormalized = (_mousePosInWorld - _playerTransform.position).normalized;
                 Vector3 __targetPosition = _playerTransform.position + (__distanceVectorNormalized * __distToMove);
-                _cameraTransform.position = new Vector3(__targetPosition.x, _cameraTransform.position.y, __targetPosition.z);
+                _cameraTransform.parent.position = new Vector3(__targetPosition.x, _cameraTransform.position.y, __targetPosition.z);
             }
         }
     }
