@@ -5,11 +5,13 @@ using Utilities.VariableManagement;
 
 namespace Gameplay.Player.Motion
 {
+
     public class PlayerMovement : IFixedUpdateBehaviour
     {
         #region PRIVATE READONLY FIELDS
         private readonly CharacterController _charController;
         private readonly Transform _playerTransform;
+        private readonly PlayerTunnelBehaviour _playerTunnelBehaviour;
         #endregion PRIVATE READONLY FIELDS
 
         #region PRIVATE FIELDS
@@ -20,14 +22,15 @@ namespace Gameplay.Player.Motion
         private bool _movingBackward;
         private bool _running;
         private bool _crouching;
-
         private float _currentSpeed;
 
         public PlayerMovement(CharacterController p_charController,
-                                Transform p_playerTransform)
+                                Transform p_playerTransform,
+                                PlayerTunnelBehaviour p_playerTunnelBehaviour)
         {
             _charController = p_charController;
             _playerTransform = p_playerTransform;
+            _playerTunnelBehaviour = p_playerTunnelBehaviour;
 
             _movingSideways = false;
             _movingBackward = false;
@@ -78,10 +81,14 @@ namespace Gameplay.Player.Motion
 
         private void HandleDirection()
         {
-            Vector2 __positionOnScreen = UnityEngine.Camera.main.WorldToViewportPoint(_playerTransform.position);
             Vector2 __mouseOnScreen = (Vector2)UnityEngine.Camera.main.ScreenToViewportPoint(InputController.GamePlay.MousePosition());
+            LooktoPosition(__mouseOnScreen);
+        }
 
-            float __angle = Mathf.Atan2(__positionOnScreen.y - __mouseOnScreen.y, __positionOnScreen.x - __mouseOnScreen.x) * Mathf.Rad2Deg;
+        private void LooktoPosition(Vector2 p_targetPosition)
+        {
+            Vector2 __positionOnScreen = UnityEngine.Camera.main.WorldToViewportPoint(_playerTransform.position);
+            float __angle = Mathf.Atan2(__positionOnScreen.y - p_targetPosition.y, __positionOnScreen.x - p_targetPosition.x) * Mathf.Rad2Deg;
 
             _playerTransform.rotation = Quaternion.Euler(new Vector3(0f, -__angle, 0f));
         }
@@ -149,6 +156,7 @@ namespace Gameplay.Player.Motion
 
             _running = InputController.GamePlay.Run();
             _crouching = InputController.GamePlay.Crouch();
+            _playerTunnelBehaviour.isCrouching = _crouching;
 
             _previousPosition = _playerTransform.position;
         }

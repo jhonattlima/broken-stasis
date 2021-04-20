@@ -19,12 +19,12 @@ namespace Gameplay.Player.Item
 
         public PlayerIlluminationSaveData lanternState
         {
-            get 
-            { 
-                return _illuminationState; 
+            get
+            {
+                return _illuminationState;
             }
-            
-            set 
+
+            set
             {
                 _illuminationState = value;
 
@@ -39,7 +39,7 @@ namespace Gameplay.Player.Item
 
         public void Toggle()
         {
-            if(_illuminationState.enabled)
+            if (_illuminationState.enabled && GameStateManager.currentState == GameState.RUNNING)
             {
                 _illuminationState.toggledOn = !_illuminationState.toggledOn;
                 AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_CLICK);
