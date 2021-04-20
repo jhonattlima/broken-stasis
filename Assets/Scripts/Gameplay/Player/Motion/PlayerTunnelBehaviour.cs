@@ -11,7 +11,6 @@ namespace Gameplay.Player.Motion
     {
         public bool isCrouching { get; set; }
 
-
         private bool _isCrossing;
         private Vector3 _targetPosition;
 
@@ -68,7 +67,7 @@ namespace Gameplay.Player.Motion
 
             if (__offset.magnitude > 0.5f)
             {
-                __offset = __offset.normalized * _crouchingSpeed * 0.01f;
+                __offset = __offset.normalized * _crouchingSpeed * 0.025f;
                 _charController.Move(__offset * Time.deltaTime);
             }
             else
