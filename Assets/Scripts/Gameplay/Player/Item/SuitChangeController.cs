@@ -1,8 +1,6 @@
 ﻿using System;
 using GameManagers;
 using UI;
-using UnityEngine;
-using Utilities;
 using Utilities.Audio;
 using Utilities.VariableManagement;
 
@@ -15,25 +13,22 @@ namespace Gameplay.Player.Item
             GameStateManager.SetGameState(GameState.CUTSCENE);
 
             LoadingView.instance.FadeIn(delegate ()
+            {
+                p_onFaded?.Invoke();
+
+                GameHudManager.instance.notificationHud.ShowText("Collected Suit");
+                GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
+
+                AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false, delegate ()
                 {
-                    p_onFaded?.Invoke();
-
-                    GameHudManager.instance.notificationHud.ShowText("Collected Suit");
-                    GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
-
-                    AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false, delegate ()
+                    LoadingView.instance.FadeOut(delegate ()
                     {
-                        LoadingView.instance.FadeOut(delegate ()
-                            {
-                                Debug.Log("Played fadeOut");
-                                GameStateManager.SetGameState(GameState.RUNNING);
-                            }
-                            , VariablesManager.uiVariables.defaultFadeOutSpeed
-                        );
-                    });
-                }
-                , VariablesManager.uiVariables.defaultFadeInSpeed
-            );
+                        GameStateManager.SetGameState(GameState.RUNNING);
+                    }
+                    , VariablesManager.uiVariables.defaultFadeOutSpeed);
+                });
+            }
+            , VariablesManager.uiVariables.defaultFadeInSpeed);
         }
     }
 }

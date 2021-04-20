@@ -3,6 +3,7 @@ using GameManagers;
 using Gameplay.Lighting;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
+using Gameplay.Scenario;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
@@ -20,6 +21,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _corridorC5;
         [SerializeField] private GameObject _corridorC5WithBlood;
         [SerializeField] private List<GameObject> _allLights;
+        [SerializeField] private List<GameObject> _scenarioCovers;
         [SerializeField] private GameObject _dressingRoomLights;
         [SerializeField] private GameObject _milestone_1_doors;
         [SerializeField] private GameObject _milestone_2_doors;
@@ -52,6 +54,7 @@ namespace CoreEvent.GameEvents
             ChangeGeneratorRoom();
             ChangeCorridorC5();
             TurnOffAllLights();
+            DisableCovers();
             OpenDoors();
         }
 
@@ -94,16 +97,22 @@ namespace CoreEvent.GameEvents
 
         private void BlinkLights()
         {
-            foreach (LightController light in _dressingRoomLights.GetComponentsInChildren<LightController>())
+            foreach (LightController __light in _dressingRoomLights.GetComponentsInChildren<LightController>())
             {
-                light.SetLightState(LightEnum.LOW_ILUMINATION_FLICKING);
+                __light.SetLightState(LightEnum.LOW_ILUMINATION_FLICKING);
             }
         }
 
         private void TurnOffAllLights()
         {
-            foreach (GameObject light in _allLights)
-                light.SetActive(false);
+            foreach (GameObject __light in _allLights)
+                __light.SetActive(false);
+        }
+
+        private void DisableCovers()
+        {
+            foreach(GameObject __cover in _scenarioCovers)
+                __cover.SetActive(false);
         }
 
         private void OpenDoors()
@@ -111,11 +120,11 @@ namespace CoreEvent.GameEvents
             List<DoorController> __doorsToOpenAndLock = new List<DoorController>();
             __doorsToOpenAndLock.AddRange(_milestone_1_doors.GetComponentsInChildren<DoorController>());
             __doorsToOpenAndLock.AddRange(_milestone_2_doors.GetComponentsInChildren<DoorController>());
-            foreach (DoorController door in __doorsToOpenAndLock)
+            foreach (DoorController __door in __doorsToOpenAndLock)
             {
-                door.isDoorOpen = true;
-                door.SetDoorState();
-                door.LockDoor();
+                __door.isDoorOpen = true;
+                __door.SetDoorState();
+                __door.LockDoor();
             }
         }
     }
