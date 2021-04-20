@@ -10,6 +10,8 @@ namespace Utilities.Audio
         SOUND_TRACK,
         PLAYER_DIE,
         PLAYER_STEP,
+        INVISIBLE_FOOTSTEP_STEP_LEFT,
+        INVISIBLE_FOOTSTEP_STEP_RIGHT,
         BASHER_STEP,
         BASHER_SCREAM,
         PLAYER_HEARTBEAT,
