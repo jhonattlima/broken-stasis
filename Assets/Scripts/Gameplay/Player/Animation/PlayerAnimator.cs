@@ -17,7 +17,6 @@ namespace Gameplay.Player.Animation
         private const string PICK_ITEM = "PickItem";
         private const string PICK_ITEM_ON_GROUND = "PickItemOnGround";
         private const string INTERACT_WITH_ENDLEVEL_DOOR = "EndLevelDoorInteraction";
-
         private const string CROUCHING = "Crouching";
 
         private readonly Animator _animator;
