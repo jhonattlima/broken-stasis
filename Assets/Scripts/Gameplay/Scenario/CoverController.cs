@@ -33,7 +33,6 @@ namespace Gameplay.Scenario
         private void HandlePlayerEnterArea(Collider other)
         {
             if (!other.CompareTag(GameInternalTags.PLAYER)) return;
-            Debug.Log("player enter the area");
             if(!_activated)
             {
                 _animator.Play("FadeIn");
@@ -46,7 +45,6 @@ namespace Gameplay.Scenario
         private void HandlePlayerLeaveArea(Collider other)
         {
             if (!other.CompareTag(GameInternalTags.PLAYER)) return;
-            Debug.Log("player left the area");
             if(!IsPositionInsideColliderArea(other.gameObject.transform.position))
             {
                 _animator.Play("FadeOut");
