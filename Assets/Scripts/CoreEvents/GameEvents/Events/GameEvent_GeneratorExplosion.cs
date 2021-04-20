@@ -3,7 +3,6 @@ using GameManagers;
 using Gameplay.Lighting;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
-using Gameplay.Scenario;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
@@ -25,6 +24,8 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _dressingRoomLights;
         [SerializeField] private GameObject _milestone_1_doors;
         [SerializeField] private GameObject _milestone_2_doors;
+        [SerializeField] private GameObject _environmentLightExplosion;
+        [SerializeField] private GameObject _eventLightBlink;
 
         public GameEventTypeEnum gameEventType
         {
@@ -50,6 +51,8 @@ namespace CoreEvent.GameEvents
 
         public void RunPermanentEvents()
         {
+            _environmentLightExplosion.SetActive(false);
+            _eventLightBlink.SetActive(false);
             _itemFlashlight.SetCollected(true);
             ChangeGeneratorRoom();
             ChangeCorridorC5();
