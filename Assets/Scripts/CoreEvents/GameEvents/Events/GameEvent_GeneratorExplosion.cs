@@ -1,7 +1,11 @@
 using System.Collections.Generic;
 using GameManagers;
+using Gameplay.Lighting;
 using Gameplay.Objects.Interaction;
+using Gameplay.Objects.Items;
+using Gameplay.Scenario;
 using UnityEngine;
+using Utilities;
 using Utilities.Audio;
 using Utilities.UI;
 
@@ -13,9 +17,12 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _roomGenerator;
         [SerializeField] private GameObject _generatorInterface;
         [SerializeField] private GameObject _roomGeneratorExploded;
+        [SerializeField] private ItemFlashlight _itemFlashlight;
         [SerializeField] private GameObject _corridorC5;
         [SerializeField] private GameObject _corridorC5WithBlood;
-        [SerializeField] private GameObject _lights;
+        [SerializeField] private List<GameObject> _allLights;
+        [SerializeField] private List<GameObject> _scenarioCovers;
+        [SerializeField] private GameObject _dressingRoomLights;
         [SerializeField] private GameObject _milestone_1_doors;
         [SerializeField] private GameObject _milestone_2_doors;
 
@@ -43,27 +50,36 @@ namespace CoreEvent.GameEvents
 
         public void RunPermanentEvents()
         {
+            _itemFlashlight.SetCollected(true);
             ChangeGeneratorRoom();
             ChangeCorridorC5();
             TurnOffAllLights();
+            DisableCovers();
             OpenDoors();
         }
-        
+
         public void RunSingleTimeEvents()
         {
-            TurnOffAllLights();
-            AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
+            GameStateManager.SetGameState(GameState.CUTSCENE);
+            BlinkLights();
+            AudioManager.instance.Play(AudioNameEnum.GENERATOR_ELETRIC_OVERCHARGE, false, delegate ()
             {
-                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
+                TFWToolKit.StartCoroutine(CameraShakerController.Shake(3, 5f, 1));
+                AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
                 {
-                    GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
-                });
-                RunPermanentEvents();
+                    TurnOffAllLights();
+                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
+                    {
+                        GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
+                        _hasRun = true;
+                        RunPermanentEvents();
 
-                // Start Chapter 3
-                ChapterManager.instance.GoToNextChapter();  
+                        // Start Chapter 3
+                        ChapterManager.instance.GoToNextChapter();
+                        GameStateManager.SetGameState(GameState.RUNNING);
+                    });
+                });
             });
-            _hasRun = true;
         }
 
         private void ChangeGeneratorRoom()
@@ -79,9 +95,24 @@ namespace CoreEvent.GameEvents
             _corridorC5WithBlood.SetActive(true);
         }
 
+        private void BlinkLights()
+        {
+            foreach (LightController __light in _dressingRoomLights.GetComponentsInChildren<LightController>())
+            {
+                __light.SetLightState(LightEnum.LOW_ILUMINATION_FLICKING);
+            }
+        }
+
         private void TurnOffAllLights()
         {
-            _lights.SetActive(false);
+            foreach (GameObject __light in _allLights)
+                __light.SetActive(false);
+        }
+
+        private void DisableCovers()
+        {
+            foreach(GameObject __cover in _scenarioCovers)
+                __cover.SetActive(false);
         }
 
         private void OpenDoors()
@@ -89,11 +120,11 @@ namespace CoreEvent.GameEvents
             List<DoorController> __doorsToOpenAndLock = new List<DoorController>();
             __doorsToOpenAndLock.AddRange(_milestone_1_doors.GetComponentsInChildren<DoorController>());
             __doorsToOpenAndLock.AddRange(_milestone_2_doors.GetComponentsInChildren<DoorController>());
-            foreach (DoorController door in __doorsToOpenAndLock)
+            foreach (DoorController __door in __doorsToOpenAndLock)
             {
-                door.isDoorOpen = true;
-                door.SetDoorState();
-                door.LockDoor();
+                __door.isDoorOpen = true;
+                __door.SetDoorState();
+                __door.LockDoor();
             }
         }
     }

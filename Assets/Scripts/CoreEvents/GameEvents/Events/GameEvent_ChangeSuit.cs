@@ -53,7 +53,6 @@ namespace CoreEvent.GameEvents
             {
                 RunPermanentEvents();
                 ChapterManager.instance.GoToNextChapter();
-
                 _hasRun = true;
             });
         }
