@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5525973436939186703}
   - component: {fileID: 6612954873016143288}
   - component: {fileID: 8097287764412785455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Non_mobile_part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7113221869144449717}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 3252873719327075913, guid: b29db9db62fae024982563bc2861a932,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b29db9db62fae024982563bc2861a932, type: 3}
@@ -296,6 +296,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 4983834024742075332, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4983834024742075335, guid: d31d8c629e2d28c489a38da6272a43d1,
         type: 3}
       propertyPath: _lockIndicatorsMeshRenderer.Array.size
@@ -306,6 +311,11 @@ PrefabInstance:
       propertyPath: _lockIndicatorsMeshRenderer.Array.data[0]
       value: 
       objectReference: {fileID: 4193833393472025607}
+    - target: {fileID: 4984510682188779864, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31d8c629e2d28c489a38da6272a43d1, type: 3}
 --- !u!1 &7819623363231152504 stripped
