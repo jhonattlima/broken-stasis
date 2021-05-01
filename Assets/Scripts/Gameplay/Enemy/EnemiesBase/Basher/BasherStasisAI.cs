@@ -21,6 +21,7 @@ namespace Gameplay.Enemy.EnemiesBase
         {
             _isActive = false;
             _stasisSensor.onPlayerDetected += HandleEnemyActivation;
+            _stasisSensor.onPlayerRemainsDetected += HandleEnemyActivation;
         }
 
         public void ResetEnemyAI()

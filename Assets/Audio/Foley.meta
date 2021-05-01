@@ -1,5 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Audio/Foley.meta
 guid: 9957918b28f704277807d14721e0596a
+=======
+<<<<<<< HEAD
+guid: 908589d34ef757946a573226d8e9c916
+>>>>>>> 6f11232aacc07fdc257e628383d5103bbf25a76d:Assets/Models/Scenario/Caps.meta
+=======
+guid: 0a48b98838fd128418370349453f7ae5
+>>>>>>> 9648470c34285167f1f59bf65b2819fa3e7ae8f7:Assets/Scenes/OfficialScene_PROGRAMMING.meta
+>>>>>>> 6f11232aacc07fdc257e628383d5103bbf25a76d
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
