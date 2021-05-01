@@ -21,7 +21,9 @@ namespace Gameplay.Enemy.Sensors
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfPlayer(other.gameObject))
+            {
                 if (onPlayerDetected != null) onPlayerDetected(other.transform);
+            }
         }
 
         private void OnTriggerStay(Collider other)
@@ -44,9 +46,12 @@ namespace Gameplay.Enemy.Sensors
             Vector3 __direction = __toPosition - __fromPosition;
 
             Debug.DrawRay(__fromPosition, __direction, Color.green);
+
         
             if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f))
+            {
                 return __hit.collider.CompareTag(GameInternalTags.PLAYER);
+            }
 
             return false;
         }

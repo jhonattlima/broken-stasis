@@ -5,6 +5,7 @@ using GameManagers;
 using Gameplay.Objects.Items;
 using SaveSystem;
 using UnityEngine;
+using UnityEngine.AI;
 using Utilities;
 
 namespace CoreEvent.Chapters
@@ -15,6 +16,7 @@ namespace CoreEvent.Chapters
         [SerializeField] private Vector3 _startPosition;
         [SerializeField] private CharacterController _playerCharacterController;
         [SerializeField] private ItemKeyCard _itemKeyCard;
+        [SerializeField] private NavMeshSurface _navMeshSurface;
 
         public ChapterTypeEnum chapterType
         {
@@ -36,6 +38,7 @@ namespace CoreEvent.Chapters
         {
             Debug.Log("STARTED CHAPTER 3");
 
+
             _playerCharacterController.enabled = false;
             _playerCharacterController.transform.position = _startPosition;
             _playerCharacterController.enabled = true;
@@ -49,8 +52,7 @@ namespace CoreEvent.Chapters
             InputController.GamePlay.InputEnabled = true;
 
             _itemKeyCard.SetEnabled(true);
-            // TODO
-            // Activate surprise basher
+            _navMeshSurface.BuildNavMesh();
         }
 
         public void ChapterEnd()
