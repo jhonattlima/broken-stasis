@@ -3,7 +3,27 @@ guid: 47ab779811cc38e4b9acf2e7bec42c6a
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario aereo 01
+    second: {fileID: 2100000, guid: 1c779653d45afa349a8e20361da4ee79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario aereo.02
+    second: {fileID: 2100000, guid: 1c779653d45afa349a8e20361da4ee79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario porta 01
+    second: {fileID: 2100000, guid: 1c779653d45afa349a8e20361da4ee79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plantas
+    second: {fileID: 2100000, guid: 1c779653d45afa349a8e20361da4ee79, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -31,7 +51,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

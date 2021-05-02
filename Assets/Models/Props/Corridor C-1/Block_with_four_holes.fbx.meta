@@ -3,7 +3,22 @@ guid: f9624aa5283deaa40b10ae1cb05517fc
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario aereo 01
+    second: {fileID: 2100000, guid: 37c660c224f6239479c8620cfa24e2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario aereo.02
+    second: {fileID: 2100000, guid: 37c660c224f6239479c8620cfa24e2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissao
+    second: {fileID: 2100000, guid: 6046878ab3eb4474d9ee7f32f129f578, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -31,7 +46,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

@@ -46,7 +46,7 @@ namespace Gameplay.Player.Sensors
 
             if (Physics.Raycast(_headPosition.position, __direction, out __hit, 50f, _layersToDetect))
             {
-                // if(__hit.collider.CompareTag(GameInternalTags.ENEMY))
+                if(__hit.collider.CompareTag(GameInternalTags.ENEMY))
                     Debug.DrawRay(_headPosition.position, __direction, Color.magenta);
 
                 return __hit.collider.CompareTag(GameInternalTags.ENEMY);

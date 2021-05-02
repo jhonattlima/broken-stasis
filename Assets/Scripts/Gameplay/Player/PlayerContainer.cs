@@ -1,5 +1,6 @@
 ﻿using Gameplay.Player.Animation;
 using Gameplay.Player.Item;
+using Gameplay.Player.Motion;
 using UnityEngine;
 
 namespace Gameplay.Player
@@ -18,6 +19,7 @@ namespace Gameplay.Player
         [Space(5)]
         public CharacterController characterController;
         public Transform playerTransform;
+        public PlayerTunnelBehaviour playerTunnelBehaviour;
 
         [Header("Suits")]
         [Space(5)]
