@@ -5,27 +5,15 @@ namespace Gameplay.Enemy.Sensors
 {
     public class SensorRoom : MonoBehaviour
     {
+        [SerializeField] private LayerMask RoomCollisionLayer;
         public Action<GameObject> onRoomDetected;
-        // public Action<Transform> onRoomRemainsDetected;
-        // public Action<GameObject> onRoomLeftDetection;
 
         private void OnTriggerEnter(Collider other)
         {
-            // TODO: DETECT COVER ROOM OBJECT
-            // if (other.CompareTag(GameInternalTags.PLAYER_SOUND_COLLIDER))
-            //     if (onRoomDetected != null) onRoomDetected(other.transform);
+            if((RoomCollisionLayer.value & 1<< other.gameObject.layer) == 1 << other.gameObject.layer)
+            {
+                onRoomDetected?.Invoke(other.transform.parent.gameObject);
+            }
         }
-
-        // private void OnTriggerStay(Collider other)
-        // {
-        //     if (other.CompareTag(GameInternalTags.PLAYER_SOUND_COLLIDER))
-        //         if (onRoomRemainsDetected != null) onRoomRemainsDetected(other.transform);
-        // }
-
-        // private void OnTriggerExit(Collider other)
-        // {
-        //     if (other.CompareTag(GameInternalTags.PLAYER_SOUND_COLLIDER))
-        //         if (onRoomLeftDetection != null) onRoomLeftDetection(other.transform);
-        // }
     }
 }
