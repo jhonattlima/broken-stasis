@@ -7,6 +7,7 @@ namespace Gameplay.Enemy.Sensors
     public class SensorVision : MonoBehaviour
     {
         [SerializeField] private Transform _eyesTransform;
+        [SerializeField] private LayerMask _layersToDetect;
 
         public Action<Transform> onPlayerDetected;
         public Action<Transform> onPlayerRemainsDetected;
@@ -48,7 +49,7 @@ namespace Gameplay.Enemy.Sensors
             Debug.DrawRay(__fromPosition, __direction, Color.green);
 
         
-            if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f))
+            if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f, _layersToDetect))
             {
                 return __hit.collider.CompareTag(GameInternalTags.PLAYER);
             }

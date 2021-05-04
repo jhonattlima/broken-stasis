@@ -111,18 +111,16 @@ namespace Gameplay.Enemy.Behaviours
 
         private void SetPatrolDestination()
         {
-            if (_investigationPoints.Count == 0)
+            if (_investigationPoints.Count == 0 || _investigationIndex == _investigationPoints.Count)
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.IDLE);
+                _investigationIndex = 0;
                 return;
             }
-
+            
             _navigationAgent.SetDestination(_investigationPoints[_investigationIndex].position);
-
-            if (_investigationIndex == _investigationPoints.Count - 1)
-                _stateManager.SetEnemyState(EnemyStateEnum.IDLE);
-            else
-                _investigationIndex++;
+            
+            _investigationIndex++;
         }
 
         private void ResetSpeed()

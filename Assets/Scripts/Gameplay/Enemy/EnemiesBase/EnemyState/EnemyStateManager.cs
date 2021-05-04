@@ -12,6 +12,7 @@ namespace Gameplay.Enemy.EnemyState
         {
             if (!currentState.Equals(p_newState))
             {
+                UnityEngine.Debug.Log("Set state " + p_newState);
                 currentState = p_newState;
 
                 if (onStateChanged != null) onStateChanged(currentState);

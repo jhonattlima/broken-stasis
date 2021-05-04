@@ -105,7 +105,7 @@ namespace Gameplay.Enemy.EnemiesBase
                 _patrolBehaviour.RunEnemyPatrol();
             else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();
-            else
+            else if(!IsEnemyFollowing())
                 _investigationBehaviour.RunEnemyInvestigation();
         }
 
@@ -118,17 +118,25 @@ namespace Gameplay.Enemy.EnemiesBase
                     && _stateManager.currentState != EnemyStateEnum.INVESTIGATING_IDLE);
         }
 
+        private bool IsEnemyFollowing()
+        {
+            return (_stateManager.currentState == EnemyStateEnum.RUNNING || _stateManager.currentState == EnemyStateEnum.INVESTIGATING);
+        }
+
         private void HandleDetectedRoom(GameObject p_room)
         {
-            _roomInvestigationPoints.Clear();
-
-            foreach(Transform __childObject in p_room.GetComponentsInChildren<Transform>())
+            if(IsEnemyFollowing())
             {
-                if(__childObject.CompareTag(GameInternalTags.ENEMY_INVESTIGATION_POINT))
-                    _roomInvestigationPoints.Add(__childObject);
-            }
+                _roomInvestigationPoints.Clear();
 
-            _investigationBehaviour.SetInvestigationPoints(_roomInvestigationPoints);
+                foreach(Transform __childObject in p_room.GetComponentsInChildren<Transform>())
+                {
+                    if(__childObject.CompareTag(GameInternalTags.ENEMY_INVESTIGATION_POINT))
+                        _roomInvestigationPoints.Add(__childObject);
+                }
+
+                _investigationBehaviour.SetInvestigationPoints(_roomInvestigationPoints);               
+            }
         }
 
         private void HandlePlayerEnteredSoundSensor(Transform p_playerPosition)
