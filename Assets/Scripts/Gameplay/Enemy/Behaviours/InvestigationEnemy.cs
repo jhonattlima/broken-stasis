@@ -111,7 +111,7 @@ namespace Gameplay.Enemy.Behaviours
 
         private void SetPatrolDestination()
         {
-            if (_investigationPoints.Count == 0 || _investigationIndex == _investigationPoints.Count)
+            if (_investigationPoints.Count == 0 || _investigationIndex >= _investigationPoints.Count)
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.IDLE);
                 _investigationIndex = 0;
