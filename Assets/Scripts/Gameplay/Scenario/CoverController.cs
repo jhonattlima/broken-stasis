@@ -16,13 +16,15 @@ namespace Gameplay.Scenario
         private Dictionary<int, LightEnum> _storedStateLightControllers = new Dictionary<int, LightEnum>();
         private Animator _animator;
         private bool _activated;
+        private bool _lightsActive;
 
-        private void Start()
+        private void Awake()
         {
             _animator = GetComponent<Animator>();
             _colliders = GetComponents<Collider>();
 
             _activated = false;
+            _lightsActive = true;
 
             onTriggerEnter = HandlePlayerEnterArea;
             onTriggerExit = HandlePlayerLeaveArea;
@@ -65,12 +67,16 @@ namespace Gameplay.Scenario
         [UsedImplicitly]
         private void DisableLights()
         {
+            if(!_lightsActive) return;
+
             MapLightsState();
             _lights.SetActive(false);
         }
 
         private void EnableLights()
         {
+            if(!_lightsActive) return;
+            
             _lights.SetActive(true);
             SetLightsState();
         }
@@ -88,6 +94,12 @@ namespace Gameplay.Scenario
             LightController[] lights = _lights.gameObject.GetComponentsInChildren<LightController>();
             foreach (LightController light in lights)
                 light.SetLightState(_storedStateLightControllers[light.GetHashCode()]);
+        }
+
+        public void DisableCover()
+        {
+            _lights.SetActive(false);
+            _lightsActive = false;
         }
     }
 }

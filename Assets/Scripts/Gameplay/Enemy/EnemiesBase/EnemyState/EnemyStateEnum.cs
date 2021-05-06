@@ -6,6 +6,8 @@ namespace Gameplay.Enemy.EnemyState
         PATROLLING,
         INVESTIGATING,
         RUNNING,
-        ATTACKING
+        ATTACKING,
+        INVESTIGATING_IDLE,
+        INVESTIGATING_ROOM
     }
 }

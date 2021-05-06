@@ -56,6 +56,12 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherContainer.investigateSpeedMultiplier,
                     _basherContainer.sprintSpeedMultiplier
                 ),
+                new InvestigationEnemy(
+                    _stateManager,
+                    _basherContainer.navigationAgent,
+                    _basherContainer.idleTime,
+                    _basherContainer.investigateSpeedMultiplier
+                ),
                 new AttackMeleeEnemy(
                     _stateManager,
                     _basherContainer.weaponSensor,
@@ -66,6 +72,7 @@ namespace Gameplay.Enemy.EnemiesBase
                 ),
                 _basherContainer.noiseSensor,
                 _basherContainer.visionSensor,
+                _basherContainer.roomSensor,
                 _basherContainer.enemyAnimationEventHandler,
                 gameObject.transform.position
             );

@@ -15,6 +15,6 @@ MonoBehaviour:
   maxHealth: 3
   regularSpeed: 130
   slowSpeedMultiplier: 0.5
-  fastSpeedMultiplier: 1.75
+  fastSpeedMultiplier: 2
   playerHeightWhenUp: 1.8
   playerHeightWhenCrouching: 0.6
