@@ -18,7 +18,7 @@ namespace Gameplay.Scenario
         private bool _activated;
         private bool _lightsActive;
 
-        private void Start()
+        private void Awake()
         {
             _animator = GetComponent<Animator>();
             _colliders = GetComponents<Collider>();
