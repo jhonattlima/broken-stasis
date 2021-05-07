@@ -8,6 +8,7 @@ namespace Gameplay.Enemy.EnemyState
         RUNNING,
         ATTACKING,
         INVESTIGATING_IDLE,
-        INVESTIGATING_ROOM
+        INVESTIGATING_ROOM,
+        AWAKENING
     }
 }

@@ -59,7 +59,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _scenarioCovers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -116,6 +124,7 @@ MonoBehaviour:
   _startPosition: {x: 1.03, y: 0.9, z: 3.35}
   _playerCharacterController: {fileID: 0}
   _itemKeyCard: {fileID: 0}
+  _navMeshSurface: {fileID: 0}
 --- !u!1 &8052083270082628140
 GameObject:
   m_ObjectHideFlags: 0

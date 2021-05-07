@@ -84,6 +84,15 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherContainer.stasisSensor
                 );
             }
+            else if (_basherContainer.basherType.Equals(BasherTypeEnum.SPLINTER))
+            {
+                _basherAI = new SplinterAI(
+                    _basherAI,
+                    _basherContainer.stasisSensor,
+                    _stateManager,
+                    _basherContainer.enemyAnimationEventHandler
+                );
+            }
         }
 
         public void RunUpdate()
