@@ -63,7 +63,7 @@ namespace Gameplay.Enemy.Behaviours
         public void RunFollowEnemy()
         {
             if (IsEnemyFollowing() && _navigationAgent.remainingDistance < 0.05f)
-                _stateManager.SetEnemyState(EnemyStateEnum.IDLE);
+                _stateManager.SetEnemyState(EnemyStateEnum.INVESTIGATING_IDLE);
         }
 
         private bool IsEnemyFollowing()

@@ -9,6 +9,8 @@ namespace Gameplay.Enemy.EnemiesBase
         public Action OnAttackAnimationEnd;
         public Action OnStep;
         public Action OnAttack;
+        public Action OnAwoken;
+        public Action OnGrowl;
 
         public void HandleAnimationEvent(EnemyAnimationEventEnum p_eventName)
         {
@@ -22,6 +24,12 @@ namespace Gameplay.Enemy.EnemiesBase
                     break;
                 case EnemyAnimationEventEnum.ON_ATTACK:
                     OnAttack?.Invoke();
+                    break;
+                case EnemyAnimationEventEnum.ON_AWOKEN:
+                    OnAwoken?.Invoke();
+                    break;
+                case EnemyAnimationEventEnum.ON_GROWL:
+                    OnGrowl?.Invoke();
                     break;
             }
         }

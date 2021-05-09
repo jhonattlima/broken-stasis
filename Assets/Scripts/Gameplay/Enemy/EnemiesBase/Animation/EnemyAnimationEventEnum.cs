@@ -4,6 +4,8 @@ namespace Gameplay.Enemy.EnemiesBase
     {
         ON_ATTACK_END,
         ON_STEP,
-        ON_ATTACK
+        ON_ATTACK,
+        ON_AWOKEN,
+        ON_GROWL
     }
 }

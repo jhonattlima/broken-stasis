@@ -8,6 +8,7 @@ TagManager:
   - PlayerSoundCollider
   - PlayerInteractor
   - Tunnel
+  - EnemyInvestigationPoint
   layers:
   - Default
   - TransparentFX
