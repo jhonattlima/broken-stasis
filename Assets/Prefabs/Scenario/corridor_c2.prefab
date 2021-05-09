@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1205076649488351381
+--- !u!1 &655130424629450318
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2013841855408462383}
-  - component: {fileID: 3196783784575915402}
-  - component: {fileID: 844907219617096000}
+  - component: {fileID: 170201148339686644}
+  - component: {fileID: 3887581331527926609}
+  - component: {fileID: 1303653374464980891}
   m_Layer: 0
-  m_Name: corridor_c6
+  m_Name: corridor_c-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2013841855408462383
+--- !u!4 &170201148339686644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3701728964110017079}
-  m_LocalRotation: {x: 0, y: 0.7072302, z: 0.7069834, w: 0}
-  m_LocalPosition: {x: 7.28, y: -0.06, z: 16.85}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_GameObject: {fileID: 655130424629450318}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -11.587, y: 0.04, z: 16.007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.98, y: 180, z: 0}
---- !u!33 &1133541343074858792
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!33 &3887581331527926609
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205076649488351381}
-  m_Mesh: {fileID: -4438340686033412115, guid: b19d8b94ce472ba468ec83045602871d, type: 3}
---- !u!23 &844907219617096000
+  m_GameObject: {fileID: 655130424629450318}
+  m_Mesh: {fileID: -3624243603545021591, guid: 515bba8d3183082458ec8ed334f8a7d2, type: 3}
+--- !u!23 &1303653374464980891
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205076649488351381}
+  m_GameObject: {fileID: 655130424629450318}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
