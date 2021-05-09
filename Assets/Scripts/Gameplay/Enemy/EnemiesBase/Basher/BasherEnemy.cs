@@ -90,7 +90,8 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherAI,
                     _basherContainer.stasisSensor,
                     _stateManager,
-                    _basherContainer.enemyAnimationEventHandler
+                    _basherContainer.enemyAnimationEventHandler,
+                    gameObject.transform.position
                 );
             }
         }

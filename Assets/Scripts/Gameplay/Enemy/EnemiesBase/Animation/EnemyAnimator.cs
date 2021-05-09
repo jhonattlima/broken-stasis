@@ -34,6 +34,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     break;
                 case EnemyStateEnum.INVESTIGATING:
                 case EnemyStateEnum.PATROLLING:
+                case EnemyStateEnum.INVESTIGATING_ROOM:
                     _animator.SetTrigger(WALKING);
                     break;
                 case EnemyStateEnum.RUNNING:

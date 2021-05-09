@@ -10,21 +10,24 @@ namespace Gameplay.Enemy.EnemiesBase
     {
         private readonly IEnemyAI _baseAI;
         private readonly SensorVision _activationSensor;
-        
+
         private readonly EnemyStateManager _stateManager;
         private readonly EnemyAnimationEventHandler _animationEventHandler;
+        private readonly Vector3 _splinterPosition;
         private bool _isActive = false;
         private bool _isAwoken = false;
 
-        public SplinterAI(  IEnemyAI p_basherAI, 
+        public SplinterAI(IEnemyAI p_basherAI,
                             SensorVision p_stasisSensor,
                             EnemyStateManager p_stateManager,
-                            EnemyAnimationEventHandler p_animationEventHandler)
+                            EnemyAnimationEventHandler p_animationEventHandler,
+                            Vector3 p_splinterPosition)
         {
             _baseAI = p_basherAI;
             _activationSensor = p_stasisSensor;
             _stateManager = p_stateManager;
             _animationEventHandler = p_animationEventHandler;
+            _splinterPosition = p_splinterPosition;
         }
 
         public void InitializeEnemy()
@@ -34,6 +37,7 @@ namespace Gameplay.Enemy.EnemiesBase
             _activationSensor.onPlayerDetected += HandleEnemyActivation;
             _activationSensor.onPlayerRemainsDetected += HandleEnemyActivation;
             _animationEventHandler.OnAwoken += HandleEnemyAwaken;
+            _animationEventHandler.OnGrowl += HandleEnemyGrowl;
         }
 
         public void ResetEnemyAI()
@@ -43,7 +47,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
         public void RunUpdate()
         {
-                Debug.Log(_stateManager.currentState);
+            Debug.Log(_stateManager.currentState);
             if (_isActive && _isAwoken)
             {
                 _baseAI.RunUpdate();
@@ -56,12 +60,17 @@ namespace Gameplay.Enemy.EnemiesBase
             _baseAI.InitializeEnemy();
         }
 
+        private void HandleEnemyGrowl()
+        {
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _splinterPosition);
+        }
+
         private void HandleEnemyActivation(Transform p_playerPosition)
         {
             if (!_isActive)
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.AWAKENING);
-                
+
                 _isActive = true;
             }
         }

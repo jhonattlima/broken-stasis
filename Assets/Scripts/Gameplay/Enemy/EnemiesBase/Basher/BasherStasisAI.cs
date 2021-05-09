@@ -41,7 +41,7 @@ namespace Gameplay.Enemy.EnemiesBase
         {
             if (!_isActive)
             {
-                AudioManager.instance.Play(AudioNameEnum.BASHER_SCREAM);
+                AudioManager.instance.Play(AudioNameEnum.ENEMY_BASHER_SCREAM);
                 _basherAI.InitializeEnemy();
                 _isActive = true;
             }
