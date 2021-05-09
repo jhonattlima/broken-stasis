@@ -1,4 +1,6 @@
-﻿using GameManagers;
+﻿using System;
+using GameManagers;
+using Gameplay.Enemy.EnemyState;
 using Gameplay.Enemy.Sensors;
 using UnityEngine;
 using Utilities.Audio;
@@ -39,7 +41,7 @@ namespace Gameplay.Enemy.EnemiesBase
         {
             if (!_isActive)
             {
-                AudioManager.instance.Play(AudioNameEnum.BASHER_SCREAM);
+                AudioManager.instance.Play(AudioNameEnum.ENEMY_BASHER_SCREAM);
                 _basherAI.InitializeEnemy();
                 _isActive = true;
             }

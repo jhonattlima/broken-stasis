@@ -69,7 +69,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
             _enemyAnimationEventHandler.OnStep += delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_STEP, _basherPosition);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherPosition);
             };
             _enemyAnimationEventHandler.OnAttack += delegate ()
             {

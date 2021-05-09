@@ -470,13 +470,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804970684112841826}
-  m_LocalRotation: {x: 0.11628023, y: -0.69748044, z: 0.11628023, w: 0.69748044}
-  m_LocalPosition: {x: -0.07, y: 0.15, z: 0}
+  m_LocalRotation: {x: 0.29883623, y: -0.64085644, z: 0.29883623, w: 0.64085644}
+  m_LocalPosition: {x: -0.07, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804970684139505720}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18.93, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -90, z: 0}
 --- !u!108 &804970684112841824
 Light:
   m_ObjectHideFlags: 0
@@ -816,7 +816,7 @@ Transform:
   m_GameObject: {fileID: 804970685872171551}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -4.8, y: -0.19999999, z: 0}
-  m_LocalScale: {x: 590, y: 100, z: 500.0005}
+  m_LocalScale: {x: 950, y: 100, z: 500.0005}
   m_Children: []
   m_Father: {fileID: 804970685857922489}
   m_RootOrder: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
   _headPosition: {fileID: 1343216672105864756}
   _layersToDetect:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
 --- !u!1 &804970685995169909
 GameObject:
   m_ObjectHideFlags: 0
