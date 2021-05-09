@@ -3,6 +3,7 @@ using GameManagers;
 using Gameplay.Lighting;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
+using Gameplay.Scenario;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
@@ -20,7 +21,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _corridorC5;
         [SerializeField] private GameObject _corridorC5WithBlood;
         [SerializeField] private List<GameObject> _allLights;
-        [SerializeField] private List<GameObject> _scenarioCovers;
+        [SerializeField] private List<CoverController> _scenarioCovers;
         [SerializeField] private GameObject _dressingRoomLights;
         [SerializeField] private GameObject _milestone_1_doors;
         [SerializeField] private GameObject _milestone_2_doors;
@@ -114,8 +115,8 @@ namespace CoreEvent.GameEvents
 
         private void DisableCovers()
         {
-            foreach(GameObject __cover in _scenarioCovers)
-                __cover.SetActive(false);
+            foreach(CoverController __cover in _scenarioCovers)
+                __cover.DisableCover();
         }
 
         private void OpenDoors()
