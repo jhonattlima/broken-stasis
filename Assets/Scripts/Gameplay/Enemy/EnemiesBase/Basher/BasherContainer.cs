@@ -28,6 +28,10 @@ namespace Gameplay.Enemy.EnemiesBase
         public float investigateSpeedMultiplier = 0.75f;
         public float sprintSpeedMultiplier = 1f;
 
+        [Header("Room Investigation Variables")]
+        [Space(5)]
+        public float roomInvestigationSpeedMultiplier = 0.75f;
+
         [Header("Attack Variables")]
         [Space(5)]
         public SensorDamagePlayer weaponSensor;
@@ -39,6 +43,7 @@ namespace Gameplay.Enemy.EnemiesBase
         [Space(5)]
         public SensorNoise noiseSensor;
         public SensorVision visionSensor;
+        public SensorRoom roomSensor;
         public SensorVision stasisSensor;
 
         private void Awake()

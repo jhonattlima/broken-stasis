@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1906180383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906180384}
+  - component: {fileID: 1906180386}
+  - component: {fileID: 1906180385}
+  m_Layer: 2
+  m_Name: RoomSensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1906180384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906180383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1656216643536279942}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1906180386
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906180383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1906180385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906180383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e8b207c5217543b8b85208f0608bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &53757910360328427
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656216643034759997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8, y: -0, z: -3}
+  m_LocalPosition: {x: 4.4, y: -0, z: 7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1656216643593393146}
@@ -400,6 +461,7 @@ Transform:
   - {fileID: 8359130379456557986}
   - {fileID: 8891777502135855344}
   - {fileID: 1275168363611714741}
+  - {fileID: 1906180384}
   m_Father: {fileID: 8671260444732598924}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -459,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656216644620883971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.7, y: 0, z: 12.3}
+  m_LocalPosition: {x: -1.4, y: -0, z: 19.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1656216643593393146}
@@ -1406,12 +1468,14 @@ MonoBehaviour:
   patrolSpeedMultiplier: 0.5
   investigateSpeedMultiplier: 0.75
   sprintSpeedMultiplier: 1
+  roomInvestigationSpeedMultiplier: 0.75
   weaponSensor: {fileID: 4702598612570438163}
   originPosition: {fileID: 1985004627388218682}
   attackRange: 1.75
   damage: 1
   noiseSensor: {fileID: 2148167987677799149}
   visionSensor: {fileID: 882354030939288068}
+  roomSensor: {fileID: 1906180385}
   stasisSensor: {fileID: 7415596839186951745}
 --- !u!1 &6928919360900842277
 GameObject:
@@ -1878,7 +1942,7 @@ PrefabInstance:
     - target: {fileID: 7897590555535419160, guid: 9506eb0a2e5d1814f98c414255e9df0a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7897590555535419160, guid: 9506eb0a2e5d1814f98c414255e9df0a,
         type: 3}
@@ -2035,12 +2099,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9506eb0a2e5d1814f98c414255e9df0a, type: 3}
---- !u!4 &1275168363611714741 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7897590555535419160, guid: 9506eb0a2e5d1814f98c414255e9df0a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947436513571853229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7415596839186951745 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1928332373258157548, guid: 9506eb0a2e5d1814f98c414255e9df0a,
@@ -2053,3 +2111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9feea21cbe56604db20bd15d97e71c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1275168363611714741 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7897590555535419160, guid: 9506eb0a2e5d1814f98c414255e9df0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8947436513571853229}
+  m_PrefabAsset: {fileID: 0}
