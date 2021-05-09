@@ -66,6 +66,8 @@ namespace Gameplay.Enemy.Behaviours
                     break;
                 case EnemyStateEnum.INVESTIGATING:
                 case EnemyStateEnum.RUNNING:
+                case EnemyStateEnum.INVESTIGATING_ROOM:
+                case EnemyStateEnum.INVESTIGATING_IDLE:
                     StopPatrolling();
                     break;
                 default:

@@ -9,6 +9,8 @@ namespace Gameplay.Enemy.EnemiesBase
         private const string WALKING = "Walking";
         private const string RUNNING = "Running";
         private const string ATTACKING = "Attacking";
+        private const string ATTACK_SEED = "AttackRandomSeed";
+        private const string AWAKENING = "Awaken";
 
         private EnemyStateManager _stateManager;
         private Animator _animator;
@@ -32,6 +34,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     break;
                 case EnemyStateEnum.INVESTIGATING:
                 case EnemyStateEnum.PATROLLING:
+                case EnemyStateEnum.INVESTIGATING_ROOM:
                     _animator.SetTrigger(WALKING);
                     break;
                 case EnemyStateEnum.RUNNING:
@@ -39,6 +42,10 @@ namespace Gameplay.Enemy.EnemiesBase
                     break;
                 case EnemyStateEnum.ATTACKING:
                     _animator.SetTrigger(ATTACKING);
+                    _animator.SetFloat(ATTACK_SEED, Random.Range(0f,100f));
+                    break;
+                case EnemyStateEnum.AWAKENING:
+                    _animator.SetTrigger(AWAKENING);
                     break;
             }
         }
