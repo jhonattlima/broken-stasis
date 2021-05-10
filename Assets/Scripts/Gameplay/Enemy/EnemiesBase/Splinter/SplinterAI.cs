@@ -47,7 +47,6 @@ namespace Gameplay.Enemy.EnemiesBase
 
         public void RunUpdate()
         {
-            Debug.Log(_stateManager.currentState);
             if (_isActive && _isAwoken)
             {
                 _baseAI.RunUpdate();

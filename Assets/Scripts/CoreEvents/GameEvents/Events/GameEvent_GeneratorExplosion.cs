@@ -18,8 +18,8 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _generatorInterface;
         [SerializeField] private GameObject _roomGeneratorExploded;
         [SerializeField] private ItemFlashlight _itemFlashlight;
-        [SerializeField] private GameObject _corridorC5;
-        [SerializeField] private GameObject _corridorC5WithBlood;
+        [SerializeField] private List<GameObject> _objectsToActivate;
+        [SerializeField] private List<GameObject> _objectsToDeactivate;
         [SerializeField] private List<GameObject> _allLights;
         [SerializeField] private List<CoverController> _scenarioCovers;
         [SerializeField] private GameObject _dressingRoomLights;
@@ -56,7 +56,7 @@ namespace CoreEvent.GameEvents
             _eventLightBlink.SetActive(false);
             _itemFlashlight.SetCollected(true);
             ChangeGeneratorRoom();
-            ChangeCorridorC5();
+            SwitchObjects();
             TurnOffAllLights();
             DisableCovers();
             OpenDoors();
@@ -93,10 +93,12 @@ namespace CoreEvent.GameEvents
             _roomGeneratorExploded.SetActive(true);
         }
 
-        private void ChangeCorridorC5()
+        private void SwitchObjects()
         {
-            _corridorC5.SetActive(false);
-            _corridorC5WithBlood.SetActive(true);
+            foreach (GameObject gameObject in _objectsToDeactivate)
+                gameObject.SetActive(false);
+            foreach (GameObject gameObject in _objectsToActivate)
+                gameObject.SetActive(true);
         }
 
         private void BlinkLights()
@@ -115,7 +117,7 @@ namespace CoreEvent.GameEvents
 
         private void DisableCovers()
         {
-            foreach(CoverController __cover in _scenarioCovers)
+            foreach (CoverController __cover in _scenarioCovers)
                 __cover.DisableCover();
         }
 

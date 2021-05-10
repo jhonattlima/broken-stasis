@@ -48,8 +48,12 @@ MonoBehaviour:
   _generatorInterface: {fileID: 0}
   _roomGeneratorExploded: {fileID: 0}
   _itemFlashlight: {fileID: 0}
-  _corridorC5: {fileID: 0}
-  _corridorC5WithBlood: {fileID: 0}
+  _objectsToActivate:
+  - {fileID: 0}
+  - {fileID: 0}
+  _objectsToDeactivate:
+  - {fileID: 0}
+  - {fileID: 0}
   _allLights:
   - {fileID: 0}
   - {fileID: 0}
