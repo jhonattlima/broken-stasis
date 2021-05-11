@@ -1,4 +1,5 @@
 ﻿using GameManagers;
+using Gameplay.Enemy.EnemiesBase;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using UI.EndGamePuzzle;
@@ -12,6 +13,8 @@ namespace Gameplay.Objects.Interaction
         private bool _enabled;
         private bool _runningPuzzle;
         [SerializeField] private DoorController _door;
+        
+        [SerializeField] private BasherEnemy _enemy;
 
         // TODO: Substituir Depois por uma porta com os 3 indicadores
 
@@ -55,7 +58,8 @@ namespace Gameplay.Objects.Interaction
             UnityEngine.Debug.Log("Bar " + p_currentBar + " completed");
             _door.UnlockDoorLock();
             // Dispara som de alarme
-            // Chama Basher para transform.position desta classe
+            
+            _enemy.TeleportToEndgameDoorSpawn(transform.position);
         }
         
         private void HandlePuzzleCompleted()
