@@ -3,6 +3,7 @@ using GameManagers;
 using Gameplay.Enemy.Behaviours;
 using Gameplay.Enemy.EnemyState;
 using UnityEngine;
+using Utilities.Audio;
 
 namespace Gameplay.Enemy.EnemiesBase
 {
@@ -99,6 +100,15 @@ namespace Gameplay.Enemy.EnemiesBase
         public void RunUpdate()
         {
             _basherAI.RunUpdate();
+        }
+
+        public void TeleportToEndgameDoorSpawn(Vector3 p_doorPosition)
+        {
+            _basherContainer.navigationAgent.Warp(_basherContainer.endGameSpawnTransform.position);
+            _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
+            _basherContainer.navigationAgent.SetDestination(p_doorPosition);
+            
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position);
         }
 
         private void HandleGameStateChanged(GameState p_gameState)
