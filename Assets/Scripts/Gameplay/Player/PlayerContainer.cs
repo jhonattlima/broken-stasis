@@ -33,8 +33,11 @@ namespace Gameplay.Player
         [Header("Sound Colliders")]
         [Space(5)]
         public Collider lowSoundCollider;
+        public GameObject lowSoundShader;
         public Collider mediumSoundCollider;
+        public GameObject mediumSoundShader;
         public Collider loudSoundCollider;
+        public GameObject loudSoundShader;
 
         private void Awake()
         {
@@ -46,10 +49,16 @@ namespace Gameplay.Player
                 throw new MissingComponentException("PlayerSuits not found in PlayerContainer!");
             if (lowSoundCollider == null)
                 throw new MissingComponentException("LowSoundCollider not found in PlayerContainer!");
+            if (lowSoundShader == null)
+                throw new MissingComponentException("LowSoundShader not found in PlayerContainer!");
             if (mediumSoundCollider == null)
                 throw new MissingComponentException("MediumSoundCollider not found in PlayerContainer!");
+            if (mediumSoundShader == null)
+                throw new MissingComponentException("MediumSoundShader not found in PlayerContainer!");
             if (loudSoundCollider == null)
                 throw new MissingComponentException("LoudSoundCollider not found in PlayerContainer!");
+            if (loudSoundShader == null)
+                throw new MissingComponentException("LoudSoundShader not found in PlayerContainer!");
         }
     }
 }
