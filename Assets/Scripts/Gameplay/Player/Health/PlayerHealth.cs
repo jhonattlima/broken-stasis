@@ -73,6 +73,8 @@ namespace Gameplay.Player.Health
 
         private void HandleHeartBeat()
         {
+            if(_playerHealthState == PlayerHealthStateEnum.FINE) return;
+
             if (_heartBeatAudio == null || !_heartBeatAudio.isPlaying)
                 _heartBeatAudio = AudioManager.instance.Play(AudioNameEnum.PLAYER_HEARTBEAT, true);
 
