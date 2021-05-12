@@ -45,6 +45,7 @@ namespace CoreEvent.Chapters
             }
 
             InputController.GamePlay.InputEnabled = true;
+            InputController.GamePlay.MouseEnabled = true;
         }
 
         public void ChapterEnd()

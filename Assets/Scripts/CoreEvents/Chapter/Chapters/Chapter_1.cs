@@ -39,6 +39,7 @@ namespace CoreEvent.Chapters
 
                 GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
             });
+            InputController.GamePlay.MouseEnabled = true;
 
             _doorController.LockDoor();
             _doorController.onDoorLocked = delegate ()

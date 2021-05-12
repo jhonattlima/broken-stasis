@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using GameManagers;
 using UnityEngine;
+using Utilities;
 
 namespace UI.EndGamePuzzle
 {
@@ -36,6 +37,8 @@ namespace UI.EndGamePuzzle
 
         public void StartLoading()
         {
+            InputController.GamePlay.MouseEnabled = false;
+
             SceneManager.instance.StartCoroutine(_loadCoRoutine);
             
             GameHudManager.instance.endGameUI.ShowUI();
@@ -43,6 +46,8 @@ namespace UI.EndGamePuzzle
 
         public void StopLoading()
         {
+            InputController.GamePlay.MouseEnabled = true;
+
             StopLoadingBar();
 
             GameHudManager.instance.endGameUI.ResetBar(_loadingProgress.currentBar - 1);
@@ -80,7 +85,10 @@ namespace UI.EndGamePuzzle
             if (_loadingProgress.currentBar <= TOTAL_BARS_COUNT)
                 SceneManager.instance.StartCoroutine(_loadCoRoutine);
             else
+            {
+                InputController.GamePlay.MouseEnabled = true;
                 onAllBarsCompleted?.Invoke();
+            }
 
         }
 
