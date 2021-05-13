@@ -13,9 +13,11 @@ namespace GameManagers
 {
     public class GameplayManager : MonoBehaviour
     {
+        // TODO: Extract to Broadcast/Listener system
         #region GAME_EVENTS
         public Action<PlayerSuitEnum> onPlayerSuitChange;
         public Action<ItemEnum> onPlayerCollectedItem;
+        public Action<int> onPlayerDamaged;
         #endregion
 
         [SerializeField] private PlayerContainer _playerContainer;
@@ -37,10 +39,12 @@ namespace GameManagers
         {
             if (instance == null)
                 instance = this;
-
+            
             RegisterObjectsGraph(_playerContainer);
 
-            _enemiesManager?.InitializeEnemies(_player.onPlayerDamaged);
+            onPlayerDamaged += _player.onPlayerDamaged;
+
+            _enemiesManager?.InitializeEnemies();
             
             // NOTE: Not using lightpriorityManager for the moment
             // TODO: Evitar FindObjects (mesmo que chamado só uma vez)

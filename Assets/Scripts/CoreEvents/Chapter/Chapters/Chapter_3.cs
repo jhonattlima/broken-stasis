@@ -50,6 +50,7 @@ namespace CoreEvent.Chapters
                 SaveGameManager.SaveGame();
             }
             InputController.GamePlay.InputEnabled = true;
+            InputController.GamePlay.MouseEnabled = true;
 
             _itemKeyCard.SetEnabled(true);
             _navMeshSurface.BuildNavMesh();

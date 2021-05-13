@@ -15,9 +15,9 @@ namespace GameManagers
             _enemyList = p_enemyList;
         }
 
-        public void InitializeEnemies(Action<int> p_onPlayerDamaged)
+        public void InitializeEnemies()
         {
-            _enemyList.ForEach(enemy => enemy.InitializeEnemy(p_onPlayerDamaged));
+            _enemyList.ForEach(enemy => enemy.InitializeEnemy());
         }
 
         public void RunUpdate()

@@ -14,7 +14,6 @@ namespace Gameplay.Enemy.EnemiesBase
         private EnemyStateManager _stateManager;
         private EnemyAnimator _enemyAnimator;
         private IEnemyAI _basherAI;
-        private Action<int> _onPlayerDamaged;
 
         private void Awake()
         {
@@ -22,10 +21,8 @@ namespace Gameplay.Enemy.EnemiesBase
                 throw new MissingComponentException("BasherContainer not found in BasherEnemy!");
         }
 
-        public void InitializeEnemy(Action<int> p_onPlayerDamaged)
+        public void InitializeEnemy()
         {
-            _onPlayerDamaged = p_onPlayerDamaged;
-
             RegisterObjectsGraph();
 
             _basherAI.InitializeEnemy();
@@ -68,8 +65,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherContainer.weaponSensor,
                     _basherContainer.originPosition,
                     _basherContainer.attackRange,
-                    _basherContainer.damage,
-                    _onPlayerDamaged
+                    _basherContainer.damage
                 ),
                 _basherContainer.noiseSensor,
                 _basherContainer.visionSensor,
