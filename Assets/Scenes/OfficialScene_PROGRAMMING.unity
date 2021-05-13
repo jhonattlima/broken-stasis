@@ -5877,6 +5877,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Splinter
       objectReference: {fileID: 0}
+    - target: {fileID: 4704304954074470090, guid: 280957d2a0dfbec43993531e7eba53fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704304954074470090, guid: 280957d2a0dfbec43993531e7eba53fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704304954074470090, guid: 280957d2a0dfbec43993531e7eba53fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280957d2a0dfbec43993531e7eba53fd, type: 3}
 --- !u!1001 &3675189963616031180
