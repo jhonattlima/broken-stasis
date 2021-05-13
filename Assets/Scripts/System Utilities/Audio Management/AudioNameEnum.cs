@@ -15,6 +15,7 @@ namespace Utilities.Audio
         ENEMY_BASHER_STEP,
         ENEMY_BASHER_SCREAM,
         ENEMY_SPLINTER_GROWL,
+        ENEMY_SPLINTER_LIGHT_GROWL,
         PLAYER_HEARTBEAT,
         ITEM_PICKUP,
         ITEM_SUIT_PICKUP,

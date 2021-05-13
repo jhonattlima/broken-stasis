@@ -7,5 +7,6 @@ namespace Utilities
         public static string ENEMY = "Enemy";
         public static string TUNNEL = "Tunnel";
         public static string ENEMY_INVESTIGATION_POINT = "EnemyInvestigationPoint";
+        public static string DETECTABLE_LIGHT = "DetectableLight";
     }
 }

@@ -24,6 +24,7 @@ namespace Gameplay.Enemy.EnemiesBase
         
         private bool _isHearingPlayer;
         private bool _isViewingPlayer;
+        private bool _isViewingLight;
 
         private Vector3 _basherPosition;
         private AudioSource _idleSound;
@@ -64,6 +65,10 @@ namespace Gameplay.Enemy.EnemiesBase
             _visionSensor.onPlayerDetected += HandlePlayerEnteredVisionSensor;
             _visionSensor.onPlayerRemainsDetected += HandlePlayerRemainsInVisionSensor;
             _visionSensor.onPlayerLeftDetection += HandlePlayerLeftVisionSensor;
+
+            _visionSensor.onLightDetected += HandleDetectedLightInVision;
+            _visionSensor.onLightRemainsDetected += HandleDetectingLightInVision;
+            _visionSensor.onLightLeftDetection += HandleStoppedDetectingLightInVision;
 
             _roomSensor.onRoomDetected += HandleDetectedRoom;
 
@@ -170,6 +175,31 @@ namespace Gameplay.Enemy.EnemiesBase
             _isHearingPlayer = false;
         }
 
+        private void HandleDetectedLightInVision(Transform p_lightPosition)
+        {
+            _isViewingLight = true;
+
+            if(!_isViewingPlayer)
+            {
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherPosition);
+                _followBehaviour.SprintToPosition(p_lightPosition);
+            }
+        }
+
+        private void HandleDetectingLightInVision(Transform p_lightPosition)
+        {
+            if(!_isViewingPlayer && !_isViewingLight)
+                _followBehaviour.SprintToPosition(p_lightPosition);
+
+            _isViewingLight = true;
+        }
+
+        private void HandleStoppedDetectingLightInVision(Transform p_lightPosition)
+        {
+            _isViewingLight = false;
+
+        }
+
         private void HandlePlayerEnteredVisionSensor(Transform p_playerPosition)
         {
             _isViewingPlayer = true;
@@ -215,6 +245,10 @@ namespace Gameplay.Enemy.EnemiesBase
             _visionSensor.onPlayerDetected = null;
             _visionSensor.onPlayerRemainsDetected = null;
             _visionSensor.onPlayerLeftDetection = null;
+
+            _visionSensor.onLightDetected = null;
+            _visionSensor.onLightRemainsDetected = null;
+            _visionSensor.onLightLeftDetection = null;
 
             _roomSensor.onRoomDetected = null;
         }
