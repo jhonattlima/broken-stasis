@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: ITEM_SUIT_PICKUP
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: 220681b7bded132478d7839d6849da12, type: 3}
+  audioFile: {fileID: 8300000, guid: b21abdacae33d421ea34b294228aff99, type: 3}
   audioMixerGroup: {fileID: 0}
   volume: 1

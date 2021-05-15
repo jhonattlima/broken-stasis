@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: ENEMY_BASHER_STEP
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 0}
-  audioMixerGroup: {fileID: 0}
+  audioFile: {fileID: 8300000, guid: 411d9ed6d05dd19459c8de3c7c4f56af, type: 3}
+  audioMixerGroup: {fileID: 4322169948599928627, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1
