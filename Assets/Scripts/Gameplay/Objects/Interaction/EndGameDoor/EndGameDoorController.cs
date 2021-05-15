@@ -34,7 +34,8 @@ namespace Gameplay.Objects.Interaction
 
             GameplayManager.instance.onPlayerDamaged += delegate (int p_damage)
             {
-                InterruptPuzzle();
+                if(_runningPuzzle)
+                    InterruptPuzzle();
             };
         }
 

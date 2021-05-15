@@ -13,6 +13,10 @@ namespace Gameplay.Enemy.Sensors
         public Action<Transform> onPlayerRemainsDetected;
         public Action<Transform> onPlayerLeftDetection;
 
+        public Action<Transform> onLightDetected;
+        public Action<Transform> onLightRemainsDetected;
+        public Action<Transform> onLightLeftDetection;
+
         private void Awake()
         {
             if (_eyesTransform == null)
@@ -21,37 +25,40 @@ namespace Gameplay.Enemy.Sensors
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfPlayer(other.gameObject))
-            {
-                if (onPlayerDetected != null) onPlayerDetected(other.transform);
-            }
+            if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
+                onPlayerDetected?.Invoke(other.transform);
+            else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
+                onLightDetected?.Invoke(other.transform);
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfPlayer(other.gameObject))
-                if (onPlayerRemainsDetected != null) onPlayerRemainsDetected(other.transform);
+            if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
+                onPlayerRemainsDetected?.Invoke(other.transform);
+            else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
+                onLightRemainsDetected?.Invoke(other.transform);
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag(GameInternalTags.PLAYER))
-                if (onPlayerLeftDetection != null) onPlayerLeftDetection(other.transform);
+                onPlayerLeftDetection?.Invoke(other.transform);
+            else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
+                onLightLeftDetection?.Invoke(other.transform);
         }
 
-        private bool HasDirectViewOfPlayer(GameObject p_playerGameObject)
+        private bool HasDirectViewOfObject(GameObject p_detectedObject, string p_objectTag)
         {
             RaycastHit __hit;
             Vector3 __fromPosition = _eyesTransform.position;
-            Vector3 __toPosition = p_playerGameObject.transform.position;
+            Vector3 __toPosition = p_detectedObject.transform.position;
             Vector3 __direction = __toPosition - __fromPosition;
 
             Debug.DrawRay(__fromPosition, __direction, Color.green);
-
         
             if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f, _layersToDetect))
             {
-                return __hit.collider.CompareTag(GameInternalTags.PLAYER);
+                return __hit.collider.CompareTag(p_objectTag);
             }
 
             return false;
