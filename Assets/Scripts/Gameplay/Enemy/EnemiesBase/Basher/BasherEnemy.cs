@@ -3,6 +3,7 @@ using GameManagers;
 using Gameplay.Enemy.Behaviours;
 using Gameplay.Enemy.EnemyState;
 using UnityEngine;
+using Utilities.Audio;
 
 namespace Gameplay.Enemy.EnemiesBase
 {
@@ -13,7 +14,6 @@ namespace Gameplay.Enemy.EnemiesBase
         private EnemyStateManager _stateManager;
         private EnemyAnimator _enemyAnimator;
         private IEnemyAI _basherAI;
-        private Action<int> _onPlayerDamaged;
 
         private void Awake()
         {
@@ -21,10 +21,8 @@ namespace Gameplay.Enemy.EnemiesBase
                 throw new MissingComponentException("BasherContainer not found in BasherEnemy!");
         }
 
-        public void InitializeEnemy(Action<int> p_onPlayerDamaged)
+        public void InitializeEnemy()
         {
-            _onPlayerDamaged = p_onPlayerDamaged;
-
             RegisterObjectsGraph();
 
             _basherAI.InitializeEnemy();
@@ -67,8 +65,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherContainer.weaponSensor,
                     _basherContainer.originPosition,
                     _basherContainer.attackRange,
-                    _basherContainer.damage,
-                    _onPlayerDamaged
+                    _basherContainer.damage
                 ),
                 _basherContainer.noiseSensor,
                 _basherContainer.visionSensor,
@@ -99,6 +96,15 @@ namespace Gameplay.Enemy.EnemiesBase
         public void RunUpdate()
         {
             _basherAI.RunUpdate();
+        }
+
+        public void TeleportToEndgameDoorSpawn(Vector3 p_doorPosition)
+        {
+            _basherContainer.navigationAgent.Warp(_basherContainer.endGameSpawnTransform.position);
+            _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
+            _basherContainer.navigationAgent.SetDestination(p_doorPosition);
+            
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position);
         }
 
         private void HandleGameStateChanged(GameState p_gameState)

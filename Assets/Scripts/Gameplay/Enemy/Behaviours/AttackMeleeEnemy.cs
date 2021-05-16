@@ -1,4 +1,5 @@
 ﻿using System;
+using GameManagers;
 using Gameplay.Enemy.EnemyState;
 using Gameplay.Enemy.Sensors;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Gameplay.Enemy.Behaviours
         private readonly Transform _originPosition;
         private readonly float _attackRange;
         private readonly int _damage;
-        private readonly Action<int> _onPlayerDamaged;
         private readonly EnemyStateManager _enemyStatesManager;
 
         public AttackMeleeEnemy(
@@ -20,8 +20,7 @@ namespace Gameplay.Enemy.Behaviours
             SensorDamagePlayer p_weaponSensor,
             Transform p_originPosition,
             float p_attackRange,
-            int p_damage,
-            Action<int> p_onPlayerDamaged
+            int p_damage
             )
         {
             _enemyStatesManager = p_stateManager;
@@ -29,7 +28,6 @@ namespace Gameplay.Enemy.Behaviours
             _originPosition = p_originPosition;
             _attackRange = p_attackRange;
             _damage = p_damage;
-            _onPlayerDamaged = p_onPlayerDamaged;
 
             InitializeAttackingBehaviour();
         }
@@ -61,7 +59,7 @@ namespace Gameplay.Enemy.Behaviours
             if (_weaponSensor.isTouchingPlayer)
             {
                 _weaponSensor.ResetSensorDetection();
-                _onPlayerDamaged?.Invoke(_damage);
+                GameplayManager.instance.onPlayerDamaged?.Invoke(_damage);
             }
         }
     }

@@ -65,8 +65,11 @@ namespace Gameplay.Player
 
             _playerSoundColliderActivator = new PlayerSoundColliderActivator(
                 _playerContainer.lowSoundCollider,
+                _playerContainer.lowSoundShader,
                 _playerContainer.mediumSoundCollider,
-                _playerContainer.loudSoundCollider
+                _playerContainer.mediumSoundShader,
+                _playerContainer.loudSoundCollider,
+                _playerContainer.loudSoundShader
             );
 
             RegisterPlayerAnimator();

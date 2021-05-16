@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: ENEMY_SPLINTER_GROWL
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: 4df57ab077e03a8499b592818cbdcc94, type: 3}
+  audioFile: {fileID: 8300000, guid: 92af4a13bca864a48b24d1fc58d106c6, type: 3}
   audioMixerGroup: {fileID: 0}
-  volume: 1
+  volume: 0.075

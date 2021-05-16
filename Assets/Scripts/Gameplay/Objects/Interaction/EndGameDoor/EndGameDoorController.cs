@@ -1,8 +1,10 @@
 ﻿using GameManagers;
+using Gameplay.Enemy.EnemiesBase;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using UI.EndGamePuzzle;
 using UnityEngine;
+using Utilities;
 
 namespace Gameplay.Objects.Interaction
 {
@@ -12,6 +14,8 @@ namespace Gameplay.Objects.Interaction
         private bool _enabled;
         private bool _runningPuzzle;
         [SerializeField] private DoorController _door;
+        
+        [SerializeField] private BasherEnemy _enemy;
 
         // TODO: Substituir Depois por uma porta com os 3 indicadores
 
@@ -27,6 +31,12 @@ namespace Gameplay.Objects.Interaction
             _endGamePuzzleController = new EndGamePuzzleController();
             _endGamePuzzleController.onBarCompleted = HandleCurrentBarCompleted;
             _endGamePuzzleController.onAllBarsCompleted = HandlePuzzleCompleted;
+
+            GameplayManager.instance.onPlayerDamaged += delegate (int p_damage)
+            {
+                if(_runningPuzzle)
+                    InterruptPuzzle();
+            };
         }
 
         public override void Interact()
@@ -42,12 +52,17 @@ namespace Gameplay.Objects.Interaction
         public override void RunFixedUpdate()
         {
             // Player estava no meio do puzzle mas saiu do collider
-            if(_runningPuzzle && !_isActive)
+            if(_runningPuzzle && InputController.GamePlay.NavigationAxis() != Vector3.zero)
             {
-                _runningPuzzle = false;
-                PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);
-                _endGamePuzzleController.StopLoading();
+                InterruptPuzzle();
             }
+        }
+
+        private void InterruptPuzzle()
+        {
+            _runningPuzzle = false;
+            PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);
+            _endGamePuzzleController.StopLoading();
         }
 
         private void HandleCurrentBarCompleted(int p_currentBar)
@@ -55,7 +70,8 @@ namespace Gameplay.Objects.Interaction
             UnityEngine.Debug.Log("Bar " + p_currentBar + " completed");
             _door.UnlockDoorLock();
             // Dispara som de alarme
-            // Chama Basher para transform.position desta classe
+            
+            _enemy.TeleportToEndgameDoorSpawn(transform.position);
         }
         
         private void HandlePuzzleCompleted()

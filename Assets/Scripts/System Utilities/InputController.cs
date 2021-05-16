@@ -7,6 +7,7 @@ namespace Utilities
         public static class GamePlay
         {
             public static bool InputEnabled { get; set; }
+            public static bool MouseEnabled { get; set; }
 
             private static Vector3 _defaultMousePosition = Vector3.zero;
 
@@ -44,7 +45,7 @@ namespace Utilities
 
             public static Vector3 MousePosition()
             {
-                if (InputEnabled)
+                if (InputEnabled && MouseEnabled)
                 {
                     _defaultMousePosition = Input.mousePosition;
 

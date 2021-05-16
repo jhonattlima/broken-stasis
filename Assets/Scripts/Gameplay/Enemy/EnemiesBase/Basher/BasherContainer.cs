@@ -46,6 +46,10 @@ namespace Gameplay.Enemy.EnemiesBase
         public SensorRoom roomSensor;
         public SensorVision stasisSensor;
 
+        [Header("EndGame Door")]
+        [Space(5)]
+        public Transform endGameSpawnTransform;
+
         private void Awake()
         {
             if (navigationAgent == null)
