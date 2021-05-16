@@ -28,8 +28,7 @@ namespace Gameplay.Player.Motion
             _charController = p_charController;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
+        private void OnTriggerStay(Collider other) {      
             if (other.CompareTag(GameInternalTags.TUNNEL) && isCrouching && !_isCrossing)
             {
                 SetMovingInitialState(other.gameObject);
