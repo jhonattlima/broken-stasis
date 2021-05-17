@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: GENERATOR_EXPLOSION
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: e28f9117871dd6a44a8ac3bdc37fa643, type: 3}
-  audioMixerGroup: {fileID: 0}
+  audioFile: {fileID: 8300000, guid: b0e734369271947808df95dcc6dd5db0, type: 3}
+  audioMixerGroup: {fileID: 6988149502019105432, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1

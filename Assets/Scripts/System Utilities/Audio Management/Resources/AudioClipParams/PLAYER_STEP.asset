@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: PLAYER_STEP
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: f68768dc15d46bf4893c076a067ec202, type: 3}
+  audioFile: {fileID: 8300000, guid: 557c82770a7293a4badea35f9a40b34f, type: 3}
   audioMixerGroup: {fileID: -1557843067892748795, guid: d7e573f2138a1814092682c8f93b6687,
     type: 2}
   volume: 0.01

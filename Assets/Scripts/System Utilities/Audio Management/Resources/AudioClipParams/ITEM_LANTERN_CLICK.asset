@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: ITEM_LANTERN_CLICK
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: ffe2a20d7efeaf74e9d20c78db3f26b6, type: 3}
-  audioMixerGroup: {fileID: 0}
+  audioFile: {fileID: 8300000, guid: 9f44038831a8e4030b7b6a9d231a7ec3, type: 3}
+  audioMixerGroup: {fileID: -1557843067892748795, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1
