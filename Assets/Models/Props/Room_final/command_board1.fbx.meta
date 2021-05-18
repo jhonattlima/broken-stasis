@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: c8fd8c6a0c1ceeb4498bf55b2df55460
+guid: 05205c61da6f195408a84e90f7b808ca
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: command_board1
+    second: {fileID: 2100000, guid: b2fefac5f5433b44886d610eb90e95d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: command_board2
+    second: {fileID: 2100000, guid: b2fefac5f5433b44886d610eb90e95d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emission.001
+    second: {fileID: 2100000, guid: 6046878ab3eb4474d9ee7f32f129f578, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -31,7 +46,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
