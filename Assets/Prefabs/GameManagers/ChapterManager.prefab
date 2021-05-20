@@ -129,6 +129,8 @@ MonoBehaviour:
   _playerCharacterController: {fileID: 0}
   _itemKeyCard: {fileID: 0}
   _navMeshSurface: {fileID: 0}
+  _deactivatedToolTips:
+  - {fileID: 0}
 --- !u!1 &8052083270082628140
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +179,8 @@ MonoBehaviour:
   _chapterType: 2
   _startPosition: {x: 0.25, y: 0.9, z: 0.51}
   _playerCharacterController: {fileID: 0}
+  _deactivatedToolTips:
+  - {fileID: 0}
 --- !u!1 &8052083270176505576
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chapterType: 1
   _doorController: {fileID: 0}
+  _firstDoorToolTip: {fileID: 0}
 --- !u!1 &8052083270922509227
 GameObject:
   m_ObjectHideFlags: 0

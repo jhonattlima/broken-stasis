@@ -153,6 +153,12 @@ Transform:
   m_Father: {fileID: 1930543493}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20656983 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 459761145867806180, guid: 000cd9ed6292da944b3444786b84c550,
+    type: 3}
+  m_PrefabInstance: {fileID: 538882662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &33007781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,7 +478,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-74272
+  m_Name: pb_Mesh-3718
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -851,6 +857,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770011423, guid: f793ea42f9d70874abe5a27a4775a0a3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 20656983}
     - target: {fileID: 1956748872741897499, guid: f793ea42f9d70874abe5a27a4775a0a3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2334,11 +2344,21 @@ PrefabInstance:
       propertyPath: _playerCharacterController
       value: 
       objectReference: {fileID: 260029353}
+    - target: {fileID: 3482455843885045561, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: _deactivatedToolTips.Array.data[0]
+      value: 
+      objectReference: {fileID: 1711103774}
     - target: {fileID: 8052083270082628142, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: _playerCharacterController
       value: 
       objectReference: {fileID: 260029353}
+    - target: {fileID: 8052083270082628142, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: _deactivatedToolTips.Array.data[0]
+      value: 
+      objectReference: {fileID: 1711103774}
     - target: {fileID: 8052083270176505578, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: _suitModel
@@ -2359,6 +2379,11 @@ PrefabInstance:
       propertyPath: _doorController
       value: 
       objectReference: {fileID: 2026303382}
+    - target: {fileID: 8052083270493530479, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: _firstDoorToolTip
+      value: 
+      objectReference: {fileID: 1711103774}
     - target: {fileID: 8052083270922509227, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: m_Name
@@ -3257,6 +3282,11 @@ PrefabInstance:
       propertyPath: _isDoorOpen
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
+        type: 3}
+      propertyPath: _doorTooltip
+      value: 
+      objectReference: {fileID: 1711103774}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c75b292c5996fc49bb9eecf2bd9421d, type: 3}
 --- !u!4 &1083909994 stripped
@@ -4568,6 +4598,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 664035208008004325}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1711103774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1900730310, guid: f793ea42f9d70874abe5a27a4775a0a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 347572440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29a32d6343bcb4b8718c836483e0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729637187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1831623738069259040, guid: 351eab7f32e1b4e46b40b0724df54033,

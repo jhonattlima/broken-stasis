@@ -4,6 +4,7 @@ using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Interaction;
 using UI;
+using UI.ToolTip;
 using UnityEngine;
 using Utilities;
 using Utilities.UI;
@@ -14,6 +15,7 @@ namespace CoreEvent.Chapters
     {
         [SerializeField] private ChapterTypeEnum _chapterType;
         [SerializeField] private DoorController _doorController;
+        [SerializeField] private ToolTip _firstDoorToolTip;
 
         public ChapterTypeEnum chapterType
         {
@@ -33,6 +35,8 @@ namespace CoreEvent.Chapters
 
         public void ChapterStart()
         {   
+            _firstDoorToolTip.ActivateToolTip();
+
             LoadingView.instance.FadeOut(delegate ()
             {
                 InputController.UI.InputEnabled = true;
