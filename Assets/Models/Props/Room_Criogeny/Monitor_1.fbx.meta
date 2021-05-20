@@ -3,7 +3,22 @@ guid: fb108b9be3ad8c14784d1ddc9e5b50e7
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissao
+    second: {fileID: 2100000, guid: 8c5cbb06e711ec14cad9929e9582934b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: monitor 01
+    second: {fileID: 2100000, guid: d23e5dc5003a9bc42a8ece252deeb7f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: monitor 02
+    second: {fileID: 2100000, guid: d23e5dc5003a9bc42a8ece252deeb7f4, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

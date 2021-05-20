@@ -3,7 +3,17 @@ guid: f2e9b05ea8cbee64582cfa765a8e3a82
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissao
+    second: {fileID: 2100000, guid: e8b47f9e07ebc944a926e43d762df124, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gabinete 01
+    second: {fileID: 2100000, guid: a707d6ebf088e5641a8ddfdfad88e1b8, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
