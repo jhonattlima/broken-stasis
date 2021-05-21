@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159b2ce4f00016547a5d5d6e43e46a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minigameToolTip: {fileID: 0}
 --- !u!65 &6074662257726358512
 BoxCollider:
   m_ObjectHideFlags: 0

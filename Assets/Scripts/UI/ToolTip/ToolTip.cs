@@ -5,6 +5,8 @@ namespace UI.ToolTip
 {
     public class ToolTip : MonoBehaviour
     {
+        [SerializeField] private ToolTip _nextTooltip;
+
         private Animator _toolTipAnimator;
 
         private const string INACTIVE_ANIMATION = "Inactive";
@@ -51,6 +53,7 @@ namespace UI.ToolTip
             {
                 _isActive = false;
                 _toolTipAnimator.Play(INTERACT_ANIMATION);
+                _nextTooltip?.ActivateToolTip();
             }
         }
     }

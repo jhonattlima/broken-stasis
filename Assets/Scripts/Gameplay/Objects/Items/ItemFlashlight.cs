@@ -3,6 +3,8 @@ using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
+using UI.ToolTip;
+using UnityEngine;
 using Utilities;
 using Utilities.Audio;
 using Utilities.UI;
@@ -11,6 +13,8 @@ namespace Gameplay.Objects.Items
 {
     public class ItemFlashlight : InteractionObjectWithColliders
     {
+        [SerializeField] private ToolTip _lightToolTip;
+
         private bool _collected;
         private bool _enabled;
 
@@ -36,6 +40,8 @@ namespace Gameplay.Objects.Items
             {
                 if (_enabled)
                 {
+                    _lightToolTip.InteractToolTip();
+
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
                     AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP, false, delegate ()
                     {

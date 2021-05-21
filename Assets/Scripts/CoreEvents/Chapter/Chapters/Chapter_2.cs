@@ -14,6 +14,7 @@ namespace CoreEvent.Chapters
         [SerializeField] private ChapterTypeEnum _chapterType;
         [SerializeField] private Vector3 _startPosition;
         [SerializeField] private CharacterController _playerCharacterController;
+        [SerializeField] private ToolTip _generatorToolTip;
         [SerializeField] private ToolTip[] _deactivatedToolTips;
 
         public ChapterTypeEnum chapterType
@@ -35,6 +36,8 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 2");
+
+            _generatorToolTip.ActivateToolTip();
 
             foreach(ToolTip __tooltip in _deactivatedToolTips)
             {

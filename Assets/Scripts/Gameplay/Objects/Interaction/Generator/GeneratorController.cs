@@ -1,11 +1,15 @@
 ﻿
 using CoreEvent.GameEvents;
 using GameManagers;
+using UI.ToolTip;
+using UnityEngine;
 
 namespace Gameplay.Objects.Interaction
 {
     public class GeneratorController : InteractionObjectWithColliders
     {
+        [SerializeField] private ToolTip _minigameToolTip;
+
         private bool _enabled;
 
         private void Awake()
@@ -27,7 +31,10 @@ namespace Gameplay.Objects.Interaction
         public override void Interact()
         {
             if(_enabled)
+            {   
+                _minigameToolTip.InteractToolTip();
                 GameHudManager.instance.minigameHud.ShowMinigame();
+            }
         }
 
         private void HandleMinigameSuccess()
