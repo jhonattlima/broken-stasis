@@ -3,7 +3,27 @@ guid: cb636273ac9414f4ab2e017586067799
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armario aereo.003
+    second: {fileID: 2100000, guid: afcff3139123c964eb93e8137365f7d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banco.001
+    second: {fileID: 2100000, guid: afcff3139123c964eb93e8137365f7d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cadeira 2
+    second: {fileID: 2100000, guid: afcff3139123c964eb93e8137365f7d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissao
+    second: {fileID: 2100000, guid: 14cd9a5278af7da419b484af64bc2240, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
