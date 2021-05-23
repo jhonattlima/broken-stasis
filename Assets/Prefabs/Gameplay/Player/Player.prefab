@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e0221659dba72459303d72f715cc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _crouchToolTip: {fileID: 0}
 --- !u!65 &368893370
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using Gameplay.Enemy.EnemiesBase;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
 using UI.EndGamePuzzle;
+using UI.ToolTip;
 using UnityEngine;
 using Utilities;
 
@@ -16,6 +17,7 @@ namespace Gameplay.Objects.Interaction
         [SerializeField] private DoorController _door;
         
         [SerializeField] private BasherEnemy _enemy;
+        [SerializeField] private ToolTip _doorToolTip;
 
         // TODO: Substituir Depois por uma porta com os 3 indicadores
 
@@ -43,6 +45,7 @@ namespace Gameplay.Objects.Interaction
         {
             if(!_runningPuzzle && _enabled && GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.KEYCARD))
             {
+                _doorToolTip.InteractToolTip();
                 _runningPuzzle = true;
                 PlayerStatesManager.SetPlayerState(PlayerState.INTERACT_WITH_ENDLEVEL_DOOR);
                 _endGamePuzzleController.StartLoading();

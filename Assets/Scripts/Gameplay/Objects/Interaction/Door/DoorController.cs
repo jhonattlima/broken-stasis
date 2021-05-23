@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using GameManagers;
+using UI.ToolTip;
 using UnityEngine;
 using Utilities.Audio;
 
@@ -17,6 +18,7 @@ namespace Gameplay.Objects.Interaction
         [SerializeField] private MeshRenderer[] _lockIndicatorsMeshRenderer;
         [SerializeField] private Material _lockedDoorMaterial;
         [SerializeField] private Material _unlockedDoorMaterial;
+        [SerializeField] private ToolTip _doorTooltip;
 
         private Vector3 _targetPosition;
         private Vector3 _doorOpenPosition;
@@ -78,6 +80,8 @@ namespace Gameplay.Objects.Interaction
         private IEnumerator OpenDoor(float p_delay)
         {
             AudioManager.instance.Play(AudioNameEnum.DOOR_OPEN, false);
+
+            _doorTooltip?.InteractToolTip();
 
             yield return new WaitForSeconds(p_delay);
             _targetPosition = _doorOpenPosition;

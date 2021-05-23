@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using GameManagers;
+using UI.ToolTip;
 using UnityEngine;
 using Utilities;
 
@@ -9,6 +10,7 @@ namespace Gameplay.Player.Motion
 {
     public class PlayerTunnelBehaviour : MonoBehaviour
     {
+        [SerializeField] private ToolTip _crouchToolTip;
         public bool isCrouching { get; set; }
 
         private bool _isCrossing;
@@ -34,6 +36,8 @@ namespace Gameplay.Player.Motion
                 SetMovingInitialState(other.gameObject);
 
                 _isCrossing = true;
+
+                _crouchToolTip.InteractToolTip();
             }
         }
 

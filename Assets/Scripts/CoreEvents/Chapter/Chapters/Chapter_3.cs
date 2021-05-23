@@ -4,6 +4,7 @@ using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Items;
 using SaveSystem;
+using UI.ToolTip;
 using UnityEngine;
 using UnityEngine.AI;
 using Utilities;
@@ -17,6 +18,8 @@ namespace CoreEvent.Chapters
         [SerializeField] private CharacterController _playerCharacterController;
         [SerializeField] private ItemKeyCard _itemKeyCard;
         [SerializeField] private NavMeshSurface _navMeshSurface;
+        [SerializeField] private ToolTip[] _activateToolTips;
+        [SerializeField] private ToolTip[] _deactivatedToolTips;
 
         public ChapterTypeEnum chapterType
         {
@@ -38,6 +41,15 @@ namespace CoreEvent.Chapters
         {
             Debug.Log("STARTED CHAPTER 3");
 
+            foreach(ToolTip __tooltip in _activateToolTips)
+            {
+                __tooltip.ActivateToolTip();
+            }
+
+            foreach(ToolTip __tooltip in _deactivatedToolTips)
+            {
+                __tooltip.DeactivateTooltip();
+            }
 
             _playerCharacterController.enabled = false;
             _playerCharacterController.transform.position = _startPosition;

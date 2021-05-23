@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelGameObject: {fileID: 1017448461703214495}
+  _keyCardToolTip: {fileID: 0}
 --- !u!1001 &8206338282322424059
 PrefabInstance:
   m_ObjectHideFlags: 0

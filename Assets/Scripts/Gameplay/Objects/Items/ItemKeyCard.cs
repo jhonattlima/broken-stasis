@@ -3,6 +3,7 @@ using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Player.Item;
 using Gameplay.Player.Motion;
+using UI.ToolTip;
 using UnityEngine;
 
 namespace Gameplay.Objects.Items
@@ -10,7 +11,8 @@ namespace Gameplay.Objects.Items
     public class ItemKeyCard : InteractionObjectWithColliders
     {
         [SerializeField] private GameObject _modelGameObject;
-
+        [SerializeField] private ToolTip _keyCardToolTip;
+        
         private bool _enabled;
 
         private void Awake()
@@ -29,6 +31,7 @@ namespace Gameplay.Objects.Items
         {
             if(_enabled)
             {
+                _keyCardToolTip.InteractToolTip();
                 PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM_ON_GROUND);
                 GameplayManager.instance.onPlayerCollectedItem(ItemEnum.KEYCARD);
 
