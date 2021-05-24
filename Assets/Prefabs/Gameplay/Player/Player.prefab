@@ -823,7 +823,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 57143
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -2490,7 +2490,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9125182479182379203}
   - component: {fileID: 4867254371286121462}
-  - component: {fileID: 804970684401746643}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2534,14 +2533,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &804970684401746643
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258076564852984528}
-  m_Enabled: 1
 --- !u!1 &5275441376740432566
 GameObject:
   m_ObjectHideFlags: 0
