@@ -104,7 +104,7 @@ namespace Gameplay.Enemy.EnemiesBase
             _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
             _basherContainer.navigationAgent.SetDestination(p_doorPosition);
             
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position);
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM);
         }
 
         private void HandleGameStateChanged(GameState p_gameState)

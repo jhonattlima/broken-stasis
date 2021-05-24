@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gameplay;
 using Gameplay.Camera;
 using Gameplay.Enemy;
 using Gameplay.Objects.Interaction;
@@ -22,6 +23,7 @@ namespace GameManagers
 
         [SerializeField] private PlayerContainer _playerContainer;
         [SerializeField] private CameraContainer _cameraContainer;
+        [SerializeField] private GameObject _audioListenerGameObject;
         [SerializeField] private GameObject _levelGameObjects;
         [SerializeField] private GameObject _enemiesGameObjects;
 
@@ -29,6 +31,7 @@ namespace GameManagers
         private InventoryController _inventoryController;
         public InventoryController inventoryController { get { return _inventoryController; } }
         private CameraFollowPlayer _cameraFollowPlayer;
+        private AudioListenerController _audioListenerController;
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
         private LightPriorityManager _lightPriorityManager;
@@ -45,13 +48,6 @@ namespace GameManagers
             onPlayerDamaged += _player.onPlayerDamaged;
 
             _enemiesManager?.InitializeEnemies();
-            
-            // NOTE: Not using lightpriorityManager for the moment
-            // TODO: Evitar FindObjects (mesmo que chamado só uma vez)
-            // _lightPriorityManager = new LightPriorityManager(
-            //     GameObject.FindObjectsOfType<Light>().ToList<Light>(),
-            //     _playerContainer.playerLights.ToList<Light>()
-            // );
         }
 
         private void Start()
@@ -77,6 +73,7 @@ namespace GameManagers
         {
             if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
             if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
+            if(p_playercontainer != null && _audioListenerGameObject != null) _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
 
             _player?.InitializePlayer();
 
@@ -87,6 +84,7 @@ namespace GameManagers
         {
             _player?.RunFixedUpdate();
             _cameraFollowPlayer?.RunFixedUpdate();
+            _audioListenerController?.RunFixedUpdate();
             _levelObjectManager?.RunFixedUpdate();
             // NOTE: Not using lightpriorityManager for the moment
             // _lightPriorityManager?.RunFixedUpdate();

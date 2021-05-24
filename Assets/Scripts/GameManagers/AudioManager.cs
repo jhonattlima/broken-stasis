@@ -6,6 +6,13 @@ using Utilities.VariableManagement;
 
 namespace GameManagers
 {
+    public enum AudioRange
+    {
+        LOW = 8,
+        MEDIUM = 15,
+        HIGH = 20
+    }
+
     public class AudioManager : MonoBehaviour
     {
         private static AudioLibraryScriptableObject _audioLibrary;
@@ -73,7 +80,7 @@ namespace GameManagers
             return __audioSource;
         }
 
-        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false)
+        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH)
         {
             AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
             __audioSource.gameObject.transform.position = p_position;
@@ -89,7 +96,10 @@ namespace GameManagers
             __audioSource.loop = p_loop;
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
+
             __audioSource.spatialBlend = 1f;
+            __audioSource.rolloffMode = UnityEngine.AudioRolloffMode.Custom;
+            __audioSource.maxDistance = (int) p_audioRange;
 
             __audioSource.Play();
 
