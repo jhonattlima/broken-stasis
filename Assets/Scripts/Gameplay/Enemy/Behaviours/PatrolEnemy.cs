@@ -24,6 +24,8 @@ namespace Gameplay.Enemy.Behaviours
         private float _initialAcceleration;
         private float _initialAngularSpeed;
 
+        private Coroutine _patrolCoroutine;
+
         public PatrolEnemy(
             EnemyStateManager p_stateManager,
             NavMeshAgent p_navigationAgent,
@@ -51,7 +53,7 @@ namespace Gameplay.Enemy.Behaviours
             _initialAcceleration = _navigationAgent.acceleration;
             _initialAngularSpeed = _navigationAgent.angularSpeed;
 
-            SceneManager.instance.StartCoroutine(PatrolToNextPoint());
+            _patrolCoroutine = SceneManager.instance.StartCoroutine(PatrolToNextPoint());
         }
 
         private void HandleStateChanged(EnemyStateEnum p_enemyState)
@@ -62,7 +64,8 @@ namespace Gameplay.Enemy.Behaviours
                     ResetSpeed();
                     break;
                 case EnemyStateEnum.PATROLLING:
-                    SetPatrolDestination();
+                    if (_navigationAgent.remainingDistance < 0.05f)
+                        SetPatrolDestination();
                     break;
                 case EnemyStateEnum.INVESTIGATING:
                 case EnemyStateEnum.RUNNING:
@@ -79,7 +82,10 @@ namespace Gameplay.Enemy.Behaviours
         {
             if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
-                    SceneManager.instance.StartCoroutine(PatrolToNextPoint());
+                {
+                    SceneManager.instance.StopCoroutine(_patrolCoroutine);
+                    _patrolCoroutine = SceneManager.instance.StartCoroutine(PatrolToNextPoint());
+                }
         }
 
         private bool IsEnemyPatrolling()
@@ -105,7 +111,7 @@ namespace Gameplay.Enemy.Behaviours
         private void StopPatrolling()
         {
             _settingDestination = false;
-            SceneManager.instance.StopCoroutine(PatrolToNextPoint());
+            SceneManager.instance.StopCoroutine(_patrolCoroutine);
         }
 
         private void SetPatrolDestination()

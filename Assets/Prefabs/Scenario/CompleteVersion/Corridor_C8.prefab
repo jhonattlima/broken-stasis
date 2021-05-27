@@ -440,6 +440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cable_curved
       objectReference: {fileID: 0}
+    - target: {fileID: 7048309145563915929, guid: dd59fe09fd525584d93c1e7eafe59700,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7681820998752615459, guid: dd59fe09fd525584d93c1e7eafe59700,
         type: 3}
       propertyPath: m_RootOrder
@@ -723,7 +728,7 @@ PrefabInstance:
     - target: {fileID: 3074895624993261231, guid: a0a0086397bfb404cac3d96cd63bb619,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a0086397bfb404cac3d96cd63bb619, type: 3}
