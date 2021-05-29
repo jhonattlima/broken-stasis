@@ -15,12 +15,10 @@ namespace Gameplay.Objects.Interaction
         private bool _enabled;
         private bool _runningPuzzle;
         [SerializeField] private DoorController _door;
-        
         [SerializeField] private BasherEnemy _enemy;
         [SerializeField] private ToolTip _doorToolTip;
 
         // TODO: Substituir Depois por uma porta com os 3 indicadores
-
         // Referência para o Basher/EnemiesManager (para enviar um evento de perseguir player na porta)
 
         private void Start()
@@ -70,7 +68,7 @@ namespace Gameplay.Objects.Interaction
 
         private void HandleCurrentBarCompleted(int p_currentBar)
         {
-            UnityEngine.Debug.Log("Bar " + p_currentBar + " completed");
+            //UnityEngine.Debug.Log("Bar " + p_currentBar + " completed");
             _door.UnlockDoorLock();
             // Dispara som de alarme
             
@@ -79,7 +77,7 @@ namespace Gameplay.Objects.Interaction
         
         private void HandlePuzzleCompleted()
         {
-            UnityEngine.Debug.Log("All bars completed");
+            //UnityEngine.Debug.Log("All bars completed");
 
             _runningPuzzle = false;
             PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);

@@ -37,5 +37,16 @@ namespace Utilities.VariableManagement
                 return _uiVariables;
             }
         }
+
+        private static GameplayVariablesScriptableObject _gameplayVariables;
+        public static GameplayVariablesScriptableObject gameplayVariables 
+        {
+            get
+            {
+                if(_gameplayVariables == null) _gameplayVariables = Resources.Load<GameplayVariablesScriptableObject>("Variables/GameplayVariables");
+
+                return _gameplayVariables;
+            }
+        }
     }
 }

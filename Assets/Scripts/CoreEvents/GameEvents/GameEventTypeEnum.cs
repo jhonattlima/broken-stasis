@@ -4,6 +4,7 @@ namespace CoreEvent.GameEvents
     {
         DRESS_PLAYER,
         GENERATOR_COMPLETE_MINIGAME,
-        GENERATOR_EXPLOSION
+        GENERATOR_EXPLOSION,
+        CUTSCENE_END_ACT_1
     }
 }

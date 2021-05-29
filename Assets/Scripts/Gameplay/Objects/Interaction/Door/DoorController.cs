@@ -41,15 +41,6 @@ namespace Gameplay.Objects.Interaction
             _currentLockIndex = 0;
         }
 
-        public void SetDoorState()
-        {
-            if (isDoorOpen)
-                transform.localPosition = _doorOpenPosition;
-
-            _targetPosition = transform.localPosition;
-            _startTime = Time.time;
-        }
-
         public void RunUpdate() { }
 
         public void RunFixedUpdate()
@@ -58,6 +49,17 @@ namespace Gameplay.Objects.Interaction
             float __fractionOfJourney = __distCovered / _journeyLength;
             if (!float.IsNaN(__fractionOfJourney))
                 transform.localPosition = Vector3.Lerp(transform.localPosition, _targetPosition, __fractionOfJourney);
+        }
+
+        public void SetDoorState()
+        {
+            if (isDoorOpen)
+                transform.localPosition = _doorOpenPosition;
+            else 
+                transform.localPosition = _doorClosePosition;
+
+            _targetPosition = transform.localPosition;
+            _startTime = Time.time;
         }
 
         public void Interact()
@@ -104,7 +106,7 @@ namespace Gameplay.Objects.Interaction
             isLocked = true;
             _currentLockIndex = 0;
 
-            for(int i = 0; i < _totalLocks; i++)
+            for (int i = 0; i < _totalLocks; i++)
             {
                 _lockIndicatorsMeshRenderer[i].material = _lockedDoorMaterial;
             }
@@ -114,7 +116,7 @@ namespace Gameplay.Objects.Interaction
         {
             _lockIndicatorsMeshRenderer[_currentLockIndex].material = _unlockedDoorMaterial;
 
-            if(_currentLockIndex < _totalLocks - 1)
+            if (_currentLockIndex < _totalLocks - 1)
                 _currentLockIndex++;
             else
                 isLocked = false;

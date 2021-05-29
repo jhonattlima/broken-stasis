@@ -10,14 +10,14 @@ namespace UI.EndGamePuzzle
     {
         public Action<int> onBarCompleted;
         public Action onAllBarsCompleted;
-        
+
         // TODO: Extract this consts to variables
-        private const float LOADING_TIME_IN_SECONDS = 10f;
+        private const float LOADING_TIME_IN_SECONDS = 2f;
         private const float LOAD_PERCENTAGE_SPLIT = 100f;
         private const int TOTAL_BARS_COUNT = 3;
-        
+
         private PuzzleLoadingProgress _loadingProgress;
-        public PuzzleLoadingProgress loadingProgress 
+        public PuzzleLoadingProgress loadingProgress
         {
             get { return _loadingProgress; }
         }
@@ -40,7 +40,7 @@ namespace UI.EndGamePuzzle
             InputController.GamePlay.MouseEnabled = false;
 
             SceneManager.instance.StartCoroutine(_loadCoRoutine);
-            
+
             GameHudManager.instance.endGameUI.ShowUI();
         }
 
@@ -57,10 +57,10 @@ namespace UI.EndGamePuzzle
         {
             float __secondsPerIteration = LOADING_TIME_IN_SECONDS / LOAD_PERCENTAGE_SPLIT;
             float __percentagePerIteration = 1 / LOAD_PERCENTAGE_SPLIT;
-            
+
             _loadingProgress.currentBarProgress = 0f;
 
-            while(_loadingProgress.currentBarProgress < 1f)
+            while (_loadingProgress.currentBarProgress < 1f)
             {
                 _loadingProgress.currentBarProgress += __percentagePerIteration;
 
@@ -77,7 +77,7 @@ namespace UI.EndGamePuzzle
         private void LoadingBarCompleted()
         {
             StopLoadingBar();
-           
+
             onBarCompleted?.Invoke(_loadingProgress.currentBar);
 
             _loadingProgress.currentBar++;
@@ -89,7 +89,6 @@ namespace UI.EndGamePuzzle
                 InputController.GamePlay.MouseEnabled = true;
                 onAllBarsCompleted?.Invoke();
             }
-
         }
 
         private void StopLoadingBar()
