@@ -18,35 +18,27 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _mainCamera;
         [SerializeField] private GameObject _enemiesManager;
 
-        private bool _hasRun;
         private VideoPlayer _videoPlayer;
+        private bool _hasRun;
 
-        public GameEventTypeEnum gameEventType { get { return _gameEventType; } }
         public bool hasRun { get { return _hasRun; } }
+        public GameEventTypeEnum gameEventType { get { return _gameEventType; } }
 
         private void Awake()
         {
             _hasRun = false;
-            onTriggerEnter = HandleOnTriggerEnter;
-
             _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
             _videoPlayer.playOnAwake = false;
-            _videoPlayer.url = VariablesManager.gameplayVariables.cutsceneSplinterProjectVideoPath;;
+            _videoPlayer.url = VariablesManager.gameplayVariables.cutSceneSplinterProjectVideoPath;;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
-        }
-
-        private void HandleOnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag(GameInternalTags.PLAYER) && !_hasRun)
-                RunSingleTimeEvents();
         }
 
         public void RunPermanentEvents() { }
 
         public void RunSingleTimeEvents()
         {
-            _hasRun = true;
+            if(_hasRun) return;
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
@@ -69,6 +61,7 @@ namespace CoreEvent.GameEvents
             _doorController.LockDoor();
 
             _videoPlayer.Stop();
+            _videoPlayer.loopPointReached -= HandleCutSceneEnd;
 
             LoadingView.instance.FadeOut(delegate ()
                 {
@@ -76,6 +69,8 @@ namespace CoreEvent.GameEvents
                     InputController.GamePlay.InputEnabled = true;
                 }
             , VariablesManager.uiVariables.defaultFadeOutSpeed);
+
+            _hasRun = true;
         }
 
         private void DisableAllEnemies()

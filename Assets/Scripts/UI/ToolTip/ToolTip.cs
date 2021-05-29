@@ -6,6 +6,7 @@ namespace UI.ToolTip
     public class ToolTip : MonoBehaviour
     {
         [SerializeField] private ToolTip _nextTooltip;
+        [SerializeField] private bool _isActive = false;
 
         private Animator _toolTipAnimator;
 
@@ -15,8 +16,6 @@ namespace UI.ToolTip
         private const string HIDE_ANIMATION = "Hide";
         private const string INTERACT_ANIMATION = "Interact";
 
-        private bool _isActive = false;
-
         private void Awake()
         {
             _toolTipAnimator = GetComponent<Animator>();
@@ -25,13 +24,13 @@ namespace UI.ToolTip
 
         private void OnTriggerEnter(Collider other)
         {
-            if(_isActive && other.CompareTag(GameInternalTags.PLAYER))
+            if (_isActive && other.CompareTag(GameInternalTags.PLAYER))
                 _toolTipAnimator.Play(SHOW_ANIMATION);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if(_isActive && other.CompareTag(GameInternalTags.PLAYER))
+            if (_isActive && other.CompareTag(GameInternalTags.PLAYER))
                 _toolTipAnimator.Play(HIDE_ANIMATION);
         }
 
@@ -49,7 +48,7 @@ namespace UI.ToolTip
 
         public void InteractToolTip()
         {
-            if(_isActive)
+            if (_isActive)
             {
                 _isActive = false;
                 _toolTipAnimator.Play(INTERACT_ANIMATION);
