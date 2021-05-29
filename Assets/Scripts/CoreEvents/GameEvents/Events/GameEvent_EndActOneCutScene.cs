@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GameManagers;
 using Gameplay.Objects.Interaction;
 using UI;
@@ -21,7 +20,6 @@ namespace CoreEvent.GameEvents
 
         private bool _hasRun;
         private VideoPlayer _videoPlayer;
-        private string VIDEO_PATH = VariablesManager.gameplayVariables.cutsceneSplinterProjectVideoPath;
 
         public GameEventTypeEnum gameEventType { get { return _gameEventType; } }
         public bool hasRun { get { return _hasRun; } }
@@ -33,7 +31,7 @@ namespace CoreEvent.GameEvents
 
             _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
             _videoPlayer.playOnAwake = false;
-            _videoPlayer.url = VIDEO_PATH;
+            _videoPlayer.url = VariablesManager.gameplayVariables.cutsceneSplinterProjectVideoPath;;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }
