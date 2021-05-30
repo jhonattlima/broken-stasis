@@ -71,7 +71,7 @@ namespace Gameplay.Enemy.EnemiesBase
                 _basherContainer.visionSensor,
                 _basherContainer.roomSensor,
                 _basherContainer.enemyAnimationEventHandler,
-                gameObject.transform.position
+                _basherContainer.navigationAgent.transform
             );
 
             if (_basherContainer.basherType.Equals(BasherTypeEnum.STASIS))
