@@ -53,7 +53,7 @@ namespace Gameplay.Enemy.Behaviours
             _initialAcceleration = _navigationAgent.acceleration;
             _initialAngularSpeed = _navigationAgent.angularSpeed;
 
-            _patrolCoroutine = SceneManager.instance.StartCoroutine(PatrolToNextPoint());
+            _patrolCoroutine = CustomSceneManager.instance.StartCoroutine(PatrolToNextPoint());
         }
 
         private void HandleStateChanged(EnemyStateEnum p_enemyState)
@@ -83,8 +83,8 @@ namespace Gameplay.Enemy.Behaviours
             if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
                 {
-                    SceneManager.instance.StopCoroutine(_patrolCoroutine);
-                    _patrolCoroutine = SceneManager.instance.StartCoroutine(PatrolToNextPoint());
+                    CustomSceneManager.instance.StopCoroutine(_patrolCoroutine);
+                    _patrolCoroutine = CustomSceneManager.instance.StartCoroutine(PatrolToNextPoint());
                 }
         }
 
@@ -111,7 +111,7 @@ namespace Gameplay.Enemy.Behaviours
         private void StopPatrolling()
         {
             _settingDestination = false;
-            SceneManager.instance.StopCoroutine(_patrolCoroutine);
+            CustomSceneManager.instance.StopCoroutine(_patrolCoroutine);
         }
 
         private void SetPatrolDestination()

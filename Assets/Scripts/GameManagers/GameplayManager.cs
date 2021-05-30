@@ -35,14 +35,14 @@ namespace GameManagers
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
         private LightPriorityManager _lightPriorityManager;
-        
+
         public static GameplayManager instance;
 
         private void Awake()
         {
             if (instance == null)
                 instance = this;
-            
+
             RegisterObjectsGraph(_playerContainer);
 
             onPlayerDamaged += _player.onPlayerDamaged;
@@ -53,11 +53,11 @@ namespace GameManagers
         private void Start()
         {
             // TODO: Transferir lógica de load e inicialização para classe superior
-            LoadSaveGame();
-            
-            if(_inventoryController == null)
+            StartScenario();
+
+            if (_inventoryController == null)
                 RegisterInventoryController(new List<ItemEnum>());
-            
+
             ChapterManager.instance?.InitializeChapters();
         }
 
@@ -73,7 +73,7 @@ namespace GameManagers
         {
             if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
             if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
-            if(p_playercontainer != null && _audioListenerGameObject != null) _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
+            if (p_playercontainer != null && _audioListenerGameObject != null) _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
 
             _player?.InitializePlayer();
 
@@ -104,38 +104,30 @@ namespace GameManagers
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
-        private void LoadSaveGame()
+        private void StartScenario()
         {
-            if (!SaveGameManager.LoadGame())
+            // TIP : Uncomment if to start directly from gameplay scene
+            // if (SaveGameManager.HasLoadFile())
+            // {
+            //     SaveGameManager.LoadGame();
+            // }
+            if (SaveGameManager.gameSaveData == null)
+            {
+                SaveGameManager.NewGame();
                 return;
+            }
 
+            // Load game;
             ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
 
             RegisterInventoryController(SaveGameManager.gameSaveData.inventoryList);
-            
+
             _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
 
             if (SaveGameManager.gameSaveData.doorsList == null)
                 return;
 
-            List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            foreach (DoorSaveData __savedDoorState in SaveGameManager.gameSaveData.doorsList)
-            {
-                foreach (DoorController __ingameDoor in __doors)
-                {
-                    if (__ingameDoor.transform.parent.name == __savedDoorState.parentName)
-                    {
-                        __ingameDoor.isDoorOpen = __savedDoorState.isDoorOpen;
-
-                        if (__savedDoorState.isDoorLocked)
-                            __ingameDoor.LockDoor();
-                        else
-                            __ingameDoor.UnlockDoorLock();
-
-                        __ingameDoor.SetDoorState();
-                    }
-                }
-            }
+            RestoreDoorsStateFromSaveFile();
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
@@ -159,6 +151,28 @@ namespace GameManagers
             }
 
             return __gameSaveData;
+        }
+
+        private void RestoreDoorsStateFromSaveFile()
+        {
+            List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
+            foreach (DoorSaveData __savedDoorState in SaveGameManager.gameSaveData.doorsList)
+            {
+                foreach (DoorController __ingameDoor in __doors)
+                {
+                    if (__ingameDoor.transform.parent.name == __savedDoorState.parentName)
+                    {
+                        __ingameDoor.isDoorOpen = __savedDoorState.isDoorOpen;
+
+                        if (__savedDoorState.isDoorLocked)
+                            __ingameDoor.LockDoor();
+                        else
+                            __ingameDoor.UnlockDoorLock();
+
+                        __ingameDoor.SetDoorState();
+                    }
+                }
+            }
         }
     }
 }

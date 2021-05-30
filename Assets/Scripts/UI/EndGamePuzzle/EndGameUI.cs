@@ -45,7 +45,7 @@ namespace UI.EndGamePuzzle
 
         public void ResetBar(int p_barIndex)
         {
-            SceneManager.instance.StartCoroutine(ResetCoRoutine(p_barIndex));
+            CustomSceneManager.instance.StartCoroutine(ResetCoRoutine(p_barIndex));
         }
 
         private IEnumerator ResetCoRoutine(int p_barIndex)

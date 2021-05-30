@@ -7,7 +7,7 @@ namespace Utilities.Audio
         DOOR_OPEN,
         DOOR_CLOSE,
         PLAYER_HIT,
-        SOUND_TRACK,
+        SOUND_TRACK_GAMEPLAY,
         PLAYER_DIE,
         PLAYER_STEP,
         INVISIBLE_FOOTSTEP_STEP_LEFT,
@@ -31,6 +31,7 @@ namespace Utilities.Audio
         ENVIRONMENT_LIGHT_EXPLOSION,
         ENVIRONMENT_LIGHT_BLINKING,
         ENVIRONMENT_DUCT_COVER_FALL,
-        SOUND_TRACK_SPLINTER
+        SOUND_TRACK_SPLINTER,
+        SOUND_TRACK_INTRO
     }
 }
