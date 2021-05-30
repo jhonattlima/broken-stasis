@@ -1,5 +1,6 @@
 ﻿using GameManagers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using Utilities;
 using Utilities.UI;
@@ -22,7 +23,9 @@ namespace CoreEvent.GameEvents
         {
             _hasRun = false;
 
-            _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
+            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+
             _videoPlayer.playOnAwake = false;
             _videoPlayer.url = VariablesManager.gameplayVariables.cutSceneCreditsProjectVideoPath;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
@@ -54,8 +57,7 @@ namespace CoreEvent.GameEvents
 
             InputController.GamePlay.MouseEnabled = true;
             InputController.GamePlay.InputEnabled = true;
-
-            // call first scene
+            SceneManager.LoadScene(0);
         }
     }
 }

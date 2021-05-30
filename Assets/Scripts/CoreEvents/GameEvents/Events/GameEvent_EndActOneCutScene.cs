@@ -27,9 +27,11 @@ namespace CoreEvent.GameEvents
         private void Awake()
         {
             _hasRun = false;
-            _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
+            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+            
             _videoPlayer.playOnAwake = false;
-            _videoPlayer.url = VariablesManager.gameplayVariables.cutSceneSplinterProjectVideoPath;;
+            _videoPlayer.url = VariablesManager.gameplayVariables.cutSceneSplinterProjectVideoPath; ;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }
@@ -38,7 +40,7 @@ namespace CoreEvent.GameEvents
 
         public void RunSingleTimeEvents()
         {
-            if(_hasRun) return;
+            if (_hasRun) return;
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
