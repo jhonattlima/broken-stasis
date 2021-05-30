@@ -10,27 +10,27 @@ namespace Utilities
     {
         public static void StartCoroutine(IEnumerator p_coroutine)
         {
-            SceneManager.instance.StartCoroutine(p_coroutine);
+            CustomSceneManager.instance.StartCoroutine(p_coroutine);
         }
 
         public static void StopCoroutine(IEnumerator p_coroutine)
         {
-            SceneManager.instance.StopCoroutine(p_coroutine);
+            CustomSceneManager.instance.StopCoroutine(p_coroutine);
         }
 
         public static void CancelTimer(Coroutine p_timerCoroutine)
         {
-            SceneManager.instance.StopCoroutine(p_timerCoroutine);
+            CustomSceneManager.instance.StopCoroutine(p_timerCoroutine);
         }
 
         public static Coroutine Timer(float p_duration, Action p_callback)
         {
-            return SceneManager.instance.StartCoroutine(TimerCoRoutine(p_duration, p_callback));
+            return CustomSceneManager.instance.StartCoroutine(TimerCoRoutine(p_duration, p_callback));
         }
 
         public static Coroutine CountdownTimer(float p_duration, Action p_finishCallback, Action<TimeSpan> p_timeSpan = null)
         {
-            return SceneManager.instance.StartCoroutine(CountdownTimerCoRoutine(p_duration, p_finishCallback, p_timeSpan));
+            return CustomSceneManager.instance.StartCoroutine(CountdownTimerCoRoutine(p_duration, p_finishCallback, p_timeSpan));
         }
 
         private static IEnumerator CountdownTimerCoRoutine(float p_duration, Action p_finishCallback, Action<TimeSpan> p_timeSpan = null)

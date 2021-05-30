@@ -39,7 +39,7 @@ namespace UI.EndGamePuzzle
         {
             InputController.GamePlay.MouseEnabled = false;
 
-            SceneManager.instance.StartCoroutine(_loadCoRoutine);
+            CustomSceneManager.instance.StartCoroutine(_loadCoRoutine);
             
             GameHudManager.instance.endGameUI.ShowUI();
         }
@@ -83,7 +83,7 @@ namespace UI.EndGamePuzzle
             _loadingProgress.currentBar++;
 
             if (_loadingProgress.currentBar <= TOTAL_BARS_COUNT)
-                SceneManager.instance.StartCoroutine(_loadCoRoutine);
+                CustomSceneManager.instance.StartCoroutine(_loadCoRoutine);
             else
             {
                 InputController.GamePlay.MouseEnabled = true;
@@ -94,7 +94,7 @@ namespace UI.EndGamePuzzle
 
         private void StopLoadingBar()
         {
-            SceneManager.instance.StopCoroutine(_loadCoRoutine);
+            CustomSceneManager.instance.StopCoroutine(_loadCoRoutine);
 
             _loadCoRoutine = LoadingCoRoutine();
         }

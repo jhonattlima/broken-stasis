@@ -46,7 +46,7 @@ namespace Gameplay.Enemy.Behaviours
             _initialAcceleration = _navigationAgent.acceleration;
             _initialAngularSpeed = _navigationAgent.angularSpeed;
 
-            SceneManager.instance.StartCoroutine(InvestigateNextPoint());
+            CustomSceneManager.instance.StartCoroutine(InvestigateNextPoint());
         }
 
         public void SetInvestigationPoints(List<Transform> p_investigationPoints)
@@ -79,7 +79,7 @@ namespace Gameplay.Enemy.Behaviours
         {
             if (!IsEnemyInvestigating() || _navigationAgent.remainingDistance < 0.05f)
                 if (!_settingDestination)
-                    SceneManager.instance.StartCoroutine(InvestigateNextPoint());
+                    CustomSceneManager.instance.StartCoroutine(InvestigateNextPoint());
         }
 
         private bool IsEnemyInvestigating()
@@ -106,7 +106,7 @@ namespace Gameplay.Enemy.Behaviours
         private void StopInvestigating()
         {
             _settingDestination = false;
-            SceneManager.instance.StopCoroutine(InvestigateNextPoint());
+            CustomSceneManager.instance.StopCoroutine(InvestigateNextPoint());
         }
 
         private void SetPatrolDestination()

@@ -23,22 +23,22 @@ namespace SaveSystem
             File.WriteAllBytes(Application.dataPath + FILE_PATH + FILE_NAME, __bytes);
         }
 
-        public static bool LoadGame()
+        public static bool HasLoadFile()
         {
-            if(!File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
-            {
-                if (gameSaveData == null)
-                    gameSaveData = new GameSaveData();
+            return File.Exists(Application.dataPath + FILE_PATH + FILE_NAME);
+        }
 
-                return false;
-            }
+        public static void NewGame()
+        {
+            gameSaveData = new GameSaveData();
+        }
 
+        public static void LoadGame()
+        {
             byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
             string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
 
             gameSaveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
-
-            return true;
         }
 
         [MenuItem("TFW Tools/Utilities/Clear Save Data")]

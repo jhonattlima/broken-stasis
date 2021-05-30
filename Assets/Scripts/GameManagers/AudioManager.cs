@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
@@ -99,7 +100,7 @@ namespace GameManagers
 
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = UnityEngine.AudioRolloffMode.Custom;
-            __audioSource.maxDistance = (int) p_audioRange;
+            __audioSource.maxDistance = (int)p_audioRange;
 
             __audioSource.Play();
 
@@ -115,6 +116,31 @@ namespace GameManagers
                 foreach (AudioSource __audioSource in _audioSourcePool.GetAudiosWithClip(__clip))
                     __audioSource?.Stop();
             }
+        }
+
+        public void FadeOut(AudioNameEnum p_audio, float p_secondsToFadeOut, Action p_handleAudioFadedOut)
+        {
+            AudioClip __clip = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams.audioFile;
+
+            if (__clip != null)
+            {
+                foreach (AudioSource __audioSource in _audioSourcePool.GetAudiosWithClip(__clip))
+                {
+                    StartCoroutine(FadeOutSound(p_audio, __audioSource, p_secondsToFadeOut, p_handleAudioFadedOut));
+                }
+            }
+        }
+
+        private IEnumerator FadeOutSound(AudioNameEnum p_audioNameEnum, AudioSource p_audioSource, float p_secondsToFadeOut, Action p_handleAudioFadedOut)
+        {
+            var fractionedTimeToWait = p_secondsToFadeOut / (p_audioSource.volume*100);
+            while (p_audioSource.volume > 0f)
+            {
+                p_audioSource.volume -= 0.01f;
+                yield return new WaitForSeconds(fractionedTimeToWait);
+            }
+            Stop(p_audioNameEnum);
+            p_handleAudioFadedOut?.Invoke();
         }
 
         public void Pause(AudioNameEnum p_audio)

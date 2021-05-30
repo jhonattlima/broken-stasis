@@ -54,9 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Oxanium-ExtraBold SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -201541142
   material: {fileID: 2712208951865076462}
-  materialHashCode: 0
+  materialHashCode: -1088954079
   m_Version: 1.1.0
   m_SourceFontFileGUID: 842aace515b114a1ea56705a262a6d5d
   m_SourceFontFile_EditorRef: {fileID: 0}
@@ -2587,8 +2587,8 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.05
-    - _GlowOffset: 0
+    - _GlowInner: 0
+    - _GlowOffset: -1
     - _GlowOuter: 0.05
     - _GlowPower: 0.75
     - _GradientScale: 6
@@ -2601,9 +2601,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
