@@ -2,6 +2,7 @@
 using System.Linq;
 using CoreEvent.GameEvents;
 using GameManagers;
+using Gameplay.Objects.Interaction;
 using SaveSystem;
 using UI.ToolTip;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace CoreEvent.Chapters
         [SerializeField] private Vector3 _startPosition;
         [SerializeField] private CharacterController _playerCharacterController;
         [SerializeField] private ToolTip _generatorToolTip;
+        [SerializeField] private DoorController _armoryDoor;
         [SerializeField] private ToolTip[] _deactivatedToolTips;
 
         public ChapterTypeEnum chapterType
@@ -36,6 +38,8 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 2");
+
+            _armoryDoor.LockDoor();
 
             _generatorToolTip.ActivateToolTip();
 
