@@ -26,7 +26,7 @@ namespace Gameplay.Enemy.EnemiesBase
         private bool _isViewingPlayer;
         private bool _isViewingLight;
 
-        private Vector3 _basherPosition;
+        private Transform _basherTransform;
         private AudioSource _idleSound;
 
         private List<Transform> _roomInvestigationPoints = new List<Transform>();
@@ -40,7 +40,7 @@ namespace Gameplay.Enemy.EnemiesBase
             SensorVision p_visionSensor,
             SensorRoom p_roomSensor,
             EnemyAnimationEventHandler p_enemyAnimationEventHandler,
-            Vector3 p_basherPosition)
+            Transform p_basherTransform)
         {
             _stateManager = p_stateManager;
             _patrolBehaviour = p_patrolBehaviour;
@@ -51,7 +51,7 @@ namespace Gameplay.Enemy.EnemiesBase
             _visionSensor = p_visionSensor;
             _roomSensor = p_roomSensor;
             _enemyAnimationEventHandler = p_enemyAnimationEventHandler;
-            _basherPosition = p_basherPosition;
+            _basherTransform = p_basherTransform;
         }
 
         public void InitializeEnemy()
@@ -74,16 +74,16 @@ namespace Gameplay.Enemy.EnemiesBase
 
             _enemyAnimationEventHandler.OnStep += delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherPosition, false, AudioRange.LOW);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW);
             };
             _enemyAnimationEventHandler.OnAttack += delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherPosition, false, AudioRange.LOW);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.LOW);
             };
 
             _stateManager.onStateChanged += HandleStateChanged;
 
-            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherPosition, false, AudioRange.LOW);
+            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, false, AudioRange.LOW);
             
             _patrolBehaviour.InitializePatrolBehaviour();
             _investigationBehaviour.InitializeInvestigationBehaviour();
@@ -181,7 +181,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
             if(!_isViewingPlayer)
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherPosition, false, AudioRange.MEDIUM);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM);
                 _followBehaviour.SprintToPosition(p_lightPosition);
             }
         }
