@@ -490,7 +490,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3908
+  m_Name: pb_Mesh-6986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7005,6 +7005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6308845560957808456, guid: 54c9ef989b8ad7d4fb26d63af2457835,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6308845560957808471, guid: 54c9ef989b8ad7d4fb26d63af2457835,
         type: 3}
       propertyPath: m_RootOrder
@@ -7023,7 +7028,7 @@ PrefabInstance:
     - target: {fileID: 6308845560957808471, guid: 54c9ef989b8ad7d4fb26d63af2457835,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.9
+      value: 15.93
       objectReference: {fileID: 0}
     - target: {fileID: 6308845560957808471, guid: 54c9ef989b8ad7d4fb26d63af2457835,
         type: 3}
