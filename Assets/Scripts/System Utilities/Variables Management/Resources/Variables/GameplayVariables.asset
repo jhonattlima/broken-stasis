@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc20822cc0009c848a2272aac85f74c2, type: 3}
   m_Name: GameplayVariables
   m_EditorClassIdentifier: 
-  cutSceneSplinterProjectVideoPath: Assets/Video/cutscene_splinter.mp4
-  cutSceneCreditsProjectVideoPath: Assets/Video/cutscene_splinter.mp4
-  threeLocksDoorLockLoadingTimeInSeconds: 2
+  cutsceneSplinterVideo: {fileID: 32900000, guid: d8352626d10a7654ea8cced8f6c4f832,
+    type: 3}
+  cutsceneCreditsVideo: {fileID: 32900000, guid: d8352626d10a7654ea8cced8f6c4f832,
+    type: 3}
+  finalDoorUnlockTimePerStage: 5

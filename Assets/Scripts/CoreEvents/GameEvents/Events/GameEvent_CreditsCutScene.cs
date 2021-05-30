@@ -27,7 +27,7 @@ namespace CoreEvent.GameEvents
             if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
 
             _videoPlayer.playOnAwake = false;
-            _videoPlayer.url = VariablesManager.gameplayVariables.cutSceneCreditsProjectVideoPath;
+            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneCreditsVideo;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }

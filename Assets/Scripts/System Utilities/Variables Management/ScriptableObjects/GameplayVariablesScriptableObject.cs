@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace Utilities.VariableManagement
 {
-    //[CreateAssetMenu(fileName = "GameplayVariables")]
+    // [CreateAssetMenu(fileName = "GameplayVariables")]
     public class GameplayVariablesScriptableObject : ScriptableObject
     {
-        public string cutSceneSplinterProjectVideoPath;
-        public string cutSceneCreditsProjectVideoPath;
-        public float threeLocksDoorLockLoadingTimeInSeconds;
+        public VideoClip cutsceneSplinterVideo;
+        public VideoClip cutsceneCreditsVideo;
+        public float finalDoorUnlockTimePerStage;
     }   
 }

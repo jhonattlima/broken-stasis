@@ -11,7 +11,7 @@ namespace UI.EndGamePuzzle
     {
         private const float LOAD_PERCENTAGE_SPLIT = 100f;
         private const int TOTAL_BARS_COUNT = 3;
-        private float _loadingTimeInSeconds = VariablesManager.gameplayVariables.threeLocksDoorLockLoadingTimeInSeconds;
+        private float _loadingTimeInSeconds = VariablesManager.gameplayVariables.finalDoorUnlockTimePerStage;
         private IEnumerator _loadCoRoutine;
         private PuzzleLoadingProgress _loadingProgress;
 
