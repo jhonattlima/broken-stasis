@@ -248,6 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
         type: 3}
+      propertyPath: isDoorOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
+        type: 3}
       propertyPath: _isDoorOpen
       value: 0
       objectReference: {fileID: 0}
@@ -6851,10 +6856,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1508941042}
     m_Modifications:
+    - target: {fileID: 5215860218533109416, guid: 2c41c688ac8e918449e9cfd9fe53818d,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5215860218533109430, guid: 2c41c688ac8e918449e9cfd9fe53818d,
         type: 3}
       propertyPath: m_Name
       value: CutSceneTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215860218533109430, guid: 2c41c688ac8e918449e9cfd9fe53818d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215860218533109431, guid: 2c41c688ac8e918449e9cfd9fe53818d,
         type: 3}
@@ -6864,7 +6879,7 @@ PrefabInstance:
     - target: {fileID: 5215860218533109431, guid: 2c41c688ac8e918449e9cfd9fe53818d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.367
+      value: 29.53
       objectReference: {fileID: 0}
     - target: {fileID: 5215860218533109431, guid: 2c41c688ac8e918449e9cfd9fe53818d,
         type: 3}
