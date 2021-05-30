@@ -18,6 +18,7 @@ namespace CoreEvent.Chapters
         [SerializeField] private CharacterController _playerCharacterController;
         [SerializeField] private ItemKeyCard _itemKeyCard;
         [SerializeField] private NavMeshSurface _navMeshSurface;
+        [SerializeField] private GameObject[] _gameObjectsToActivate;
         [SerializeField] private ToolTip[] _activateToolTips;
         [SerializeField] private ToolTip[] _deactivatedToolTips;
 
@@ -61,6 +62,12 @@ namespace CoreEvent.Chapters
 
                 SaveGameManager.SaveGame();
             }
+
+            foreach(GameObject __gameObject in _gameObjectsToActivate)
+            {
+                __gameObject.SetActive(true);
+            }
+            
             InputController.GamePlay.InputEnabled = true;
             InputController.GamePlay.MouseEnabled = true;
 
