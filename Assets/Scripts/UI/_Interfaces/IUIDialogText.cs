@@ -5,6 +5,6 @@ namespace UI
 {
     public interface IUIDialogText
     {
-        void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null);
+        void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null, bool p_enableInputAfterDialog = true);
     }
 }
