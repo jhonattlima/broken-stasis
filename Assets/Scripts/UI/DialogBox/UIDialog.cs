@@ -30,16 +30,18 @@ namespace UI.Dialog
         private Queue<DialogTextUnit> _conversationQueue = new Queue<DialogTextUnit>();
         private string _currentDialogText = "";
         private bool _visible = false;
+        private bool _enableInputAfterDialog = true;
         private Action _dialogEndCallback;
 
-        public void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null)
+        public void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null, bool p_enableInputAfterDialog = true)
         {
             _dialogEndCallback = p_onDialogEnd;
+            _enableInputAfterDialog = p_enableInputAfterDialog;
 
             InitializeDialog(p_dialogName);
             Show();
         }
-        
+
         private void InitializeDialog(DialogEnum p_dialogName)
         {
             _conversationQueue.Clear();
@@ -52,9 +54,9 @@ namespace UI.Dialog
 
             _dialogsLibraryAsset = Resources.Load<AIDialogScriptableObject>("AIDialogs");
 
-            foreach(DialogConversationUnit __dialogConversation in _dialogsLibraryAsset.GameDialogs)
+            foreach (DialogConversationUnit __dialogConversation in _dialogsLibraryAsset.GameDialogs)
             {
-                if(p_dialogName.ToString() == __dialogConversation.dialogName)
+                if (p_dialogName.ToString() == __dialogConversation.dialogName)
                 {
                     foreach (DialogTextUnit __conversationUnit in __dialogConversation.conversation.conversationTexts)
                     {
@@ -67,7 +69,7 @@ namespace UI.Dialog
 
         private void Show()
         {
-            if(!_visible)
+            if (!_visible)
             {
                 _hudAnimator.Play(SHOW_DIALOG_HUD_ANIMATION);
                 _visible = true;
@@ -75,10 +77,10 @@ namespace UI.Dialog
             else
                 DisplayNextDialog();
         }
-        
+
         [UsedImplicitly]
         private void StartShowText()
-        {            
+        {
             DisplayNextDialog();
 
             InputController.UI.InputEnabled = true;
@@ -88,7 +90,7 @@ namespace UI.Dialog
         [UsedImplicitly]
         private void DisablingHud()
         {
-            InputController.GamePlay.InputEnabled = true;
+            if (_enableInputAfterDialog) InputController.GamePlay.InputEnabled = true;
             _visible = false;
         }
 
@@ -108,7 +110,7 @@ namespace UI.Dialog
             StartCoroutine(TypeDialog(__conversationUnit));
         }
 
-        private IEnumerator TypeDialog (DialogTextUnit p_conversationUnit)
+        private IEnumerator TypeDialog(DialogTextUnit p_conversationUnit)
         {
             _speakerText.text = p_conversationUnit.speaker.ToString();
             _dialogText.text = "";
@@ -132,7 +134,7 @@ namespace UI.Dialog
 
         public void RunUpdate()
         {
-            if(InputController.UI.SkipDialog())
+            if (InputController.UI.SkipDialog())
                 DisplayNextDialog();
         }
     }

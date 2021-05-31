@@ -113,7 +113,7 @@ namespace Gameplay.Player
         {
             foreach (PlayerSuitData __playerSuit in _playerContainer.suits)
             {
-                if (__playerSuit.suitGameObject.active)
+                if (__playerSuit.suitGameObject.activeSelf)
                 {
                     return __playerSuit.suitType;
                 }
