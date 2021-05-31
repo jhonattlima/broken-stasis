@@ -295,6 +295,7 @@ MonoBehaviour:
   _startPosition: {x: 0.25, y: 0.9, z: 0.51}
   _playerCharacterController: {fileID: 0}
   _generatorToolTip: {fileID: 0}
+  _armoryDoor: {fileID: 0}
   _deactivatedToolTips:
   - {fileID: 0}
   - {fileID: 0}
