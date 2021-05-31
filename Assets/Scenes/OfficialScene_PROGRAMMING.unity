@@ -2670,6 +2670,11 @@ PrefabInstance:
       objectReference: {fileID: 1340602350}
     - target: {fileID: 8052083270082628142, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
+      propertyPath: _armoryDoor
+      value: 
+      objectReference: {fileID: 1817851265}
+    - target: {fileID: 8052083270082628142, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
       propertyPath: _generatorToolTip
       value: 
       objectReference: {fileID: 305818687}
@@ -5550,6 +5555,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1817851259}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1817851265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1817851259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817851261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03822f7d4ede74845a7568d24b062cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1825370421
 GameObject:
   m_ObjectHideFlags: 0
