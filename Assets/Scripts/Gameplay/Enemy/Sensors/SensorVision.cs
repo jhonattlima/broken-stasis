@@ -28,7 +28,7 @@ namespace Gameplay.Enemy.Sensors
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
                 onPlayerDetected?.Invoke(other.transform);
             else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
-                onLightDetected?.Invoke(other.transform);
+                onLightDetected?.Invoke(other.gameObject.GetComponentInChildren<Transform>());
         }
 
         private void OnTriggerStay(Collider other)
@@ -36,7 +36,7 @@ namespace Gameplay.Enemy.Sensors
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
                 onPlayerRemainsDetected?.Invoke(other.transform);
             else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
-                onLightRemainsDetected?.Invoke(other.transform);
+                onLightRemainsDetected?.Invoke(other.gameObject.GetComponentInChildren<Transform>());
         }
 
         private void OnTriggerExit(Collider other)

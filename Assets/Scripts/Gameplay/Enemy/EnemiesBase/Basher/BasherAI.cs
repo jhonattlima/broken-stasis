@@ -197,7 +197,6 @@ namespace Gameplay.Enemy.EnemiesBase
         private void HandleStoppedDetectingLightInVision(Transform p_lightPosition)
         {
             _isViewingLight = false;
-
         }
 
         private void HandlePlayerEnteredVisionSensor(Transform p_playerPosition)
