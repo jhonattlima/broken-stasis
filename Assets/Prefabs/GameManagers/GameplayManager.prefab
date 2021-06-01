@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerContainer: {fileID: 0}
   _cameraContainer: {fileID: 0}
+  _audioListenerGameObject: {fileID: 0}
   _levelGameObjects: {fileID: 0}
   _enemiesGameObjects: {fileID: 0}

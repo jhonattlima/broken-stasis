@@ -1,11 +1,11 @@
 ﻿using GameManagers;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using Utilities;
 using Utilities.UI;
 using Utilities.VariableManagement;
-
 namespace CoreEvent.GameEvents
 {
     public class GameEvent_CreditsCutScene : MonoBehaviour, IGameEvent
@@ -22,14 +22,6 @@ namespace CoreEvent.GameEvents
         private void Awake()
         {
             _hasRun = false;
-
-            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
-            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
-
-            _videoPlayer.playOnAwake = false;
-            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneCreditsVideo;
-            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-            _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }
 
         public void RunPermanentEvents() { }
@@ -38,13 +30,29 @@ namespace CoreEvent.GameEvents
         {
             _hasRun = true;
 
+            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
+            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+
+            _videoPlayer.playOnAwake = false;
+            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneCreditsVideo;
+            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+            _videoPlayer.loopPointReached += HandleCutSceneEnd;
+
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
 
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_CONTROL_PANEL_GREETINGS, delegate ()
             {
-                InputController.GamePlay.InputEnabled = false;
-                _videoPlayer.Play();
+                LoadingView.instance.FadeIn(delegate () 
+                {
+                    _videoPlayer.Play();
+                    
+                    LoadingView.instance.FadeOut(delegate () 
+                    {
+                        InputController.GamePlay.InputEnabled = false;
+                    }, VariablesManager.uiVariables.defaultFadeOutSpeed * 0.5f);
+
+                }, VariablesManager.uiVariables.defaultFadeInSpeed);
             }
             , false);
         }

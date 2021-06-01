@@ -17,6 +17,8 @@ namespace CoreEvent.GameEvents
         [SerializeField] private List<GameObject> _lightsList;
         [SerializeField] private GameObject _mainCamera;
         [SerializeField] private GameObject _enemiesManager;
+        [SerializeField] private CharacterController _playerCharacterController;
+        [SerializeField] private Vector3 _inRoomPosition;
 
         private VideoPlayer _videoPlayer;
         private bool _hasRun;
@@ -27,13 +29,6 @@ namespace CoreEvent.GameEvents
         private void Awake()
         {
             _hasRun = false;
-            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
-            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
-            
-            _videoPlayer.playOnAwake = false;
-            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
-            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-            _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }
 
         public void RunPermanentEvents() { }
@@ -41,6 +36,14 @@ namespace CoreEvent.GameEvents
         public void RunSingleTimeEvents()
         {
             if (_hasRun) return;
+
+            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
+            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+
+            _videoPlayer.playOnAwake = false;
+            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
+            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+            _videoPlayer.loopPointReached += HandleCutSceneEnd;
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
@@ -62,17 +65,18 @@ namespace CoreEvent.GameEvents
             _doorController.SetDoorState();
             _doorController.LockDoor();
 
+            _playerCharacterController.enabled = false;
+            _playerCharacterController.transform.position = _inRoomPosition;
+            _playerCharacterController.enabled = true;
+
             _videoPlayer.Stop();
             _videoPlayer.loopPointReached -= HandleCutSceneEnd;
-
-            LoadingView.instance.FadeOut(delegate ()
-                {
-                    InputController.GamePlay.MouseEnabled = true;
-                    InputController.GamePlay.InputEnabled = true;
-                }
-            , VariablesManager.uiVariables.defaultFadeOutSpeed);
-
+            
             _hasRun = true;
+            
+            InputController.GamePlay.MouseEnabled = true;
+            InputController.GamePlay.InputEnabled = true;
+            LoadingView.instance.FadeOut(null);
         }
 
         private void DisableAllEnemies()

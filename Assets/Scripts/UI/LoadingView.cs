@@ -19,6 +19,7 @@ namespace UI
                 return _instance ?? (_instance = InstanceInitialize());
             }
         }
+
         private static LoadingView InstanceInitialize()
         {
             GameObject _loadingViewGameObject = Resources.Load<GameObject>("LoadingView");
@@ -35,10 +36,16 @@ namespace UI
             _animator.Play("InstantBlackScreen");
         }
 
+        public void ClearedScreen()
+        {
+            _animator.Play("ClearedScreen");
+        }
+
         public void FadeIn(Action p_onFinish, float p_speed = 1)
         {
             _animator.speed = p_speed;
             _onFadeIn = p_onFinish;
+
             _animator.Play("BlackFadeIn");
         }
 
@@ -46,6 +53,7 @@ namespace UI
         {
             _animator.speed = p_speed;
             _onFadeOut = p_onFinish;
+
             _animator.Play("BlackFadeOut");
         }
 

@@ -111,7 +111,7 @@ namespace GameManagers
             {
                 SaveGameManager.LoadGame();
             }
-            else if (SaveGameManager.gameSaveData == null)
+            if (SaveGameManager.gameSaveData == null)
             {
                 SaveGameManager.NewGame();
                 return;
