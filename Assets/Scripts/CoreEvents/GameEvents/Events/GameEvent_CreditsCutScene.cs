@@ -5,7 +5,6 @@ using UnityEngine.Video;
 using Utilities;
 using Utilities.UI;
 using Utilities.VariableManagement;
-
 namespace CoreEvent.GameEvents
 {
     public class GameEvent_CreditsCutScene : MonoBehaviour, IGameEvent
@@ -22,6 +21,13 @@ namespace CoreEvent.GameEvents
         private void Awake()
         {
             _hasRun = false;
+        }
+
+        public void RunPermanentEvents() { }
+
+        public void RunSingleTimeEvents()
+        {
+            _hasRun = true;
 
             _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
             if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
@@ -30,13 +36,6 @@ namespace CoreEvent.GameEvents
             _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneCreditsVideo;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
-        }
-
-        public void RunPermanentEvents() { }
-
-        public void RunSingleTimeEvents()
-        {
-            _hasRun = true;
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;

@@ -27,13 +27,6 @@ namespace CoreEvent.GameEvents
         private void Awake()
         {
             _hasRun = false;
-            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
-            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
-            
-            _videoPlayer.playOnAwake = false;
-            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
-            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-            _videoPlayer.loopPointReached += HandleCutSceneEnd;
         }
 
         public void RunPermanentEvents() { }
@@ -41,6 +34,14 @@ namespace CoreEvent.GameEvents
         public void RunSingleTimeEvents()
         {
             if (_hasRun) return;
+
+            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
+            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
+
+            _videoPlayer.playOnAwake = false;
+            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
+            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+            _videoPlayer.loopPointReached += HandleCutSceneEnd;
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
@@ -67,6 +68,7 @@ namespace CoreEvent.GameEvents
 
             LoadingView.instance.FadeOut(delegate ()
                 {
+                    Debug.Log("HandleCutSceneEnd");
                     InputController.GamePlay.MouseEnabled = true;
                     InputController.GamePlay.InputEnabled = true;
                 }
