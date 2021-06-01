@@ -495,7 +495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6986
+  m_Name: pb_Mesh-3946
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1730,6 +1730,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 20656983}
+    - target: {fileID: 8557491765922219922, guid: f793ea42f9d70874abe5a27a4775a0a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 39.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 9010417745909634083, guid: f793ea42f9d70874abe5a27a4775a0a3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2738,6 +2743,11 @@ PrefabInstance:
       propertyPath: _firstDoorToolTip
       value: 
       objectReference: {fileID: 1711103774}
+    - target: {fileID: 8052083270922509226, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: initialChapter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8052083270922509227, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: m_Name

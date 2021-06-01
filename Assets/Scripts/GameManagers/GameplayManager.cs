@@ -107,11 +107,11 @@ namespace GameManagers
         private void StartScenario()
         {
             // TIP : Uncomment if to start directly from gameplay scene
-            // if (SaveGameManager.HasLoadFile())
-            // {
-            //     SaveGameManager.LoadGame();
-            // }
-            if (SaveGameManager.gameSaveData == null)
+            if (SaveGameManager.HasLoadFile())
+            {
+                SaveGameManager.LoadGame();
+            }
+            else if (SaveGameManager.gameSaveData == null)
             {
                 SaveGameManager.NewGame();
                 return;
