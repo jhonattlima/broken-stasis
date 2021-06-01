@@ -27,6 +27,7 @@ namespace Gameplay.Player
         private PlayerMovement _playerMovement;
         private PlayerSoundColliderActivator _playerSoundColliderActivator;
         private PlayerIlluminationController _playerIlluminationController;
+        private PlayerDetectableLightController _playerDetectableLightController;
         #endregion
 
         public PlayerBase(PlayerContainer p_playerContainer)
@@ -72,6 +73,13 @@ namespace Gameplay.Player
                 _playerContainer.loudSoundShader
             );
 
+            _playerDetectableLightController = new PlayerDetectableLightController(
+                _playerContainer.lightDetectableObject,
+                _playerContainer.lightDetectableCollider,
+                _playerContainer.lightDetectorLayersToDetect,
+                _playerContainer.lightOriginTransform
+            );
+
             RegisterPlayerAnimator();
 
             _playerHealth = new PlayerHealth();
@@ -92,6 +100,8 @@ namespace Gameplay.Player
                 _playerIlluminationController.SetActive(GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.FLASHLIGHT_BATTERY));
                 _playerIlluminationController.Toggle();
             }
+
+            _playerDetectableLightController.RunUpdate();
         }
 
         public void RunFixedUpdate()

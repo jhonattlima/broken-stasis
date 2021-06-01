@@ -25,10 +25,14 @@ namespace Gameplay.Player
         [Space(5)]
         public PlayerSuitData[] suits;
 
-        [Header("Lights")]
+        [Header("Light References")]
         [Space(5)]
         public Light[] playerLights;
         public GameObject playerIlluminationGameObject;
+        public Transform lightDetectableObject;
+        public Collider lightDetectableCollider;
+        public LayerMask lightDetectorLayersToDetect;
+        public Transform lightOriginTransform;
 
         [Header("Sound Colliders")]
         [Space(5)]
