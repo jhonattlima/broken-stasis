@@ -184,6 +184,8 @@ MonoBehaviour:
   - {fileID: 0}
   _mainCamera: {fileID: 0}
   _enemiesManager: {fileID: 0}
+  _playerCharacterController: {fileID: 0}
+  _inRoomPosition: {x: 33, y: 1, z: 15.5}
 --- !u!1 &1763847185611562750
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +240,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _activateToolTips:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   _deactivatedToolTips:

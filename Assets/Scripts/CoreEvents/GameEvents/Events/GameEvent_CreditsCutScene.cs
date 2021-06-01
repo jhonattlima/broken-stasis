@@ -1,4 +1,5 @@
 ﻿using GameManagers;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -42,8 +43,16 @@ namespace CoreEvent.GameEvents
 
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_CONTROL_PANEL_GREETINGS, delegate ()
             {
-                InputController.GamePlay.InputEnabled = false;
-                _videoPlayer.Play();
+                LoadingView.instance.FadeIn(delegate () 
+                {
+                    _videoPlayer.Play();
+                    
+                    LoadingView.instance.FadeOut(delegate () 
+                    {
+                        InputController.GamePlay.InputEnabled = false;
+                    }, VariablesManager.uiVariables.defaultFadeOutSpeed * 0.5f);
+
+                }, VariablesManager.uiVariables.defaultFadeInSpeed);
             }
             , false);
         }

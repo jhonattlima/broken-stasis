@@ -17,6 +17,8 @@ namespace CoreEvent.GameEvents
         [SerializeField] private List<GameObject> _lightsList;
         [SerializeField] private GameObject _mainCamera;
         [SerializeField] private GameObject _enemiesManager;
+        [SerializeField] private CharacterController _playerCharacterController;
+        [SerializeField] private Vector3 _inRoomPosition;
 
         private VideoPlayer _videoPlayer;
         private bool _hasRun;
@@ -63,18 +65,18 @@ namespace CoreEvent.GameEvents
             _doorController.SetDoorState();
             _doorController.LockDoor();
 
+            _playerCharacterController.enabled = false;
+            _playerCharacterController.transform.position = _inRoomPosition;
+            _playerCharacterController.enabled = true;
+
             _videoPlayer.Stop();
             _videoPlayer.loopPointReached -= HandleCutSceneEnd;
-
-            LoadingView.instance.FadeOut(delegate ()
-                {
-                    Debug.Log("HandleCutSceneEnd");
-                    InputController.GamePlay.MouseEnabled = true;
-                    InputController.GamePlay.InputEnabled = true;
-                }
-            , VariablesManager.uiVariables.defaultFadeOutSpeed);
-
+            
             _hasRun = true;
+            
+            InputController.GamePlay.MouseEnabled = true;
+            InputController.GamePlay.InputEnabled = true;
+            LoadingView.instance.FadeOut(null);
         }
 
         private void DisableAllEnemies()

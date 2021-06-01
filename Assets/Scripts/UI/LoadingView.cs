@@ -36,11 +36,16 @@ namespace UI
             _animator.Play("InstantBlackScreen");
         }
 
+        public void ClearedScreen()
+        {
+            _animator.Play("ClearedScreen");
+        }
+
         public void FadeIn(Action p_onFinish, float p_speed = 1)
         {
-            Debug.Log("Called FadeIn");
             _animator.speed = p_speed;
             _onFadeIn = p_onFinish;
+
             _animator.Play("BlackFadeIn");
         }
 
@@ -48,7 +53,7 @@ namespace UI
         {
             _animator.speed = p_speed;
             _onFadeOut = p_onFinish;
-            Debug.Log("Calling animator");
+
             _animator.Play("BlackFadeOut");
         }
 
@@ -64,7 +69,6 @@ namespace UI
         [UsedImplicitly]
         private void FinishedFadeOutAnimation()
         {
-            Debug.Log("Called finishfadeout");
             _onFadeOut?.Invoke();
 
             _onFadeOut = null;
