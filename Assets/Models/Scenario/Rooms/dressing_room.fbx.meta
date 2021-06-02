@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: eaea90547c6d36a41b8de17e943f2008
+guid: ad5d3360c28b7cb4ba968557f8f94b89
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CHAO_vestiario
-    second: {fileID: 2100000, guid: 11d5726a0f2810247bfaa0a71ec00137, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PAREDE 01
-    second: {fileID: 2100000, guid: fd66b35e802eec146b7f90f91005933e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0

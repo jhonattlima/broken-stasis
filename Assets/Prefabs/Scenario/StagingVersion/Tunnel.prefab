@@ -30,9 +30,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 412713944}
+  - {fileID: 6365332753872826240}
   - {fileID: 1087299878}
   m_Father: {fileID: 619295545658753084}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &377143332
 BoxCollider:
@@ -167,7 +168,7 @@ GameObject:
   - component: {fileID: 1087299880}
   - component: {fileID: 1087299879}
   m_Layer: 0
-  m_Name: DuctCoverFallen
+  m_Name: DuctCoverFallenPointB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +186,7 @@ Transform:
   m_LocalScale: {x: 0.050000004, y: 1.6000001, z: 1.2}
   m_Children: []
   m_Father: {fileID: 377143330}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &1087299880
 MeshFilter:
@@ -260,11 +261,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619295545653101701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.468, y: 0.337, z: 0.95}
+  m_LocalPosition: {x: 1.24, y: 0.337, z: 0.95}
   m_LocalScale: {x: 1, y: 1, z: 1.16}
   m_Children: []
   m_Father: {fileID: 619295545658753084}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &619295545653101698
 BoxCollider:
@@ -305,7 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619295545658753084}
   m_Layer: 0
-  m_Name: TunnelTest
+  m_Name: Tunnel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,10 +323,9 @@ Transform:
   m_LocalPosition: {x: -17.12, y: 0.15039062, z: -14.201578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 619295545653101700}
-  - {fileID: 6365332753872826240}
-  - {fileID: 619295545753165330}
   - {fileID: 2966472921012605400}
+  - {fileID: 619295545653101700}
+  - {fileID: 619295545753165330}
   - {fileID: 377143330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619295545753165331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.042, y: 0.337, z: 0.95}
+  m_LocalPosition: {x: -1.82, y: 0.337, z: 0.95}
   m_LocalScale: {x: 1, y: 1, z: 1.16}
   m_Children: []
   m_Father: {fileID: 619295545658753084}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 4157194212014601740}
   - component: {fileID: 4930353814704576014}
   m_Layer: 0
-  m_Name: DuctCoverFallen
+  m_Name: DuctCoverFallenPointA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,10 +431,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8781167711169656336}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.773, y: -0.089, z: 0.9560003}
-  m_LocalScale: {x: 0.05000001, y: 1.6000003, z: 1.2}
+  m_LocalPosition: {x: 1.7729998, y: -0.089, z: 0.9560003}
+  m_LocalScale: {x: 0.050000012, y: 1.6000004, z: 1.2}
   m_Children: []
-  m_Father: {fileID: 619295545658753084}
+  m_Father: {fileID: 377143330}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &4157194212014601740
@@ -494,7 +494,7 @@ PrefabInstance:
     - target: {fileID: 2477217062907464997, guid: b8447a3a0b48eac4bbdaf446f124cfaf,
         type: 3}
       propertyPath: m_Name
-      value: duct_i_shape
+      value: Duct
       objectReference: {fileID: 0}
     - target: {fileID: 2477217062907464997, guid: b8447a3a0b48eac4bbdaf446f124cfaf,
         type: 3}
@@ -509,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 2966472921210591135, guid: b8447a3a0b48eac4bbdaf446f124cfaf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2966472921210591135, guid: b8447a3a0b48eac4bbdaf446f124cfaf,
         type: 3}
