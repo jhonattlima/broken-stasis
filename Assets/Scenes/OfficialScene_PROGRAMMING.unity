@@ -166,21 +166,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 467523081}
     m_Modifications:
-    - target: {fileID: 2845446133143930916, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _interactionObject
-      value: 
-      objectReference: {fileID: 1360664810}
-    - target: {fileID: 2845446133143930916, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _interactionGameObject
-      value: 
-      objectReference: {fileID: 1360664810}
-    - target: {fileID: 2845446133143930922, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6119376231834308774, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
         type: 3}
       propertyPath: m_Name
@@ -239,21 +224,6 @@ PrefabInstance:
     - target: {fileID: 7113221869144449717, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: isDoorOpen
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _isDoorOpen
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3462,21 +3432,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1065800586}
     m_Modifications:
-    - target: {fileID: 2845446133143930916, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _interactionObject
-      value: 
-      objectReference: {fileID: 1211747347}
-    - target: {fileID: 2845446133143930916, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _interactionGameObject
-      value: 
-      objectReference: {fileID: 1211747347}
-    - target: {fileID: 2845446133143930922, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6119376231834308774, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
         type: 3}
       propertyPath: m_Name
@@ -3535,16 +3490,6 @@ PrefabInstance:
     - target: {fileID: 7113221869144449717, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: isLocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-        type: 3}
-      propertyPath: _isDoorOpen
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
@@ -3876,12 +3821,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 37196709637457426, guid: 8386b8b98be2e2449ac3602da322c85f,
     type: 3}
   m_PrefabInstance: {fileID: 1210614787}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1211747347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7819623363231152504, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1076501774}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1226814564 stripped
 GameObject:
@@ -4229,19 +4168,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1233116549116236376}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1360664810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7819623363231152504, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
-    type: 3}
-  m_PrefabInstance: {fileID: 33007781}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1360664814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7819623363231152507, guid: 8c75b292c5996fc49bb9eecf2bd9421d,
     type: 3}
   m_PrefabInstance: {fileID: 33007781}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360664810}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03822f7d4ede74845a7568d24b062cca, type: 3}
@@ -4931,7 +4864,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14516
+  m_Name: pb_Mesh-20706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6578,11 +6511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 467523081}
     m_Modifications:
-    - target: {fileID: 3842516945352064171, guid: 071382bd155d04b4dbab588da2acd85f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5363106605314102717, guid: 071382bd155d04b4dbab588da2acd85f,
         type: 3}
       propertyPath: m_Name
@@ -6598,16 +6526,6 @@ PrefabInstance:
       propertyPath: _doorToolTip
       value: 
       objectReference: {fileID: 692742198}
-    - target: {fileID: 8062992597707482672, guid: 071382bd155d04b4dbab588da2acd85f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8215994316599032928, guid: 071382bd155d04b4dbab588da2acd85f,
-        type: 3}
-      propertyPath: _doorTooltip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8950566511925962670, guid: 071382bd155d04b4dbab588da2acd85f,
         type: 3}
       propertyPath: m_RootOrder
@@ -6626,7 +6544,7 @@ PrefabInstance:
     - target: {fileID: 8950566511925962670, guid: 071382bd155d04b4dbab588da2acd85f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.95
+      value: 15.821
       objectReference: {fileID: 0}
     - target: {fileID: 8950566511925962670, guid: 071382bd155d04b4dbab588da2acd85f,
         type: 3}

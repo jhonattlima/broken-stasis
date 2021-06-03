@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822513582758012593}
-  m_Mesh: {fileID: -2002063944838067519, guid: 930f104ccfd92d544a8f6e890d20a5a7, type: 3}
+  m_Mesh: {fileID: -3422751613693259228, guid: 7b618fcf542a77345baa44cbad08e051, type: 3}
 --- !u!23 &7989008719189861940
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59,9 +59,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8021206437854726179, guid: 930f104ccfd92d544a8f6e890d20a5a7, type: 3}
-  - {fileID: 5672522294532780844, guid: 930f104ccfd92d544a8f6e890d20a5a7, type: 3}
-  - {fileID: 8570068032507548054, guid: 930f104ccfd92d544a8f6e890d20a5a7, type: 3}
+  - {fileID: 2100000, guid: f8bf0f04ca53a8048815b7389aa5b865, type: 2}
+  - {fileID: 2100000, guid: f8bf0f04ca53a8048815b7389aa5b865, type: 2}
+  - {fileID: 2100000, guid: 6046878ab3eb4474d9ee7f32f129f578, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 7736761109222000503}
   - component: {fileID: 6313628429107261616}
   - component: {fileID: 521035249889321818}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EndGameDoorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _door: {fileID: 8215994316599032928}
   _enemy: {fileID: 0}
+  _doorToolTip: {fileID: 0}
 --- !u!65 &521035249889321818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -369,6 +370,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8950566511925962670}
     m_Modifications:
+    - target: {fileID: 1850912576641280282, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 795b11de4da15274d9713cd9d7f816ba, type: 2}
+    - target: {fileID: 1850912576641280282, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 795b11de4da15274d9713cd9d7f816ba, type: 2}
+    - target: {fileID: 1850912576641280282, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2047289978446553163, guid: d31d8c629e2d28c489a38da6272a43d1,
         type: 3}
       propertyPath: m_RootOrder
@@ -424,6 +440,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3264523431038641726, guid: d31d8c629e2d28c489a38da6272a43d1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -173581546909613224, guid: 7b618fcf542a77345baa44cbad08e051,
+        type: 3}
     - target: {fileID: 4983834024742075332, guid: d31d8c629e2d28c489a38da6272a43d1,
         type: 3}
       propertyPath: m_Name
@@ -561,6 +583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monitor_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505725180173666392, guid: 89ad761dd38f84e4fa52e8a1682d4c8d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1576185771882328819, guid: 89ad761dd38f84e4fa52e8a1682d4c8d, type: 3}
