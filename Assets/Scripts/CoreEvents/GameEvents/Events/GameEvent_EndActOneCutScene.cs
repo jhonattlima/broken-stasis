@@ -18,6 +18,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _mainCamera;
         [SerializeField] private GameObject _enemiesManager;
         [SerializeField] private CharacterController _playerCharacterController;
+        [SerializeField] private Animator _corridorC8Animator;
         [SerializeField] private Vector3 _inRoomPosition;
 
         private VideoPlayer _videoPlayer;
@@ -67,6 +68,7 @@ namespace CoreEvent.GameEvents
 
             _playerCharacterController.enabled = false;
             _playerCharacterController.transform.position = _inRoomPosition;
+            _corridorC8Animator.Play("FadeOut");
             _playerCharacterController.enabled = true;
 
             _videoPlayer.Stop();

@@ -323,8 +323,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 3.5981326, z: 5.28}
-  m_Center: {x: 0.89, y: 1.7990663, z: -4.02}
+  m_Size: {x: 4, y: 3.5981326, z: 1}
+  m_Center: {x: 0.89, y: 1.7990663, z: -2.62}
 --- !u!95 &969832278
 Animator:
   serializedVersion: 3
@@ -609,6 +609,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 245.937
       objectReference: {fileID: 0}
+    - target: {fileID: 4051863331791976321, guid: 080d3fad065d2a149afd19fbdc371a54,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4766088611578444371, guid: 080d3fad065d2a149afd19fbdc371a54,
         type: 3}
       propertyPath: m_RootOrder
@@ -664,10 +669,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -69.59799
       objectReference: {fileID: 0}
+    - target: {fileID: 5290949909759847304, guid: 080d3fad065d2a149afd19fbdc371a54,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296552403845099335, guid: 080d3fad065d2a149afd19fbdc371a54,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8394663044000254016, guid: 080d3fad065d2a149afd19fbdc371a54,
         type: 3}
       propertyPath: m_Name
       value: Locker_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394663044000254016, guid: 080d3fad065d2a149afd19fbdc371a54,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 080d3fad065d2a149afd19fbdc371a54, type: 3}
@@ -1099,6 +1119,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cabinet1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3213939570002942309, guid: 8f91e752887916f42b74a27029a129ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f91e752887916f42b74a27029a129ce, type: 3}
 --- !u!4 &4627763898530338501 stripped
@@ -1189,6 +1214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cabinet1
       objectReference: {fileID: 0}
+    - target: {fileID: 3213939570002942309, guid: 8f91e752887916f42b74a27029a129ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f91e752887916f42b74a27029a129ce, type: 3}
 --- !u!4 &5653372901502414898 stripped
@@ -1263,6 +1293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dead_body1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348693796342289409, guid: 20c2aeb9cf3e6224eadb24ccffb39a03,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c2aeb9cf3e6224eadb24ccffb39a03, type: 3}
@@ -1353,6 +1388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cabinet1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213939570002942309, guid: 8f91e752887916f42b74a27029a129ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f91e752887916f42b74a27029a129ce, type: 3}
@@ -1518,6 +1558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cabinet1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213939570002942309, guid: 8f91e752887916f42b74a27029a129ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f91e752887916f42b74a27029a129ce, type: 3}

@@ -2338,6 +2338,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2035516386}
     - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
+      propertyPath: _corridorC8Animator
+      value: 
+      objectReference: {fileID: 577260259}
+    - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _lightsList.Array.data[0]
       value: 
       objectReference: {fileID: 994513721}
@@ -2779,6 +2783,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 000cd9ed6292da944b3444786b84c550, type: 3}
+--- !u!95 &577260259 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3123357837003089725, guid: 849a40dda805ed544b487b2dd5079d90,
+    type: 3}
+  m_PrefabInstance: {fileID: 5515765616371657900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577631594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5372726311297696120, guid: 71cde6a274cd9034d8bfa26be3dd8390,
@@ -4864,7 +4874,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-20706
+  m_Name: pb_Mesh-4414
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6730,60 +6740,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3681284675377185496, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 3942038220503325054, guid: 5209d5ec878128c48a155cebfb05490c,
         type: 3}
       propertyPath: m_Name
       value: RoomArmory
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774002775367917265, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4989707049092688520, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166044312575534735, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5177062401144383040, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5436634284258970751, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6599918357649504115, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7094608199740998312, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8651087949968955934, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 9174471653213240601, guid: 5209d5ec878128c48a155cebfb05490c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5209d5ec878128c48a155cebfb05490c, type: 3}
