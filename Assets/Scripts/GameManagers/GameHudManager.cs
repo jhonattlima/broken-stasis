@@ -12,7 +12,8 @@ namespace GameManagers
         public UIDialog uiDialogHud;
         public MinigameUI minigameHud;
         public EndGameUI endGameUI;
-        
+        public DamageUI _damageUI;
+
         public static GameHudManager instance;
 
         private void Awake()
