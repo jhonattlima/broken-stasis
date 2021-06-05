@@ -52,14 +52,12 @@ namespace CoreEvent.Chapters
             _playerCharacterController.transform.position = _startPosition;
             _playerCharacterController.enabled = true;
 
-            if (SaveGameManager.gameSaveData.chapter != chapterType)
+            if (SaveGameManager.instance.currentGameSaveData.chapter != chapterType)
             {
-                SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
-                SaveGameManager.SaveGame();
-            }
+                SaveGameManager.instance.currentGameSaveData = GameplayManager.instance.GetCurrentGameData();
 
-            InputController.GamePlay.InputEnabled = true;
-            InputController.GamePlay.MouseEnabled = true;
+                SaveGameManager.instance.SaveSlot(SaveGameManager.instance.currentGameSaveData.saveSlot);
+            }
         }
 
         public void ChapterEnd()
