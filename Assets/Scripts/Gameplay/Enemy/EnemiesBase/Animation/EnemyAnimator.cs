@@ -30,6 +30,7 @@ namespace Gameplay.Enemy.EnemiesBase
             switch (p_enemyState)
             {
                 case EnemyStateEnum.IDLE:
+                case EnemyStateEnum.INVESTIGATING_IDLE:
                     _animator.SetTrigger(IDLE);
                     break;
                 case EnemyStateEnum.INVESTIGATING:
@@ -42,7 +43,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     break;
                 case EnemyStateEnum.ATTACKING:
                     _animator.SetTrigger(ATTACKING);
-                    _animator.SetFloat(ATTACK_SEED, Random.Range(0f,100f));
+                    _animator.SetFloat(ATTACK_SEED, Random.Range(0f, 100f));
                     break;
                 case EnemyStateEnum.AWAKENING:
                     _animator.SetTrigger(AWAKENING);
