@@ -135,6 +135,7 @@ MonoBehaviour:
   _milestone_2_doors: {fileID: 0}
   _environmentLightExplosion: {fileID: 0}
   _eventLightBlink: {fileID: 0}
+  _room7Collider: {fileID: 0}
 --- !u!1 &1901094419
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +186,7 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _enemiesManager: {fileID: 0}
   _playerCharacterController: {fileID: 0}
+  _corridorC8Animator: {fileID: 0}
   _inRoomPosition: {x: 33, y: 1, z: 15.5}
 --- !u!1 &1763847185611562750
 GameObject:

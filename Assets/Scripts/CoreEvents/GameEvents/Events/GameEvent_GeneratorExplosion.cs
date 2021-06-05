@@ -27,6 +27,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _milestone_2_doors;
         [SerializeField] private GameObject _environmentLightExplosion;
         [SerializeField] private GameObject _eventLightBlink;
+        [SerializeField] private BoxCollider _room7Collider;
 
         public GameEventTypeEnum gameEventType
         {
@@ -60,6 +61,7 @@ namespace CoreEvent.GameEvents
             TurnOffAllLights();
             DisableCovers();
             OpenDoors();
+            _room7Collider.enabled = true;
         }
 
         public void RunSingleTimeEvents()

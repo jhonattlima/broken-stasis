@@ -102,7 +102,7 @@ namespace Gameplay.Enemy.EnemiesBase
         {
             _basherContainer.navigationAgent.Warp(_basherContainer.endGameSpawnTransform.position);
             _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
-            _basherContainer.navigationAgent.SetDestination(p_doorPosition);
+            _basherContainer.navigationAgent?.SetDestination(p_doorPosition);
             
             AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM);
         }
