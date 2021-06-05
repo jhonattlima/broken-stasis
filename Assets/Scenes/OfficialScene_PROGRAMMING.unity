@@ -2209,6 +2209,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2088722111}
     - target: {fileID: 1560004372, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
+      propertyPath: _room7Collider
+      value: 
+      objectReference: {fileID: 1386867992}
+    - target: {fileID: 1560004372, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _roomGenerator
       value: 
       objectReference: {fileID: 8272495430390779101}
@@ -2355,7 +2359,7 @@ PrefabInstance:
     - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _corridorC8Animator
       value: 
-      objectReference: {fileID: 577260259}
+      objectReference: {fileID: 0}
     - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _lightsList.Array.data[0]
       value: 
@@ -2798,12 +2802,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 000cd9ed6292da944b3444786b84c550, type: 3}
---- !u!95 &577260259 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3123357837003089725, guid: 849a40dda805ed544b487b2dd5079d90,
-    type: 3}
-  m_PrefabInstance: {fileID: 5515765616371657900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577631594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5372726311297696120, guid: 71cde6a274cd9034d8bfa26be3dd8390,
@@ -4210,6 +4208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03822f7d4ede74845a7568d24b062cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1386867992 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 969832274, guid: 5209d5ec878128c48a155cebfb05490c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3675189963616031180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390681834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,7 +4903,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4414
+  m_Name: pb_Mesh-6086
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5953,6 +5957,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2042357534 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7427267977865542131, guid: 849a40dda805ed544b487b2dd5079d90,
+    type: 3}
+  m_PrefabInstance: {fileID: 5515765616371657900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088722111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 459761145867806182, guid: 000cd9ed6292da944b3444786b84c550,
@@ -6561,6 +6571,11 @@ PrefabInstance:
       propertyPath: _doorToolTip
       value: 
       objectReference: {fileID: 692742198}
+    - target: {fileID: 6313628429107261616, guid: 071382bd155d04b4dbab588da2acd85f,
+        type: 3}
+      propertyPath: _corridorC8Collider
+      value: 
+      objectReference: {fileID: 2042357534}
     - target: {fileID: 8950566511925962670, guid: 071382bd155d04b4dbab588da2acd85f,
         type: 3}
       propertyPath: m_RootOrder
@@ -6992,13 +7007,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorridorC8
       objectReference: {fileID: 0}
-    - target: {fileID: 8994944533102123491, guid: 849a40dda805ed544b487b2dd5079d90,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8994944533102123491, guid: 849a40dda805ed544b487b2dd5079d90, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 849a40dda805ed544b487b2dd5079d90, type: 3}
 --- !u!1001 &6308845561686868647
 PrefabInstance:

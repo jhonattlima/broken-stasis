@@ -17,6 +17,7 @@ namespace Gameplay.Objects.Interaction
         [SerializeField] private DoorController _door;
         [SerializeField] private BasherEnemy _enemy;
         [SerializeField] private ToolTip _doorToolTip;
+        [SerializeField] private BoxCollider _corridorC8Collider;
 
         // TODO: Substituir Depois por uma porta com os 3 indicadores
         // Referência para o Basher/EnemiesManager (para enviar um evento de perseguir player na porta)
@@ -80,6 +81,7 @@ namespace Gameplay.Objects.Interaction
             //UnityEngine.Debug.Log("All bars completed");
 
             _runningPuzzle = false;
+            _corridorC8Collider.enabled = true;
             PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);
             GameHudManager.instance.endGameUI.HideUI();
             _door.Interact();
