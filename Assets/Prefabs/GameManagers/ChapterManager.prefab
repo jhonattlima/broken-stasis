@@ -135,6 +135,7 @@ MonoBehaviour:
   _milestone_2_doors: {fileID: 0}
   _environmentLightExplosion: {fileID: 0}
   _eventLightBlink: {fileID: 0}
+  _room7Collider: {fileID: 0}
 --- !u!1 &1901094419
 GameObject:
   m_ObjectHideFlags: 0

@@ -1792,6 +1792,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 664035208008004325}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &455883968 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2750019208203986694, guid: 849a40dda805ed544b487b2dd5079d90,
+    type: 3}
+  m_PrefabInstance: {fileID: 5515765616371657900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &467523080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2365,7 @@ PrefabInstance:
     - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _corridorC8Animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 455883968}
     - target: {fileID: 1901094422, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _lightsList.Array.data[0]
       value: 
