@@ -415,13 +415,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167945942152665729}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalRotation: {x: 0.7719101, y: -0, z: -0, w: 0.6357318}
+  m_LocalPosition: {x: 0, y: 1.23, z: -2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6159627918369299230}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 101.050995, y: -0.000015258789, z: -0.000015258789}
 --- !u!108 &9050682405472709841
 Light:
   m_ObjectHideFlags: 0
@@ -431,13 +431,13 @@ Light:
   m_GameObject: {fileID: 1167945942152665729}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.6784314, b: 0.19607845, a: 1}
-  m_Intensity: 20
+  m_Color: {r: 1, g: 0.81320757, b: 0.5330188, a: 1}
+  m_Intensity: 30.3
   m_Range: 7
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 117.049286
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -541,13 +541,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587953723486052792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalRotation: {x: 0.79379886, y: -0, z: -0, w: 0.60818046}
+  m_LocalPosition: {x: 0, y: 0.6799998, z: 6.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6159627918369299230}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 105.084, y: -0.000015258789, z: -0.000015258789}
 --- !u!108 &6682769714377405803
 Light:
   m_ObjectHideFlags: 0
@@ -557,12 +557,12 @@ Light:
   m_GameObject: {fileID: 1587953723486052792}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.6784314, b: 0.19607845, a: 1}
-  m_Intensity: 20
+  m_Color: {r: 1, g: 0.84339625, b: 0.6084906, a: 1}
+  m_Intensity: 39.7
   m_Range: 7
-  m_SpotAngle: 30
+  m_SpotAngle: 63.86486
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -2132,7 +2132,7 @@ PrefabInstance:
     - target: {fileID: 4413369212751311914, guid: c7ee9a9c74b0fc548986943b7ba174be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4413369212751311914, guid: c7ee9a9c74b0fc548986943b7ba174be,
         type: 3}
