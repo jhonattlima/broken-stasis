@@ -2,19 +2,41 @@
 using UnityEditor;
 using UnityEngine;
 using GameManagers;
+using System.Diagnostics;
 
 namespace SaveSystem
 {
-    public static class SaveGameManager
+    public class SaveGameManager : MonoBehaviour
     {
-        public static GameSaveData gameSaveData;
+        public SlotSaveData currentGameSaveData;
+        private GameSaveData _saveData = new GameSaveData();
 
         private const string FILE_PATH = "/Savedata";
         private const string FILE_NAME = "/SaveFile.jua";
 
-        public static void SaveGame()
+        private static SaveGameManager _instance;
+        public static SaveGameManager instance
         {
-            string __saveDataJson = JsonUtility.ToJson(gameSaveData, true);
+            get
+            {
+                return _instance ?? (_instance = InstanceInitialize());
+            }
+        }
+
+        private static SaveGameManager InstanceInitialize()
+        {
+            _instance = Instantiate(new GameObject()).AddComponent<SaveGameManager>();
+
+            DontDestroyOnLoad(_instance);
+
+            return _instance;
+        }
+
+        public void SaveSlot(int p_slot)
+        {
+            _saveData.saveData[p_slot - 1] = currentGameSaveData;
+
+            string __saveDataJson = JsonUtility.ToJson(_saveData, true);
             byte[] __bytes = System.Text.Encoding.UTF8.GetBytes(__saveDataJson);
 
             if (!Directory.Exists(Application.dataPath + FILE_PATH))
@@ -23,29 +45,48 @@ namespace SaveSystem
             File.WriteAllBytes(Application.dataPath + FILE_PATH + FILE_NAME, __bytes);
         }
 
-        public static bool HasLoadFile()
+        public bool HasSaveSlot(int p_slot)
+        {
+            return _saveData.saveData[p_slot - 1].saveSlot != 0;
+        }
+
+        public bool SaveFileExists()
         {
             return File.Exists(Application.dataPath + FILE_PATH + FILE_NAME);
         }
 
-        public static void NewGame()
+        public void NewSlot(int p_slot)
         {
-            gameSaveData = new GameSaveData();
+            currentGameSaveData = new SlotSaveData();
+            currentGameSaveData.saveSlot = p_slot;
+
+            SaveSlot(p_slot);
         }
 
-        public static void LoadGame()
+        public void LoadSlot(int p_slot)
         {
             byte[] __bytes = File.ReadAllBytes(Application.dataPath + FILE_PATH + FILE_NAME);
-            string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes); ;
+            string __saveDataJson = System.Text.Encoding.UTF8.GetString(__bytes);
 
-            gameSaveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
+            _saveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
+
+            currentGameSaveData = _saveData.saveData[p_slot - 1];
+        }
+
+        public void Initialize()
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                _saveData.saveData[i] = new SlotSaveData();
+                
+                if(SaveFileExists())
+                    LoadSlot(i+1);
+            }
         }
 
         [MenuItem("TFW Tools/Utilities/Clear Save Data")]
         public static void ClearSaveGame()
         {
-            gameSaveData = new GameSaveData();
-
             EditorUtility.DisplayDialog("Save Game Cleared", "Deleted Save Game at " + Application.dataPath + FILE_PATH + FILE_NAME, "OK");
 
             if (File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))

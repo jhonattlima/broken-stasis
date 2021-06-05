@@ -2,7 +2,10 @@
 using System.Linq;
 using CoreEvent.Chapters;
 using CoreEvent.GameEvents;
+using UI;
 using UnityEngine;
+using Utilities;
+using Utilities.VariableManagement;
 
 namespace GameManagers
 {
@@ -51,6 +54,14 @@ namespace GameManagers
             RunPreviousGameEvents();
 
             _currentChapter.ChapterStart();
+
+            if(_currentChapterIndex > 0)
+            {
+                InputController.GamePlay.InputEnabled = true;
+                InputController.GamePlay.MouseEnabled = true;
+                
+                LoadingView.instance.FadeOut(null, VariablesManager.uiVariables.defaultFadeOutSpeed * 2f);
+            }
         }
 
         private void RunPreviousGameEvents()

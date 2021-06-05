@@ -56,20 +56,17 @@ namespace CoreEvent.Chapters
             _playerCharacterController.transform.position = _startPosition;
             _playerCharacterController.enabled = true;
 
-            if (SaveGameManager.gameSaveData.chapter != chapterType)
+            if (SaveGameManager.instance.currentGameSaveData.chapter != chapterType)
             {
-                SaveGameManager.gameSaveData = GameplayManager.instance.GetCurrentGameData();
+                SaveGameManager.instance.currentGameSaveData = GameplayManager.instance.GetCurrentGameData();
 
-                SaveGameManager.SaveGame();
+                SaveGameManager.instance.SaveSlot(SaveGameManager.instance.currentGameSaveData.saveSlot);
             }
 
             foreach(GameObject __gameObject in _gameObjectsToActivate)
             {
                 __gameObject.SetActive(true);
             }
-            
-            InputController.GamePlay.InputEnabled = true;
-            InputController.GamePlay.MouseEnabled = true;
 
             _itemKeyCard.SetEnabled(true);
             _navMeshSurface.BuildNavMesh();

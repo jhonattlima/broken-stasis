@@ -8,6 +8,7 @@ using Gameplay.Objects.Interaction;
 using Gameplay.Player;
 using Gameplay.Player.Item;
 using SaveSystem;
+using UI;
 using UnityEngine;
 
 namespace GameManagers
@@ -35,6 +36,8 @@ namespace GameManagers
         private LevelObjectManager _levelObjectManager;
         private EnemiesManager _enemiesManager;
         private LightPriorityManager _lightPriorityManager;
+
+        private int _saveSlot;
 
         public static GameplayManager instance;
 
@@ -106,34 +109,33 @@ namespace GameManagers
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         private void StartScenario()
         {
-            // TIP : Uncomment if to start directly from gameplay scene
-            if (SaveGameManager.HasLoadFile())
+            if(SaveGameManager.instance.currentGameSaveData == null)
             {
-                SaveGameManager.LoadGame();
-            }
-            if (SaveGameManager.gameSaveData == null)
-            {
-                SaveGameManager.NewGame();
-                return;
+                SaveGameManager.instance.Initialize();
+
+                if(SaveGameManager.instance.currentGameSaveData == null || SaveGameManager.instance.currentGameSaveData.saveSlot == 0)
+                    SaveGameManager.instance.NewSlot(3);
             }
 
             // Load game;
-            ChapterManager.instance.initialChapter = SaveGameManager.gameSaveData.chapter;
+            _saveSlot = SaveGameManager.instance.currentGameSaveData.saveSlot;
 
-            RegisterInventoryController(SaveGameManager.gameSaveData.inventoryList);
+            ChapterManager.instance.initialChapter = SaveGameManager.instance.currentGameSaveData.chapter;
 
-            _player.SetPlayerSaveData(SaveGameManager.gameSaveData);
+            RegisterInventoryController(SaveGameManager.instance.currentGameSaveData.inventoryList);
 
-            if (SaveGameManager.gameSaveData.doorsList == null)
+            _player.SetPlayerSaveData(SaveGameManager.instance.currentGameSaveData);
+
+            if (SaveGameManager.instance.currentGameSaveData.doorsList == null)
                 return;
 
             RestoreDoorsStateFromSaveFile();
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
-        public GameSaveData GetCurrentGameData()
+        public SlotSaveData GetCurrentGameData()
         {
-            GameSaveData __gameSaveData = _player.GetPlayerSaveData();
+            SlotSaveData __gameSaveData = _player.GetPlayerSaveData();
 
             __gameSaveData.chapter = ChapterManager.instance.currentChapter.chapterType;
 
@@ -150,13 +152,15 @@ namespace GameManagers
                 __gameSaveData.doorsList.Add(doorState);
             }
 
+            __gameSaveData.saveSlot = _saveSlot;
+
             return __gameSaveData;
         }
 
         private void RestoreDoorsStateFromSaveFile()
         {
             List<DoorController> __doors = _levelGameObjects.GetComponentsInChildren<DoorController>().ToList();
-            foreach (DoorSaveData __savedDoorState in SaveGameManager.gameSaveData.doorsList)
+            foreach (DoorSaveData __savedDoorState in SaveGameManager.instance.currentGameSaveData.doorsList)
             {
                 foreach (DoorController __ingameDoor in __doors)
                 {
