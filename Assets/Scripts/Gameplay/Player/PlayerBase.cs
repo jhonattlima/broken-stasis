@@ -132,9 +132,9 @@ namespace Gameplay.Player
             return PlayerSuitEnum.NAKED;
         }
 
-        public GameSaveData GetPlayerSaveData()
+        public SlotSaveData GetPlayerSaveData()
         {
-            GameSaveData __gameSaveData = new GameSaveData();
+            SlotSaveData __gameSaveData = new SlotSaveData();
 
             _playerIlluminationController.SetActive(GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.FLASHLIGHT_BATTERY));
 
@@ -146,7 +146,7 @@ namespace Gameplay.Player
             return __gameSaveData;
         }
 
-        public void SetPlayerSaveData(GameSaveData p_gameSaveData)
+        public void SetPlayerSaveData(SlotSaveData p_gameSaveData)
         {
             _playerContainer.playerTransform.position = p_gameSaveData.playerData.position;
             HandleSuitChange(p_gameSaveData.playerData.suit);

@@ -65,7 +65,7 @@ namespace CoreEvent.GameEvents
 
             InputController.GamePlay.MouseEnabled = true;
             InputController.GamePlay.InputEnabled = true;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(ScenesConstants.MENU);
         }
     }
 }
