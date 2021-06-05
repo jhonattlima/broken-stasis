@@ -87,7 +87,6 @@ namespace Gameplay.Enemy.Behaviours
             return (_stateManager.currentState == EnemyStateEnum.INVESTIGATING_ROOM || _stateManager.currentState == EnemyStateEnum.INVESTIGATING_IDLE);
         }
 
-
         private IEnumerator InvestigateNextPoint()
         {
             _settingDestination = true;
@@ -117,9 +116,9 @@ namespace Gameplay.Enemy.Behaviours
                 _investigationIndex = 0;
                 return;
             }
-            
+
             _navigationAgent.SetDestination(_investigationPoints[_investigationIndex].position);
-            
+
             _investigationIndex++;
         }
 
