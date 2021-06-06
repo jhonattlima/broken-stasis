@@ -4373,6 +4373,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1588449964}
     m_Modifications:
+    - target: {fileID: 412713946, guid: af93c430cc398af4c84ea06b1150c641, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb187d450fc59544830d33b51503fa2, type: 2}
+    - target: {fileID: 1087299877, guid: af93c430cc398af4c84ea06b1150c641, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087299879, guid: af93c430cc398af4c84ea06b1150c641, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb187d450fc59544830d33b51503fa2, type: 2}
     - target: {fileID: 619295545658753084, guid: af93c430cc398af4c84ea06b1150c641,
         type: 3}
       propertyPath: m_RootOrder
@@ -4433,6 +4445,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tunnel
       objectReference: {fileID: 0}
+    - target: {fileID: 4930353814704576014, guid: af93c430cc398af4c84ea06b1150c641,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb187d450fc59544830d33b51503fa2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af93c430cc398af4c84ea06b1150c641, type: 3}
 --- !u!4 &1474994064 stripped
