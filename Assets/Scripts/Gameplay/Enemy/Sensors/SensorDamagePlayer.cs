@@ -11,7 +11,6 @@ namespace Gameplay.Enemy.Sensors
         {
             if (other.gameObject.CompareTag(GameInternalTags.PLAYER))
             {
-                Debug.Log("Tocou o player");
                 isTouchingPlayer = true;
             }
         }
