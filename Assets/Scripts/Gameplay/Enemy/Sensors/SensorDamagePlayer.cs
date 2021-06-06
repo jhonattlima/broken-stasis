@@ -10,7 +10,10 @@ namespace Gameplay.Enemy.Sensors
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag(GameInternalTags.PLAYER))
+            {
+                Debug.Log("Tocou o player");
                 isTouchingPlayer = true;
+            }
         }
 
         public void ResetSensorDetection()
