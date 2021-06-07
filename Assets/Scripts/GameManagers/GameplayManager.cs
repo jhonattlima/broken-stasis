@@ -109,27 +109,29 @@ namespace GameManagers
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         private void StartScenario()
         {
-            if(SaveGameManager.instance.currentGameSaveData == null)
+            if (SaveGameManager.instance.currentGameSaveData == null)
             {
                 SaveGameManager.instance.Initialize();
 
-                if(SaveGameManager.instance.currentGameSaveData == null || SaveGameManager.instance.currentGameSaveData.saveSlot == 0)
+                if (SaveGameManager.instance.currentGameSaveData == null || SaveGameManager.instance.currentGameSaveData.saveSlot == 0)
                     SaveGameManager.instance.NewSlot(3);
             }
-
-            // Load game;
             _saveSlot = SaveGameManager.instance.currentGameSaveData.saveSlot;
 
+            LoadGame();
+        }
+
+        private void LoadGame()
+        {
             ChapterManager.instance.initialChapter = SaveGameManager.instance.currentGameSaveData.chapter;
 
             RegisterInventoryController(SaveGameManager.instance.currentGameSaveData.inventoryList);
 
-            _player.SetPlayerSaveData(SaveGameManager.instance.currentGameSaveData);
+            if (SaveGameManager.instance.currentGameSaveData.playerData.health != 0)
+                _player.SetPlayerSaveData(SaveGameManager.instance.currentGameSaveData);
 
-            if (SaveGameManager.instance.currentGameSaveData.doorsList == null)
-                return;
-
-            RestoreDoorsStateFromSaveFile();
+            if (SaveGameManager.instance.currentGameSaveData.doorsList != null)
+                RestoreDoorsStateFromSaveFile();
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
