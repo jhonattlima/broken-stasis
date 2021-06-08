@@ -586,6 +586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Image_background
       objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
 --- !u!1001 &346432108
@@ -882,6 +887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_Image_background
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
@@ -1721,6 +1731,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Image_background
       objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
 --- !u!1001 &993568907
@@ -2021,6 +2036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Image_background
       objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
 --- !u!1001 &1501747716
@@ -2145,6 +2165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_Image_background
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
@@ -2271,6 +2296,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Image_background
       objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
 --- !u!1001 &1980063519
@@ -2395,6 +2425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_Image_background
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
@@ -3229,6 +3264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Image_background
       objectReference: {fileID: 0}
+    - target: {fileID: 4375922868664690235, guid: 6b070751ff36df642ad1432ab6d1a292,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b070751ff36df642ad1432ab6d1a292, type: 3}
 --- !u!1001 &4810579916586606407
@@ -3712,7 +3752,7 @@ PrefabInstance:
     - target: {fileID: 8416599489539833292, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 145.3
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 8416599489539833292, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
         type: 3}
@@ -3733,6 +3773,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416599489539833295, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
+        type: 3}
+      propertyPath: m_Spacing.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416599489539833295, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8416599489654233395, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
         type: 3}
@@ -3828,6 +3878,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416599489718512922, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.50445
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416599489718512922, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7834784
       objectReference: {fileID: 0}
     - target: {fileID: 8416599489718512922, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
         type: 3}
@@ -4018,7 +4078,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 880c702e99badf24f8314e0a74785b0f,
+      objectReference: {fileID: 21300000, guid: 0d978639e0f2d81408e6c744bca4cae5,
         type: 3}
     - target: {fileID: 8416599490395632837, guid: ad3a4fc4cef158a4599ec3e365eff8d4,
         type: 3}
