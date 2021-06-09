@@ -7,6 +7,7 @@ using Gameplay.Enemy;
 using Gameplay.Objects.Interaction;
 using Gameplay.Player;
 using Gameplay.Player.Item;
+using Gameplay.Player.Motion;
 using SaveSystem;
 using UI;
 using UnityEngine;
@@ -76,9 +77,19 @@ namespace GameManagers
 
         private void RegisterPlayerGraph(PlayerContainer p_playercontainer)
         {
-            if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
-            if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
-            if (p_playercontainer != null && _audioListenerGameObject != null) _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
+            PlayerStatesManager.onPlayerCrouching = null;
+            PlayerStatesManager.onStateChanged = null;
+
+            if (p_playercontainer != null)
+            {
+                _player = new PlayerBase(p_playercontainer);
+
+                if(_cameraContainer != null) 
+                    _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
+                
+                if (_audioListenerGameObject != null)
+                    _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
+            } 
 
             _player?.InitializePlayer();
 
