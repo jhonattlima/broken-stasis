@@ -2495,6 +2495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorridorC7
       objectReference: {fileID: 0}
+    - target: {fileID: 7786105651442991679, guid: 4db3fab81a24f8541bc056ddc8ce7795,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db3fab81a24f8541bc056ddc8ce7795, type: 3}
 --- !u!43 &532623414
@@ -6098,6 +6103,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2084625951728463174, guid: 0656acf458515fd48ab28fb148e698d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0656acf458515fd48ab28fb148e698d9, type: 3}
 --- !u!1001 &735346380131807687
@@ -7000,10 +7010,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3091428379755040965, guid: a1b38c58b1b27ec47a998fc124f48fe8,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4621133069882512847, guid: a1b38c58b1b27ec47a998fc124f48fe8,
         type: 3}
       propertyPath: m_Name
       value: RoomCommandBridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057654723396778317, guid: a1b38c58b1b27ec47a998fc124f48fe8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b38c58b1b27ec47a998fc124f48fe8, type: 3}
