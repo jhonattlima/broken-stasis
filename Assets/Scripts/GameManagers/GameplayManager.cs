@@ -40,7 +40,6 @@ namespace GameManagers
 
         private int _saveSlot;
 
-        public Transform playerTransform { get; private set;}
         public static GameplayManager instance;
 
         private void Awake()
@@ -51,8 +50,6 @@ namespace GameManagers
             RegisterObjectsGraph(_playerContainer);
 
             onPlayerDamaged += _player.onPlayerDamaged;
-            playerTransform = _playerContainer.transform.parent.transform;
-
             _enemiesManager?.InitializeEnemies();
         }
 
