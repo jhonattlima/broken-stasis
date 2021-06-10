@@ -80,6 +80,8 @@ namespace CoreEvent.GameEvents
                         _hasRun = true;
                         RunPermanentEvents();
 
+                        InputController.GamePlay.MouseEnabled = true;
+                        
                         // Start Chapter 3
                         ChapterManager.instance.GoToNextChapter();
                         GameStateManager.SetGameState(GameState.RUNNING);

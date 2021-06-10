@@ -41,6 +41,8 @@ namespace Gameplay.Objects.Items
                 if (_enabled)
                 {
                     _lightToolTip.InteractToolTip();
+                    InputController.GamePlay.InputEnabled = false;
+                    InputController.GamePlay.MouseEnabled = false;
 
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
                     AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP, false, delegate ()
