@@ -1,7 +1,7 @@
 using GameManagers;
 using UnityEngine;
 
-namespace UI.MainMenu
+namespace UI.PauseMenu
 {
     public class PauseMenuController : MonoBehaviour
     {
