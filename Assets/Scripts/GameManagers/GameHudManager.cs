@@ -24,6 +24,7 @@ namespace GameManagers
 
         private void Update()
         {
+            if(GameStateManager.currentState != GameState.RUNNING) return;
             uiDialogHud.RunUpdate();
         }
     }

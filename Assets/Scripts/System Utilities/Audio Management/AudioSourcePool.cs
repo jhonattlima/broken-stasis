@@ -50,5 +50,10 @@ namespace Utilities.Audio
 
             return __audioSources;
         }
+
+        public List<AudioSource> GetAllAudioSources()
+        {
+            return _sourcesPool;
+        }
     }
 }
