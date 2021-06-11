@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagers;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -119,6 +120,9 @@ namespace UI.Dialog
 
             foreach (char __letter in _currentDialogText.ToCharArray())
             {
+                while (GameStateManager.currentState != GameState.RUNNING)
+                    yield return null;
+                    
                 _dialogText.text += __letter;
                 yield return null;
             }
@@ -134,6 +138,7 @@ namespace UI.Dialog
 
         public void RunUpdate()
         {
+            if (GameStateManager.currentState != GameState.RUNNING) return;
             if (InputController.UI.SkipDialog())
                 DisplayNextDialog();
         }
