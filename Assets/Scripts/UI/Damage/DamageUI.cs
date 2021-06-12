@@ -11,16 +11,22 @@ namespace UI.Minigame
         [SerializeField] private Image _currentImageComponent;
 
         private const string GET_HURT_HUD_ANIMATION = "GetHurt";
+        private const string RESET_HUD_ANIMATION = "ResetHud";
 
         private void Start()
         {
             _playerLifeDamageSprites.Reverse();
         }
 
-        public void receiveHit(int _currentPlayerLife)
+        public void ReceiveHit(int _currentPlayerLife)
         {
             _currentImageComponent.sprite = _playerLifeDamageSprites[_currentPlayerLife - 1];
             _animatorComponent.Play(GET_HURT_HUD_ANIMATION);
+        }
+
+        public void ResetHud()
+        {
+            _animatorComponent.Play(RESET_HUD_ANIMATION);
         }
     }
 }
