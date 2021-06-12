@@ -27,7 +27,7 @@ TagManager:
   - CoverRoom
   - IgnoreNavMesh
   - DetectableLight
-  - 
+  - NoShadow
   - 
   - 
   - 

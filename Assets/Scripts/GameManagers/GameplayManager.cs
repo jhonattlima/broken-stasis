@@ -50,7 +50,6 @@ namespace GameManagers
             RegisterObjectsGraph(_playerContainer);
 
             onPlayerDamaged += _player.onPlayerDamaged;
-
             _enemiesManager?.InitializeEnemies();
         }
 
@@ -106,6 +105,7 @@ namespace GameManagers
 
         private void Update()
         {
+            if(GameStateManager.currentState != GameState.RUNNING) return;
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
             _player?.RunUpdate();
