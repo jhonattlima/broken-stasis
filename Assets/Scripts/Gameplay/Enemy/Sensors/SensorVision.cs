@@ -1,4 +1,5 @@
 ﻿using System;
+using GameManagers;
 using UnityEngine;
 using Utilities;
 
@@ -28,7 +29,7 @@ namespace Gameplay.Enemy.Sensors
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
                 onPlayerDetected?.Invoke(other.transform);
             else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
-                onLightDetected?.Invoke(other.gameObject.GetComponentInChildren<Transform>());
+                onLightDetected?.Invoke(other.GetComponentsInParent<Transform>()[other.GetComponentsInParent<Transform>().Length - 1]);
         }
 
         private void OnTriggerStay(Collider other)
@@ -36,7 +37,7 @@ namespace Gameplay.Enemy.Sensors
             if (other.CompareTag(GameInternalTags.PLAYER) && HasDirectViewOfObject(other.gameObject, GameInternalTags.PLAYER))
                 onPlayerRemainsDetected?.Invoke(other.transform);
             else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
-                onLightRemainsDetected?.Invoke(other.gameObject.GetComponentInChildren<Transform>());
+                onLightRemainsDetected?.Invoke(other.GetComponentsInParent<Transform>()[other.GetComponentsInParent<Transform>().Length - 1]);
         }
 
         private void OnTriggerExit(Collider other)
@@ -44,7 +45,7 @@ namespace Gameplay.Enemy.Sensors
             if (other.CompareTag(GameInternalTags.PLAYER))
                 onPlayerLeftDetection?.Invoke(other.transform);
             else if (other.CompareTag(GameInternalTags.DETECTABLE_LIGHT) && HasDirectViewOfObject(other.gameObject, GameInternalTags.DETECTABLE_LIGHT))
-                onLightLeftDetection?.Invoke(other.transform);
+                onLightLeftDetection?.Invoke(other.GetComponentsInParent<Transform>()[other.GetComponentsInParent<Transform>().Length - 1]);
         }
 
         private bool HasDirectViewOfObject(GameObject p_detectedObject, string p_objectTag)
@@ -54,13 +55,11 @@ namespace Gameplay.Enemy.Sensors
             Vector3 __toPosition = p_detectedObject.transform.position;
             Vector3 __direction = __toPosition - __fromPosition;
 
-            Debug.DrawRay(__fromPosition, __direction, Color.green);
-        
-            if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f, _layersToDetect))
+            if (Physics.Raycast(__fromPosition, __direction, out __hit, 50f, _layersToDetect))
             {
+                Debug.DrawRay(__fromPosition, __direction, Color.red);
                 return __hit.collider.CompareTag(p_objectTag);
             }
-
             return false;
         }
     }

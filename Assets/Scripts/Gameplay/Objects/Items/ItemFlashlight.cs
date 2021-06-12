@@ -44,6 +44,9 @@ namespace Gameplay.Objects.Items
                     InputController.GamePlay.InputEnabled = false;
                     InputController.GamePlay.MouseEnabled = false;
 
+                    InputController.GamePlay.InputEnabled = false;
+                    InputController.GamePlay.MouseEnabled = false;
+
                     PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM);
                     AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP, false, delegate ()
                     {
