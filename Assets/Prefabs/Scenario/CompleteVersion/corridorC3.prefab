@@ -1287,6 +1287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: c3_junk
       objectReference: {fileID: 0}
+    - target: {fileID: 7100883603911621809, guid: 5b6dd9dc0f7900542a59c59d792c9097,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7521078261499574605, guid: 5b6dd9dc0f7900542a59c59d792c9097,
         type: 3}
       propertyPath: m_RootOrder
@@ -1356,6 +1361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068504588022059485, guid: 5b6dd9dc0f7900542a59c59d792c9097,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6dd9dc0f7900542a59c59d792c9097, type: 3}
