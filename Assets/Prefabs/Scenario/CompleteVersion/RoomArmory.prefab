@@ -70,7 +70,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26963519975392527}
-  m_Mesh: {fileID: 5282863129382158393, guid: 22da37fc17be2a64ebfc78f1b3285fa4, type: 3}
+  m_Mesh: {fileID: -7657544651550592828, guid: 61b513385d700f94fa97195a49132410, type: 3}
 --- !u!23 &1972356036541588698
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 5282863129382158393, guid: 22da37fc17be2a64ebfc78f1b3285fa4, type: 3}
+  m_Mesh: {fileID: -7657544651550592828, guid: 61b513385d700f94fa97195a49132410, type: 3}
 --- !u!1 &3942038220503325054
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4878376674932893464}
   - component: {fileID: 969832274}
   - component: {fileID: 2268193159061445620}
-  - component: {fileID: 3817578883838222123}
+  - component: {fileID: 3187547880308455369}
   - component: {fileID: 969832278}
   - component: {fileID: 969832272}
   m_Layer: 13
@@ -297,8 +297,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 3.5981326, z: 5.28}
-  m_Center: {x: 0.89, y: 1.7990663, z: -4.65}
+  m_Size: {x: 4, y: 3.5981326, z: 4.5}
+  m_Center: {x: 0.89, y: 1.7990663, z: -4.18}
 --- !u!65 &2268193159061445620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -310,9 +310,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 3.5981326, z: 1}
-  m_Center: {x: 6.52, y: 1.7990663, z: -0.05}
---- !u!65 &3817578883838222123
+  m_Size: {x: 12.086035, y: 3.5981326, z: 5.5}
+  m_Center: {x: -0.00000071525574, y: 1.7990663, z: 0.625}
+--- !u!65 &3187547880308455369
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,8 +323,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.086035, y: 3.5981326, z: 5.5}
-  m_Center: {x: -0.00000071525574, y: 1.7990663, z: 0.5}
+  m_Size: {x: 2, y: 3.5981326, z: 1}
+  m_Center: {x: 6.52, y: 1.7990663, z: 0.76}
 --- !u!95 &969832278
 Animator:
   serializedVersion: 3

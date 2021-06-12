@@ -35,7 +35,6 @@ namespace Gameplay.Enemy.EnemiesBase
         [Header("Attack Variables")]
         [Space(5)]
         public SensorDamagePlayer weaponSensor;
-        public BoxCollider attackArea;
         public Transform originPosition;
         public float attackRange = 1.75f;
         public int damage = 1;

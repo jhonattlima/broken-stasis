@@ -69,7 +69,6 @@ namespace Gameplay.Enemy.EnemiesBase
             if (!_isActive)
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.AWAKENING);
-                _activationSensor.gameObject.SetActive(false);
 
                 _isActive = true;
             }

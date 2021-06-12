@@ -46,7 +46,6 @@ namespace CoreEvent.GameEvents
                 GameHudManager.instance._damageUI.ResetHud();
                 LoadingView.instance.FadeIn(delegate () 
                 {
-                    GameStateManager.SetGameState(GameState.CUTSCENE);
                     _videoPlayer.Play();
                     
                     LoadingView.instance.FadeOut(delegate () 
@@ -62,7 +61,6 @@ namespace CoreEvent.GameEvents
         private void HandleCutSceneEnd(UnityEngine.Video.VideoPlayer videoPlayer)
         {
             _videoPlayer.Stop();
-            GameStateManager.SetGameState(GameState.RUNNING);
 
             _videoPlayer.loopPointReached -= HandleCutSceneEnd;
 

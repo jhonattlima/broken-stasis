@@ -1,5 +1,4 @@
 ﻿using System;
-using GameManagers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +23,6 @@ namespace UI.Minigame
 
         private const string SHOW_MINIGAME_HUD_ANIMATION = "Show";
         private const string HIDE_MINIGAME_HUD_ANIMATION = "Hide";
-        private const string PAUSE_GAME_HUD_ANIMATION = "Pause";
-        private const string RESUME_GAME_HUD_ANIMATION = "Resume";
 
         private void Awake()
         {
@@ -40,22 +37,6 @@ namespace UI.Minigame
             );
 
             _minigameLogic.onMinigameFinished = HandleMinigameEnded;
-            GameStateManager.onStateChanged += HandleGameStateChanged;
-        }
-
-        private void HandleGameStateChanged(GameState p_gameState)
-        {
-            switch (p_gameState)
-            {
-                case GameState.PAUSED:
-                    HandlePauseGame();
-                    break;
-                case GameState.RUNNING:
-                    HandleResumeGame();
-                    break;
-                default:
-                    break;
-            }
         }
 
         private void HandleMinigameEnded(MinigameStateEnum p_finishedState)
@@ -64,46 +45,11 @@ namespace UI.Minigame
             _minigameEndState = p_finishedState;
         }
 
-        private void HandlePauseGame()
-        {
-            if (_minigameEndState == MinigameStateEnum.PLAYING)
-            {
-                foreach (Image __image in _codeImages)
-                    SetImageAlpha(0, __image);
-                foreach(Button __button in _buttons)
-                    SetButtonCondition(__button, false);
-            }
-        }
-
-        private void HandleResumeGame()
-        {
-            if (_minigameEndState == MinigameStateEnum.PLAYING)
-            {
-                foreach (Image __image in _codeImages)
-                    SetImageAlpha(1, __image);
-                foreach(Button __button in _buttons)
-                    SetButtonCondition(__button, true);
-            }
-        }
-
-        private void SetButtonCondition(Button p_button, bool p_activate)
-        {
-            p_button.interactable = p_activate;
-            SetImageAlpha(Convert.ToInt32(p_activate), p_button.GetComponent<Image>());
-        }
-
-        private void SetImageAlpha(int p_alpha, Image p_image)
-        {
-            Color __color = p_image.color;
-            __color.a = p_alpha;
-            p_image.color = __color;
-        }
-
         private void HandleHideAnimationEnd()
         {
             InputController.GamePlay.InputEnabled = true;
 
-            switch (_minigameEndState)
+            switch(_minigameEndState)
             {
                 case MinigameStateEnum.SUCCESSFULL:
                     onMinigameSuccess?.Invoke();
@@ -113,7 +59,7 @@ namespace UI.Minigame
                     break;
                 default:
                     break;
-            }
+            }          
         }
 
         private void HandleShowAnimationEnd()
@@ -124,7 +70,6 @@ namespace UI.Minigame
         public void ShowMinigame()
         {
             InputController.GamePlay.InputEnabled = false;
-            _minigameEndState = MinigameStateEnum.PLAYING;
 
             _minigameLogic.InitializeMinigame();
 

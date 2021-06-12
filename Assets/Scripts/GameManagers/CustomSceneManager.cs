@@ -19,6 +19,8 @@ namespace GameManagers
                 AudioManager.instance.Play(AudioNameEnum.SOUND_TRACK_GAMEPLAY, true);
             });
 
+            DontDestroyOnLoad(instance);
+
             _lastUISelected = new GameObject();
         }
 

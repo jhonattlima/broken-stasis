@@ -65,8 +65,7 @@ namespace Gameplay.Enemy.EnemiesBase
                     _basherContainer.weaponSensor,
                     _basherContainer.originPosition,
                     _basherContainer.attackRange,
-                    _basherContainer.damage,
-                    _basherContainer.attackArea
+                    _basherContainer.damage
                 ),
                 _basherContainer.noiseSensor,
                 _basherContainer.visionSensor,
