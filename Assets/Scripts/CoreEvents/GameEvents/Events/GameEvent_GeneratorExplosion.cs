@@ -66,7 +66,8 @@ namespace CoreEvent.GameEvents
 
         public void RunSingleTimeEvents()
         {
-            GameStateManager.SetGameState(GameState.CUTSCENE);
+            InputController.GamePlay.InputEnabled = false;
+            InputController.GamePlay.MouseEnabled = false;
             BlinkLights();
             AudioManager.instance.Play(AudioNameEnum.GENERATOR_ELETRIC_OVERCHARGE, false, delegate ()
             {
@@ -80,9 +81,11 @@ namespace CoreEvent.GameEvents
                         _hasRun = true;
                         RunPermanentEvents();
 
+                        InputController.GamePlay.InputEnabled = true;
+                        InputController.GamePlay.MouseEnabled = true;
+                        
                         // Start Chapter 3
                         ChapterManager.instance.GoToNextChapter();
-                        GameStateManager.SetGameState(GameState.RUNNING);
                     });
                 });
             });

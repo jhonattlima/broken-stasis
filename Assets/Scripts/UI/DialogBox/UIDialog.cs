@@ -70,6 +70,8 @@ namespace UI.Dialog
 
         private void Show()
         {
+            InputController.GamePlay.InputEnabled = false;
+            InputController.GamePlay.MouseEnabled = false;
             if (!_visible)
             {
                 _hudAnimator.Play(SHOW_DIALOG_HUD_ANIMATION);
@@ -85,13 +87,18 @@ namespace UI.Dialog
             DisplayNextDialog();
 
             InputController.UI.InputEnabled = true;
-            InputController.GamePlay.InputEnabled = false;
         }
 
         [UsedImplicitly]
         private void DisablingHud()
         {
-            if (_enableInputAfterDialog) InputController.GamePlay.InputEnabled = true;
+            if (_enableInputAfterDialog)
+            {
+                InputController.GamePlay.InputEnabled = true;
+                InputController.GamePlay.MouseEnabled = true;
+            } 
+            
+            InputController.UI.InputEnabled = false;
             _visible = false;
         }
 
@@ -120,9 +127,9 @@ namespace UI.Dialog
 
             foreach (char __letter in _currentDialogText.ToCharArray())
             {
-                while (GameStateManager.currentState != GameState.RUNNING)
+                while (GameStateManager.currentState == GameState.PAUSED)
                     yield return null;
-                    
+
                 _dialogText.text += __letter;
                 yield return null;
             }
