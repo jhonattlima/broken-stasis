@@ -50,7 +50,6 @@ namespace GameManagers
             RegisterObjectsGraph(_playerContainer);
 
             onPlayerDamaged += _player.onPlayerDamaged;
-
             _enemiesManager?.InitializeEnemies();
         }
 
