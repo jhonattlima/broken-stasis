@@ -1293,6 +1293,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: c2_panel_cable_curved_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7048309145563915929, guid: dd59fe09fd525584d93c1e7eafe59700,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7681820998752615459, guid: dd59fe09fd525584d93c1e7eafe59700,
         type: 3}
       propertyPath: m_RootOrder
@@ -2317,6 +2322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: c2_panel_cable_curved_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048309145563915929, guid: dd59fe09fd525584d93c1e7eafe59700,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7681820998752615459, guid: dd59fe09fd525584d93c1e7eafe59700,
         type: 3}

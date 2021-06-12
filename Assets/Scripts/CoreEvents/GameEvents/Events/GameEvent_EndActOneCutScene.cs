@@ -51,6 +51,8 @@ namespace CoreEvent.GameEvents
 
             AudioManager.instance.Stop(AudioNameEnum.SOUND_TRACK_SPLINTER);
 
+            GameStateManager.SetGameState(GameState.CUTSCENE);
+
             _videoPlayer.Play();
 
             foreach (GameObject __light in _lightsList)
@@ -79,6 +81,8 @@ namespace CoreEvent.GameEvents
             InputController.GamePlay.MouseEnabled = true;
             InputController.GamePlay.InputEnabled = true;
             LoadingView.instance.FadeOut(null);
+
+            GameStateManager.SetGameState(GameState.RUNNING);
         }
 
         private void DisableAllEnemies()

@@ -10,7 +10,9 @@ namespace Gameplay.Enemy.Sensors
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag(GameInternalTags.PLAYER))
+            {
                 isTouchingPlayer = true;
+            }
         }
 
         public void ResetSensorDetection()

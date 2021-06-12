@@ -41,6 +41,7 @@ namespace Gameplay.Objects.Items
                 if (_enabled)
                 {
                     _lightToolTip.InteractToolTip();
+
                     InputController.GamePlay.InputEnabled = false;
                     InputController.GamePlay.MouseEnabled = false;
 

@@ -10,6 +10,7 @@ namespace Gameplay.Enemy.Behaviours
     public class AttackMeleeEnemy : IUpdateBehaviour, IAttackMeleeEnemy
     {
         private readonly SensorDamagePlayer _weaponSensor;
+        private readonly BoxCollider _attackArea;
         private readonly Transform _originPosition;
         private readonly float _attackRange;
         private readonly int _damage;
@@ -20,7 +21,8 @@ namespace Gameplay.Enemy.Behaviours
             SensorDamagePlayer p_weaponSensor,
             Transform p_originPosition,
             float p_attackRange,
-            int p_damage
+            int p_damage,
+            BoxCollider p_attackArea
             )
         {
             _enemyStatesManager = p_stateManager;
@@ -28,6 +30,7 @@ namespace Gameplay.Enemy.Behaviours
             _originPosition = p_originPosition;
             _attackRange = p_attackRange;
             _damage = p_damage;
+            _attackArea = p_attackArea;
 
             InitializeAttackingBehaviour();
         }
@@ -51,7 +54,9 @@ namespace Gameplay.Enemy.Behaviours
 
         public bool CanAttack(Vector3 p_playerPosition)
         {
-            return Vector3.Distance(_originPosition.position, p_playerPosition) < _attackRange;
+            return (Vector3.Distance(_originPosition.position, p_playerPosition) < _attackRange)
+                && GameStateManager.currentState != GameState.GAMEOVER
+                && _attackArea.bounds.Contains(p_playerPosition);
         }
 
         public void RunUpdate()
