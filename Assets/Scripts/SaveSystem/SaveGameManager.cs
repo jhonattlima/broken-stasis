@@ -25,7 +25,7 @@ namespace SaveSystem
 
         private static SaveGameManager InstanceInitialize()
         {
-            _instance = Instantiate(new GameObject("SaveManager")).AddComponent<SaveGameManager>();
+            _instance = Instantiate(new GameObject()).AddComponent<SaveGameManager>();
 
             DontDestroyOnLoad(_instance);
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
@@ -24,7 +23,6 @@ namespace GameManagers
         private static GameObject _audioSourcePoolGameObject;
         private static AudioSourcePool _audioSourcePool;
         private static AudioLibraryPopulator _audioLibraryPopulator;
-        private List<AudioSource> _pausedAudioSources = new List<AudioSource>();
 
         public static AudioManager instance
         {
@@ -163,28 +161,6 @@ namespace GameManagers
                             __audioSource.Play();
                     }
                 }
-            }
-        }
-
-        public void PauseAllAudioSources()
-        {
-            _pausedAudioSources.Clear();
-            foreach(AudioSource __audioSource in _audioSourcePool.GetAllAudioSources())
-            {
-                if(__audioSource.isPlaying)
-                {
-                    __audioSource.Pause();
-                    _pausedAudioSources.Add(__audioSource);
-                }
-            }
-        }
-
-        public void ResumeAllAudioSources()
-        {
-            foreach(AudioSource __audioSource in _pausedAudioSources)
-            {
-                __audioSource.Play();
-                // _pausedAudioSources.Remove(__audioSource);
             }
         }
     }

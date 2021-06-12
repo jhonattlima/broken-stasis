@@ -52,7 +52,6 @@ namespace UI.Minigame
                 _codeImages[i].sprite = __codeImages[i];
 
             InitializeButtons();
-            _countdownText.text = TimeSpan.FromSeconds(VariablesManager.uiVariables.generatorMinigameDuration).ToString(@"ss\.ff");
 
             _buttons[0].Select();
 
@@ -78,8 +77,6 @@ namespace UI.Minigame
 
         private void HandleOnButtonClick(string p_imageName)
         {
-            if(GameStateManager.currentState != GameState.RUNNING) return;
-            
             for(int i=0; i<_codeImages.Length; i++)
             {
                 if(_codeImages[i].sprite.name != _completedImage.name)

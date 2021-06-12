@@ -4,7 +4,6 @@ namespace UI.Minigame
     {
         NONE,
         SUCCESSFULL,
-        FAILED,
-        PLAYING
+        FAILED
     }
 }

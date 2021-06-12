@@ -7,7 +7,6 @@ using Gameplay.Enemy;
 using Gameplay.Objects.Interaction;
 using Gameplay.Player;
 using Gameplay.Player.Item;
-using Gameplay.Player.Motion;
 using SaveSystem;
 using UI;
 using UnityEngine;
@@ -50,6 +49,7 @@ namespace GameManagers
             RegisterObjectsGraph(_playerContainer);
 
             onPlayerDamaged += _player.onPlayerDamaged;
+
             _enemiesManager?.InitializeEnemies();
         }
 
@@ -74,19 +74,9 @@ namespace GameManagers
 
         private void RegisterPlayerGraph(PlayerContainer p_playercontainer)
         {
-            PlayerStatesManager.onPlayerCrouching = null;
-            PlayerStatesManager.onStateChanged = null;
-
-            if (p_playercontainer != null)
-            {
-                _player = new PlayerBase(p_playercontainer);
-
-                if(_cameraContainer != null) 
-                    _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
-                
-                if (_audioListenerGameObject != null)
-                    _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
-            } 
+            if (p_playercontainer != null) _player = new PlayerBase(p_playercontainer);
+            if (p_playercontainer != null && _cameraContainer != null) _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
+            if (p_playercontainer != null && _audioListenerGameObject != null) _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
 
             _player?.InitializePlayer();
 
@@ -105,7 +95,6 @@ namespace GameManagers
 
         private void Update()
         {
-            if(GameStateManager.currentState != GameState.RUNNING) return;
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
             _player?.RunUpdate();
@@ -120,29 +109,27 @@ namespace GameManagers
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)
         private void StartScenario()
         {
-            if (SaveGameManager.instance.currentGameSaveData == null)
+            if(SaveGameManager.instance.currentGameSaveData == null)
             {
                 SaveGameManager.instance.Initialize();
 
-                if (SaveGameManager.instance.currentGameSaveData == null || SaveGameManager.instance.currentGameSaveData.saveSlot == 0)
+                if(SaveGameManager.instance.currentGameSaveData == null || SaveGameManager.instance.currentGameSaveData.saveSlot == 0)
                     SaveGameManager.instance.NewSlot(3);
             }
+
+            // Load game;
             _saveSlot = SaveGameManager.instance.currentGameSaveData.saveSlot;
 
-            LoadGame();
-        }
-
-        private void LoadGame()
-        {
             ChapterManager.instance.initialChapter = SaveGameManager.instance.currentGameSaveData.chapter;
 
             RegisterInventoryController(SaveGameManager.instance.currentGameSaveData.inventoryList);
 
-            if (SaveGameManager.instance.currentGameSaveData.playerData.health != 0)
-                _player.SetPlayerSaveData(SaveGameManager.instance.currentGameSaveData);
+            _player.SetPlayerSaveData(SaveGameManager.instance.currentGameSaveData);
 
-            if (SaveGameManager.instance.currentGameSaveData.doorsList != null)
-                RestoreDoorsStateFromSaveFile();
+            if (SaveGameManager.instance.currentGameSaveData.doorsList == null)
+                return;
+
+            RestoreDoorsStateFromSaveFile();
         }
 
         //TODO: Transferir para classe adequada (não é papel do GameplayManager)

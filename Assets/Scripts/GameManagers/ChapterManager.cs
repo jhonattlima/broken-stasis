@@ -30,6 +30,8 @@ namespace GameManagers
         {
             if (instance == null)
                 instance = this;
+
+            DontDestroyOnLoad(instance);
         }
 
         public void InitializeChapters()

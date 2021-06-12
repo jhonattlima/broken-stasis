@@ -1,7 +1,6 @@
 ﻿using JetBrains.Annotations;
 using SaveSystem;
 using UnityEngine;
-using Utilities;
 using Utilities.VariableManagement;
 
 namespace UI.MainMenu
@@ -24,9 +23,6 @@ namespace UI.MainMenu
             _currentState = MenuState.TITLE;
             _currentAnimationController = null;
             _isDetectingInput = false;
-
-            InputController.GamePlay.InputEnabled = false;
-            InputController.GamePlay.MouseEnabled = false;
 
             LoadingView.instance.FadeOut(null, VariablesManager.uiVariables.defaultFadeInSpeed);
 
