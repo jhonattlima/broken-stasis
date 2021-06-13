@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 283101523}
   - component: {fileID: 283101525}
   - component: {fileID: 283101524}
+  - component: {fileID: 283101526}
   m_Layer: 0
   m_Name: AreYouSureUI
   m_TagString: Untagged
@@ -594,7 +595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1305, y: 0}
+  m_AnchoredPosition: {x: 1300, y: 0}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &283101524
@@ -624,6 +625,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283101522}
   m_CullTransparentMesh: 0
+--- !u!114 &283101526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283101522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a2a7f73d9b2f942bcb2b96f27fcc99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonYes: {fileID: 1364430289}
+  _buttonNo: {fileID: 1265699519}
 --- !u!1 &286301473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4259220537970465679, guid: 2e66d6969320e3e4eb87a4a70a4d2fa3,
@@ -736,6 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332114066}
   - component: {fileID: 332114067}
+  - component: {fileID: 332114068}
   m_Layer: 0
   m_Name: OptionsHud
   m_TagString: Untagged
@@ -767,6 +783,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332114065}
   m_CullTransparentMesh: 0
+--- !u!95 &332114068
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332114065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 178dfc20f1737fa429b2ca2436b571c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &347572440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1780,7 +1815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1300, y: 0}
   m_SizeDelta: {x: 660, y: 443.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &447750959
