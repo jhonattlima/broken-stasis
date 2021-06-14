@@ -9,10 +9,11 @@ namespace UI.PauseMenu
 
         private const string PAUSE_GAME_ANIMATION = "PauseGame";
         private const string RESUME_GAME_ANIMATION = "ResumeGame";
+        private const string OPTIONS_TITLE_GAME_PAUSED = "Game Paused";
 
-        private void Awake() {
-            _animator = GetComponent<Animator>();
-            if(_animator == null) throw new MissingComponentException("PauseMenuController Animator not found!");
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>() ?? throw new MissingComponentException("Animator not found!");
         }
 
         private void Update()
@@ -28,6 +29,7 @@ namespace UI.PauseMenu
 
         public void PauseGame()
         {
+            GameHudManager.instance._optionsUI.StartUIHandlers(OPTIONS_TITLE_GAME_PAUSED, delegate { ResumeGame(); }, delegate { ResumeGame(); }, delegate { ResumeGame(); });
             Time.timeScale = 0;
             AudioManager.instance.PauseAllAudioSources();
             _animator.Play(PAUSE_GAME_ANIMATION);
@@ -36,6 +38,7 @@ namespace UI.PauseMenu
 
         public void ResumeGame()
         {
+            GameHudManager.instance._optionsUI.CloseAll();
             Time.timeScale = 1;
             AudioManager.instance.ResumeAllAudioSources();
             _animator.Play(RESUME_GAME_ANIMATION);

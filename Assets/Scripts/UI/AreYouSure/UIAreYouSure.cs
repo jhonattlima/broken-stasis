@@ -1,15 +1,11 @@
 ﻿using System;
+using GameManagers;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities.Audio;
 
-namespace UI
+namespace UI.Options
 {
-    public enum AreYouSureOptionsEnum
-    {
-        YES,
-        NO
-    }
-
     public class UIAreYouSure : MonoBehaviour
     {
         [SerializeField] private Button _buttonYes;
@@ -20,23 +16,34 @@ namespace UI
         private const string ANIMATION_SHOW_PANEL = "Show";
         private const string ANIMATION_HIDE_PANEL = "Hide";
 
-        private void Awake()
+        private void Start()
         {
             _animator = GetComponent<Animator>() ?? throw new MissingComponentException("Animator not found!");
+            if (!_buttonYes) throw new MissingFieldException("Button Yes not assigned");
+            if (!_buttonNo) throw new MissingFieldException("Button No not assigned");
         }
 
-        public void StartOptionsHandlers(Action p_handleYesSelection, Action p_handleNoSelection = null)
+        public void StartUIHandlers(Action p_handleYesSelection, Action p_handleNoSelection = null)
         {
             _buttonYes.onClick.RemoveAllListeners();
             _buttonNo.onClick.RemoveAllListeners();
 
-            _buttonYes.onClick.AddListener(delegate { p_handleYesSelection.Invoke(); });
-            _buttonYes.onClick.AddListener(delegate { p_handleNoSelection?.Invoke(); });
+            _buttonYes.onClick.AddListener(delegate
+            {
+                p_handleYesSelection.Invoke();
+                Close();
+            });
+
+            _buttonNo.onClick.AddListener(delegate
+            {
+                p_handleNoSelection?.Invoke();
+                Close();
+            });
 
             _animator.Play(ANIMATION_SHOW_PANEL);
         }
 
-        public void HandleChosenOption(AreYouSureOptionsEnum _areYouSureOptionsEnum)
+        public void Close()
         {
             _animator.Play(ANIMATION_HIDE_PANEL);
         }

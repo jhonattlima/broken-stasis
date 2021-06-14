@@ -81,12 +81,12 @@ namespace GameManagers
             {
                 _player = new PlayerBase(p_playercontainer);
 
-                if(_cameraContainer != null) 
+                if (_cameraContainer != null)
                     _cameraFollowPlayer = new CameraFollowPlayer(p_playercontainer.playerTransform, _cameraContainer.cameraTransform);
-                
+
                 if (_audioListenerGameObject != null)
                     _audioListenerController = new AudioListenerController(p_playercontainer.playerTransform, _audioListenerGameObject.transform);
-            } 
+            }
 
             _player?.InitializePlayer();
 
@@ -105,7 +105,6 @@ namespace GameManagers
 
         private void Update()
         {
-            if(GameStateManager.currentState != GameState.RUNNING) return;
             _levelObjectManager?.RunUpdate();
             _enemiesManager?.RunUpdate();
             _player?.RunUpdate();
