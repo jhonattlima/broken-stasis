@@ -42,6 +42,8 @@ namespace CoreEvent.Chapters
         {
             Debug.Log("STARTED CHAPTER 3");
 
+            GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
+
             foreach(ToolTip __tooltip in _activateToolTips)
             {
                 __tooltip.ActivateToolTip();
