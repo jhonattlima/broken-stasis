@@ -29,19 +29,20 @@ namespace Gameplay.Player.Sensors
             Vector3 __toPosition = _lightOriginTransform.transform.position;
             Vector3 __direction = __toPosition - __fromPosition;
 
-            Debug.DrawRay(__fromPosition, __direction, Color.green);
-       
-            if(Physics.Raycast(__fromPosition,__direction,out __hit, 50f, _layersToDetect))
+            if (Physics.Raycast(__fromPosition, __direction, out __hit, 50f, _layersToDetect))
             {
-                return __hit.collider.CompareTag(GameInternalTags.PLAYER);
+                if (__hit.collider.CompareTag(GameInternalTags.PLAYER))
+                {
+                    Debug.DrawRay(__fromPosition, __direction, Color.green);
+                    return true;
+                }
             }
-
             return false;
         }
 
         public void RunUpdate()
         {
-            if(HasDirectViewOfLightOrigin())
+            if (HasDirectViewOfLightOrigin())
                 _lightDetectableCollider.enabled = true;
             else
                 _lightDetectableCollider.enabled = false;

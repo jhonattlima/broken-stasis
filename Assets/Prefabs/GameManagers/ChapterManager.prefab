@@ -401,6 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chapterType: 1
   _doorController: {fileID: 0}
+  _controlsSplash: {fileID: 0}
   _firstDoorToolTip: {fileID: 0}
 --- !u!1 &8052083270922509227
 GameObject:

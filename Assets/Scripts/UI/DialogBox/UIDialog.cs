@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagers;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,7 @@ namespace UI.Dialog
         private Queue<DialogTextUnit> _conversationQueue = new Queue<DialogTextUnit>();
         private string _currentDialogText = "";
         private bool _visible = false;
+        private bool _dialogEnded = false;
         private bool _enableInputAfterDialog = true;
         private Action _dialogEndCallback;
 
@@ -37,6 +39,7 @@ namespace UI.Dialog
         {
             _dialogEndCallback = p_onDialogEnd;
             _enableInputAfterDialog = p_enableInputAfterDialog;
+            _dialogEnded = false;
 
             InitializeDialog(p_dialogName);
             Show();
@@ -69,6 +72,8 @@ namespace UI.Dialog
 
         private void Show()
         {
+            InputController.GamePlay.InputEnabled = false;
+            InputController.GamePlay.MouseEnabled = false;
             if (!_visible)
             {
                 _hudAnimator.Play(SHOW_DIALOG_HUD_ANIMATION);
@@ -84,13 +89,18 @@ namespace UI.Dialog
             DisplayNextDialog();
 
             InputController.UI.InputEnabled = true;
-            InputController.GamePlay.InputEnabled = false;
         }
 
         [UsedImplicitly]
         private void DisablingHud()
         {
-            if (_enableInputAfterDialog) InputController.GamePlay.InputEnabled = true;
+            if (_enableInputAfterDialog)
+            {
+                InputController.GamePlay.InputEnabled = true;
+                InputController.GamePlay.MouseEnabled = true;
+            } 
+            
+            InputController.UI.InputEnabled = false;
             _visible = false;
         }
 
@@ -119,6 +129,9 @@ namespace UI.Dialog
 
             foreach (char __letter in _currentDialogText.ToCharArray())
             {
+                while (GameStateManager.currentState == GameState.PAUSED)
+                    yield return null;
+
                 _dialogText.text += __letter;
                 yield return null;
             }
@@ -127,6 +140,7 @@ namespace UI.Dialog
         private void EndDialog()
         {
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
+            _dialogEnded = true;
 
             // TODO: Set callback to be called on animation end (like AnimationEventHandlers)
             _dialogEndCallback?.Invoke();
@@ -134,7 +148,8 @@ namespace UI.Dialog
 
         public void RunUpdate()
         {
-            if (InputController.UI.SkipDialog())
+            if (GameStateManager.currentState != GameState.RUNNING) return;
+            if (InputController.UI.SkipDialog() && !_dialogEnded)
                 DisplayNextDialog();
         }
     }

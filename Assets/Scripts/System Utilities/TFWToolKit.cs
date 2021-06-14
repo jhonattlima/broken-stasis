@@ -35,11 +35,13 @@ namespace Utilities
 
         private static IEnumerator CountdownTimerCoRoutine(float p_duration, Action p_finishCallback, Action<TimeSpan> p_timeSpan = null)
         {
-            float __startTime = Time.realtimeSinceStartup;
+            float __timeRemaining = p_duration;
             
-            while (Time.realtimeSinceStartup < __startTime + p_duration)
+            while (__timeRemaining >= 0)
             {
-                p_timeSpan?.Invoke(TimeSpan.FromSeconds(p_duration - (Time.realtimeSinceStartup - __startTime)));
+                p_timeSpan?.Invoke(TimeSpan.FromSeconds(__timeRemaining));
+                
+                __timeRemaining -= Time.deltaTime;
 
                 yield return null;
             }

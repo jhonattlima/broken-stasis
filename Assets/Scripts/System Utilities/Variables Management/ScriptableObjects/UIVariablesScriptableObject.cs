@@ -10,5 +10,6 @@ namespace Utilities.VariableManagement
         public float defaultFadeInSpeed;
         public float defaultFadeOutSpeed;
         public float generatorMinigameDuration;
+        public float controlsSplashDuration;
     }
 }
