@@ -17,3 +17,4 @@ MonoBehaviour:
   defaultFadeInSpeed: 0.75
   defaultFadeOutSpeed: 0.75
   generatorMinigameDuration: 10
+  controlsSplashDuration: 10

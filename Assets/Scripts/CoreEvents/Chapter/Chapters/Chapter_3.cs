@@ -4,10 +4,10 @@ using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Items;
 using SaveSystem;
+using UI;
 using UI.ToolTip;
 using UnityEngine;
 using UnityEngine.AI;
-using Utilities;
 
 namespace CoreEvent.Chapters
 {
