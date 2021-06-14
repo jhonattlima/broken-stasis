@@ -9,7 +9,7 @@ namespace UI.PauseMenu
 
         private const string PAUSE_GAME_ANIMATION = "PauseGame";
         private const string RESUME_GAME_ANIMATION = "ResumeGame";
-        private const string OPTIONS_TITLE_GAME_PAUSED = "Game Paused";
+        private const string OPTIONS_TITLE_GAME_PAUSED = "Paused";
 
         private void Awake()
         {
