@@ -4,10 +4,10 @@ using CoreEvent.GameEvents;
 using GameManagers;
 using Gameplay.Objects.Items;
 using SaveSystem;
+using UI;
 using UI.ToolTip;
 using UnityEngine;
 using UnityEngine.AI;
-using Utilities;
 
 namespace CoreEvent.Chapters
 {
@@ -41,6 +41,8 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 3");
+
+            GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
 
             foreach(ToolTip __tooltip in _activateToolTips)
             {
