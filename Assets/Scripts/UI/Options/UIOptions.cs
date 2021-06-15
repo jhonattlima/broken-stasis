@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utilities;
+using Utilities.VariableManagement;
 
 namespace UI.Options
 {
@@ -63,7 +64,10 @@ namespace UI.Options
             GameHudManager.instance._areyouSureUI.StartUIHandlers(delegate
             {
                 p_handleLoadLastCheckPointOnClick?.Invoke();
-                SceneManager.LoadScene(ScenesConstants.GAME);
+                LoadingView.instance.FadeIn(delegate ()
+                {
+                    SceneManager.LoadScene(ScenesConstants.GAME);
+                }, VariablesManager.uiVariables.defaultFadeInSpeed);
             },
             delegate
             {
@@ -77,7 +81,10 @@ namespace UI.Options
             GameHudManager.instance._areyouSureUI.StartUIHandlers(delegate
             {
                 p_handleBackToTitleScreenOnClick?.Invoke();
-                SceneManager.LoadScene(ScenesConstants.MENU);
+                LoadingView.instance.FadeIn(delegate ()
+                {
+                    SceneManager.LoadScene(ScenesConstants.MENU);
+                }, VariablesManager.uiVariables.defaultFadeInSpeed);
             },
             delegate
             {
