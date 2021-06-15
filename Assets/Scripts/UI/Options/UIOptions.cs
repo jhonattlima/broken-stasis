@@ -61,11 +61,12 @@ namespace UI.Options
 
         private void HandleLoadLastCheckpointOnClick(Action p_handleLoadLastCheckPointOnClick = null)
         {
-            GameHudManager.instance._areyouSureUI.StartUIHandlers(delegate
+            GameHudManager.instance.areyouSureUI.StartUIHandlers(delegate
             {
-                p_handleLoadLastCheckPointOnClick?.Invoke();
+                GameStateManager.SetGameState(GameState.CUTSCENE);
                 LoadingView.instance.FadeIn(delegate ()
                 {
+                    p_handleLoadLastCheckPointOnClick?.Invoke();
                     SceneManager.LoadScene(ScenesConstants.GAME);
                 }, VariablesManager.uiVariables.defaultFadeInSpeed);
             },
@@ -78,11 +79,12 @@ namespace UI.Options
 
         private void HandleBackToTitleScreenOnClick(Action p_handleBackToTitleScreenOnClick = null)
         {
-            GameHudManager.instance._areyouSureUI.StartUIHandlers(delegate
+            GameHudManager.instance.areyouSureUI.StartUIHandlers(delegate
             {
-                p_handleBackToTitleScreenOnClick?.Invoke();
+                GameStateManager.SetGameState(GameState.CUTSCENE);
                 LoadingView.instance.FadeIn(delegate ()
                 {
+                    p_handleBackToTitleScreenOnClick?.Invoke();
                     SceneManager.LoadScene(ScenesConstants.MENU);
                 }, VariablesManager.uiVariables.defaultFadeInSpeed);
             },
@@ -93,14 +95,15 @@ namespace UI.Options
             Close();
         }
 
-        private void Close()
-        {
-            _animator.Play(ANIMATION_HIDE_PANEL);
-        }
-
         public void CloseAll()
         {
-            GameHudManager.instance._areyouSureUI.Close();
+            if (GameHudManager.instance.areyouSureUI.isOpen)
+                GameHudManager.instance.areyouSureUI.Close();
+            Close();
+        }
+
+        private void Close()
+        {
             _animator.Play(ANIMATION_HIDE_PANEL);
         }
 

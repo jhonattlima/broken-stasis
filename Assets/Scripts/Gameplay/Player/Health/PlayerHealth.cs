@@ -38,7 +38,7 @@ namespace Gameplay.Player.Health
             else
             {
                 AudioManager.instance.Play(AudioNameEnum.PLAYER_HIT);
-                GameHudManager.instance._damageUI.ReceiveHit(_playerCurrentHealth);
+                GameHudManager.instance.damageUI.ReceiveHit(_playerCurrentHealth);
                 PlayerStatesManager.SetPlayerState(PlayerState.HIT);
             }
 

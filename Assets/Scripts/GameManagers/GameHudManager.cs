@@ -13,9 +13,9 @@ namespace GameManagers
         public UIDialog uiDialogHud;
         public MinigameUI minigameHud;
         public EndGameUI endGameUI;
-        public DamageUI _damageUI;
-        public UIOptions _optionsUI;
-        public UIAreYouSure _areyouSureUI;
+        public DamageUI damageUI;
+        public UIOptions optionsUI;
+        public UIAreYouSure areyouSureUI;
 
         public static GameHudManager instance;
 

@@ -43,7 +43,7 @@ namespace CoreEvent.GameEvents
 
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_CONTROL_PANEL_GREETINGS, delegate ()
             {
-                GameHudManager.instance._damageUI.ResetHud();
+                GameHudManager.instance.damageUI.ResetHud();
                 LoadingView.instance.FadeIn(delegate () 
                 {
                     _videoPlayer.Play();

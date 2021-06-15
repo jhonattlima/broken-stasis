@@ -8,6 +8,8 @@ namespace UI.Options
 {
     public class UIAreYouSure : MonoBehaviour
     {
+        public bool isOpen { get; private set; }
+
         [SerializeField] private Button _buttonYes;
         [SerializeField] private Button _buttonNo;
 
@@ -41,11 +43,13 @@ namespace UI.Options
             });
 
             _animator.Play(ANIMATION_SHOW_PANEL);
+            isOpen = true;
         }
 
         public void Close()
         {
             _animator.Play(ANIMATION_HIDE_PANEL);
+            isOpen = false;
         }
     }
 }
