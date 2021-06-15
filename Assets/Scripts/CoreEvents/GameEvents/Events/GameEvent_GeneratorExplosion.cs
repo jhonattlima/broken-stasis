@@ -69,6 +69,7 @@ namespace CoreEvent.GameEvents
             InputController.GamePlay.InputEnabled = false;
             InputController.GamePlay.MouseEnabled = false;
             BlinkLights();
+
             AudioManager.instance.Play(AudioNameEnum.GENERATOR_ELETRIC_OVERCHARGE, false, delegate ()
             {
                 TFWToolKit.StartCoroutine(CameraShakerController.Shake(3, 5f, 1));
@@ -77,7 +78,6 @@ namespace CoreEvent.GameEvents
                     TurnOffAllLights();
                     GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
                     {
-                        GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
                         _hasRun = true;
                         RunPermanentEvents();
 

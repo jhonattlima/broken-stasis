@@ -15,6 +15,8 @@ namespace CoreEvent.Chapters
     {
         [SerializeField] private ChapterTypeEnum _chapterType;
         [SerializeField] private DoorController _doorController;
+        
+        [SerializeField] private ControlsSplash _controlsSplash;
         [SerializeField] private ToolTip _firstDoorToolTip;
 
         public ChapterTypeEnum chapterType
@@ -35,21 +37,26 @@ namespace CoreEvent.Chapters
 
         public void ChapterStart()
         {   
-            _firstDoorToolTip.ActivateToolTip();
-
-            LoadingView.instance.FadeOut(delegate ()
+            LoadingView.instance.InstantBlackScreen();
+            _controlsSplash.ShowControlsSplash(delegate ()
             {
-                InputController.UI.InputEnabled = true;
 
-                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
+                _firstDoorToolTip.ActivateToolTip();
+
+                LoadingView.instance.FadeOut(delegate ()
+                {
+                    InputController.UI.InputEnabled = true;
+
+                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
+                });
+                InputController.GamePlay.MouseEnabled = true;
+
+                _doorController.LockDoor();
+                _doorController.onDoorLocked = delegate ()
+                {
+                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_LOCKED_DOOR);
+                };
             });
-            InputController.GamePlay.MouseEnabled = true;
-
-            _doorController.LockDoor();
-            _doorController.onDoorLocked = delegate ()
-            {
-                GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_LOCKED_DOOR);
-            };
         }
 
         public void ChapterEnd()
