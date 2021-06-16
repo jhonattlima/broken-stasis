@@ -29,7 +29,10 @@ namespace UI.PauseMenu
 
         public void PauseGame()
         {
-            GameHudManager.instance.optionsUI.StartUIHandlers(OPTIONS_TITLE_GAME_PAUSED, delegate { ResumeGame(); }, delegate { ResumeGame(); }, delegate { ResumeGame(); });
+            GameHudManager.instance.optionsUI.StartUIHandlers(OPTIONS_TITLE_GAME_PAUSED, 
+                                                                delegate { ResumeGame(); }, 
+                                                                delegate { ResumeGame(); }, 
+                                                                delegate { ResumeGame(); });
             Time.timeScale = 0;
             AudioManager.instance.PauseAllAudioSources();
             _animator.Play(PAUSE_GAME_ANIMATION);

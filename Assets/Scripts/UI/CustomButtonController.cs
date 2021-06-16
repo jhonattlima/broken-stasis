@@ -8,16 +8,19 @@ namespace UI.CustomButtonController
     {
         public void HandleButtonHighlight()
         {
+            if(GameStateManager.currentState == GameState.CUTSCENE) return;
             AudioManager.instance.Play(AudioNameEnum.UI_BUTTON_HIGHLIGHTED);
         }
 
         public void HandleButtonSelected()
         {
+            if(GameStateManager.currentState == GameState.CUTSCENE) return;
             AudioManager.instance.Play(AudioNameEnum.UI_BUTTON_HIGHLIGHTED);
         }
 
         public void HandleButtonPressed()
         {
+            if(GameStateManager.currentState == GameState.CUTSCENE) return;
             AudioManager.instance.Play(AudioNameEnum.UI_BUTTON_PRESSED);
         }
     }

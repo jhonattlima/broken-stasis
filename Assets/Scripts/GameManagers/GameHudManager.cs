@@ -1,4 +1,5 @@
-﻿using UI.Dialog;
+﻿using UI;
+using UI.Dialog;
 using UI.EndGamePuzzle;
 using UI.Minigame;
 using UI.Notification;
@@ -16,6 +17,7 @@ namespace GameManagers
         public DamageUI damageUI;
         public UIOptions optionsUI;
         public UIAreYouSure areyouSureUI;
+        public LoadingView optionsLoadingUI;
 
         public static GameHudManager instance;
 

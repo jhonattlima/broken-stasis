@@ -16,9 +16,12 @@ namespace UI.Options
         [SerializeField] private Button _buttonLoadLastCheckpoint;
         [SerializeField] private Button _buttonBackToTitleScreen;
 
+
         private Animator _animator;
+        private Action _handleFadeAnimationInEvent;
         private const string ANIMATION_SHOW_PANEL = "Show";
         private const string ANIMATION_HIDE_PANEL = "Hide";
+        private const string ANIMATION_FADE_BLACK = "Fade";
 
         private void Start()
         {
@@ -64,11 +67,12 @@ namespace UI.Options
             GameHudManager.instance.areyouSureUI.StartUIHandlers(delegate
             {
                 GameStateManager.SetGameState(GameState.CUTSCENE);
-                LoadingView.instance.FadeIn(delegate ()
+
+                GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
                 {
-                    p_handleLoadLastCheckPointOnClick?.Invoke();
                     SceneManager.LoadScene(ScenesConstants.GAME);
-                }, VariablesManager.uiVariables.defaultFadeInSpeed);
+                    p_handleLoadLastCheckPointOnClick?.Invoke();
+                });
             },
             delegate
             {
@@ -82,13 +86,13 @@ namespace UI.Options
             GameHudManager.instance.areyouSureUI.StartUIHandlers(delegate
             {
                 GameStateManager.SetGameState(GameState.CUTSCENE);
-                LoadingView.instance.FadeIn(delegate ()
+
+                GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
                 {
-                    p_handleBackToTitleScreenOnClick?.Invoke();
                     SceneManager.LoadScene(ScenesConstants.MENU);
-                }, VariablesManager.uiVariables.defaultFadeInSpeed);
-            },
-            delegate
+                    p_handleBackToTitleScreenOnClick?.Invoke();
+                });
+            }, delegate
             {
                 Show();
             });
