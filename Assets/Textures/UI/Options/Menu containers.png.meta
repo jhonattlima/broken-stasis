@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88b1d67b1e8474f458122885f3221de4
+guid: 6252609f91e00004cbf0eb163b1464cc
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -11,9 +11,6 @@ TextureImporter:
   - first:
       213: -2687862281905469745
     second: Menu containers_2
-  - first:
-      213: 781812683666513687
-    second: Menu containers_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -43,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: 2
     mipBias: -100
     wrapU: 1
@@ -76,7 +73,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,7 +85,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,10 +137,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1245
-        width: 2998
+        width: 3208
         height: 415
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,10 +158,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 830
-        width: 2998
+        width: 3208
         height: 415
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,10 +179,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 415
-        width: 2998
+        width: 3208
         height: 415
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,27 +190,6 @@ TextureImporter:
       bones: []
       spriteID: fc68ad9de7bc2bad0800000000000000
       internalID: -2687862281905469745
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Menu containers_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3000
-        height: 415
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71f56da5e7e89da00800000000000000
-      internalID: 781812683666513687
       vertices: []
       indices: 
       edges: []
