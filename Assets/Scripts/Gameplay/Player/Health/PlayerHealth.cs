@@ -28,6 +28,8 @@ namespace Gameplay.Player.Health
 
         public void ReceiveDamage(int p_damage)
         {
+            if(GameStateManager.currentState == GameState.CUTSCENE) return;
+            
             if (_playerCurrentHealth - p_damage < 0)
                 _playerCurrentHealth = 0;
             else
@@ -84,6 +86,7 @@ namespace Gameplay.Player.Health
                 case PlayerHealthStateEnum.FINE:
                     _heartBeatAudio.pitch = 1f;
                     break;
+                
                 case PlayerHealthStateEnum.DANGER:
                     _heartBeatAudio.pitch = 1.25f;
                     break;

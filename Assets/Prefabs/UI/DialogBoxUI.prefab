@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 1382525331213385245}
   - component: {fileID: 7876918902660339987}
   - component: {fileID: 3762240131270245120}
-  - component: {fileID: 5317794350508443722}
   m_Layer: 5
   m_Name: DialogBoxUI
   m_TagString: Untagged
@@ -342,19 +341,7 @@ MonoBehaviour:
   _hudAnimator: {fileID: 7876918902660339987}
   _speakerText: {fileID: 135310944729217656}
   _dialogText: {fileID: 3598821989762000655}
-  _dialogEventHandler: {fileID: 5317794350508443722}
---- !u!114 &5317794350508443722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382525331213385250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311866143bd7b5943b8ee0ee72166951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _dialogEventHandler: {fileID: 0}
 --- !u!1 &1382525332319970653
 GameObject:
   m_ObjectHideFlags: 0

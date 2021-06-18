@@ -26,7 +26,9 @@ namespace UI.Minigame
 
         public void ResetHud()
         {
-            _animatorComponent.Play(RESET_HUD_ANIMATION);
+            if (_currentImageComponent.sprite != null)
+                _animatorComponent.Play(RESET_HUD_ANIMATION);
+            _currentImageComponent.sprite = null;
         }
     }
 }

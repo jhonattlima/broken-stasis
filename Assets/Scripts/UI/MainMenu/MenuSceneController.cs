@@ -19,7 +19,7 @@ namespace UI.MainMenu
 
         private bool _isDetectingInput;
 
-        private void Start()
+        private void Awake()
         {
             _currentState = MenuState.TITLE;
             _currentAnimationController = null;
@@ -38,7 +38,7 @@ namespace UI.MainMenu
 
         private void Update()
         {
-            if(_isDetectingInput && Input.anyKeyDown)
+            if (_isDetectingInput && Input.anyKeyDown)
             {
                 _titleAnimator.Play("PressedButton");
                 _isDetectingInput = false;
@@ -77,41 +77,41 @@ namespace UI.MainMenu
         {
             _currentState = p_nextScreen;
 
-            if(_currentState == MenuState.MAIN_MENU)
+            if (_currentState == MenuState.MAIN_MENU)
             {
-                if(_currentAnimationController == null)
+                if (_currentAnimationController == null)
                 {
-                    _mainMenuAnimationController.Show(delegate () 
+                    _mainMenuAnimationController.Show(delegate ()
                     {
                         _currentAnimationController = _mainMenuAnimationController;
                     });
                 }
                 else
                 {
-                    _currentAnimationController.Hide(delegate () 
+                    _currentAnimationController.Hide(delegate ()
                     {
-                        _mainMenuAnimationController.Show(delegate () 
+                        _mainMenuAnimationController.Show(delegate ()
                         {
                             _currentAnimationController = _mainMenuAnimationController;
                         });
                     });
                 }
             }
-            else if(_currentState == MenuState.SLOT_SCREEN)
+            else if (_currentState == MenuState.SLOT_SCREEN)
             {
-                _currentAnimationController.Hide(delegate () 
+                _currentAnimationController.Hide(delegate ()
                 {
-                    _slotScreenAnimationController.Show(delegate () 
+                    _slotScreenAnimationController.Show(delegate ()
                     {
                         _currentAnimationController = _slotScreenAnimationController;
                     });
                 });
             }
-            else if(_currentState == MenuState.OPTIONS_SCREEN)
+            else if (_currentState == MenuState.OPTIONS_SCREEN)
             {
-                _currentAnimationController.Hide(delegate () 
+                _currentAnimationController.Hide(delegate ()
                 {
-                    _optionsScreenAnimationController.Show(delegate () 
+                    _optionsScreenAnimationController.Show(delegate ()
                     {
                         _currentAnimationController = _optionsScreenAnimationController;
                     });

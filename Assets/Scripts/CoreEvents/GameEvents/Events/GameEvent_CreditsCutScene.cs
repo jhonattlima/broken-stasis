@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using Utilities;
+using Utilities.Audio;
 using Utilities.UI;
 using Utilities.VariableManagement;
 namespace CoreEvent.GameEvents
@@ -43,12 +44,13 @@ namespace CoreEvent.GameEvents
 
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_CONTROL_PANEL_GREETINGS, delegate ()
             {
-                GameHudManager.instance.damageUI.ResetHud();
-                LoadingView.instance.FadeIn(delegate () 
+                LoadingView.instance.FadeIn(delegate ()
                 {
+                    AudioManager.instance.Stop(AudioNameEnum.PLAYER_HEARTBEAT);
+                    GameHudManager.instance.damageUI.ResetHud();
                     _videoPlayer.Play();
-                    
-                    LoadingView.instance.FadeOut(delegate () 
+
+                    LoadingView.instance.FadeOut(delegate ()
                     {
                         InputController.GamePlay.InputEnabled = false;
                     }, VariablesManager.uiVariables.defaultFadeOutSpeed * 0.5f);

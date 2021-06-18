@@ -50,6 +50,7 @@ namespace UI.MainMenu
             LoadingView.instance.FadeIn(delegate ()
             {
                 SceneManager.LoadScene(ScenesConstants.GAME);
+                // LoadingView.instance.FadeOut(null, VariablesManager.uiVariables.defaultFadeOutSpeed);
             }, VariablesManager.uiVariables.defaultFadeInSpeed * 2f);
         }
 

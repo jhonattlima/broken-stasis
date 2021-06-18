@@ -19,6 +19,8 @@ namespace Gameplay.Player.Animation
         private const string INTERACT_WITH_ENDLEVEL_DOOR = "EndLevelDoorInteraction";
         private const string CROUCHING = "Crouching";
 
+        private bool _lastCrouchingState;
+
         private readonly Animator _animator;
         private readonly PlayerAnimationEventHandler _animationEventHandler;
 
@@ -43,11 +45,17 @@ namespace Gameplay.Player.Animation
 
         private void HandlePlayerCrouching(bool p_crouching)
         {
-            _animator.SetBool(CROUCHING, p_crouching);
+            if (_lastCrouchingState != p_crouching)
+            {
+                _lastCrouchingState = p_crouching;
+                _animator.SetBool(CROUCHING, p_crouching);
+            }
         }
 
         private void HandleStateChanged(PlayerState p_playerState)
         {
+            if (_animator == null || !_animator.isActiveAndEnabled) return;
+
             ResetAllVariables();
 
             switch (p_playerState)

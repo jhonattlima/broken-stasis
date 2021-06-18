@@ -21,8 +21,7 @@ namespace Gameplay.Enemy.EnemiesBase
         private readonly SensorVision _visionSensor;
         private readonly SensorRoom _roomSensor;
         private readonly EnemyAnimationEventHandler _enemyAnimationEventHandler;
-        
-        private bool _isHearingPlayer;
+
         private bool _isViewingPlayer;
         private bool _isViewingLight;
 
@@ -84,7 +83,7 @@ namespace Gameplay.Enemy.EnemiesBase
             _stateManager.onStateChanged += HandleStateChanged;
 
             _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, false, AudioRange.LOW);
-            
+
             _patrolBehaviour.InitializePatrolBehaviour();
             _investigationBehaviour.InitializeInvestigationBehaviour();
         }
@@ -110,13 +109,13 @@ namespace Gameplay.Enemy.EnemiesBase
                 _patrolBehaviour.RunEnemyPatrol();
             else if (_isViewingPlayer)
                 _attackMeleeBehaviour.RunUpdate();
-            else if(!IsEnemyFollowing())
+            else if (!IsEnemyFollowing())
                 _investigationBehaviour.RunEnemyInvestigation();
         }
 
         private bool CanPatrol()
         {
-            return (_stateManager.currentState != EnemyStateEnum.INVESTIGATING 
+            return (_stateManager.currentState != EnemyStateEnum.INVESTIGATING
                     && _stateManager.currentState != EnemyStateEnum.RUNNING
                     && _stateManager.currentState != EnemyStateEnum.ATTACKING
                     && _stateManager.currentState != EnemyStateEnum.INVESTIGATING_ROOM
@@ -130,24 +129,22 @@ namespace Gameplay.Enemy.EnemiesBase
 
         private void HandleDetectedRoom(GameObject p_room)
         {
-            if(IsEnemyFollowing())
+            if (IsEnemyFollowing())
             {
                 _roomInvestigationPoints.Clear();
 
-                foreach(Transform __childObject in p_room.GetComponentsInChildren<Transform>())
+                foreach (Transform __childObject in p_room.GetComponentsInChildren<Transform>())
                 {
-                    if(__childObject.CompareTag(GameInternalTags.ENEMY_INVESTIGATION_POINT))
+                    if (__childObject.CompareTag(GameInternalTags.ENEMY_INVESTIGATION_POINT))
                         _roomInvestigationPoints.Add(__childObject);
                 }
 
-                _investigationBehaviour.SetInvestigationPoints(_roomInvestigationPoints);               
+                _investigationBehaviour.SetInvestigationPoints(_roomInvestigationPoints);
             }
         }
 
         private void HandlePlayerEnteredSoundSensor(Transform p_playerPosition)
         {
-            _isHearingPlayer = true;
-
             HandleHearingPlayer(p_playerPosition);
         }
 
@@ -170,16 +167,13 @@ namespace Gameplay.Enemy.EnemiesBase
                 _followBehaviour.InvestigatePosition(p_playerPosition);
         }
 
-        private void HandlePlayerLeftSoundSensor(Transform p_playerPosition)
-        {
-            _isHearingPlayer = false;
-        }
+        private void HandlePlayerLeftSoundSensor(Transform p_playerPosition) { }
 
         private void HandleDetectedLightInVision(Transform p_lightPosition)
         {
             _isViewingLight = true;
 
-            if(!_isViewingPlayer)
+            if (!_isViewingPlayer)
             {
                 AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM);
                 _followBehaviour.SprintToPosition(p_lightPosition);
@@ -188,7 +182,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
         private void HandleDetectingLightInVision(Transform p_lightPosition)
         {
-            if(!_isViewingPlayer && !_isViewingLight)
+            if (!_isViewingPlayer && !_isViewingLight)
                 _followBehaviour.SprintToPosition(p_lightPosition);
 
             _isViewingLight = true;
@@ -234,7 +228,6 @@ namespace Gameplay.Enemy.EnemiesBase
 
         public void ResetEnemyAI()
         {
-            _isHearingPlayer = false;
             _isViewingPlayer = false;
 
             _noiseSensor.onPlayerDetected = null;

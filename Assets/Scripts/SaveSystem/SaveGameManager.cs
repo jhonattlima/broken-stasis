@@ -47,7 +47,7 @@ namespace SaveSystem
 
         public bool HasSaveSlot(int p_slot)
         {
-            return _saveData.saveData[p_slot - 1].saveSlot != 0;
+            return _saveData.saveData[p_slot - 1] != null && _saveData.saveData[p_slot - 1].saveSlot != 0;
         }
 
         public bool SaveFileExists()

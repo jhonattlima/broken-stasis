@@ -6,7 +6,7 @@ using Utilities;
 
 namespace GameManagers
 {
-    public class EnemiesManager : MonoBehaviour, IUpdateBehaviour
+    public class EnemiesManager : IUpdateBehaviour
     {
         private readonly List<IEnemy> _enemyList;
 

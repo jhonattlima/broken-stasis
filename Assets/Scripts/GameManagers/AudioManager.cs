@@ -60,7 +60,7 @@ namespace GameManagers
 
         public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null)
         {
-            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
+            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
 
             AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
 
@@ -81,7 +81,8 @@ namespace GameManagers
 
             TFWToolKit.Timer(__audioSource.clip.length, delegate()
             {
-                __audioSource.mute = true;
+                if(!p_loop)
+                    __audioSource.mute = true;
                 p_onAudioEnd?.Invoke();
             });
 
@@ -90,7 +91,7 @@ namespace GameManagers
 
         public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH)
         {
-            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource();
+            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
             __audioSource.gameObject.transform.position = p_position;
 
             AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
@@ -115,7 +116,8 @@ namespace GameManagers
 
             TFWToolKit.Timer(__audioSource.clip.length, delegate()
             {
-                __audioSource.mute = true;
+                if(!p_loop)
+                    __audioSource.mute = true;
             });
 
             return __audioSource;

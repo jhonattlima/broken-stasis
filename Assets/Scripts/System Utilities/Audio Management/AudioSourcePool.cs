@@ -28,17 +28,17 @@ namespace Utilities.Audio
             return _sourcesPool[_sourcesPool.Count - 1];
         }
 
-        public AudioSource GetFreeAudioSource()
+        public AudioSource GetFreeAudioSource(List<AudioSource> _pausedAudioSources)
         {
             foreach (AudioSource __audioSource in _sourcesPool)
             {
-                if (!__audioSource.isPlaying)
+                if (!__audioSource.loop && !__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
                 {   
                     __audioSource.mute = true;
                     return __audioSource;
                 }
             }
-
+            
             return InstantiateNewAudioSource();
         }
 
