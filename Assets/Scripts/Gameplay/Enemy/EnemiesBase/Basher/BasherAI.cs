@@ -72,11 +72,11 @@ namespace Gameplay.Enemy.EnemiesBase
 
             _roomSensor.onRoomDetected += HandleDetectedRoom;
 
-            _enemyAnimationEventHandler.OnStep += delegate ()
+            _enemyAnimationEventHandler.OnStep = delegate ()
             {
                 AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW);
             };
-            _enemyAnimationEventHandler.OnAttack += delegate ()
+            _enemyAnimationEventHandler.OnAttack = delegate ()
             {
                 AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.LOW);
             };

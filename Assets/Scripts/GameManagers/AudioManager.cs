@@ -75,10 +75,15 @@ namespace GameManagers
             __audioSource.volume = __audioClipParams.volume;
             __audioSource.spatialBlend = 0f;
 
+            __audioSource.mute = false;
+
             __audioSource.Play();
 
-            if (p_onAudioEnd != null)
-                TFWToolKit.Timer(__audioSource.clip.length, p_onAudioEnd);
+            TFWToolKit.Timer(__audioSource.clip.length, delegate()
+            {
+                __audioSource.mute = true;
+                p_onAudioEnd?.Invoke();
+            });
 
             return __audioSource;
         }
@@ -104,7 +109,14 @@ namespace GameManagers
             __audioSource.rolloffMode = UnityEngine.AudioRolloffMode.Custom;
             __audioSource.maxDistance = (int)p_audioRange;
 
+            __audioSource.mute = false;
+
             __audioSource.Play();
+
+            TFWToolKit.Timer(__audioSource.clip.length, delegate()
+            {
+                __audioSource.mute = true;
+            });
 
             return __audioSource;
         }

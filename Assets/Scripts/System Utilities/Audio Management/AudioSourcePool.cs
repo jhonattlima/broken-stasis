@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameManagers;
 using UnityEngine;
 
 namespace Utilities.Audio
@@ -17,7 +18,7 @@ namespace Utilities.Audio
 
         private AudioSource InstantiateNewAudioSource()
         {
-            GameObject __newAudioSourceGameObject = new GameObject("AudioSource " + _sourcesPool.Count + 1);
+            GameObject __newAudioSourceGameObject = new GameObject("AudioSource " + _sourcesPool.Count);
             __newAudioSourceGameObject.transform.SetParent(_poolParent);
 
             __newAudioSourceGameObject.AddComponent<AudioSource>();
@@ -32,7 +33,10 @@ namespace Utilities.Audio
             foreach (AudioSource __audioSource in _sourcesPool)
             {
                 if (!__audioSource.isPlaying)
+                {   
+                    __audioSource.mute = true;
                     return __audioSource;
+                }
             }
 
             return InstantiateNewAudioSource();
