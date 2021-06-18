@@ -1,6 +1,7 @@
 ﻿using System;
 using GameManagers;
 using Gameplay.Enemy.Behaviours;
+using Gameplay.Enemy.EnemiesBase.Utility;
 using Gameplay.Enemy.EnemyState;
 using UnityEngine;
 using Utilities.Audio;
@@ -14,6 +15,7 @@ namespace Gameplay.Enemy.EnemiesBase
         private EnemyStateManager _stateManager;
         private EnemyAnimator _enemyAnimator;
         private IEnemyAI _basherAI;
+        private RoomTeleportChecker _roomTeleportChecker;
 
         private void Awake()
         {
@@ -25,7 +27,9 @@ namespace Gameplay.Enemy.EnemiesBase
         {
             RegisterObjectsGraph();
 
+            _basherAI.ResetEnemyAI();
             _basherAI.InitializeEnemy();
+            _roomTeleportChecker.InitializeChecker();
 
             GameStateManager.onStateChanged += HandleGameStateChanged;
         }
@@ -75,6 +79,11 @@ namespace Gameplay.Enemy.EnemiesBase
                 _basherContainer.navigationAgent.transform
             );
 
+            _roomTeleportChecker = new RoomTeleportChecker(
+                _basherContainer.roomSensor,
+                _basherContainer.roomsToIgnoreTeleport
+            );
+
             if (_basherContainer.basherType.Equals(BasherTypeEnum.STASIS))
             {
                 _basherAI = new BasherStasisAI(
@@ -101,10 +110,17 @@ namespace Gameplay.Enemy.EnemiesBase
 
         public void TeleportToEndgameDoorSpawn(Vector3 p_doorPosition)
         {
-            _basherContainer.navigationAgent.Warp(_basherContainer.endGameSpawnTransform.position);
-            _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
-            _basherContainer.navigationAgent?.SetDestination(p_doorPosition);
-            
+            if(_roomTeleportChecker.ShouldTeleport())
+            {
+                _basherContainer.navigationAgent.Warp(_basherContainer.endGameSpawnTransform.position);
+                _basherContainer.navigationAgent.transform.rotation = _basherContainer.endGameSpawnTransform.rotation;
+                _basherContainer.navigationAgent?.SetDestination(p_doorPosition);
+            }
+            else
+            {
+                _basherContainer.visionSensor.onPlayerDetected(_basherContainer.endGameSpawnTransform);
+            }
+
             AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM);
         }
 

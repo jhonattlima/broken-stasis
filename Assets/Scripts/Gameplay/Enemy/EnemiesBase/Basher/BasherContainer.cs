@@ -50,6 +50,7 @@ namespace Gameplay.Enemy.EnemiesBase
         [Header("EndGame Door")]
         [Space(5)]
         public Transform endGameSpawnTransform;
+        public GameObject[] roomsToIgnoreTeleport;
 
         private void Awake()
         {

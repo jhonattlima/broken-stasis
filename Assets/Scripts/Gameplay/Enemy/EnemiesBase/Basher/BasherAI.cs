@@ -55,8 +55,6 @@ namespace Gameplay.Enemy.EnemiesBase
 
         public void InitializeEnemy()
         {
-            ResetEnemyAI();
-
             _noiseSensor.onPlayerDetected += HandlePlayerEnteredSoundSensor;
             _noiseSensor.onPlayerRemainsDetected += HandlePlayerRemainsInSoundSensor;
             _noiseSensor.onPlayerLeftDetection += HandlePlayerLeftSoundSensor;
