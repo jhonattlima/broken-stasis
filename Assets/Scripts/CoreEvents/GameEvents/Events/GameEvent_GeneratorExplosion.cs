@@ -80,6 +80,7 @@ namespace CoreEvent.GameEvents
                     {
                         _hasRun = true;
                         RunPermanentEvents();
+                        AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_LIGHT_BLINKING);
 
                         InputController.GamePlay.InputEnabled = true;
                         InputController.GamePlay.MouseEnabled = true;
