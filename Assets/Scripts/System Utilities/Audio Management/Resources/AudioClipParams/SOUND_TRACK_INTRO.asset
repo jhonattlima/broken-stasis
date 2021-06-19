@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SOUND_TRACK_INTRO
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: b16da827d71877c46afbb098e2d50c0e, type: 3}
-  audioMixerGroup: {fileID: 0}
+  audioMixerGroup: {fileID: 3667800317335148439, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 0.7
