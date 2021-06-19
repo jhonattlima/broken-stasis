@@ -227,8 +227,8 @@ namespace GameManagers
             var __fractionedVolumeToDecreasePerSecond = p_audioSource.volume / p_secondsToFadeOut;
             while (p_audioSource.volume > 0f)
             {
-                p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 180;
-                yield return new WaitForSeconds(1 / 180);
+                p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 100;
+                yield return new WaitForSecondsRealtime(1 / 100);
             }
 
             Stop(p_audioNameEnum);
@@ -246,8 +246,8 @@ namespace GameManagers
 
             while (p_audioSource.volume < p_audioVolume)
             {
-                p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 180;
-                yield return new WaitForSeconds(1 / 180);
+                p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 100;
+                yield return new WaitForSecondsRealtime(1 / 100);
             }
 
             p_handleAudioFadedIn?.Invoke();
