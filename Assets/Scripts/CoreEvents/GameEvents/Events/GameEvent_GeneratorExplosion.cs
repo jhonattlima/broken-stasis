@@ -62,6 +62,7 @@ namespace CoreEvent.GameEvents
             DisableCovers();
             OpenDoors();
             _room7Collider.enabled = true;
+            AudioManager.instance.StopMusic();
         }
 
         public void RunSingleTimeEvents()

@@ -107,6 +107,7 @@ namespace Gameplay.Player.Health
 
             PlayerStatesManager.SetPlayerState(PlayerState.DEAD);
             GameStateManager.SetGameState(GameState.GAMEOVER);
+            GameHudManager.instance.gameOverUI.StartUIHandlers();
         }
 
         public PlayerHealthStateEnum GetPlayerHealthState()

@@ -41,6 +41,7 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 3");
+            AudioManager.instance.StopMusic(5);
 
             GameHudManager.instance.notificationHud.ShowText("Press [F] to toggle Lantern", 8);
 

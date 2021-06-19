@@ -70,6 +70,7 @@ namespace Gameplay.Enemy.EnemiesBase
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.AWAKENING);
                 _activationSensor.gameObject.SetActive(false);
+                AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_SPLINTER, 5.0f);
 
                 _isActive = true;
             }

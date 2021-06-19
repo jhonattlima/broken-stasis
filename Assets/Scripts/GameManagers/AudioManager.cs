@@ -25,6 +25,8 @@ namespace GameManagers
         private static AudioSourcePool _audioSourcePool;
         private static AudioLibraryPopulator _audioLibraryPopulator;
         private List<AudioSource> _pausedAudioSources = new List<AudioSource>();
+        private AudioNameEnum _currentMusicName;
+        private AudioSource _currentMusicAudioSource;
 
         public static AudioManager instance
         {
@@ -79,9 +81,9 @@ namespace GameManagers
 
             __audioSource.Play();
 
-            TFWToolKit.Timer(__audioSource.clip.length, delegate()
+            TFWToolKit.Timer(__audioSource.clip.length, delegate ()
             {
-                if(!p_loop)
+                if (!p_loop)
                     __audioSource.mute = true;
                 p_onAudioEnd?.Invoke();
             });
@@ -114,9 +116,9 @@ namespace GameManagers
 
             __audioSource.Play();
 
-            TFWToolKit.Timer(__audioSource.clip.length, delegate()
+            TFWToolKit.Timer(__audioSource.clip.length, delegate ()
             {
-                if(!p_loop)
+                if (!p_loop)
                     __audioSource.mute = true;
             });
 
@@ -134,7 +136,58 @@ namespace GameManagers
             }
         }
 
-        public void FadeOut(AudioNameEnum p_audio, float p_secondsToFadeOut, Action p_handleAudioFadedOut)
+        public void PlayMusic(AudioNameEnum p_newMusic, float p_secondsTransitionFade = 0)
+        {
+            if (p_newMusic == _currentMusicName) return;
+
+            AudioSource __audioSource = _currentMusicAudioSource;
+            AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_newMusic.ToString())).audioClipParams;
+
+            if (__audioSource == null)
+            {
+                __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
+                __audioSource.loop = true;
+                __audioSource.clip = __audioClipParams.audioFile;
+                __audioSource.volume = __audioClipParams.volume;
+                __audioSource.spatialBlend = 0f;
+                __audioSource.mute = false;
+                __audioSource.Play();
+            }
+            else if (p_secondsTransitionFade == 0)
+            {
+                __audioSource.Stop();
+                __audioSource.clip = __audioClipParams.audioFile;
+                __audioSource.volume = __audioClipParams.volume;
+                __audioSource.spatialBlend = 0f;
+                __audioSource.mute = false;
+                __audioSource.Play();
+            }
+            else
+            {
+                FadeOut(_currentMusicName, p_secondsTransitionFade);
+                __audioSource = FadeIn(p_newMusic, p_secondsTransitionFade, null, true);
+            }
+            _currentMusicName = p_newMusic;
+            _currentMusicAudioSource = __audioSource;
+        }
+
+        public void StopMusic(float p_secondsToFadeOut = 0)
+        {
+            if (_currentMusicAudioSource == null) return;
+
+            if (p_secondsToFadeOut != 0)
+                StartCoroutine(FadeOutSound(_currentMusicName, _currentMusicAudioSource, p_secondsToFadeOut, delegate
+                {
+                    _currentMusicAudioSource = null;
+                }));
+            else
+            {
+                _currentMusicAudioSource.Stop();
+                _currentMusicAudioSource = null;
+            }
+        }
+
+        public void FadeOut(AudioNameEnum p_audio, float p_secondsToFadeOut, Action p_handleAudioFadedOut = null)
         {
             AudioClip __clip = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams.audioFile;
 
@@ -147,16 +200,57 @@ namespace GameManagers
             }
         }
 
+        public AudioSource FadeIn(AudioNameEnum p_audio, float p_secondsToFadeIn, AudioSource p_audioSource = null, bool p_loopAudio = false, Action p_handleAudioFadedIn = null)
+        {
+            var __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
+            var __audioSource = p_audioSource;
+
+            if (__audioSource == null)
+            {
+                __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
+            }
+
+            __audioSource.clip = __audioClipParams.audioFile;
+            __audioSource.volume = 0f;
+            __audioSource.spatialBlend = 0f;
+            __audioSource.mute = true;
+
+            if (__audioClipParams != null)
+            {
+                StartCoroutine(FadeInSound(p_audio, __audioSource, p_secondsToFadeIn, __audioClipParams.volume, p_loopAudio, p_handleAudioFadedIn));
+            }
+            return __audioSource;
+        }
+
         private IEnumerator FadeOutSound(AudioNameEnum p_audioNameEnum, AudioSource p_audioSource, float p_secondsToFadeOut, Action p_handleAudioFadedOut)
         {
-            var fractionedTimeToWait = p_secondsToFadeOut / (p_audioSource.volume*100);
+            var __fractionedVolumeToDecreasePerSecond = p_audioSource.volume / p_secondsToFadeOut;
             while (p_audioSource.volume > 0f)
             {
-                p_audioSource.volume -= 0.01f;
-                yield return new WaitForSeconds(fractionedTimeToWait);
+                p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 180;
+                yield return new WaitForSeconds(1 / 180);
             }
+
             Stop(p_audioNameEnum);
             p_handleAudioFadedOut?.Invoke();
+        }
+
+        private IEnumerator FadeInSound(AudioNameEnum p_audioNameEnum, AudioSource p_audioSource, float p_secondsToFadeIn, float p_audioVolume, bool p_loopAudio = false, Action p_handleAudioFadedIn = null)
+        {
+            var __fractionedVolumeToIncreasePerSecond = p_audioVolume / p_secondsToFadeIn;
+
+            p_audioSource.mute = false;
+            p_audioSource.volume = 0.0f;
+            p_audioSource.loop = p_loopAudio;
+            p_audioSource.Play();
+
+            while (p_audioSource.volume < p_audioVolume)
+            {
+                p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 180;
+                yield return new WaitForSeconds(1 / 180);
+            }
+
+            p_handleAudioFadedIn?.Invoke();
         }
 
         public void Pause(AudioNameEnum p_audio)
@@ -183,9 +277,9 @@ namespace GameManagers
         public void PauseAllAudioSources()
         {
             _pausedAudioSources.Clear();
-            foreach(AudioSource __audioSource in _audioSourcePool.GetAllAudioSources())
+            foreach (AudioSource __audioSource in _audioSourcePool.GetAllAudioSources())
             {
-                if(__audioSource.isPlaying)
+                if (__audioSource.isPlaying)
                 {
                     __audioSource.Pause();
                     _pausedAudioSources.Add(__audioSource);
@@ -195,7 +289,7 @@ namespace GameManagers
 
         public void ResumeAllAudioSources()
         {
-            foreach(AudioSource __audioSource in _pausedAudioSources)
+            foreach (AudioSource __audioSource in _pausedAudioSources)
             {
                 __audioSource.Play();
                 // _pausedAudioSources.Remove(__audioSource);

@@ -7,6 +7,7 @@ using SaveSystem;
 using UI.ToolTip;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 
 namespace CoreEvent.Chapters
 {
@@ -38,6 +39,7 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 2");
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEPLAY, 5);
 
             _armoryDoor.LockDoor();
 
