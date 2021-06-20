@@ -73,6 +73,13 @@ namespace SaveSystem
             currentGameSaveData = _saveData.saveData[p_slot - 1];
         }
 
+        public void DeleteSlot(int p_slot)
+        {
+            currentGameSaveData = new SlotSaveData();
+
+            SaveSlot(p_slot);
+        }
+
         public void Initialize()
         {
             for(int i = 0; i < 3; i++)
@@ -85,7 +92,7 @@ namespace SaveSystem
         }
 
         [MenuItem("TFW Tools/Utilities/Clear Save Data")]
-        public static void ClearSaveGame()
+        public static void ClearSaveData()
         {
             EditorUtility.DisplayDialog("Save Game Cleared", "Deleted Save Game at " + Application.dataPath + FILE_PATH + FILE_NAME, "OK");
 
