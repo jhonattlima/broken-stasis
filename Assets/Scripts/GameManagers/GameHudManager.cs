@@ -4,6 +4,7 @@ using UI.EndGamePuzzle;
 using UI.Minigame;
 using UI.Notification;
 using UI.Options;
+using UI.PauseMenu;
 using UnityEngine;
 
 namespace GameManagers

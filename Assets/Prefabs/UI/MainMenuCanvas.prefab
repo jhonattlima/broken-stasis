@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 9208360097933391244}
   - component: {fileID: 8141908731586740360}
   - component: {fileID: 2401795355903097493}
+  - component: {fileID: 2516716750511373317}
   m_Layer: 5
   m_Name: AudioOptionsScreen
   m_TagString: Untagged
@@ -631,6 +632,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba10bb266688794ca175669526ca46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2516716750511373317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390951223383651792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8a03aed14358c40b4991734bdc728e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: d7e573f2138a1814092682c8f93b6687, type: 2}
+  _masterVolumeSlider: {fileID: 3907056895551085572}
+  _sfxVolumeSlider: {fileID: 5858909216793702925}
+  _musicVolumeSlider: {fileID: 5401615613758944837}
 --- !u!1 &1487771694824301939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,6 +2132,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5292582495340830715}
         m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2516716750511373317}
+        m_MethodName: SaveChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

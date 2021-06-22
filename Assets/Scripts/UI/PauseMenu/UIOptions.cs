@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Utilities;
 using Utilities.VariableManagement;
 
-namespace UI.Options
+namespace UI.PauseMenu
 {
     public class UIOptions : MonoBehaviour
     {

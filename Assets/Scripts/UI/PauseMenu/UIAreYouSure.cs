@@ -1,10 +1,8 @@
 ﻿using System;
-using GameManagers;
 using UnityEngine;
 using UnityEngine.UI;
-using Utilities.Audio;
 
-namespace UI.Options
+namespace UI.PauseMenu
 {
     public class UIAreYouSure : MonoBehaviour
     {

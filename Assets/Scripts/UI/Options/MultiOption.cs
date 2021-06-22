@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI.MainMenu
+namespace UI.Options
 {
     public class MultiOption : MonoBehaviour
     {
