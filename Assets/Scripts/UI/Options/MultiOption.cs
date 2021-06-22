@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace UI.Options
     {
         [SerializeField] private string[] _options;
         [SerializeField] private TextMeshProUGUI _optionText;
+
+        public Action onOptionChanged;
 
         private string _currentOption;
 
@@ -38,6 +41,8 @@ namespace UI.Options
                     break;
                 }
             }
+
+            onOptionChanged?.Invoke();
             
             _optionText.text = _currentOption;
         }
@@ -57,6 +62,8 @@ namespace UI.Options
                     break;
                 }
             }
+
+            onOptionChanged?.Invoke();
             
             _optionText.text = _currentOption;
         }

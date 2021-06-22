@@ -2323,6 +2323,7 @@ GameObject:
   - component: {fileID: 3587522859744719359}
   - component: {fileID: 103970771581535102}
   - component: {fileID: 5881531941904762726}
+  - component: {fileID: 1193826258427987999}
   m_Layer: 5
   m_Name: VideoOptionsScreen
   m_TagString: Untagged
@@ -2433,6 +2434,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba10bb266688794ca175669526ca46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1193826258427987999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539108249390282238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66280ad4f6ab7147bcb9d88ae603361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resolutionMultiOption: {fileID: 5076848525349279981}
+  _fullScreenToggle: {fileID: 1041351588083680519}
 --- !u!1 &3582589413994834381
 GameObject:
   m_ObjectHideFlags: 0
