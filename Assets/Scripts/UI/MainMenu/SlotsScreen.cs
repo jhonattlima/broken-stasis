@@ -13,10 +13,15 @@ namespace UI.MainMenu
     public class SlotsScreen : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI[] _slotsTexts;
+        [SerializeField] private SubSlotsScreen _subSlotScreen;
+
+        private MenuScreenAnimationController _slotsScreenAnimationController;
 
         private void Start()
         {
             SetSlotsTexts();
+
+            _slotsScreenAnimationController = GetComponent<MenuScreenAnimationController>();
         }
 
         [UsedImplicitly]
@@ -39,19 +44,25 @@ namespace UI.MainMenu
 
         private void LoadSlot(int p_slot)
         {
-            foreach(Button __button in gameObject.GetComponentsInChildren<Button>())
-                __button.interactable = false;
 
             if(SaveGameManager.instance.HasSaveSlot(p_slot))
-                SaveGameManager.instance.LoadSlot(p_slot);
-            else
-                SaveGameManager.instance.NewSlot(p_slot);
-            
-            LoadingView.instance.FadeIn(delegate ()
             {
-                SceneManager.LoadScene(ScenesConstants.GAME);
-                // LoadingView.instance.FadeOut(null, VariablesManager.uiVariables.defaultFadeOutSpeed);
-            }, VariablesManager.uiVariables.defaultFadeInSpeed * 2f);
+                _subSlotScreen.OnReturn = SetSlotsTexts;
+
+                _subSlotScreen.EnableSubSlotScreen(_slotsScreenAnimationController, p_slot, GetMissionText(p_slot));
+            }
+            else
+            {
+                foreach(Button __button in gameObject.GetComponentsInChildren<Button>())
+                    __button.interactable = false;
+
+                SaveGameManager.instance.NewSlot(p_slot);
+
+                LoadingView.instance.FadeIn(delegate ()
+                {
+                    SceneManager.LoadScene(ScenesConstants.GAME);
+                }, VariablesManager.uiVariables.defaultFadeInSpeed * 2f);
+            }
         }
 
         private void SetSlotsTexts()
@@ -59,22 +70,22 @@ namespace UI.MainMenu
             for(int i = 0; i < 3; i++)
             {
                 if(SaveGameManager.instance.HasSaveSlot(i+1))
-                {
-                    SaveGameManager.instance.LoadSlot(i+1);
-
-                    _slotsTexts[i].text = "CONTINUE - " + GetMissionText(SaveGameManager.instance.currentGameSaveData.chapter);
-                }
+                    _slotsTexts[i].text = GetMissionText(i+1);
+                else
+                    _slotsTexts[i].text = "NEW FILE";
             }
         }
 
-        private string GetMissionText(ChapterTypeEnum p_chapter)
+        private string GetMissionText(int p_slot)
         {
-            if(p_chapter == ChapterTypeEnum.CHAPTER_1)
-                return "[1] THE AWAKENING";
-            else if(p_chapter == ChapterTypeEnum.CHAPTER_2)
-                return "[2] SEARCHING FOR ANSWERS";
-            else if(p_chapter == ChapterTypeEnum.CHAPTER_3)
-                return "[3] FIRST CONTACT";
+            SaveGameManager.instance.LoadSlot(p_slot);
+
+            if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_1)
+                return "CHAPTER [1] THE AWAKENING";
+            else if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_2)
+                return "CHAPTER [2] SEARCHING FOR ANSWERS";
+            else if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_3)
+                return "CHAPTER [3] FIRST CONTACT";
             else
                 return "UNKNOWN CHAPTER";
         }
