@@ -52,6 +52,7 @@ namespace UI.GameOver
             {
                 SceneManager.LoadScene(ScenesConstants.GAME);
                 GameStateManager.SetGameState(GameState.RUNNING);
+                Time.timeScale = 1;
                 p_handleLoadLastCheckPointOnClick?.Invoke();
             });
         }
@@ -62,6 +63,7 @@ namespace UI.GameOver
             {
                 SceneManager.LoadScene(ScenesConstants.MENU);
                 GameStateManager.SetGameState(GameState.RUNNING);
+                Time.timeScale = 1;
                 p_handleBackToTitleScreenOnClick?.Invoke();
             });
         }
@@ -73,7 +75,8 @@ namespace UI.GameOver
 
         private void HandleEndOfShowPanelAnimation()
         {
-            // Stop all SFX
+           AudioManager.instance.FadeOutAllSounds(3f);
+           Time.timeScale = 0;
         }
     }
 }

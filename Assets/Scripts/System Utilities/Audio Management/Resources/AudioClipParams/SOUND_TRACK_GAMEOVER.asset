@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SOUND_TRACK_GAMEOVER
   m_EditorClassIdentifier: 
   audioFile: {fileID: 0}
-  audioMixerGroup: {fileID: 0}
+  audioMixerGroup: {fileID: 3667800317335148439, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1
