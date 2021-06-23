@@ -6,6 +6,7 @@ using UI.EndGamePuzzle;
 using UI.ToolTip;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 
 namespace Gameplay.Objects.Interaction
 {
@@ -85,8 +86,9 @@ namespace Gameplay.Objects.Interaction
             PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);
             GameHudManager.instance.endGameUI.HideUI();
             _door.Interact();
-            // Toca música da pauleira
+
             _enabled = false;
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_ESCAPE, 1);
         }
     }
 }

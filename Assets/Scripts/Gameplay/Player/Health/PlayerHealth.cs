@@ -39,7 +39,7 @@ namespace Gameplay.Player.Health
                 HandlePlayerDeath();
             else
             {
-                AudioManager.instance.Play(AudioNameEnum.PLAYER_HIT);
+                AudioManager.instance.Play(AudioNameEnum.PLAYER_HIT, false, null, false);
                 GameHudManager.instance.damageUI.ReceiveHit(_playerCurrentHealth);
                 PlayerStatesManager.SetPlayerState(PlayerState.HIT);
             }
@@ -107,6 +107,7 @@ namespace Gameplay.Player.Health
 
             PlayerStatesManager.SetPlayerState(PlayerState.DEAD);
             GameStateManager.SetGameState(GameState.GAMEOVER);
+            GameHudManager.instance.gameOverUI.StartUIHandlers();
         }
 
         public PlayerHealthStateEnum GetPlayerHealthState()

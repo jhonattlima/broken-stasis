@@ -80,7 +80,7 @@ namespace Gameplay.Enemy.Behaviours
 
         public void RunEnemyPatrol()
         {
-            if (!IsEnemyPatrolling() || _navigationAgent.remainingDistance < 0.05f)
+            if (!IsEnemyPatrolling() || (_navigationAgent.isOnNavMesh && _navigationAgent.remainingDistance < 0.05f))
                 if (!_settingDestination)
                 {
                     CustomSceneManager.instance.StopCoroutine(_patrolCoroutine);

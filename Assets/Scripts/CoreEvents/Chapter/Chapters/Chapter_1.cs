@@ -7,6 +7,7 @@ using UI;
 using UI.ToolTip;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 using Utilities.UI;
 
 namespace CoreEvent.Chapters
@@ -38,6 +39,8 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {   
             LoadingView.instance.InstantBlackScreen();
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEPLAY, 5);
+            
             _controlsSplash.ShowControlsSplash(delegate ()
             {
 
