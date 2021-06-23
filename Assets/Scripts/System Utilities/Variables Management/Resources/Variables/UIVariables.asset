@@ -18,3 +18,4 @@ MonoBehaviour:
   defaultFadeOutSpeed: 0.75
   generatorMinigameDuration: 10
   controlsSplashDuration: 10
+  videoConfirmationPopUpDuration: 16

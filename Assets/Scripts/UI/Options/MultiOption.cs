@@ -23,6 +23,7 @@ namespace UI.Options
         public void InitializeOptions(string p_currentOption, string[] p_options)
         {
             _currentOption = p_currentOption;
+            _optionText.text = _currentOption;
             _options = p_options;
         }
 
@@ -68,6 +69,12 @@ namespace UI.Options
             _optionText.text = _currentOption;
         }
 
+        public void SetOption(string p_option)
+        {
+            _currentOption = p_option;
+            _optionText.text = _currentOption;
+        }
+        
         public string GetCurrentOption()
         {
             return _currentOption;

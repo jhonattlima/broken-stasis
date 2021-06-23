@@ -23,7 +23,7 @@ namespace UI.PauseMenu
             if (!_buttonNo) throw new MissingFieldException("Button No not assigned");
         }
 
-        public void StartUIHandlers(Action p_handleYesSelection, Action p_handleNoSelection = null)
+        public virtual void StartUIHandlers(Action p_handleYesSelection, Action p_handleNoSelection = null)
         {
             _buttonYes.onClick.RemoveAllListeners();
             _buttonNo.onClick.RemoveAllListeners();
@@ -44,7 +44,7 @@ namespace UI.PauseMenu
             isOpen = true;
         }
 
-        public void Close()
+        public virtual void Close()
         {
             _animator.Play(ANIMATION_HIDE_PANEL);
             isOpen = false;
