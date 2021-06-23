@@ -61,7 +61,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
         private void HandleEnemyGrowl()
         {
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _splinterPosition, false, AudioRange.MEDIUM);
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _splinterPosition, false, AudioRange.MEDIUM, false);
         }
 
         private void HandleEnemyActivation(Transform p_playerPosition)

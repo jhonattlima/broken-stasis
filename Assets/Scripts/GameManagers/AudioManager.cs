@@ -60,11 +60,12 @@ namespace GameManagers
             DontDestroyOnLoad(_audioManagerGameObject);
         }
 
-        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null)
+        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null, bool p_canRepeat = true)
         {
-
             AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
             AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
+
+            if(!p_canRepeat && _audioSourcePool.IsAlreadyPlayingClip(__audioClipParams.audioFile)) return null;
 
             if (!__audioClipParams)
             {
@@ -92,37 +93,15 @@ namespace GameManagers
             return __audioSource;
         }
 
-        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH)
+        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH, bool p_canRepeat = true)
         {
-            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
+            var __audioSource = Play(p_audio, p_loop, null, p_canRepeat);
+            if(__audioSource == null ) return null;
+
             __audioSource.gameObject.transform.position = p_position;
-
-            AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
-
-            if (!__audioClipParams)
-            {
-                Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
-                return null;
-            }
-
-            __audioSource.loop = p_loop;
-            __audioSource.clip = __audioClipParams.audioFile;
-            __audioSource.volume = __audioClipParams.volume;
-            __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
-
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = UnityEngine.AudioRolloffMode.Custom;
             __audioSource.maxDistance = (int)p_audioRange;
-
-            __audioSource.mute = false;
-
-            __audioSource.Play();
-
-            TFWToolKit.Timer(__audioSource.clip.length, delegate ()
-            {
-                if (!p_loop)
-                    __audioSource.mute = true;
-            });
 
             return __audioSource;
         }
@@ -140,11 +119,11 @@ namespace GameManagers
 
         public void PlayMusic(AudioNameEnum p_newMusic, float p_secondsTransitionFade = 0)
         {
-
+Debug.Log("Changed music to " + p_newMusic);
             AudioSource __audioSource = _currentMusicAudioSource;
             AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_newMusic.ToString())).audioClipParams;
 
-            if (__audioSource == null)
+            if (__audioSource == null && p_secondsTransitionFade == 0)
             {
                 __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
                 __audioSource.loop = true;
@@ -154,6 +133,10 @@ namespace GameManagers
                 __audioSource.mute = false;
                 __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
                 __audioSource.Play();
+            }
+            else if (__audioSource == null)
+            {
+                __audioSource = FadeIn(p_newMusic, p_secondsTransitionFade, null, true);
             }
             else if (p_secondsTransitionFade == 0)
             {
@@ -179,10 +162,12 @@ namespace GameManagers
             if (_currentMusicAudioSource == null) return;
 
             if (p_secondsToFadeOut != 0)
+            {
                 StartCoroutine(FadeOutSound(_currentMusicAudioSource, p_secondsToFadeOut, delegate
                 {
                     _currentMusicAudioSource = null;
                 }));
+            }
             else
             {
                 _currentMusicAudioSource.Stop();
@@ -205,7 +190,6 @@ namespace GameManagers
 
         public void FadeOutAllSounds(float p_secondsToFadeOut)
         {
-
             foreach (AudioSource __audioSource in _audioSourcePool.GetAllAudioSources())
             {
                 if (__audioSource != _currentMusicAudioSource && __audioSource.isPlaying)
@@ -239,13 +223,16 @@ namespace GameManagers
         private IEnumerator FadeOutSound(AudioSource p_audioSource, float p_secondsToFadeOut, Action p_handleAudioFadedOut = null)
         {
             var __fractionedVolumeToDecreasePerSecond = p_audioSource.volume / p_secondsToFadeOut;
+            Debug.Log("Set audio to fade out " + p_audioSource.clip.name);
             while (p_audioSource.volume > 0f)
             {
-                p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 100;
-                yield return new WaitForSecondsRealtime(1 / 100);
+                if(!p_audioSource.isPlaying) break;
+                p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 10;
+                yield return new WaitForSecondsRealtime(1 / 10);
             }
-
+            Debug.Log("Audio faded out " + p_audioSource.clip.name);
             p_audioSource.Stop();
+            p_audioSource.mute = true;
             p_handleAudioFadedOut?.Invoke();
         }
 
@@ -257,11 +244,12 @@ namespace GameManagers
             p_audioSource.volume = 0.0f;
             p_audioSource.loop = p_loopAudio;
             p_audioSource.Play();
+            Debug.Log("Faded in" + p_audioSource);
 
             while (p_audioSource.volume < p_audioVolume)
             {
-                p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 100;
-                yield return new WaitForSecondsRealtime(1 / 100);
+                p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 10;
+                yield return new WaitForSecondsRealtime(1 / 10);
             }
 
             p_handleAudioFadedIn?.Invoke();

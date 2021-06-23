@@ -75,7 +75,7 @@ namespace UI.GameOver
 
         private void HandleEndOfShowPanelAnimation()
         {
-           AudioManager.instance.FadeOutAllSounds(3f);
+           AudioManager.instance.FadeOutAllSounds(0.2f);
            Time.timeScale = 0;
         }
     }

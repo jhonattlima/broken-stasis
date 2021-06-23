@@ -62,7 +62,6 @@ namespace CoreEvent.GameEvents
             DisableCovers();
             OpenDoors();
             _room7Collider.enabled = true;
-            AudioManager.instance.StopMusic();
         }
 
         public void RunSingleTimeEvents()
@@ -74,15 +73,17 @@ namespace CoreEvent.GameEvents
             AudioManager.instance.Play(AudioNameEnum.GENERATOR_ELETRIC_OVERCHARGE, false, delegate ()
             {
                 TFWToolKit.StartCoroutine(CameraShakerController.Shake(3, 5f, 1));
+                
                 AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
                 {
+                    AudioManager.instance.StopMusic();
                     TurnOffAllLights();
                     GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
                     {
                         _hasRun = true;
                         RunPermanentEvents();
                         AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_LIGHT_BLINKING);
-
+                        
                         InputController.GamePlay.InputEnabled = true;
                         InputController.GamePlay.MouseEnabled = true;
                         

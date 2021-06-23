@@ -173,7 +173,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
             if (!_isViewingPlayer)
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM, false);
                 _followBehaviour.SprintToPosition(p_lightPosition);
             }
         }

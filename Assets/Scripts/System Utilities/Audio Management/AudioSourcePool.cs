@@ -59,5 +59,15 @@ namespace Utilities.Audio
         {
             return _sourcesPool;
         }
+
+        public bool IsAlreadyPlayingClip(AudioClip p_audioClip)
+        {
+            foreach (AudioSource __audioSource in _sourcesPool)
+            {
+                if (__audioSource.clip == p_audioClip && __audioSource.isPlaying)
+                    return true;
+            }
+            return false;
+        }
     }
 }

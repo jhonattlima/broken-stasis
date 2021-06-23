@@ -34,6 +34,7 @@ namespace Utilities.Audio
         SOUND_TRACK_SPLINTER,
         SOUND_TRACK_INTRO,
         SOUND_TRACK_GAMEOVER,
+        SOUND_TRACK_ESCAPE,
         UI_BUTTON_HIGHLIGHTED,
         UI_BUTTON_PRESSED
     }
