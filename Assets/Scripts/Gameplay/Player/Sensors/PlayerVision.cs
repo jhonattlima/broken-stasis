@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameManagers;
+using UnityEngine;
 using Utilities;
 
 namespace Gameplay.Player.Sensors
@@ -17,24 +18,43 @@ namespace Gameplay.Player.Sensors
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GameInternalTags.ENEMY) && HasDirectViewOfHiddenObject(other.gameObject))
-                other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            {
+                var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+                foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
+                    __meshRenderer.enabled = true;
+            }
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag(GameInternalTags.ENEMY))
             {
+                var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+
                 if (HasDirectViewOfHiddenObject(other.gameObject))
-                    other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                {
+                    foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
+                        __meshRenderer.enabled = true;
+                    VFXManager.instance.FadeOutMaterial(__meshRenderers[0].name);
+                }
                 else
-                    other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+                {
+                    foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
+                        meshRenderer.enabled = false;
+                }
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag(GameInternalTags.ENEMY))
-                other.gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            {
+                var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+                foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
+                        meshRenderer.enabled = false;
+            }
         }
 
         private bool HasDirectViewOfHiddenObject(GameObject p_hiddenGameObject)
@@ -43,10 +63,9 @@ namespace Gameplay.Player.Sensors
             Vector3 __toPosition = p_hiddenGameObject.transform.position;
             Vector3 __direction = __toPosition - _headPosition.position;
 
-
-            if (Physics.Raycast(_headPosition.position, __direction, out __hit, 50f, _layersToDetect))
+            if (Physics.Raycast(_headPosition.position, __direction, out __hit, 100f, _layersToDetect))
             {
-                if(__hit.collider.CompareTag(GameInternalTags.ENEMY))
+                if (__hit.collider.CompareTag(GameInternalTags.ENEMY))
                     Debug.DrawRay(_headPosition.position, __direction, Color.magenta);
 
                 return __hit.collider.CompareTag(GameInternalTags.ENEMY);
