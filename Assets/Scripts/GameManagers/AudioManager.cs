@@ -73,6 +73,8 @@ namespace GameManagers
             __audioSource.loop = p_loop;
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
+            __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
+            
             __audioSource.spatialBlend = 0f;
 
             __audioSource.mute = false;
@@ -105,6 +107,7 @@ namespace GameManagers
             __audioSource.loop = p_loop;
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
+            __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
 
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = UnityEngine.AudioRolloffMode.Custom;

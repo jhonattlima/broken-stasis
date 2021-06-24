@@ -1,5 +1,7 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using Utilities.UI;
 using Utilities.VariableManagement;
@@ -29,7 +31,9 @@ namespace Utilities.Dialog
             if (_dialogLibrary == null)
             {
                 _dialogLibrary = new AIDialogScriptableObject();
+#if UNITY_EDITOR
                 AssetDatabase.CreateAsset(_dialogLibrary, DIALOG_LIB_FULL_PATH);
+#endif
             }
         }
 
@@ -82,8 +86,9 @@ namespace Utilities.Dialog
             {
                 if (!Enum.IsDefined(typeof(DialogEnum), __dialogConversation.dialogName.ToString()))
                 {
+#if UNITY_EDITOR
                     AssetDatabase.DeleteAsset(DIALOG_CONVERSATION_FULL_PATH + __dialogConversation.dialogName + ".asset");
-
+#endif
                     _dialogLibrary.GameDialogs.Remove(__dialogConversation);
                 }
             }
@@ -97,7 +102,9 @@ namespace Utilities.Dialog
         private void CreateDialogUnit(string p_audioName)
         {
             DialogTextConversation __newDialogConversation = new DialogTextConversation();
+#if UNITY_EDITOR
             AssetDatabase.CreateAsset(__newDialogConversation, DIALOG_CONVERSATION_FULL_PATH + p_audioName + ".asset");
+#endif
         }
     }
 }
