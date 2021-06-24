@@ -52,7 +52,7 @@ namespace UI.Options.Audio
 
         private float ConvertSliderValueToVolume(float p_sliderValue)
         {
-            return (p_sliderValue * 80f) - 80f;
+            return (p_sliderValue * 40f) - 40f;
         }
 
         [UsedImplicitly]

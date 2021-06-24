@@ -87,6 +87,12 @@ namespace UI.MainMenu
             ChangeToScreen(MenuState.VIDEO_SCREEN);
         }
 
+        [UsedImplicitly]
+        public void CloseGame()
+        {
+            Application.Quit();
+        }
+
         private void ChangeToScreen(MenuState p_nextScreen)
         {
             _currentState = p_nextScreen;
