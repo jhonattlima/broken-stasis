@@ -126,7 +126,7 @@ namespace UI.Options.Video
         {
             Screen.SetResolution(Int32.Parse(p_resolution.Substring(0, p_resolution.IndexOf(" "))),
                                     Int32.Parse(p_resolution.Substring(p_resolution.IndexOf(" x ") + 3)),
-                                    p_fullScreen ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.FullScreenWindow);
+                                    p_fullScreen ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed);
         }
     }
 }
