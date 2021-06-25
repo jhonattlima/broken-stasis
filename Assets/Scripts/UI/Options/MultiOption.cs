@@ -14,12 +14,6 @@ namespace UI.Options
 
         private string _currentOption;
 
-        // TODO: Remove and initialize current option with initialize method
-        private void Awake()
-        {
-            _currentOption = _optionText.text;
-        }
-
         public void InitializeOptions(string p_currentOption, string[] p_options)
         {
             _currentOption = p_currentOption;
@@ -43,9 +37,9 @@ namespace UI.Options
                 }
             }
 
-            onOptionChanged?.Invoke();
-            
             _optionText.text = _currentOption;
+            
+            onOptionChanged?.Invoke();
         }
 
         [UsedImplicitly]
@@ -64,9 +58,9 @@ namespace UI.Options
                 }
             }
 
-            onOptionChanged?.Invoke();
-            
             _optionText.text = _currentOption;
+            
+            onOptionChanged?.Invoke();
         }
 
         public void SetOption(string p_option)

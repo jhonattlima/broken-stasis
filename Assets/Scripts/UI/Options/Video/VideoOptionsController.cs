@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using TMPro;
 using UI.MainMenu;
 using UnityEngine;
@@ -21,9 +22,14 @@ namespace UI.Options.Video
         private string _currentResolution;
 
         private void Start()
-        {            
+        {    
             LoadSettings();
+            InitializeVideoOptions();
+        }
 
+        [UsedImplicitly]
+        public void InitializeVideoOptions()
+        {
             InitializeMultiOption();
             InitializeToggle();
 
@@ -40,8 +46,6 @@ namespace UI.Options.Video
                 _isFullscreen = PlayerPrefs.GetInt(PlayerPrefsSettingsConsts.FULLSCREEN_TOGGLE) == 1 ? true : false;
                 _currentResolution = PlayerPrefs.GetString(PlayerPrefsSettingsConsts.SCREEN_RESOLUTION);
             }
-
-            SetResolution(_currentResolution, _isFullscreen);
         }
 
         private void InitializeToggle()
@@ -80,21 +84,20 @@ namespace UI.Options.Video
 
         private void OptionsChanged(bool p_apply)
         {
-            _applyReturnButton.onClick.RemoveAllListeners();
-
             if(p_apply)
             {
-                _applyReturnText.text = "APPLY";
-                _applyReturnButton.onClick.AddListener(PressedApply);
+                _applyReturnText.alpha = 1f;
+                _applyReturnButton.interactable = true;
             }
             else
             {
-                _applyReturnText.text = "RETURN";
-                _applyReturnButton.onClick.AddListener(_menuSceneController.OpenOptions);
+                _applyReturnText.alpha = 0.5f;
+                _applyReturnButton.interactable = false;
             }
         }
 
-        private void PressedApply()
+        [UsedImplicitly]
+        public void PressedApply()
         {
             SetResolution(_resolutionMultiOption.GetCurrentOption(), _fullScreenToggle.isOn);
             
@@ -118,6 +121,8 @@ namespace UI.Options.Video
         {
             _resolutionMultiOption.SetOption(_currentResolution);
             _fullScreenToggle.isOn = _isFullscreen;
+
+            OptionsChanged(false);
 
             SetResolution(_currentResolution, _isFullscreen);
         }
