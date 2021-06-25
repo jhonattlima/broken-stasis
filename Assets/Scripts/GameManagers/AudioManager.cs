@@ -97,7 +97,7 @@ namespace GameManagers
             return __audioSource;
         }
 
-        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH, bool p_canRepeat = true)
+        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH, bool p_canRepeat = true, bool p_createWave = false, string p_ownerName = null)
         {
             var __audioSource = Play(p_audio, p_loop, null, p_canRepeat);
 
@@ -106,6 +106,20 @@ namespace GameManagers
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = AudioRolloffMode.Custom;
             __audioSource.maxDistance = (int)p_audioRange;
+
+            __audioSource.mute = false;
+
+            __audioSource.Play();
+            if(p_createWave)
+            {
+                VFXManager.instance.CreateNewSoundWave(p_ownerName, p_position, p_audioRange, p_loop);
+            }
+
+            TFWToolKit.Timer(__audioSource.clip.length, delegate()
+            {
+                if(!p_loop)
+                    __audioSource.mute = true;
+            });
 
             return __audioSource;
         }
