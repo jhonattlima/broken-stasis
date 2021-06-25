@@ -1,7 +1,9 @@
-﻿using JetBrains.Annotations;
+﻿using GameManagers;
+using JetBrains.Annotations;
 using SaveSystem;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 using Utilities.VariableManagement;
 
 namespace UI.MainMenu
@@ -36,6 +38,7 @@ namespace UI.MainMenu
             _titleAnimationHandler.OnPressButton = HandleAnyButtonPressed;
 
             SaveGameManager.instance.Initialize();
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_INTRO);
         }
 
         private void Update()

@@ -14,11 +14,6 @@ namespace GameManagers
             if (instance == null)
                 instance = this;
 
-            AudioManager.instance.FadeOut(AudioNameEnum.SOUND_TRACK_INTRO, 1, delegate ()
-            {
-                AudioManager.instance.Play(AudioNameEnum.SOUND_TRACK_GAMEPLAY, true);
-            });
-
             _lastUISelected = new GameObject();
         }
 

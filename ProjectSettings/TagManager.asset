@@ -28,7 +28,7 @@ TagManager:
   - IgnoreNavMesh
   - DetectableLight
   - NoShadow
-  - 
+  - AlwaysShow
   - 
   - 
   - 

@@ -49,7 +49,7 @@ namespace CoreEvent.GameEvents
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;
 
-            AudioManager.instance.Stop(AudioNameEnum.SOUND_TRACK_SPLINTER);
+            AudioManager.instance.StopMusic(2.0f);
 
             GameStateManager.SetGameState(GameState.CUTSCENE);
 

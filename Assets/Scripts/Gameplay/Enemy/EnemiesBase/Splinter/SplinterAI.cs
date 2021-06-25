@@ -61,7 +61,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
         private void HandleEnemyGrowl()
         {
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _splinterPosition, false, AudioRange.MEDIUM);
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _splinterPosition, false, AudioRange.MEDIUM, false);
         }
 
         private void HandleEnemyActivation(Transform p_playerPosition)
@@ -70,6 +70,7 @@ namespace Gameplay.Enemy.EnemiesBase
             {
                 _stateManager.SetEnemyState(EnemyStateEnum.AWAKENING);
                 _activationSensor.gameObject.SetActive(false);
+                AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_SPLINTER, 5.0f);
 
                 _isActive = true;
             }

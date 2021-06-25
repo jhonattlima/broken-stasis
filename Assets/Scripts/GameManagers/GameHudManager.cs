@@ -1,6 +1,7 @@
 ﻿using UI;
 using UI.Dialog;
 using UI.EndGamePuzzle;
+using UI.GameOver;
 using UI.Minigame;
 using UI.Notification;
 using UI.Options;
@@ -19,6 +20,7 @@ namespace GameManagers
         public UIOptions optionsUI;
         public UIAreYouSure areyouSureUI;
         public LoadingView optionsLoadingUI;
+        public UIGameOver gameOverUI;
 
         public static GameHudManager instance;
 
