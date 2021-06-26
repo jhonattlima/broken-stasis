@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   cutsceneCreditsVideo: {fileID: 32900000, guid: d8352626d10a7654ea8cced8f6c4f832,
     type: 3}
-  finalDoorUnlockTimePerStage: 5
+  finalDoorUnlockTimePerStage: 7
