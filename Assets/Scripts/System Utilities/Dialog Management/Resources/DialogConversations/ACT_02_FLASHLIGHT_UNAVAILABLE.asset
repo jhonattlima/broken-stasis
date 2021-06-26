@@ -15,3 +15,5 @@ MonoBehaviour:
   conversationTexts:
   - speaker: 0
     text: 'BATTERY STORAGE LOCKED - Recharge energy: 0%.'
+  - speaker: 0
+    text: Please wait until recharge is completed.

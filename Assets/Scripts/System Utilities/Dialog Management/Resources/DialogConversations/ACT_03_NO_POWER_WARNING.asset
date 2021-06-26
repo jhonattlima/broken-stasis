@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: DANGER PROTOCOL INITIATED
+    text: '[EMERGCON 1] DANGER PROTOCOL INITIATED.'
   - speaker: 0
-    text: INTERNAL DAMAGE DETECTED AT GENERATOR ROOM
+    text: INTERNAL DAMAGE DETECTED AT GENERATOR ROOM.
+  - speaker: 0
+    text: WEAK LIFE SIGNALS DETECTED IN ARMORY ROOM.
   - speaker: 0
     text: PLEASE EVACUATE THE AREA.
   - speaker: 0
-    text: THIS IS NOT A TRAINING
+    text: THIS IS NOT A TRAINING.

@@ -14,18 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: 'Oxygen level: .......................97.3%.'
+    text: 'Oxygen level: .......................88.3%.'
   - speaker: 0
-    text: 'Gavitational field: .......................stable.'
+    text: 'Gravitational field: .......................stable.'
   - speaker: 0
     text: 'Propulsion speed: .......................stable.'
   - speaker: 0
-    text: "Energy level: .......................5%. \nOperating on auxiliar energy
-      generator."
-  - speaker: 0
-    text: Urgency manual repair by human reanimation protocol activated.
-  - speaker: 0
-    text: 'Welcome back to life, Dr. Atom.
+    text: 'Energy level: .......................5%.  [CRITICAL]
 
-      Please engaje to manual repair
-      protocol.'
+      Operating
+      on auxiliar energy generator.'
+  - speaker: 0
+    text: Urgency manual repair by human reanimation protocol [UMRHRP] activated.
+  - speaker: 0
+    text: 'Welcome back to life, Dr. Viktor.
+
+      You might experience nausea and
+      other symptoms associated with stasis sickness in the following hours.'
+  - speaker: 0
+    text: Please engaje with manual repair protocol UMRHRP procedures.
