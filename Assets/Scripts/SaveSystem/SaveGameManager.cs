@@ -1,8 +1,8 @@
 ﻿using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using GameManagers;
-using System.Diagnostics;
 
 namespace SaveSystem
 {
@@ -91,6 +91,7 @@ namespace SaveSystem
             }
         }
 
+#if UNITY_EDITOR
         [MenuItem("TFW Tools/Utilities/Clear Save Data")]
         public static void ClearSaveData()
         {
@@ -99,5 +100,7 @@ namespace SaveSystem
             if (File.Exists(Application.dataPath + FILE_PATH + FILE_NAME))
                 File.Delete(Application.dataPath + FILE_PATH + FILE_NAME);
         }
+#endif
+
     }
 }

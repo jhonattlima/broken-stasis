@@ -81,6 +81,7 @@ namespace GameManagers
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
             __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
+            
             __audioSource.spatialBlend = 0f;
 
             __audioSource.mute = false;
@@ -112,7 +113,7 @@ namespace GameManagers
             __audioSource.Play();
             if(p_createWave)
             {
-                VFXManager.instance.CreateNewSoundWave(p_ownerName, p_position, p_audioRange, p_loop);
+                GameManagers.VFXManager.instance.CreateNewSoundWave(p_ownerName, p_position, p_audioRange, p_loop);
             }
 
             TFWToolKit.Timer(__audioSource.clip.length, delegate()
@@ -264,16 +265,6 @@ namespace GameManagers
 
         private IEnumerator FadeOutSound(AudioSource p_audioSource, float p_secondsToFadeOut, Action p_handleAudioFadedOut = null)
         {
-            // var __fractionedVolumeToDecreasePerSecond = p_audioSource.volume / p_secondsToFadeOut;
-            // Debug.Log("Set audio to fade out " + p_audioSource.clip.name);
-            // while (p_audioSource.volume > 0f)
-            // {
-            //     if (!p_audioSource.isPlaying) break;
-            //     p_audioSource.volume -= __fractionedVolumeToDecreasePerSecond / 10;
-            //     yield return new WaitForSecondsRealtime(1 / 10);
-            // }
-            // Debug.Log("Audio faded out " + p_audioSource.clip.name);
-
             float currentTime = 0;
             float start = p_audioSource.volume;
 
@@ -297,13 +288,6 @@ namespace GameManagers
             p_audioSource.loop = p_loopAudio;
             p_audioSource.mute = false;
             p_audioSource.Play();
-
-            // while (p_audioSource.volume < p_audioVolume)
-            // {
-            //     Debug.Log("Increasing sound of " + p_audioSource.clip.name + " to " + p_audioSource.volume);
-            //     p_audioSource.volume += __fractionedVolumeToIncreasePerSecond / 10;
-            //     yield return new WaitForSecondsRealtime(1 / 10);
-            // }
 
             float currentTime = 0;
             float start = p_audioSource.volume;

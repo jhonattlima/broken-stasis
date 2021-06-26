@@ -15,6 +15,8 @@ namespace UI.MainMenu
         [SerializeField] private MenuScreenAnimationController _mainMenuAnimationController;
         [SerializeField] private MenuScreenAnimationController _slotScreenAnimationController;
         [SerializeField] private MenuScreenAnimationController _optionsScreenAnimationController;
+        [SerializeField] private MenuScreenAnimationController _audioScreenAnimationController;
+        [SerializeField] private MenuScreenAnimationController _videoScreenAnimationController;
 
         private MenuState _currentState;
         private MenuScreenAnimationController _currentAnimationController;
@@ -65,7 +67,7 @@ namespace UI.MainMenu
         }
 
         [UsedImplicitly]
-        public void BackToMenu()
+        public void OpenMainMenu()
         {
             ChangeToScreen(MenuState.MAIN_MENU);
         }
@@ -76,50 +78,73 @@ namespace UI.MainMenu
             ChangeToScreen(MenuState.OPTIONS_SCREEN);
         }
 
+        [UsedImplicitly]
+        public void OpenAudioOptions()
+        {
+            ChangeToScreen(MenuState.AUDIO_SCREEN);
+        }
+
+        [UsedImplicitly]
+        public void OpenVideoOptions()
+        {
+            ChangeToScreen(MenuState.VIDEO_SCREEN);
+        }
+
+        [UsedImplicitly]
+        public void CloseGame()
+        {
+            Application.Quit();
+        }
+
         private void ChangeToScreen(MenuState p_nextScreen)
         {
             _currentState = p_nextScreen;
 
-            if (_currentState == MenuState.MAIN_MENU)
+            switch(_currentState)
             {
-                if (_currentAnimationController == null)
+                case MenuState.MAIN_MENU:
                 {
-                    _mainMenuAnimationController.Show(delegate ()
-                    {
-                        _currentAnimationController = _mainMenuAnimationController;
-                    });
-                }
-                else
-                {
-                    _currentAnimationController.Hide(delegate ()
-                    {
+                    if (_currentAnimationController == null)
                         _mainMenuAnimationController.Show(delegate ()
                         {
                             _currentAnimationController = _mainMenuAnimationController;
                         });
-                    });
+                    else
+                        HandleScreenTransition(_mainMenuAnimationController);
+                    break;
+                }
+                case MenuState.SLOT_SCREEN:
+                {
+                    HandleScreenTransition(_slotScreenAnimationController);
+                    break;
+                }
+                case MenuState.OPTIONS_SCREEN:
+                {
+                    HandleScreenTransition(_optionsScreenAnimationController);
+                    break;
+                }
+                case MenuState.AUDIO_SCREEN:
+                {
+                    HandleScreenTransition(_audioScreenAnimationController);
+                    break;
+                }
+                case MenuState.VIDEO_SCREEN:
+                {
+                    HandleScreenTransition(_videoScreenAnimationController);
+                    break;
                 }
             }
-            else if (_currentState == MenuState.SLOT_SCREEN)
+        }
+
+        private void HandleScreenTransition(MenuScreenAnimationController p_nextScreen)
+        {
+            _currentAnimationController.Hide(delegate ()
             {
-                _currentAnimationController.Hide(delegate ()
+                p_nextScreen.Show(delegate ()
                 {
-                    _slotScreenAnimationController.Show(delegate ()
-                    {
-                        _currentAnimationController = _slotScreenAnimationController;
-                    });
+                    _currentAnimationController = p_nextScreen;
                 });
-            }
-            else if (_currentState == MenuState.OPTIONS_SCREEN)
-            {
-                _currentAnimationController.Hide(delegate ()
-                {
-                    _optionsScreenAnimationController.Show(delegate ()
-                    {
-                        _currentAnimationController = _optionsScreenAnimationController;
-                    });
-                });
-            }
+            });
         }
     }
 }

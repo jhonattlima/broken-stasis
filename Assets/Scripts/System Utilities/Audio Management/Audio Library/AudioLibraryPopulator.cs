@@ -1,5 +1,7 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using Utilities.VariableManagement;
 
@@ -28,7 +30,9 @@ namespace Utilities.Audio
             if (_audioLibrary == null)
             {
                 _audioLibrary = new AudioLibraryScriptableObject();
+#if UNITY_EDITOR
                 AssetDatabase.CreateAsset(_audioLibrary, AUDIO_LIBRARY_FULL_PATH);
+#endif
             }
         }
 
@@ -80,8 +84,9 @@ namespace Utilities.Audio
             {
                 if (!Enum.IsDefined(typeof(AudioNameEnum), __audioClipUnitInLib.audioName.ToString()))
                 {
+#if UNITY_EDITOR
                     AssetDatabase.DeleteAsset(AUDIO_CLIP_PARAM_FULL_PATH + __audioClipUnitInLib.audioName + ".asset");
-
+#endif
                     _audioLibrary.AudioLibrary.Remove(__audioClipUnitInLib);
                 }
             }
@@ -95,7 +100,9 @@ namespace Utilities.Audio
         private void CreateAudioParam(string p_audioName)
         {
             AudioClipParams __newAudioClipUnit = new AudioClipParams();
+#if UNITY_EDITOR
             AssetDatabase.CreateAsset(__newAudioClipUnit, AUDIO_CLIP_PARAM_FULL_PATH + p_audioName + ".asset");
+#endif
         }
     }
 }

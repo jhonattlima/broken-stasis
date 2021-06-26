@@ -80,14 +80,17 @@ namespace UI.MainMenu
         {
             SaveGameManager.instance.LoadSlot(p_slot);
 
-            if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_1)
-                return "CHAPTER [1] THE AWAKENING";
-            else if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_2)
-                return "CHAPTER [2] SEARCHING FOR ANSWERS";
-            else if(SaveGameManager.instance.currentGameSaveData.chapter == ChapterTypeEnum.CHAPTER_3)
-                return "CHAPTER [3] FIRST CONTACT";
-            else
-                return "UNKNOWN CHAPTER";
+            switch(SaveGameManager.instance.currentGameSaveData.chapter)
+            {
+                case ChapterTypeEnum.CHAPTER_1:
+                    return "CHAPTER [1] THE AWAKENING";
+                case ChapterTypeEnum.CHAPTER_2:
+                    return "CHAPTER [2] SEARCHING FOR ANSWERS";
+                case ChapterTypeEnum.CHAPTER_3:
+                    return "CHAPTER [3] FIRST CONTACT";
+                default:
+                    return "UNKNOWN CHAPTER";
+            }
         }
     }
 }
