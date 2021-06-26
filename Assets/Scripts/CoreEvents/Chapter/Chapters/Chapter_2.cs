@@ -39,7 +39,7 @@ namespace CoreEvent.Chapters
         public void ChapterStart()
         {
             Debug.Log("STARTED CHAPTER 2");
-            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEPLAY, 5);
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEPLAY, 10);
 
             _armoryDoor.LockDoor();
 

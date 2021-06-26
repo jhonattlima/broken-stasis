@@ -35,6 +35,8 @@ namespace Gameplay.Objects.Items
                 PlayerStatesManager.SetPlayerState(PlayerState.PICK_ITEM_ON_GROUND);
                 GameplayManager.instance.onPlayerCollectedItem(ItemEnum.KEYCARD);
 
+                GameHudManager.instance.notificationHud.ShowText("Collected KeyCard");
+
                 SetEnabled(false);
             }
         }

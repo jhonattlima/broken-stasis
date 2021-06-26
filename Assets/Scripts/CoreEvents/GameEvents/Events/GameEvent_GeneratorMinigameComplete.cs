@@ -1,7 +1,9 @@
+using System.Collections;
 using GameManagers;
 using Gameplay.Objects.Interaction;
 using Gameplay.Objects.Items;
 using UnityEngine;
+using Utilities.Audio;
 using Utilities.UI;
 
 namespace CoreEvent.GameEvents
@@ -10,8 +12,13 @@ namespace CoreEvent.GameEvents
     {
         [SerializeField] private GameEventTypeEnum _gameEventType;
         [SerializeField] private GeneratorController _generatorController;
+        [SerializeField] private Animator _generatorAnimator;
+        [SerializeField] private Transform _generatorEngineTransform;
         [SerializeField] private ItemFlashlight _itemFlashlight;
         [SerializeField] private GameObject _eventLightBlink;
+
+        private const string ANIMATION_GENERATOR_TURN_ON = "GeneratorTurnOn";
+        private const string ANIMATOR_GENERATOR_SPEED_PARAMETER = "GeneratorRotationSpeed";
 
         public GameEventTypeEnum gameEventType
         {
@@ -32,7 +39,7 @@ namespace CoreEvent.GameEvents
 
         private void Awake()
         {
-            _hasRun = false;    
+            _hasRun = false;
         }
 
         public void RunPermanentEvents()
@@ -46,7 +53,24 @@ namespace CoreEvent.GameEvents
         {
             RunPermanentEvents();
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_02_MINIGAME_COMPLETE);
+
+            _generatorAnimator.Play(ANIMATION_GENERATOR_TURN_ON);
+            AudioManager.instance.FadeInAtPosition(AudioNameEnum.ENVIRONMENT_GENERATOR_ENGINE, 10, _generatorEngineTransform.position, AudioRange.HIGH, null, true, null);
+            // AudioManager.instance.FadeIn(AudioNameEnum.ENVIRONMENT_GENERATOR_ENGINE, 10, null, true);
+            StartCoroutine(IncreaseGeneratorRotationSpeed());
             _hasRun = true;
+        }
+
+        private IEnumerator IncreaseGeneratorRotationSpeed()
+        {
+            var __speedMultiplier = 0f;
+
+            while (__speedMultiplier < 10)
+            {
+                __speedMultiplier += Time.deltaTime;
+                _generatorAnimator.SetFloat(ANIMATOR_GENERATOR_SPEED_PARAMETER, __speedMultiplier);
+                yield return null;
+            }
         }
     }
 }

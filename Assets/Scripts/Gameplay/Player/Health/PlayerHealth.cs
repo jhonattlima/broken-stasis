@@ -1,6 +1,7 @@
 ﻿using GameManagers;
 using Gameplay.Player.Motion;
 using UnityEngine;
+using Utilities;
 using Utilities.Audio;
 using Utilities.VariableManagement;
 
@@ -28,7 +29,7 @@ namespace Gameplay.Player.Health
 
         public void ReceiveDamage(int p_damage)
         {
-            if(GameStateManager.currentState == GameState.CUTSCENE) return;
+            if(!InputController.GamePlay.InputEnabled || GameStateManager.currentState == GameState.CUTSCENE) return;
             
             if (_playerCurrentHealth - p_damage < 0)
                 _playerCurrentHealth = 0;
