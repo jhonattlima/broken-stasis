@@ -48,5 +48,16 @@ namespace Utilities.VariableManagement
                 return _gameplayVariables;
             }
         }
+
+        private static EnvironmentVariablesScriptableObject _environmentVariables;
+        public static EnvironmentVariablesScriptableObject environmentVariables 
+        {
+            get
+            {
+                if(_environmentVariables == null) _environmentVariables = Resources.Load<EnvironmentVariablesScriptableObject>("Variables/EnvironmentVariables");
+
+                return _environmentVariables;
+            }
+        }
     }
 }
