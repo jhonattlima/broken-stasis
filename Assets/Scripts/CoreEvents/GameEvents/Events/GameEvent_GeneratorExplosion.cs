@@ -76,6 +76,7 @@ namespace CoreEvent.GameEvents
                 
                 AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
                 {
+                    AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_GENERATOR_ENGINE);
                     AudioManager.instance.StopMusic();
                     TurnOffAllLights();
                     GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
