@@ -39,7 +39,7 @@ namespace Gameplay.Player.Motion
 
         public void RunFixedUpdate()
         {
-            if (GameStateManager.currentState != GameState.RUNNING) return;
+            if (GameStateManager.currentState != GameState.RUNNING || !InputController.GamePlay.InputEnabled) return;
 
             SetMovementVariables();
             SetMovingState();

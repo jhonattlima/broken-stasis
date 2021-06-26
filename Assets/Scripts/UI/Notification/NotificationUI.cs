@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameManagers;
 using TMPro;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 using Utilities.VariableManagement;
 
 namespace UI.Notification
@@ -56,6 +58,8 @@ namespace UI.Notification
 
             _animator.Play(SHOW_NOTIFICATION_ANIMATION);
 
+            AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false);
+            
             _notificationEventHandler.OnShowAnimationEnd = delegate ()
             {
                 float __duration = p_duration;

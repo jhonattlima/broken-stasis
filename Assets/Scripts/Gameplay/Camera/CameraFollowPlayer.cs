@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameManagers;
+using UnityEngine;
 using Utilities;
 using Utilities.VariableManagement;
 
@@ -28,7 +29,7 @@ namespace Gameplay.Camera
 
         public void RunFixedUpdate()
         {
-            if(InputController.GamePlay.InputEnabled)
+            if(GameStateManager.currentState == GameState.RUNNING)
             {
                 float __distToMove = Vector3.Distance(_mousePosInWorld, _playerTransform.position) * VariablesManager.cameraVariables.cameraDistanceFromPlayer;
                 Vector3 __distanceVectorNormalized = (_mousePosInWorld - _playerTransform.position).normalized;

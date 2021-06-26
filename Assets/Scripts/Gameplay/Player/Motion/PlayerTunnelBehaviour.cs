@@ -30,7 +30,8 @@ namespace Gameplay.Player.Motion
             _charController = p_charController;
         }
 
-        private void OnTriggerStay(Collider other) {      
+        private void OnTriggerStay(Collider other)
+        {      
             if (other.CompareTag(GameInternalTags.TUNNEL) && isCrouching && !_isCrossing)
             {
                 SetMovingInitialState(other.gameObject);
@@ -49,7 +50,8 @@ namespace Gameplay.Player.Motion
 
             _targetPosition = GetSiblingGameObject(p_tunnelGameObject).transform.position;
 
-            GameStateManager.SetGameState(GameState.CUTSCENE);
+            InputController.GamePlay.InputEnabled = false;
+            InputController.GamePlay.MouseEnabled = false;
 
             LooktoPosition(_targetPosition);
 
@@ -76,7 +78,8 @@ namespace Gameplay.Player.Motion
             else
             {
                 PlayerStatesManager.SetPlayerState(PlayerState.STATIC);
-                GameStateManager.SetGameState(GameState.RUNNING);
+                InputController.GamePlay.InputEnabled = true;
+                InputController.GamePlay.MouseEnabled = true;
                 _isCrossing = false;
             }
         }
