@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3912273849436517929}
   - component: {fileID: 4417550035161587466}
   m_Layer: 0
-  m_Name: Block
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3348398123103060725}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -55.47619, y: -2.2431931, z: 30.878273}
+  m_LocalPosition: {x: -55.47619, y: 0, z: 30.878273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,5 +92,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.551466, y: 0.551466, z: 0.551466}
-  m_Center: {x: 0, y: 0.275733, z: 0}
+  m_Size: {x: 0.551466, y: 1, z: 0.551466}
+  m_Center: {x: 0, y: 0.5, z: 0}
