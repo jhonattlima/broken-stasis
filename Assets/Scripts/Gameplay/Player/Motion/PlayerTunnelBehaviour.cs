@@ -18,9 +18,6 @@ namespace Gameplay.Player.Motion
         private CharacterController _charController;
         private TunnelController _lastStoredTunnelController;
 
-        public Action onTunnelEnter;
-        public Action onTunnelExit;
-
         public void InitializePlayerTunnelBehaviour(float p_crouchingSpeed, Transform p_playerTransform, CharacterController p_charController)
         {
             _crouchingSpeed = p_crouchingSpeed;

@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202275142}
   m_Layer: 10
-  m_Name: CoveredProps
+  m_Name: coveredProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ Transform:
   - {fileID: 1081516798}
   - {fileID: 1915098645}
   m_Father: {fileID: 2018385757831666372}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915098641
 GameObject:
@@ -261,9 +261,9 @@ Transform:
   m_Children:
   - {fileID: 2817230347780443539}
   - {fileID: 1849337958230919000}
-  - {fileID: 4376719465331536453}
-  - {fileID: 5719452503097481399}
   - {fileID: 1202275142}
+  - {fileID: 5719452503097481399}
+  - {fileID: 4376719465331536453}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376719465331536453}
   m_Layer: 10
-  m_Name: Lights_corridor_C8
+  m_Name: lightsCorridorC8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2018385757831666372}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5181814601936295352
 GameObject:
@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849337958230919000}
   m_Layer: 0
-  m_Name: Props
+  m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 3074895624993261231, guid: a0a0086397bfb404cac3d96cd63bb619,
         type: 3}
       propertyPath: m_Name
-      value: Corridor_C8
+      value: corridorC8
       objectReference: {fileID: 0}
     - target: {fileID: 3074895624993261231, guid: a0a0086397bfb404cac3d96cd63bb619,
         type: 3}
@@ -1592,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: 5288951727588360758, guid: 7fbceae765040524f8327f8cbb91bd55,
         type: 3}
       propertyPath: m_Name
-      value: Cover_corridor_C8
+      value: coverCorridorC8
       objectReference: {fileID: 0}
     - target: {fileID: 5924572887166009283, guid: 7fbceae765040524f8327f8cbb91bd55,
         type: 3}

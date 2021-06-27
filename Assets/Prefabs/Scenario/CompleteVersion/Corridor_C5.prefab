@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 72243190}
   m_Layer: 10
-  m_Name: InvestigationPoints
+  m_Name: investigationPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   - {fileID: 2042101290}
   - {fileID: 2039331780}
   m_Father: {fileID: 996258245014476803}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019750829
 GameObject:
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019750830}
   m_Layer: 10
-  m_Name: CoveredProps
+  m_Name: coveredProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Transform:
   - {fileID: 1696568931}
   - {fileID: 1657930457}
   m_Father: {fileID: 996258245014476803}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657930453
 GameObject:
@@ -338,12 +338,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5679952496751720815}
-  - {fileID: 3263123751346730543}
   - {fileID: 7713000928403742211}
+  - {fileID: 1019750830}
+  - {fileID: 3263123751346730543}
   - {fileID: 5138947034005646305}
   - {fileID: 6159627918369299230}
   - {fileID: 72243190}
-  - {fileID: 1019750830}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -357,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7713000928403742211}
   m_Layer: 0
-  m_Name: Props
+  m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +387,7 @@ Transform:
   - {fileID: 8917336018039320831}
   - {fileID: 4580958646886491546}
   m_Father: {fileID: 996258245014476803}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167945942152665729
 GameObject:
@@ -672,7 +672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 996258245014476803}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1938564713984457098
 MeshFilter:
@@ -807,7 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6159627918369299230}
   m_Layer: 0
-  m_Name: Lights_Corridor_C5
+  m_Name: lightsCorridorC5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ Transform:
   - {fileID: 8650513743233489822}
   - {fileID: 8469066470716196463}
   m_Father: {fileID: 996258245014476803}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &365855690060850517
 PrefabInstance:
@@ -839,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 4774645557720633012, guid: 3978fbf2c95e44d479f80d1c425c10d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4774645557720633012, guid: 3978fbf2c95e44d479f80d1c425c10d1,
         type: 3}
@@ -894,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 5262775551082730510, guid: 3978fbf2c95e44d479f80d1c425c10d1,
         type: 3}
       propertyPath: m_Name
-      value: Cover_corridor_C5
+      value: coverCorridorC5
       objectReference: {fileID: 0}
     - target: {fileID: 5262775551082730510, guid: 3978fbf2c95e44d479f80d1c425c10d1,
         type: 3}
@@ -1935,7 +1935,7 @@ PrefabInstance:
     - target: {fileID: 3923971486575996560, guid: c7ee9a9c74b0fc548986943b7ba174be,
         type: 3}
       propertyPath: m_Name
-      value: Corridor_C5
+      value: corridorC5
       objectReference: {fileID: 0}
     - target: {fileID: 3923971486575996560, guid: c7ee9a9c74b0fc548986943b7ba174be,
         type: 3}

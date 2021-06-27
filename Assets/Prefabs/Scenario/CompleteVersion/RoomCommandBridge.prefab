@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787996456963141678}
   m_Layer: 0
-  m_Name: Props
+  m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ Transform:
   - {fileID: 8164945751267290102}
   - {fileID: 8164945751368084181}
   m_Father: {fileID: 3019240481081344246}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3485663614613256709
 GameObject:
@@ -389,8 +389,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3760336163981484135}
-  - {fileID: 7248925040800982007}
   - {fileID: 787996456963141678}
+  - {fileID: 7248925040800982007}
   - {fileID: 6701530275306150217}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -405,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6701530275306150217}
   m_Layer: 10
-  m_Name: Lights_commandBridge
+  m_Name: lightsCommandBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 8456674028231406927, guid: a64c13e62b925f64abd7b2f3a4a2afea,
         type: 3}
       propertyPath: m_Name
-      value: Cover_commandBridge
+      value: coverCommandBridge
       objectReference: {fileID: 0}
     - target: {fileID: 8456674028231406927, guid: a64c13e62b925f64abd7b2f3a4a2afea,
         type: 3}
@@ -521,7 +521,7 @@ PrefabInstance:
     - target: {fileID: 9085999696994988021, guid: a64c13e62b925f64abd7b2f3a4a2afea,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9085999696994988021, guid: a64c13e62b925f64abd7b2f3a4a2afea,
         type: 3}
@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 2278349466363884026, guid: 1015f0a4c3ee9f54da4158ed5a19fe2e,
         type: 3}
       propertyPath: m_Name
-      value: RoomCommandBridge
+      value: roomCommandBridge
       objectReference: {fileID: 0}
     - target: {fileID: 2278349466363884026, guid: 1015f0a4c3ee9f54da4158ed5a19fe2e,
         type: 3}

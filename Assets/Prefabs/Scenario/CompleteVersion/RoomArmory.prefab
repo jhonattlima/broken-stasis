@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609968265}
   m_Layer: 10
-  m_Name: Lights_armory
+  m_Name: lightsArmory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1505338040200322478}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &26963519975392527
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1972356036541588698}
   - component: {fileID: 3675189962902227304}
   m_Layer: 10
-  m_Name: Room_armory
+  m_Name: roomArmory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,9 +316,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 798293275566366645}
+  - {fileID: 3228699566905357756}
   - {fileID: 213833859938715197}
   - {fileID: 609968265}
-  - {fileID: 3228699566905357756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3228699566905357756}
   m_Layer: 0
-  m_Name: Props
+  m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ Transform:
   - {fileID: 2252217146509526520}
   - {fileID: 721924667547109495}
   m_Father: {fileID: 1505338040200322478}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6673717514938505248
 GameObject:
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 969832278}
   - component: {fileID: 969832272}
   m_Layer: 13
-  m_Name: Cover_armory
+  m_Name: coverArmory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1505338040200322478}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &8413292463333945177
 MeshFilter:
