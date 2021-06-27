@@ -7,6 +7,7 @@ using UI.ToolTip;
 using UnityEngine;
 using Utilities;
 using Utilities.Audio;
+using Utilities.UI;
 
 namespace Gameplay.Objects.Interaction
 {
@@ -36,26 +37,32 @@ namespace Gameplay.Objects.Interaction
 
             GameplayManager.instance.onPlayerDamaged += delegate (int p_damage)
             {
-                if(_runningPuzzle)
+                if (_runningPuzzle)
                     InterruptPuzzle();
             };
         }
 
         public override void Interact()
         {
-            if(!_runningPuzzle && _enabled && GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.KEYCARD))
+            if (!_runningPuzzle && _enabled && GameplayManager.instance.inventoryController.inventoryList.Contains(ItemEnum.KEYCARD))
             {
                 _doorToolTip.InteractToolTip();
                 _runningPuzzle = true;
                 PlayerStatesManager.SetPlayerState(PlayerState.INTERACT_WITH_ENDLEVEL_DOOR);
                 _endGamePuzzleController.StartLoading();
             }
+            else
+            {
+                AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP_DENIED, false, () =>
+                {
+                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_KEYKARD_NEEDED);
+                });
+            }
         }
 
         public override void RunFixedUpdate()
         {
-            // Player estava no meio do puzzle mas saiu do collider
-            if(_runningPuzzle && InputController.GamePlay.NavigationAxis() != Vector3.zero)
+            if (_runningPuzzle && InputController.GamePlay.NavigationAxis() != Vector3.zero)
             {
                 InterruptPuzzle();
             }
@@ -70,17 +77,13 @@ namespace Gameplay.Objects.Interaction
 
         private void HandleCurrentBarCompleted(int p_currentBar)
         {
-            //UnityEngine.Debug.Log("Bar " + p_currentBar + " completed");
             _door.UnlockDoorLock();
-            // Dispara som de alarme
-            
+
             _enemy.TeleportToEndgameDoorSpawn(transform.position);
         }
-        
+
         private void HandlePuzzleCompleted()
         {
-            //UnityEngine.Debug.Log("All bars completed");
-
             _runningPuzzle = false;
             _corridorC8Collider.enabled = true;
             PlayerStatesManager.SetPlayerState(PlayerState.EXITED_ENDLEVEL_DOOR_AREA);

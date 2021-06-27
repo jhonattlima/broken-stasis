@@ -1611,13 +1611,13 @@ MonoBehaviour:
   m_margin: {x: -100.04425, y: 0, z: -98.385376, w: 0}
   m_textInfo:
     textComponent: {fileID: 3230320539432055037}
-    characterCount: 11
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 2
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1935,7 +1935,7 @@ PrefabInstance:
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.32
+      value: 6.187
       objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
@@ -2224,6 +2224,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1486802221}
     m_Modifications:
+    - target: {fileID: 8526903377407785944, guid: 97ad076fab816894c9e7a85ead97e6b3,
+        type: 3}
+      propertyPath: _isActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785944, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: _nextTooltip
@@ -3080,7 +3085,7 @@ PrefabInstance:
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.638
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
@@ -3140,7 +3145,7 @@ PrefabInstance:
     - target: {fileID: 8526903377407785947, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: m_Center.x
-      value: 0.65
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785947, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
