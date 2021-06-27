@@ -67,7 +67,7 @@ namespace GameManagers
 
             if (!p_canRepeat && _audioSourcePool.IsAlreadyPlayingClip(__audioClipParams.audioFile))
             {
-                Debug.Log("Audio source already playing and should not repeat: " + p_audio);
+                // Debug.Log("Audio source already playing and should not repeat: " + p_audio);
                 return null;
             }
 
@@ -102,7 +102,7 @@ namespace GameManagers
         {
             var __audioSource = Play(p_audio, p_loop, null, p_canRepeat);
 
-
+            if (!__audioSource) return null;
             __audioSource.gameObject.transform.position = p_position;
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = AudioRolloffMode.Custom;
