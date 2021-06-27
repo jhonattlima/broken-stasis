@@ -19,10 +19,8 @@ namespace Gameplay.Player.Sensors
         {
             if (other.CompareTag(GameInternalTags.ENEMY) && HasDirectViewOfHiddenObject(other.gameObject))
             {
-                var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-
-                foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
-                    __meshRenderer.enabled = true;
+                // foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
+                //     __meshRenderer.enabled = true;
             }
         }
 
@@ -30,18 +28,16 @@ namespace Gameplay.Player.Sensors
         {
             if (other.CompareTag(GameInternalTags.ENEMY))
             {
-                var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-
                 if (HasDirectViewOfHiddenObject(other.gameObject))
                 {
-                    foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
-                        __meshRenderer.enabled = true;
-                    VFXManager.instance.FadeOutMaterial(__meshRenderers[0].name);
+                    // foreach (SkinnedMeshRenderer __meshRenderer in __meshRenderers)
+                    //     __meshRenderer.enabled = true;
+                    VFXManager.instance.FadeOutMaterial(other.GetComponentInParent<CustomObjectId>().uniqueId);
                 }
                 else
                 {
-                    foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
-                        meshRenderer.enabled = false;
+                    // foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
+                    //     meshRenderer.enabled = false;
                 }
             }
         }
@@ -52,8 +48,8 @@ namespace Gameplay.Player.Sensors
             {
                 var __meshRenderers = other.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
 
-                foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
-                        meshRenderer.enabled = false;
+                // foreach (SkinnedMeshRenderer meshRenderer in __meshRenderers)
+                //         meshRenderer.enabled = false;
             }
         }
 

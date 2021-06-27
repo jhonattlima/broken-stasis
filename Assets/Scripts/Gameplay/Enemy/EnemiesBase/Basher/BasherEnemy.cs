@@ -121,7 +121,7 @@ namespace Gameplay.Enemy.EnemiesBase
                 _basherContainer.visionSensor.onPlayerDetected(_basherContainer.endGameSpawnTransform);
             }
 
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM);
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM, false, true, _basherContainer.navigationAgent.transform.parent.name);
         }
 
         private void HandleGameStateChanged(GameState p_gameState)
