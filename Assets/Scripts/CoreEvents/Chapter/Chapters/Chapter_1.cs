@@ -16,8 +16,9 @@ namespace CoreEvent.Chapters
     {
         [SerializeField] private ChapterTypeEnum _chapterType;
         [SerializeField] private DoorController _doorController;
-        
-        [SerializeField] private ControlsSplash _controlsSplash;
+
+        [SerializeField] private ControlsSplash _splashControls;
+        [SerializeField] private ControlsSplash _splashHeadphones;
         [SerializeField] private ToolTip _firstDoorToolTip;
 
         public ChapterTypeEnum chapterType
@@ -37,28 +38,30 @@ namespace CoreEvent.Chapters
         }
 
         public void ChapterStart()
-        {   
+        {
             LoadingView.instance.InstantBlackScreen();
             AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEPLAY, 5);
-            
-            _controlsSplash.ShowControlsSplash(delegate ()
+
+            _splashControls.ShowControlsSplash(delegate ()
             {
-
-                _firstDoorToolTip.ActivateToolTip();
-
-                LoadingView.instance.FadeOut(delegate ()
+                _splashHeadphones.ShowControlsSplash(() =>
                 {
-                    InputController.UI.InputEnabled = true;
+                    _firstDoorToolTip.ActivateToolTip();
 
-                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
+                    LoadingView.instance.FadeOut(delegate ()
+                    {
+                        InputController.UI.InputEnabled = true;
+
+                        GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_WAKE_UP_MESSAGE);
+                    });
+                    InputController.GamePlay.MouseEnabled = true;
+
+                    _doorController.LockDoor();
+                    _doorController.onDoorLocked = delegate ()
+                    {
+                        GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_LOCKED_DOOR);
+                    };
                 });
-                InputController.GamePlay.MouseEnabled = true;
-
-                _doorController.LockDoor();
-                _doorController.onDoorLocked = delegate ()
-                {
-                    GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_01_LOCKED_DOOR);
-                };
             });
         }
 
