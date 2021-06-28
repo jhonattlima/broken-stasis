@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,7 +494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -587,7 +587,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -680,7 +680,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -773,7 +773,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1026,7 +1026,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 233cc565b1781ff41913f3c2913dd654, type: 2}
+  - {fileID: 2100000, guid: e141992406741954898f0e3702cd78e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2697,6 +2697,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617604937978655291, guid: e46bf3beead49cc419d2fff6b4565f4d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000006240438
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617604937978655291, guid: e46bf3beead49cc419d2fff6b4565f4d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.475005
       objectReference: {fileID: 0}
     - target: {fileID: 8850761309007839893, guid: e46bf3beead49cc419d2fff6b4565f4d,
         type: 3}

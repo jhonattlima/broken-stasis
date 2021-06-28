@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2042850482
 Transform:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23045b3be0ab424188ef87d940090a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tunnelLightBlocker: {fileID: 2042850481}
+  _tunnelLightBlocker: {fileID: 0}
   _connectionPoints:
   - {fileID: 619295545653101701}
   - {fileID: 619295545753165331}

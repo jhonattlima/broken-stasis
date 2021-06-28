@@ -8,12 +8,12 @@ public class TunnelController : MonoBehaviour
 
     public void EnableLightBlocker()
     {
-        _tunnelLightBlocker.SetActive(true);
+        // _tunnelLightBlocker.SetActive(true);
     }
 
     public void DisableLightBlocker()
     {
-        _tunnelLightBlocker.SetActive(false);
+        // _tunnelLightBlocker.SetActive(false);
     }
 
     public Vector3 GetSiblingPosition(GameObject _collidedPoint)
