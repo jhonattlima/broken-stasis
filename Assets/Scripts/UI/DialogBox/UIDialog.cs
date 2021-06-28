@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 using Utilities.Dialog;
 using Utilities.UI;
 using Utilities.VariableManagement;
@@ -76,6 +77,7 @@ namespace UI.Dialog
             InputController.GamePlay.MouseEnabled = false;
             if (!_visible)
             {
+                AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_START);
                 _hudAnimator.Play(SHOW_DIALOG_HUD_ANIMATION);
                 _visible = true;
             }
@@ -98,8 +100,8 @@ namespace UI.Dialog
             {
                 InputController.GamePlay.InputEnabled = true;
                 InputController.GamePlay.MouseEnabled = true;
-            } 
-            
+            }
+
             InputController.UI.InputEnabled = false;
             _visible = false;
         }
@@ -107,6 +109,7 @@ namespace UI.Dialog
         private void DisplayNextDialog()
         {
             StopAllCoroutines();
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
 
             _dialogText.text = _currentDialogText;
 
@@ -116,6 +119,7 @@ namespace UI.Dialog
                 return;
             }
 
+            AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_NEXT);
             DialogTextUnit __conversationUnit = _conversationQueue.Dequeue();
             StartCoroutine(TypeDialog(__conversationUnit));
         }
@@ -127,6 +131,7 @@ namespace UI.Dialog
 
             _currentDialogText = p_conversationUnit.text;
 
+            AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_TYPING, true);
             foreach (char __letter in _currentDialogText.ToCharArray())
             {
                 while (GameStateManager.currentState == GameState.PAUSED)
@@ -135,10 +140,12 @@ namespace UI.Dialog
                 _dialogText.text += __letter;
                 yield return null;
             }
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
         }
 
         private void EndDialog()
         {
+            AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_END);
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
             _dialogEnded = true;
 

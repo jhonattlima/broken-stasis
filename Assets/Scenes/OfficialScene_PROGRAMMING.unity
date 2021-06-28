@@ -1047,6 +1047,12 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 20656983}
+    - target: {fileID: 3977503242478048518, guid: f793ea42f9d70874abe5a27a4775a0a3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 843ab51548965464aa321f4a689ffd10,
+        type: 3}
     - target: {fileID: 4192923736930385684, guid: f793ea42f9d70874abe5a27a4775a0a3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1943,6 +1949,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1292681127}
     - target: {fileID: 1560004372, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
+      propertyPath: _itemFlashlightBatteries
+      value: 
+      objectReference: {fileID: 1307092260}
+    - target: {fileID: 1560004372, guid: b7136026263e47e4e871da140d6de8aa, type: 3}
       propertyPath: _environmentLightExplosion
       value: 
       objectReference: {fileID: 577631594}
@@ -2183,9 +2193,19 @@ PrefabInstance:
       objectReference: {fileID: 2026303382}
     - target: {fileID: 8052083270493530479, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
+      propertyPath: _splashControls
+      value: 
+      objectReference: {fileID: 1997072530}
+    - target: {fileID: 8052083270493530479, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
       propertyPath: _firstDoorToolTip
       value: 
       objectReference: {fileID: 1711103774}
+    - target: {fileID: 8052083270493530479, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: _splashHeadphones
+      value: 
+      objectReference: {fileID: 983335425}
     - target: {fileID: 8052083270922509227, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: m_Name
@@ -2266,6 +2286,11 @@ PrefabInstance:
       propertyPath: _generatorController
       value: 
       objectReference: {fileID: 2092367709}
+    - target: {fileID: 8052083271395300622, guid: b7136026263e47e4e871da140d6de8aa,
+        type: 3}
+      propertyPath: _itemFlashlightBatteries
+      value: 
+      objectReference: {fileID: 1307092260}
     - target: {fileID: 8052083271395300622, guid: b7136026263e47e4e871da140d6de8aa,
         type: 3}
       propertyPath: _generatorEngineTransform
@@ -2532,7 +2557,7 @@ PrefabInstance:
     - target: {fileID: 5455508348381428031, guid: f2e164e24258df64a98f2b45a66f5e46,
         type: 3}
       propertyPath: m_Name
-      value: Flashlight
+      value: FlashlightBatteries
       objectReference: {fileID: 0}
     - target: {fileID: 8690236415232405591, guid: f2e164e24258df64a98f2b45a66f5e46,
         type: 3}
@@ -2867,6 +2892,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 290861093059143505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &983335425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3977503243066892740, guid: f793ea42f9d70874abe5a27a4775a0a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 347572440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98b29ad24f320347859f1fc0c17dae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &987392278
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ namespace UI.MainMenu
         [SerializeField] private TextMeshProUGUI _chapterTitleText;
 
         public Action OnReturn;
-        
+
         private MenuScreenAnimationController _slotScreenAnimationController;
         private MenuScreenAnimationController _subSlotScreenAnimationController;
         private int _slot;
@@ -31,7 +31,7 @@ namespace UI.MainMenu
             _slotScreenAnimationController = p_slotScreenAnimationController;
             _slot = p_slot;
 
-            _slotScreenAnimationController.Hide(delegate()
+            _slotScreenAnimationController.Hide(delegate ()
             {
                 _subSlotScreenAnimationController.Show();
             });
@@ -43,20 +43,23 @@ namespace UI.MainMenu
         {
             SaveGameManager.instance.LoadSlot(_slot);
 
-            foreach(Button __button in gameObject.GetComponentsInChildren<Button>())
+            foreach (Button __button in gameObject.GetComponentsInChildren<Button>())
                 __button.interactable = false;
 
-            LoadingView.instance.FadeIn(delegate ()
+            _subSlotScreenAnimationController.Hide(delegate ()
             {
-                SceneManager.LoadScene(ScenesConstants.GAME);
-            }, VariablesManager.uiVariables.defaultFadeInSpeed * 2f);
+                LoadingView.instance.FadeIn(delegate
+                {
+                    SceneManager.LoadScene(ScenesConstants.GAME);
+                }, VariablesManager.uiVariables.defaultFadeInSpeed * 2f);
+            });
         }
 
         [UsedImplicitly]
         public void DeleteSlot()
         {
             SaveGameManager.instance.DeleteSlot(_slot);
-            
+
             OnReturn?.Invoke();
 
             ReturnScreen();

@@ -14,7 +14,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GeneratorController _generatorController;
         [SerializeField] private Animator _generatorAnimator;
         [SerializeField] private Transform _generatorEngineTransform;
-        [SerializeField] private ItemFlashlight _itemFlashlight;
+        [SerializeField] private ItemFlashlightBatteries _itemFlashlightBatteries;
         [SerializeField] private GameObject _eventLightBlink;
 
         private const string ANIMATION_GENERATOR_TURN_ON = "GeneratorTurnOn";
@@ -45,7 +45,7 @@ namespace CoreEvent.GameEvents
         public void RunPermanentEvents()
         {
             _generatorController.SetEnabled(false);
-            _itemFlashlight.SetEnabled(true);
+            _itemFlashlightBatteries.SetEnabled(true);
             _eventLightBlink.SetActive(true);
         }
 

@@ -23,5 +23,11 @@ namespace UI.CustomButtonController
             if(GameStateManager.currentState == GameState.CUTSCENE) return;
             AudioManager.instance.Play(AudioNameEnum.UI_BUTTON_PRESSED);
         }
+
+        public void HandleStartButtonPressed()
+        {
+            if(GameStateManager.currentState == GameState.CUTSCENE) return;
+            AudioManager.instance.Play(AudioNameEnum.UI_START_BUTTON_PRESSED);
+        }
     }
 }

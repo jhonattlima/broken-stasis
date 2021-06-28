@@ -16,14 +16,18 @@ namespace Gameplay.Player.Item
             {
                 p_onFaded?.Invoke();
 
-                GameHudManager.instance.notificationHud.ShowText("Collected Suit");
                 GameplayManager.instance.onPlayerSuitChange(p_playerSuitEnum);
 
-                LoadingView.instance.FadeOut(delegate ()
+                AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false, delegate
                 {
-                    GameStateManager.SetGameState(GameState.RUNNING);
-                }
-                , VariablesManager.uiVariables.defaultFadeOutSpeed);
+                    LoadingView.instance.FadeOut(delegate ()
+                    {
+                        GameStateManager.SetGameState(GameState.RUNNING);
+                        GameHudManager.instance.notificationHud.ShowText("Collected Suit");
+                    }
+                    , VariablesManager.uiVariables.defaultFadeOutSpeed);
+                });
+
             }
             , VariablesManager.uiVariables.defaultFadeInSpeed);
         }

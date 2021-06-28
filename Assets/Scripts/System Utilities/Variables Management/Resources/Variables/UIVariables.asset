@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultNotificationDuration: 2
   defaultReadingWPM: 120
-  defaultFadeInSpeed: 0.75
-  defaultFadeOutSpeed: 0.75
+  defaultFadeInSpeed: 1
+  defaultFadeOutSpeed: 1
   generatorMinigameDuration: 10
-  controlsSplashDuration: 10
+  controlsSplashDuration: 7
   videoConfirmationPopUpDuration: 16

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ENVIRONMENT_LIGHT_BLINKING
   m_EditorClassIdentifier: 
   audioFile: {fileID: 8300000, guid: 95520f2097e60854686e9fe1c063304b, type: 3}
-  audioMixerGroup: {fileID: 0}
+  audioMixerGroup: {fileID: 6988149502019105432, guid: d7e573f2138a1814092682c8f93b6687,
+    type: 2}
   volume: 1

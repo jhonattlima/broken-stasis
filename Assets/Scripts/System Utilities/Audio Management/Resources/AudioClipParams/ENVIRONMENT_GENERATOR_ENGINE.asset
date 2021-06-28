@@ -15,4 +15,4 @@ MonoBehaviour:
   audioFile: {fileID: 8300000, guid: a1aa646c77ee04386a9bcd34877c9986, type: 3}
   audioMixerGroup: {fileID: 6988149502019105432, guid: d7e573f2138a1814092682c8f93b6687,
     type: 2}
-  volume: 1
+  volume: 0.5

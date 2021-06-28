@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4e3c0b66a0e8438478fc49306b4b9, type: 3}
   m_Name: ITEM_PICKUP
   m_EditorClassIdentifier: 
-  audioFile: {fileID: 8300000, guid: b21abdacae33d421ea34b294228aff99, type: 3}
-  audioMixerGroup: {fileID: -1557843067892748795, guid: d7e573f2138a1814092682c8f93b6687,
+  audioFile: {fileID: 8300000, guid: 327db4ee7d6b13a46b62633fdb3348b4, type: 3}
+  audioMixerGroup: {fileID: 4424642910374946641, guid: d7e573f2138a1814092682c8f93b6687,
     type: 2}
-  volume: 0.05
+  volume: 0.3
