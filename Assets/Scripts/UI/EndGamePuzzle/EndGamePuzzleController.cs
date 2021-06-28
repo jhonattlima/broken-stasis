@@ -3,6 +3,7 @@ using System.Collections;
 using GameManagers;
 using UnityEngine;
 using Utilities;
+using Utilities.Audio;
 using Utilities.VariableManagement;
 
 namespace UI.EndGamePuzzle
@@ -40,6 +41,7 @@ namespace UI.EndGamePuzzle
             CustomSceneManager.instance.StartCoroutine(_loadCoRoutine);
             
             GameHudManager.instance.endGameUI.ShowUI();
+            AudioManager.instance.Play(AudioNameEnum.PLAYER_TYPING);
         }
 
         public void StopLoading()
@@ -49,6 +51,7 @@ namespace UI.EndGamePuzzle
             StopLoadingBar();
 
             GameHudManager.instance.endGameUI.ResetBar(_loadingProgress.currentBar - 1);
+            AudioManager.instance.Stop(AudioNameEnum.PLAYER_TYPING, 0.1F);
         }
 
         private void LoadingBarCompleted()

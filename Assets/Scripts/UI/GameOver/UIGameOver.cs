@@ -42,7 +42,7 @@ namespace UI.GameOver
                HandleBackToTitleScreenOnClick(p_handleBackToTitleScreenOnClick);
            });
 
-            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEOVER);
+            AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEOVER, 5);
             Show();
         }
 
@@ -75,8 +75,8 @@ namespace UI.GameOver
 
         private void HandleEndOfShowPanelAnimation()
         {
-           AudioManager.instance.FadeOutAllSounds(0.2f);
-           Time.timeScale = 0;
+            AudioManager.instance.FadeOutAllSounds(0.2f);
+            Time.timeScale = 0;
         }
     }
 }

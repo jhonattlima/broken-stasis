@@ -77,7 +77,7 @@ namespace Gameplay.Enemy.EnemiesBase
             };
             _enemyAnimationEventHandler.OnAttack = delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, false, !__enemyMeshRenderer.enabled, __enemyMeshRenderer.name);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, true, !__enemyMeshRenderer.enabled, __enemyMeshRenderer.name);
             };
 
             _stateManager.onStateChanged += HandleStateChanged;

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using GameManagers;
 using Gameplay.Lighting;
@@ -17,7 +18,7 @@ namespace CoreEvent.GameEvents
         [SerializeField] private GameObject _roomGenerator;
         [SerializeField] private GameObject _generatorInterface;
         [SerializeField] private GameObject _roomGeneratorExploded;
-        [SerializeField] private ItemFlashlight _itemFlashlight;
+        [SerializeField] private ItemFlashlightBatteries _itemFlashlightBatteries;
         [SerializeField] private List<GameObject> _objectsToActivate;
         [SerializeField] private List<GameObject> _objectsToDeactivate;
         [SerializeField] private List<GameObject> _allLights;
@@ -55,7 +56,7 @@ namespace CoreEvent.GameEvents
         {
             _environmentLightExplosion.SetActive(false);
             _eventLightBlink.SetActive(false);
-            _itemFlashlight.SetCollected(true);
+            _itemFlashlightBatteries.SetCollected(true);
             ChangeGeneratorRoom();
             SwitchObjects();
             TurnOffAllLights();
@@ -74,16 +75,16 @@ namespace CoreEvent.GameEvents
             {
                 TFWToolKit.StartCoroutine(CameraShakerController.Shake(3, 5f, 1));
                 
-                AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
+                TurnOffAllLights();
+                var __audioSource = AudioManager.instance.Play(AudioNameEnum.GENERATOR_EXPLOSION, false, delegate ()
                 {
                     AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_GENERATOR_ENGINE);
                     AudioManager.instance.StopMusic();
-                    TurnOffAllLights();
+                    AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_LIGHT_BLINKING);
                     GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_NO_POWER_WARNING, delegate ()
                     {
                         _hasRun = true;
                         RunPermanentEvents();
-                        AudioManager.instance.Stop(AudioNameEnum.ENVIRONMENT_LIGHT_BLINKING);
                         
                         InputController.GamePlay.InputEnabled = true;
                         InputController.GamePlay.MouseEnabled = true;
@@ -92,6 +93,7 @@ namespace CoreEvent.GameEvents
                         ChapterManager.instance.GoToNextChapter();
                     });
                 });
+                StartCoroutine(TurnOffAllLights(__audioSource.clip.length / 1.5f));
             });
         }
 
@@ -122,6 +124,12 @@ namespace CoreEvent.GameEvents
         {
             foreach (GameObject __light in _allLights)
                 __light.SetActive(false);
+        }
+
+        private IEnumerator TurnOffAllLights(float p_secondsToWait)
+        {
+            yield return new WaitForSecondsRealtime(p_secondsToWait);
+            TurnOffAllLights();
         }
 
         private void DisableCovers()

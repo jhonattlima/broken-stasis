@@ -58,7 +58,7 @@ namespace UI.Notification
 
             _animator.Play(SHOW_NOTIFICATION_ANIMATION);
 
-            AudioManager.instance.Play(AudioNameEnum.ITEM_SUIT_PICKUP, false);
+            AudioManager.instance.Play(AudioNameEnum.ITEM_PICKUP, false);
             
             _notificationEventHandler.OnShowAnimationEnd = delegate ()
             {

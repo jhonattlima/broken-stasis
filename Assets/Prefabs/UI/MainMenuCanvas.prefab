@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 8141908731586740360}
   - component: {fileID: 2401795355903097493}
   - component: {fileID: 2516716750511373317}
+  - component: {fileID: 273004680}
   m_Layer: 5
   m_Name: AudioOptionsScreen
   m_TagString: Untagged
@@ -516,6 +517,18 @@ MonoBehaviour:
   _masterVolumeSlider: {fileID: 3907056895551085572}
   _sfxVolumeSlider: {fileID: 5858909216793702925}
   _musicVolumeSlider: {fileID: 5401615613758944837}
+--- !u!114 &273004680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390951223383651792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1487771694824301939
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +652,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1193826258427987999}
         m_MethodName: PressedApply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1810,6 +1845,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3064798805333189296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1978,7 @@ GameObject:
   - component: {fileID: 7765324206538105003}
   - component: {fileID: 8889518047346601629}
   - component: {fileID: 5222629679796356313}
+  - component: {fileID: 772949307}
   m_Layer: 5
   m_Name: Delete File
   m_TagString: Untagged
@@ -2041,6 +2099,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &772949307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211020604456603204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3235111925054541874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2256,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5292582495340830715}
         m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2516716750511373317}
+        m_MethodName: SaveChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2356,6 +2470,7 @@ GameObject:
   - component: {fileID: 103970771581535102}
   - component: {fileID: 5881531941904762726}
   - component: {fileID: 1193826258427987999}
+  - component: {fileID: 1264924554}
   m_Layer: 5
   m_Name: VideoOptionsScreen
   m_TagString: Untagged
@@ -2484,6 +2599,18 @@ MonoBehaviour:
   _fullScreenToggle: {fileID: 1041351588083680519}
   _applyReturnButton: {fileID: 1216809508109828226}
   _applyReturnText: {fileID: 5457614836746863211}
+--- !u!114 &1264924554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539108249390282238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3582589413994834381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,6 +3533,7 @@ GameObject:
   - component: {fileID: 8548627073106389034}
   - component: {fileID: 611642671330912414}
   - component: {fileID: 4250450504010061627}
+  - component: {fileID: 659263509}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -3526,6 +3654,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &659263509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941109676504572746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4979588648552951771
 GameObject:
   m_ObjectHideFlags: 0
@@ -4480,6 +4642,7 @@ GameObject:
   - component: {fileID: 5292582493713357243}
   - component: {fileID: 5292582493713357240}
   - component: {fileID: 5292582493713357241}
+  - component: {fileID: 382823944}
   m_Layer: 5
   m_Name: Slot3
   m_TagString: Untagged
@@ -4600,6 +4763,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 382823944}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &382823944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582493713357247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582493718177279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4732,6 +4918,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5292582493835175103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,6 +4952,7 @@ GameObject:
   - component: {fileID: 5292582493835175099}
   - component: {fileID: 5292582493835175096}
   - component: {fileID: 5292582493835175097}
+  - component: {fileID: 267588995}
   m_Layer: 5
   m_Name: Slot2
   m_TagString: Untagged
@@ -4864,6 +5073,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 267588995}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &267588995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582493835175103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582493938883813
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,6 +5357,7 @@ GameObject:
   - component: {fileID: 5292582493986082983}
   - component: {fileID: 5292582493986082982}
   - component: {fileID: 5292582493986082977}
+  - component: {fileID: 999088156}
   m_Layer: 5
   m_Name: SlotsScreen
   m_TagString: Untagged
@@ -5252,6 +5485,18 @@ MonoBehaviour:
   - {fileID: 5292582493997552181}
   - {fileID: 5292582494534569462}
   _subSlotScreen: {fileID: 2587230060925956059}
+--- !u!114 &999088156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582493986082984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582493992920145
 GameObject:
   m_ObjectHideFlags: 0
@@ -6836,6 +7081,7 @@ GameObject:
   - component: {fileID: 5292582494320278212}
   - component: {fileID: 5292582494320278215}
   - component: {fileID: 5292582494320278214}
+  - component: {fileID: 1965541587}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -6945,6 +7191,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba10bb266688794ca175669526ca46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1965541587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582494320278216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582494341714207
 GameObject:
   m_ObjectHideFlags: 0
@@ -6957,6 +7215,7 @@ GameObject:
   - component: {fileID: 5292582494341714203}
   - component: {fileID: 5292582494341714200}
   - component: {fileID: 5292582494341714201}
+  - component: {fileID: 1690516824}
   m_Layer: 5
   m_Name: Slot1
   m_TagString: Untagged
@@ -7077,6 +7336,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1690516824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582494341714207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582494426170207
 GameObject:
   m_ObjectHideFlags: 0
@@ -7200,6 +7482,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5292582495340830715}
         m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7378,6 +7682,7 @@ GameObject:
   - component: {fileID: 5292582494484927206}
   - component: {fileID: 5292582494484927207}
   - component: {fileID: 5292582494484927204}
+  - component: {fileID: 1877134258}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -7498,6 +7803,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1877134258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582494484927210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5292582494496456390
 GameObject:
   m_ObjectHideFlags: 0
@@ -8415,6 +8743,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5292582494991261178
 GameObject:
   m_ObjectHideFlags: 0
@@ -8426,6 +8776,7 @@ GameObject:
   - component: {fileID: 5292582494991261173}
   - component: {fileID: 5292582494991261175}
   - component: {fileID: 5292582494991261172}
+  - component: {fileID: 1219694924}
   m_Layer: 5
   m_Name: TitleMenu
   m_TagString: Untagged
@@ -8483,6 +8834,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce19ac630d992e440964b833f48fe6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1219694924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582494991261178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5292582494998774863
@@ -8608,6 +8971,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5292582495340830715}
         m_MethodName: OpenMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8862,6 +9247,7 @@ GameObject:
   - component: {fileID: 5292582495196608498}
   - component: {fileID: 5292582495196608496}
   - component: {fileID: 5292582495196608499}
+  - component: {fileID: 1690757115}
   m_Layer: 5
   m_Name: OptionsScreen
   m_TagString: Untagged
@@ -8969,6 +9355,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dba10bb266688794ca175669526ca46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1690757115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292582495196608497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5292582495340830716
@@ -9712,6 +10110,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1193826258427987999}
+        m_MethodName: InitializeVideoOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1193826258427987999}
         m_MethodName: InitializeVideoOptions
         m_Mode: 1
@@ -10042,6 +10462,7 @@ GameObject:
   - component: {fileID: 5142573998613742437}
   - component: {fileID: 6741808499157451407}
   - component: {fileID: 588496940348029906}
+  - component: {fileID: 1080879650}
   m_Layer: 5
   m_Name: Load File
   m_TagString: Untagged
@@ -10162,6 +10583,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1080879650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313453220629219135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7491089073473660063
 GameObject:
   m_ObjectHideFlags: 0
@@ -10177,6 +10632,7 @@ GameObject:
   - component: {fileID: 2428364258043870423}
   - component: {fileID: 6974989578037614146}
   - component: {fileID: 2587230060925956059}
+  - component: {fileID: 910856947}
   m_Layer: 5
   m_Name: SubSlotsScreen
   m_TagString: Untagged
@@ -10300,6 +10756,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chapterTitleText: {fileID: 2805914858611704449}
+--- !u!114 &910856947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491089073473660063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1872e31aca1f92544bb2f7cea6ba7f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7525552267303073242
 GameObject:
   m_ObjectHideFlags: 0
@@ -10829,6 +11297,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5292582495340830715}
         m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1690516824}
+        m_MethodName: HandleButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

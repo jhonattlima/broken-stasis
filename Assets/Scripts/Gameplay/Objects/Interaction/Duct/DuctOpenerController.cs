@@ -25,7 +25,7 @@ public class DuctOpenerController : TriggerColliderController
         if (!other.CompareTag(GameInternalTags.PLAYER)) return;
         if (!_activated)
         {
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENVIRONMENT_DUCT_COVER_FALL, _ductCover.gameObject.transform.position, false, AudioRange.LOW, false);
+            AudioManager.instance.Play(AudioNameEnum.ENVIRONMENT_DUCT_COVER_FALL);
             _ductCoverFallen.SetActive(true);
             _newExitPoint.enabled = true;
             _ductCover.SetActive(false);
