@@ -124,6 +124,8 @@ namespace UI.Minigame
         public void ShowMinigame()
         {
             InputController.GamePlay.InputEnabled = false;
+            InputController.GamePlay.MouseEnabled = false;
+
             _minigameEndState = MinigameStateEnum.PLAYING;
 
             _minigameLogic.InitializeMinigame();

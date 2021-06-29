@@ -54,6 +54,7 @@ namespace Gameplay.Objects.Interaction
             else
             {
                 InputController.GamePlay.InputEnabled = false;
+                PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
                 AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP_DENIED, false, () =>
                 {
                     GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_KEYKARD_NEEDED);

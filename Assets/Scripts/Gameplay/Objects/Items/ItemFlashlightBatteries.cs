@@ -56,6 +56,10 @@ namespace Gameplay.Objects.Items
                 }
                 else
                 {
+                    InputController.GamePlay.InputEnabled = false;
+                    InputController.GamePlay.MouseEnabled = false;
+                    PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
+
                     AudioManager.instance.Play(AudioNameEnum.ITEM_LANTERN_PICKUP_DENIED, false, () =>
                     {
                         GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_02_FLASHLIGHT_UNAVAILABLE);

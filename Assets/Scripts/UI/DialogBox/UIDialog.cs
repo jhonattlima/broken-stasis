@@ -145,6 +145,8 @@ namespace UI.Dialog
 
         private void EndDialog()
         {
+            InputController.GamePlay.InputEnabled = true;
+            InputController.GamePlay.MouseEnabled = true;
             AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_END);
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
             _dialogEnded = true;
