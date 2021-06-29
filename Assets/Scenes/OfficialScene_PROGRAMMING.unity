@@ -1186,6 +1186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LanternBatteriesToolTip
       objectReference: {fileID: 0}
+    - target: {fileID: 8526903377078917558, guid: f793ea42f9d70874abe5a27a4775a0a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.74
+      objectReference: {fileID: 0}
     - target: {fileID: 8526903377588082594, guid: f793ea42f9d70874abe5a27a4775a0a3,
         type: 3}
       propertyPath: m_Camera
@@ -1832,7 +1837,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7218
+  m_Name: pb_Mesh-107722
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5937,7 +5942,7 @@ PrefabInstance:
     - target: {fileID: 3620342845284146468, guid: 05dbb81abdfaa9448a6cad34ead92d8a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.13
+      value: -11.09
       objectReference: {fileID: 0}
     - target: {fileID: 3620342845284146468, guid: 05dbb81abdfaa9448a6cad34ead92d8a,
         type: 3}

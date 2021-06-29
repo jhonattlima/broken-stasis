@@ -4,6 +4,7 @@ using GameManagers;
 using Gameplay.Player.Motion;
 using UI.ToolTip;
 using UnityEngine;
+using Utilities;
 
 namespace Gameplay.Objects.Interaction
 {
@@ -46,7 +47,8 @@ namespace Gameplay.Objects.Interaction
 
         private void HandleMinigameFailed()
         {
-
+            InputController.GamePlay.InputEnabled = true;
+            InputController.GamePlay.MouseEnabled = true;
         }
     }
 }
