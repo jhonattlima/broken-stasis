@@ -18,4 +18,4 @@ MonoBehaviour:
   fastSpeedMultiplier: 2
   playerHeightWhenUp: 1.8
   playerHeightWhenCrouching: 0.6
-  isPlayerInvencible: 1
+  isPlayerInvencible: 0
