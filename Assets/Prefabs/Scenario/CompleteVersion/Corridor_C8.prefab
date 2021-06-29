@@ -1245,6 +1245,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1883829844313475503, guid: f3359da1515918a40a93af39399f1fd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3206541613396622268, guid: f3359da1515918a40a93af39399f1fd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1485,6 +1490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1883829844313475503, guid: f3359da1515918a40a93af39399f1fd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3206541613396622268, guid: f3359da1515918a40a93af39399f1fd2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1574,6 +1584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pipe_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883829844313475503, guid: f3359da1515918a40a93af39399f1fd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3206541613396622268, guid: f3359da1515918a40a93af39399f1fd2,
         type: 3}

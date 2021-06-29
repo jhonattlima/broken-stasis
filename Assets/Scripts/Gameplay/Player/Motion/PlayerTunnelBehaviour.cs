@@ -50,7 +50,6 @@ namespace Gameplay.Player.Motion
             _targetPosition = _lastStoredTunnelController.GetSiblingPosition(p_tunnelGameObject);
 
             InputController.GamePlay.InputEnabled = false;
-            InputController.GamePlay.MouseEnabled = false;
 
             LooktoPosition(_targetPosition);
 
@@ -78,7 +77,6 @@ namespace Gameplay.Player.Motion
             {
                 PlayerStatesManager.SetPlayerState(PlayerState.STATIC);
                 InputController.GamePlay.InputEnabled = true;
-                InputController.GamePlay.MouseEnabled = true;
                 _isCrossing = false;
                 _lastStoredTunnelController.EnableLightBlocker();
             }

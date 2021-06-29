@@ -1977,7 +1977,7 @@ PrefabInstance:
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.91
+      value: -12.67
       objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785946, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
@@ -2344,7 +2344,7 @@ PrefabInstance:
     - target: {fileID: 8526903377407785949, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: m_Name
-      value: LightToolTip
+      value: LanternBatteriesToolTip
       objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785949, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
@@ -2802,6 +2802,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1486802221}
     m_Modifications:
+    - target: {fileID: 8526903377407785944, guid: 97ad076fab816894c9e7a85ead97e6b3,
+        type: 3}
+      propertyPath: _isActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526903377407785944, guid: 97ad076fab816894c9e7a85ead97e6b3,
         type: 3}
       propertyPath: _nextTooltip
@@ -5403,6 +5408,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9099716805116215807}
     m_Modifications:
+    - target: {fileID: 8066469281359188615, guid: fbd597062436fd84c88190aa2737c1c3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 843ab51548965464aa321f4a689ffd10,
+        type: 3}
     - target: {fileID: 8066469281848288832, guid: fbd597062436fd84c88190aa2737c1c3,
         type: 3}
       propertyPath: m_Pivot.x
