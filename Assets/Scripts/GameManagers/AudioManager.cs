@@ -67,7 +67,7 @@ namespace GameManagers
 
             if (!p_canRepeat && _audioSourcePool.IsAlreadyPlayingClip(__audioClipParams.audioFile))
             {
-                Debug.Log("Audio source already playing and should not repeat: " + p_audio);
+                // Debug.Log("Audio source already playing and should not repeat: " + p_audio);
                 return null;
             }
 

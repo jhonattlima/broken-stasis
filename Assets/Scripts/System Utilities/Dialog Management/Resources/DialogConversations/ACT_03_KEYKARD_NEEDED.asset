@@ -10,16 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 554a8c164dcc78b44993e6d496eeed47, type: 3}
-  m_Name: ACT_03_NO_POWER_WARNING
+  m_Name: ACT_03_KEYKARD_NEEDED
   m_EditorClassIdentifier: 
   conversationTexts:
   - speaker: 0
-    text: '[EMERGCON 1] DANGER PROTOCOL INITIATED.'
-  - speaker: 0
-    text: INTERNAL DAMAGE DETECTED AT GENERATOR ROOM.
-  - speaker: 0
-    text: WEAK LIFE SIGNALS DETECTED IN ARMORY ROOM.
-  - speaker: 0
-    text: PLEASE EVACUATE THE AREA.
-  - speaker: 0
-    text: THIS IS NOT A TRAINING.
+    text: '[ERROR] Level 2 access credentials are necessary to log in.'

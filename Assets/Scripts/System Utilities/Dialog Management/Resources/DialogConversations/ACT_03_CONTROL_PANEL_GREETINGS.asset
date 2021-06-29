@@ -18,10 +18,10 @@ MonoBehaviour:
   - speaker: 0
     text: All access doors are locked.
   - speaker: 0
-    text: Welcome to command bridge, Dr. Atom.
+    text: Welcome to command bridge, Dr. Viktor.
   - speaker: 0
     text: 'Ship health status: ...30%.'
   - speaker: 0
-    text: 'Please wait for Fix Tasks Report.
-
-      Coming soon...'
+    text: Please wait for Fix Tasks Report [FTR].
+  - speaker: 0
+    text: Coming soon...

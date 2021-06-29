@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Linq;
-using GameManagers;
 using UI.ToolTip;
 using UnityEngine;
 using Utilities;
@@ -19,9 +16,7 @@ namespace Gameplay.Player.Motion
         private float _crouchingSpeed;
         private Transform _playerTransform;
         private CharacterController _charController;
-
-        public Action onTunnelEnter;
-        public Action onTunnelExit;
+        private TunnelController _lastStoredTunnelController;
 
         public void InitializePlayerTunnelBehaviour(float p_crouchingSpeed, Transform p_playerTransform, CharacterController p_charController)
         {
@@ -34,6 +29,10 @@ namespace Gameplay.Player.Motion
         {      
             if (other.CompareTag(GameInternalTags.TUNNEL) && isCrouching && !_isCrossing)
             {
+                _lastStoredTunnelController = other.gameObject.GetComponentInParent<TunnelController>();
+
+                _lastStoredTunnelController.DisableLightBlocker();
+
                 SetMovingInitialState(other.gameObject);
 
                 _isCrossing = true;
@@ -48,7 +47,7 @@ namespace Gameplay.Player.Motion
             _playerTransform.position = p_tunnelGameObject.transform.position;
             _charController.enabled = true;
 
-            _targetPosition = GetSiblingGameObject(p_tunnelGameObject).transform.position;
+            _targetPosition = _lastStoredTunnelController.GetSiblingPosition(p_tunnelGameObject);
 
             InputController.GamePlay.InputEnabled = false;
             InputController.GamePlay.MouseEnabled = false;
@@ -81,17 +80,8 @@ namespace Gameplay.Player.Motion
                 InputController.GamePlay.InputEnabled = true;
                 InputController.GamePlay.MouseEnabled = true;
                 _isCrossing = false;
+                _lastStoredTunnelController.EnableLightBlocker();
             }
-        }
-
-        private GameObject GetSiblingGameObject(GameObject p_sourceGameObject)
-        {
-            return p_sourceGameObject.transform.parent.gameObject
-                .GetComponentsInChildren<BoxCollider>()
-                .ToList()
-                .Where(obj => !obj.gameObject.GetInstanceID().Equals(p_sourceGameObject.GetInstanceID()))
-                .First()
-                .gameObject;
         }
 
         private void LooktoPosition(Vector2 p_targetPosition)

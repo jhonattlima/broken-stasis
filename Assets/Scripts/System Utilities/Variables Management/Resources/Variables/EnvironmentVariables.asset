@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554a8c164dcc78b44993e6d496eeed47, type: 3}
-  m_Name: ACT_02_FLASHLIGHT_UNAVAILABLE
+  m_Script: {fileID: 11500000, guid: f5dfe4495b60de64091442549f584734, type: 3}
+  m_Name: EnvironmentVariables
   m_EditorClassIdentifier: 
-  conversationTexts:
-  - speaker: 0
-    text: 'BATTERY STORAGE LOCKED - Recharge energy: 0%.'
-  - speaker: 0
-    text: Please wait until recharge is completed.
+  doorSpeed: 15
+  doorMaxDelayBeforeOpening: 0

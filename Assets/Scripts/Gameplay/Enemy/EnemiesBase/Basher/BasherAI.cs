@@ -69,20 +69,18 @@ namespace Gameplay.Enemy.EnemiesBase
 
             _roomSensor.onRoomDetected += HandleDetectedRoom;
 
-            var __enemyMeshRenderer = _basherTransform.GetComponentInChildren<SkinnedMeshRenderer>();
-
             _enemyAnimationEventHandler.OnStep = delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW, true, !__enemyMeshRenderer.enabled, __enemyMeshRenderer.name);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW, true, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
             };
             _enemyAnimationEventHandler.OnAttack = delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, true, !__enemyMeshRenderer.enabled, __enemyMeshRenderer.name);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, false, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
             };
 
             _stateManager.onStateChanged += HandleStateChanged;
 
-            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, false, AudioRange.LOW, true, !__enemyMeshRenderer.enabled, __enemyMeshRenderer.name);
+            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, false, AudioRange.LOW, true, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
 
             _patrolBehaviour.InitializePatrolBehaviour();
             _investigationBehaviour.InitializeInvestigationBehaviour();
@@ -175,7 +173,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
             if (!_isViewingPlayer)
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM, false);
+                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM, false, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
                 _followBehaviour.SprintToPosition(p_lightPosition);
             }
         }

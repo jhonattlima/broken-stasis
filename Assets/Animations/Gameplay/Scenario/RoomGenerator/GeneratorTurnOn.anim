@@ -19,26 +19,26 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: 0.000027179718}
-        inSlope: {x: 0, y: 0, z: 174.95833}
-        outSlope: {x: 0, y: 0, z: 174.95833}
+        value: {x: 0, y: 0, z: 0.000024974346}
+        inSlope: {x: 0, y: 0, z: 155.187}
+        outSlope: {x: 0, y: 0, z: 155.187}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.04025916}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.08097317}
       - serializedVersion: 3
         time: 2
-        value: {x: 0, y: 0, z: 360.0902}
-        inSlope: {x: 0, y: 0, z: 171.30907}
-        outSlope: {x: 0, y: 0, z: 171.30907}
+        value: {x: 0, y: 0, z: 358.54156}
+        inSlope: {x: 0, y: 0, z: 193.6603}
+        outSlope: {x: 0, y: 0, z: 193.6603}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.30339593}
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.06938678}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -51,7 +51,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1878101561
+      path: 4104255935
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -104,7 +104,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -132,7 +132,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -140,27 +140,27 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.000027179718
-        inSlope: 174.95833
-        outSlope: 174.95833
+        value: 0.000024974346
+        inSlope: 155.187
+        outSlope: 155.187
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.04025916
+        outWeight: 0.08097317
       - serializedVersion: 3
         time: 2
-        value: 360.0902
-        inSlope: 171.30907
-        outSlope: 171.30907
+        value: 358.54156
+        inSlope: 193.6603
+        outSlope: 193.6603
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.30339593
+        inWeight: 0.06938678
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -171,7 +171,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -181,7 +181,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -191,7 +191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Props/generator1_loose_parts/generator1_loose_parts.001
+    path: props/generator1_loose_parts/generator1_loose_parts.001
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

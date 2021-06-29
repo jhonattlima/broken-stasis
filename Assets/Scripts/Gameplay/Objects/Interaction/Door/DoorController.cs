@@ -4,6 +4,7 @@ using GameManagers;
 using UI.ToolTip;
 using UnityEngine;
 using Utilities.Audio;
+using Utilities.VariableManagement;
 
 namespace Gameplay.Objects.Interaction
 {
@@ -12,9 +13,6 @@ namespace Gameplay.Objects.Interaction
         public bool isLocked { get; private set; }
         public bool isDoorOpen;
         public Action onDoorLocked;
-
-        [SerializeField] private float _doorSpeed = 0.00001f;
-        [SerializeField] private float _maxDelayToUseDoor = 2;
         [SerializeField] private MeshRenderer[] _lockIndicatorsMeshRenderer;
         [SerializeField] private Material _lockedDoorMaterial;
         [SerializeField] private Material _unlockedDoorMaterial;
@@ -45,7 +43,7 @@ namespace Gameplay.Objects.Interaction
 
         public void RunFixedUpdate()
         {
-            float __distCovered = (Time.time - _startTime) * _doorSpeed;
+            float __distCovered = (Time.time - _startTime) * VariablesManager.environmentVariables.doorSpeed * Time.deltaTime;
             float __fractionOfJourney = __distCovered / _journeyLength;
             if (!float.IsNaN(__fractionOfJourney))
                 transform.localPosition = Vector3.Lerp(transform.localPosition, _targetPosition, __fractionOfJourney);
@@ -70,7 +68,7 @@ namespace Gameplay.Objects.Interaction
                 return;
             }
             isDoorOpen = !isDoorOpen;
-            float __delay = UnityEngine.Random.Range(0f, _maxDelayToUseDoor);
+            float __delay = UnityEngine.Random.Range(0f, VariablesManager.environmentVariables.doorMaxDelayBeforeOpening);
             StopAllCoroutines();
 
             if (isDoorOpen)
