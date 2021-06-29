@@ -11,5 +11,6 @@ namespace Utilities.VariableManagement
         public float fastSpeedMultiplier;
         public float playerHeightWhenUp;
         public float playerHeightWhenCrouching;
+        public bool isPlayerInvencible;
     }   
 }
