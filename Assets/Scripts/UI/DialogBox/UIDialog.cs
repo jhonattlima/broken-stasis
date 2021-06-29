@@ -36,6 +36,13 @@ namespace UI.Dialog
         private bool _enableInputAfterDialog = true;
         private Action _dialogEndCallback;
 
+        public void RunUpdate()
+        {
+            if (GameStateManager.currentState != GameState.RUNNING) return;
+            if (InputController.UI.SkipDialog() && !_dialogEnded)
+                DisplayNextDialog();
+        }
+
         public void StartDialog(DialogEnum p_dialogName, Action p_onDialogEnd = null, bool p_enableInputAfterDialog = true)
         {
             _dialogEndCallback = p_onDialogEnd;
@@ -109,7 +116,7 @@ namespace UI.Dialog
         private void DisplayNextDialog()
         {
             StopAllCoroutines();
-            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING);
 
             _dialogText.text = _currentDialogText;
 
@@ -119,8 +126,8 @@ namespace UI.Dialog
                 return;
             }
 
-            AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_NEXT);
             DialogTextUnit __conversationUnit = _conversationQueue.Dequeue();
+            AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_NEXT);
             StartCoroutine(TypeDialog(__conversationUnit));
         }
 
@@ -140,26 +147,20 @@ namespace UI.Dialog
                 _dialogText.text += __letter;
                 yield return null;
             }
-            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING);
         }
 
         private void EndDialog()
         {
             InputController.GamePlay.InputEnabled = true;
             InputController.GamePlay.MouseEnabled = true;
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
             AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_END);
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
             _dialogEnded = true;
 
             // TODO: Set callback to be called on animation end (like AnimationEventHandlers)
             _dialogEndCallback?.Invoke();
-        }
-
-        public void RunUpdate()
-        {
-            if (GameStateManager.currentState != GameState.RUNNING) return;
-            if (InputController.UI.SkipDialog() && !_dialogEnded)
-                DisplayNextDialog();
         }
     }
 }

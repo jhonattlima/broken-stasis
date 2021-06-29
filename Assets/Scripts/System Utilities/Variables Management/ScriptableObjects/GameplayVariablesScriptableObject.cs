@@ -7,7 +7,9 @@ namespace Utilities.VariableManagement
     public class GameplayVariablesScriptableObject : ScriptableObject
     {
         public VideoClip cutsceneSplinterVideo;
+        public float cutsceneSplinterVideoVolume;
         public VideoClip cutsceneCreditsVideo;
+        public float cutsceneCreditsVideoVolume;
         public float finalDoorUnlockTimePerStage;
     }   
 }

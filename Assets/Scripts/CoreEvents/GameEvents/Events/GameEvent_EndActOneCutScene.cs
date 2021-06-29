@@ -45,6 +45,7 @@ namespace CoreEvent.GameEvents
             _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
             _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
             _videoPlayer.loopPointReached += HandleCutSceneEnd;
+            _videoPlayer.SetDirectAudioVolume(0, VariablesManager.gameplayVariables.cutsceneSplinterVideoVolume);
 
             InputController.GamePlay.MouseEnabled = false;
             InputController.GamePlay.InputEnabled = false;

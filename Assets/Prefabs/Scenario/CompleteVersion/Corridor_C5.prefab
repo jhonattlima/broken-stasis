@@ -1098,6 +1098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe_with_valves
       objectReference: {fileID: 0}
+    - target: {fileID: 3248640121571990474, guid: 3f2b7db65c881c649b7c0866751f4c5a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2b7db65c881c649b7c0866751f4c5a, type: 3}
 --- !u!4 &4580958646886491546 stripped
@@ -1582,6 +1587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: c5_bigpipe_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437677208705311285, guid: c94fc285c86b9b243a7e0200dce439ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1781304912265509007, guid: c94fc285c86b9b243a7e0200dce439ad,
         type: 3}
