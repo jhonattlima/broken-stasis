@@ -48,6 +48,7 @@ namespace CoreEvent.GameEvents
                 {
                     AudioManager.instance.Stop(AudioNameEnum.PLAYER_HEARTBEAT);
                     GameHudManager.instance.damageUI.ResetHud();
+                    _videoPlayer.SetDirectAudioVolume(0, VariablesManager.gameplayVariables.cutsceneCreditsVideoVolume);
                     _videoPlayer.Play();
 
                     LoadingView.instance.FadeOut(delegate ()
