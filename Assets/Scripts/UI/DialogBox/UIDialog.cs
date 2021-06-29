@@ -109,7 +109,6 @@ namespace UI.Dialog
         private void DisplayNextDialog()
         {
             StopAllCoroutines();
-            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
 
             _dialogText.text = _currentDialogText;
 
@@ -147,6 +146,7 @@ namespace UI.Dialog
         {
             InputController.GamePlay.InputEnabled = true;
             InputController.GamePlay.MouseEnabled = true;
+            AudioManager.instance.Stop(AudioNameEnum.UI_DIALOG_TYPING, 0.1f);
             AudioManager.instance.Play(AudioNameEnum.UI_DIALOG_END);
             _hudAnimator.Play(HIDE_DIALOG_HUD_ANIMATION);
             _dialogEnded = true;
