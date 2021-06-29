@@ -29,7 +29,7 @@ namespace Gameplay.Player.Health
 
         public void ReceiveDamage(int p_damage)
         {
-            if(!InputController.GamePlay.InputEnabled || GameStateManager.currentState == GameState.CUTSCENE) return;
+            if(!InputController.GamePlay.InputEnabled || GameStateManager.currentState == GameState.CUTSCENE || VariablesManager.playerVariables.isPlayerInvencible) return;
             
             if (_playerCurrentHealth - p_damage < 0)
                 _playerCurrentHealth = 0;
