@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
 using UI.MainMenu;
@@ -64,12 +65,17 @@ namespace UI.Options.Video
 
         private void InitializeMultiOption()
         {
-            string[] __availableResolutions = new string[Screen.resolutions.Length];
+            List<string> __availableResolutions = new List<string>();
             
-            for (int i = 0; i < Screen.resolutions.Length; i++)
-                __availableResolutions[i] = Screen.resolutions[i].width + " x " + Screen.resolutions[i].height;
+            foreach(Resolution __resolution in Screen.resolutions)
+            {
+                string __parsedResolution = __resolution.width + " x " + __resolution.height;
 
-            _resolutionMultiOption.InitializeOptions(_currentResolution, __availableResolutions);
+                if(!__availableResolutions.Contains(__parsedResolution))
+                    __availableResolutions.Add(__parsedResolution);
+            }
+
+            _resolutionMultiOption.InitializeOptions(_currentResolution, __availableResolutions.ToArray());
 
             _resolutionMultiOption.onOptionChanged = HandleMultiOptionChanged;
         }

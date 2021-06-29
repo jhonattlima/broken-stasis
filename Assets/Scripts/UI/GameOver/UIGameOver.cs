@@ -29,25 +29,35 @@ namespace UI.GameOver
                                     Action p_handleLoadLastCheckPointOnClick = null,
                                     Action p_handleBackToTitleScreenOnClick = null)
         {
+            SetButtonsInteractable(false);
+
             _buttonLoadLastCheckpoint?.onClick.RemoveAllListeners();
             _buttonBackToTitleScreen?.onClick.RemoveAllListeners();
 
             _buttonLoadLastCheckpoint?.onClick.AddListener(delegate
-           {
-               HandleLoadLastCheckpointOnClick(p_handleLoadLastCheckPointOnClick);
-           });
+            {
+                HandleLoadLastCheckpointOnClick(p_handleLoadLastCheckPointOnClick);
+            });
 
             _buttonBackToTitleScreen?.onClick.AddListener(delegate
-           {
-               HandleBackToTitleScreenOnClick(p_handleBackToTitleScreenOnClick);
-           });
+            {
+                HandleBackToTitleScreenOnClick(p_handleBackToTitleScreenOnClick);
+            });
 
             AudioManager.instance.PlayMusic(AudioNameEnum.SOUND_TRACK_GAMEOVER, 5);
             Show();
         }
 
+        private void SetButtonsInteractable(bool p_interactable)
+        {
+            _buttonLoadLastCheckpoint.interactable = p_interactable;
+            _buttonBackToTitleScreen.interactable = p_interactable;
+        }
+
         private void HandleLoadLastCheckpointOnClick(Action p_handleLoadLastCheckPointOnClick = null)
         {
+            SetButtonsInteractable(false);
+
             GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
             {
                 SceneManager.LoadScene(ScenesConstants.GAME);
@@ -59,6 +69,8 @@ namespace UI.GameOver
 
         private void HandleBackToTitleScreenOnClick(Action p_handleBackToTitleScreenOnClick = null)
         {
+            SetButtonsInteractable(false);
+
             GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
             {
                 SceneManager.LoadScene(ScenesConstants.MENU);
@@ -75,6 +87,8 @@ namespace UI.GameOver
 
         private void HandleEndOfShowPanelAnimation()
         {
+            SetButtonsInteractable(true);
+
             AudioManager.instance.FadeOutAllSounds(0.2f);
             Time.timeScale = 0;
         }

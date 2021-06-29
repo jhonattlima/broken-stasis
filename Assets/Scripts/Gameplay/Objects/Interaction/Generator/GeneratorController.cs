@@ -1,6 +1,7 @@
 ﻿
 using CoreEvent.GameEvents;
 using GameManagers;
+using Gameplay.Player.Motion;
 using UI.ToolTip;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ namespace Gameplay.Objects.Interaction
         {
             if(_enabled)
             {   
+                PlayerStatesManager.SetPlayerState(PlayerState.PRESS_BUTTON);
                 _minigameToolTip.InteractToolTip();
                 GameHudManager.instance.minigameHud.ShowMinigame();
             }

@@ -29,7 +29,7 @@ namespace Gameplay.Camera
 
         public void RunFixedUpdate()
         {
-            if(GameStateManager.currentState == GameState.RUNNING)
+            if(GameStateManager.currentState == GameState.RUNNING && InputController.GamePlay.MouseEnabled)
             {
                 float __distToMove = Vector3.Distance(_mousePosInWorld, _playerTransform.position) * VariablesManager.cameraVariables.cameraDistanceFromPlayer;
                 Vector3 __distanceVectorNormalized = (_mousePosInWorld - _playerTransform.position).normalized;
