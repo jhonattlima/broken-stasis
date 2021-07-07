@@ -77,8 +77,6 @@ namespace GameManagers
                 return null;
             }
 
-            // Debug.Log("Started sound " + p_audio);
-
             __audioSource.loop = p_loop;
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = __audioClipParams.volume;
@@ -92,7 +90,10 @@ namespace GameManagers
             TFWToolKit.Timer(__audioSource.clip.length, delegate ()
             {
                 if (!p_loop)
+                {
                     __audioSource.mute = true;
+                    __audioSource.spatialBlend = 0f;
+                }
                 p_onAudioEnd?.Invoke();
             });
 
@@ -107,19 +108,10 @@ namespace GameManagers
             __audioSource.gameObject.transform.position = p_position;
             __audioSource.spatialBlend = 1f;
             __audioSource.rolloffMode = AudioRolloffMode.Custom;
-            __audioSource.maxDistance = (int)p_audioRange;
-
-            __audioSource.mute = false;
-            __audioSource.Play();
+            __audioSource.maxDistance = (int) p_audioRange;
 
             if (p_createWave)
                 GameManagers.VFXManager.instance.CreateNewSoundWave(p_ownerName, p_position, p_audioRange, p_loop);
-
-            TFWToolKit.Timer(__audioSource.clip.length, delegate ()
-            {
-                if (!p_loop)
-                    __audioSource.mute = true;
-            });
 
             return __audioSource;
         }

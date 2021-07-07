@@ -21,9 +21,10 @@ namespace Utilities.Audio
             GameObject __newAudioSourceGameObject = new GameObject("AudioSource " + _sourcesPool.Count);
             __newAudioSourceGameObject.transform.SetParent(_poolParent);
 
-            __newAudioSourceGameObject.AddComponent<AudioSource>();
+            var __audiosource = __newAudioSourceGameObject.AddComponent<AudioSource>();
+            __audiosource.playOnAwake = false;
 
-            _sourcesPool.Add(__newAudioSourceGameObject.GetComponent<AudioSource>());
+            _sourcesPool.Add(__audiosource);
 
             return _sourcesPool[_sourcesPool.Count - 1];
         }
@@ -35,6 +36,7 @@ namespace Utilities.Audio
                 if (!__audioSource.loop && !__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
                 {   
                     __audioSource.mute = true;
+                    __audioSource.playOnAwake = false;
                     return __audioSource;
                 }
             }
