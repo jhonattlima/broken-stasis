@@ -32,7 +32,10 @@ namespace Utilities.Audio
             foreach (AudioSource __audioSource in _sourcesPool)
             {
                 if (!__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
+                {
+                    __audioSource.transform.SetParent(_poolParent);
                     return __audioSource;
+                }
             }
             return InstantiateNewAudioSource();
         }
