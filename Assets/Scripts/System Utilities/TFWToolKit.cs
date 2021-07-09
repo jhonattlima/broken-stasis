@@ -52,7 +52,7 @@ namespace Utilities
 
         private static IEnumerator TimerCoRoutine(float p_duration, Action p_callback)
         {
-            yield return new WaitForSeconds(p_duration);
+            yield return new WaitForSecondsRealtime(p_duration);
 
             p_callback?.Invoke();
         }

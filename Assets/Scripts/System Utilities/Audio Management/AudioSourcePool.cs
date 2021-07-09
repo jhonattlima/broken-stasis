@@ -12,8 +12,6 @@ namespace Utilities.Audio
         public AudioSourcePool(Transform p_poolParent)
         {
             _poolParent = p_poolParent;
-
-            InstantiateNewAudioSource();
         }
 
         private AudioSource InstantiateNewAudioSource()
@@ -26,21 +24,16 @@ namespace Utilities.Audio
 
             _sourcesPool.Add(__audiosource);
 
-            return _sourcesPool[_sourcesPool.Count - 1];
+            return __audiosource;
         }
 
         public AudioSource GetFreeAudioSource(List<AudioSource> _pausedAudioSources)
         {
             foreach (AudioSource __audioSource in _sourcesPool)
             {
-                if (!__audioSource.loop && !__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
-                {   
-                    __audioSource.mute = true;
-                    __audioSource.playOnAwake = false;
+                if (!__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
                     return __audioSource;
-                }
             }
-            
             return InstantiateNewAudioSource();
         }
 
@@ -53,23 +46,12 @@ namespace Utilities.Audio
                 if (__audioSource.clip == p_audioClip)
                     __audioSources.Add(__audioSource);
             }
-
             return __audioSources;
         }
 
         public List<AudioSource> GetAllAudioSources()
         {
             return _sourcesPool;
-        }
-
-        public bool IsAlreadyPlayingClip(AudioClip p_audioClip)
-        {
-            foreach (AudioSource __audioSource in _sourcesPool)
-            {
-                if (__audioSource.clip == p_audioClip && __audioSource.isPlaying)
-                    return true;
-            }
-            return false;
         }
     }
 }

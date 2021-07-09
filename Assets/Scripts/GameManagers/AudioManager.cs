@@ -60,57 +60,33 @@ namespace GameManagers
             DontDestroyOnLoad(_audioManagerGameObject);
         }
 
-        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null, bool p_canRepeat = true)
+        public AudioSource Play(AudioNameEnum p_audio, bool p_loop = false, Action p_onAudioEnd = null)
         {
-            AudioSource __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
-            AudioClipParams __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
-
-            if (!p_canRepeat && _audioSourcePool.IsAlreadyPlayingClip(__audioClipParams.audioFile))
-            {
-                // Debug.Log("Audio source already playing and should not repeat: " + p_audio);
-                return null;
-            }
-
-            if (!__audioClipParams)
-            {
-                Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
-                return null;
-            }
-
-            __audioSource.loop = p_loop;
-            __audioSource.clip = __audioClipParams.audioFile;
-            __audioSource.volume = __audioClipParams.volume;
-            __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
-
+            var __audioSource = GetAudioSource(p_audio, p_loop);
             __audioSource.spatialBlend = 0f;
 
-            __audioSource.mute = false;
             __audioSource.Play();
 
             TFWToolKit.Timer(__audioSource.clip.length, delegate ()
             {
-                if (!p_loop)
-                {
-                    __audioSource.mute = true;
-                    __audioSource.spatialBlend = 0f;
-                }
                 p_onAudioEnd?.Invoke();
             });
 
             return __audioSource;
         }
 
-        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH, bool p_canRepeat = true, bool p_createWave = false, string p_ownerName = null)
+        public AudioSource PlayAtPosition(AudioNameEnum p_audio, Vector3 p_position, bool p_loop = false, AudioRange p_audioRange = AudioRange.HIGH, string p_ownerName = null)
         {
-            var __audioSource = Play(p_audio, p_loop, null, p_canRepeat);
-            if (__audioSource == null) return null;
+            var __audioSource = GetAudioSource(p_audio, p_loop);
 
             __audioSource.gameObject.transform.position = p_position;
             __audioSource.spatialBlend = 1f;
-            __audioSource.rolloffMode = AudioRolloffMode.Custom;
+            __audioSource.rolloffMode = AudioRolloffMode.Linear;
             __audioSource.maxDistance = (int) p_audioRange;
 
-            if (p_createWave)
+            __audioSource.Play();
+
+            if (p_ownerName != null)
                 GameManagers.VFXManager.instance.CreateNewSoundWave(p_ownerName, p_position, p_audioRange, p_loop);
 
             return __audioSource;
@@ -144,7 +120,6 @@ namespace GameManagers
                 __audioSource.clip = __audioClipParams.audioFile;
                 __audioSource.volume = __audioClipParams.volume;
                 __audioSource.spatialBlend = 0f;
-                __audioSource.mute = false;
                 __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
                 __audioSource.Play();
             }
@@ -158,7 +133,6 @@ namespace GameManagers
                 __audioSource.clip = __audioClipParams.audioFile;
                 __audioSource.volume = __audioClipParams.volume;
                 __audioSource.spatialBlend = 0f;
-                __audioSource.mute = false;
                 __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
                 __audioSource.Play();
             }
@@ -249,13 +223,31 @@ namespace GameManagers
             __audioSource.clip = __audioClipParams.audioFile;
             __audioSource.volume = 0f;
             __audioSource.spatialBlend = 0f;
-            __audioSource.mute = true;
             __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
 
             if (__audioClipParams != null)
             {
                 StartCoroutine(FadeInSound(__audioSource, p_secondsToFadeIn, __audioClipParams.volume, p_loopAudio, p_handleAudioFadedIn));
             }
+            return __audioSource;
+        }
+
+        private AudioSource GetAudioSource(AudioNameEnum p_audio, bool p_loop = false)
+        {
+            var __audioSource = _audioSourcePool.GetFreeAudioSource(_pausedAudioSources);
+            var __audioClipParams = _audioLibrary.AudioLibrary.Find(clip => clip.audioName.Equals(p_audio.ToString())).audioClipParams;
+
+            if (!__audioClipParams)
+            {
+                Debug.LogError("Audio manager: audioclip not found: " + p_audio.ToString());
+                return null;
+            }
+
+            __audioSource.loop = p_loop;
+            __audioSource.volume = __audioClipParams.volume;
+            __audioSource.outputAudioMixerGroup = __audioClipParams.audioMixerGroup;
+            __audioSource.clip = __audioClipParams.audioFile;
+
             return __audioSource;
         }
 
@@ -274,7 +266,7 @@ namespace GameManagers
 
             p_audioSource.loop = false;
             p_audioSource.Stop();
-            p_audioSource.mute = true;
+            // p_audioSource.mute = true;
             p_handleAudioFadedOut?.Invoke();
         }
 
@@ -284,7 +276,7 @@ namespace GameManagers
 
             p_audioSource.volume = 0.0f;
             p_audioSource.loop = p_loopAudio;
-            p_audioSource.mute = false;
+            // p_audioSource.mute = false;
             p_audioSource.Play();
 
             float currentTime = 0;
@@ -319,6 +311,7 @@ namespace GameManagers
                 }
             }
         }
+
         public void PauseAllAudioSources()
         {
             _pausedAudioSources.Clear();

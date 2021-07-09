@@ -4,6 +4,7 @@ using Gameplay.Enemy.Behaviours;
 using Gameplay.Enemy.EnemiesBase.Utility;
 using Gameplay.Enemy.EnemyState;
 using UnityEngine;
+using Utilities;
 using Utilities.Audio;
 
 namespace Gameplay.Enemy.EnemiesBase
@@ -121,7 +122,7 @@ namespace Gameplay.Enemy.EnemiesBase
                 _basherContainer.visionSensor.onPlayerDetected(_basherContainer.endGameSpawnTransform);
             }
 
-            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM, false, true, _basherContainer.navigationAgent.transform.parent.name);
+            AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_GROWL, _basherContainer.endGameSpawnTransform.position, false, AudioRange.MEDIUM, _basherContainer.GetComponentInParent<CustomObjectId>().uniqueId);
         }
 
         private void HandleGameStateChanged(GameState p_gameState)
