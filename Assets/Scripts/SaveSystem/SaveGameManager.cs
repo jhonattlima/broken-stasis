@@ -13,6 +13,7 @@ namespace SaveSystem
 
         private const string FILE_PATH = "/Savedata";
         private const string FILE_NAME = "/SaveFile.jua";
+        public int lastSelectedSlot { get; private set; }
 
         private static SaveGameManager _instance;
         public static SaveGameManager instance
@@ -71,6 +72,7 @@ namespace SaveSystem
             _saveData = JsonUtility.FromJson<GameSaveData>(__saveDataJson);
 
             currentGameSaveData = _saveData.saveData[p_slot - 1];
+            lastSelectedSlot = p_slot;
         }
 
         public void DeleteSlot(int p_slot)
@@ -82,12 +84,12 @@ namespace SaveSystem
 
         public void Initialize()
         {
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 _saveData.saveData[i] = new SlotSaveData();
-                
-                if(SaveFileExists())
-                    LoadSlot(i+1);
+
+                if (SaveFileExists())
+                    LoadSlot(i + 1);
             }
         }
 
