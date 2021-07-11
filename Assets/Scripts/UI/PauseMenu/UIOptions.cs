@@ -1,5 +1,6 @@
 ﻿using System;
 using GameManagers;
+using SaveSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -70,6 +71,7 @@ namespace UI.PauseMenu
 
                 GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
                 {
+                    SaveGameManager.instance.LoadSlot(SaveGameManager.instance.lastSelectedSlot);
                     SceneManager.LoadScene(ScenesConstants.GAME);
                     p_handleLoadLastCheckPointOnClick?.Invoke();
                 });

@@ -1,5 +1,6 @@
 ﻿using System;
 using GameManagers;
+using SaveSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -60,6 +61,7 @@ namespace UI.GameOver
 
             GameHudManager.instance.optionsLoadingUI.FadeIn(delegate
             {
+                SaveGameManager.instance.LoadSlot(SaveGameManager.instance.lastSelectedSlot);
                 SceneManager.LoadScene(ScenesConstants.GAME);
                 GameStateManager.SetGameState(GameState.RUNNING);
                 Time.timeScale = 1;
