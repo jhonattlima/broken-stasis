@@ -90,7 +90,6 @@ namespace UI.GameOver
         private void HandleEndOfShowPanelAnimation()
         {
             SetButtonsInteractable(true);
-
             AudioManager.instance.FadeOutAllSounds(0.2f);
             Time.timeScale = 0;
         }

@@ -21,7 +21,6 @@ namespace CoreEvent.GameEvents
         [SerializeField] private Animator _corridorC8Animator;
         [SerializeField] private Vector3 _inRoomPosition;
 
-        private VideoPlayer _videoPlayer;
         private bool _hasRun;
 
         public bool hasRun { get { return _hasRun; } }
@@ -38,24 +37,11 @@ namespace CoreEvent.GameEvents
         {
             if (_hasRun) return;
 
-            _videoPlayer = _mainCamera.GetComponent<VideoPlayer>();
-            if (_videoPlayer == null) _videoPlayer = _mainCamera.AddComponent<VideoPlayer>();
-
-            _videoPlayer.playOnAwake = false;
-            _videoPlayer.clip = VariablesManager.gameplayVariables.cutsceneSplinterVideo;
-            _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-            _videoPlayer.loopPointReached += HandleCutSceneEnd;
-            _videoPlayer.SetDirectAudioVolume(0, VariablesManager.gameplayVariables.cutsceneSplinterVideoVolume);
-
-            InputController.GamePlay.MouseEnabled = false;
-            InputController.GamePlay.InputEnabled = false;
-
             AudioManager.instance.StopMusic(2.0f);
 
             GameStateManager.SetGameState(GameState.CUTSCENE);
 
-            _videoPlayer.Play();
-
+            VideoController.instance.PlayVideo(VariablesManager.videoVariables.splinterEscape, VariablesManager.videoVariables.splinterEscapeVolume, HandleCutSceneEnd);
             foreach (GameObject __light in _lightsList)
             {
                 __light.SetActive(true);
@@ -63,7 +49,7 @@ namespace CoreEvent.GameEvents
             DisableAllEnemies();
         }
 
-        private void HandleCutSceneEnd(UnityEngine.Video.VideoPlayer videoPlayer)
+        private void HandleCutSceneEnd()
         {
             _doorController.isDoorOpen = false;
             _doorController.SetDoorState();
@@ -73,14 +59,9 @@ namespace CoreEvent.GameEvents
             _playerCharacterController.transform.position = _inRoomPosition;
             _corridorC8Animator.Play("FadeOut");
             _playerCharacterController.enabled = true;
-
-            _videoPlayer.Stop();
-            _videoPlayer.loopPointReached -= HandleCutSceneEnd;
             
             _hasRun = true;
             
-            InputController.GamePlay.MouseEnabled = true;
-            InputController.GamePlay.InputEnabled = true;
             LoadingView.instance.FadeOut(null);
 
             GameStateManager.SetGameState(GameState.RUNNING);

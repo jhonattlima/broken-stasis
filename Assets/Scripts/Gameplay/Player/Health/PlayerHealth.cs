@@ -95,6 +95,7 @@ namespace Gameplay.Player.Health
                     _heartBeatAudio.pitch = 1.5f;
                     break;
                 case PlayerHealthStateEnum.DEAD:
+                    _heartBeatAudio.pitch = 1f;
                     _heartBeatAudio.Stop();
                     break;
                 default:

@@ -33,6 +33,7 @@ namespace Utilities.Audio
             {
                 if (!__audioSource.isPlaying && !_pausedAudioSources.Contains(__audioSource))
                 {
+                    __audioSource.gameObject.SetActive(true);
                     __audioSource.transform.SetParent(_poolParent);
                     return __audioSource;
                 }
