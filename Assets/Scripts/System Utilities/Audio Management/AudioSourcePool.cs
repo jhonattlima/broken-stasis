@@ -56,5 +56,10 @@ namespace Utilities.Audio
         {
             return _sourcesPool;
         }
+
+        public void ReturnAudioSourceToPoolParent(Transform p_audioSource)
+        {
+            p_audioSource.SetParent(_poolParent);
+        }
     }
 }

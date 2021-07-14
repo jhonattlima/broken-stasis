@@ -255,11 +255,12 @@ namespace GameManagers
         {
             float currentTime = 0;
             float start = p_audioSource.volume;
+            _audioSourcePool.ReturnAudioSourceToPoolParent(p_audioSource.transform);
             // Debug.Log("started fade out");
 
             while (currentTime < p_secondsToFadeOut)
             {
-                currentTime += Time.deltaTime;
+                currentTime += Time.unscaledDeltaTime;
                 p_audioSource.volume = Mathf.Lerp(start, 0, currentTime / p_secondsToFadeOut);
                 yield return null;
             }
@@ -284,7 +285,7 @@ namespace GameManagers
 
             while (currentTime < p_secondsToFadeIn)
             {
-                currentTime += Time.deltaTime;
+                currentTime += Time.unscaledDeltaTime;
                 p_audioSource.volume = Mathf.Lerp(start, p_audioVolume, currentTime / p_secondsToFadeIn);
                 yield return null;
             }

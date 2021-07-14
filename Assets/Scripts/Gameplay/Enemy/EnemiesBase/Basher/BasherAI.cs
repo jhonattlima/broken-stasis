@@ -99,7 +99,8 @@ namespace Gameplay.Enemy.EnemiesBase
                     _idleSound.volume = 0;
                     break;
                 default:
-                    _idleSound.volume = _idleSoundDefaultVolume;
+                    if(GameStateManager.currentState != GameState.GAMEOVER)
+                        _idleSound.volume = _idleSoundDefaultVolume;
                     break;
             }
         }
