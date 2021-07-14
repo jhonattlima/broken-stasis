@@ -26,9 +26,12 @@ namespace Gameplay.Enemy.EnemiesBase
         private bool _isViewingLight;
 
         private Transform _basherTransform;
-        private AudioSource _idleSound;
 
         private List<Transform> _roomInvestigationPoints = new List<Transform>();
+        private AudioSource _idleSound;
+        private float _idleSoundDefaultVolume;
+
+        private AudioManager _audiomanager = AudioManager.instance;
 
         public BasherAI(EnemyStateManager p_stateManager,
             IPatrolEnemy p_patrolBehaviour,
@@ -71,16 +74,18 @@ namespace Gameplay.Enemy.EnemiesBase
 
             _enemyAnimationEventHandler.OnStep = delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW, true, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
+                _audiomanager.PlayAtPosition(AudioNameEnum.ENEMY_BASHER_STEP, _basherTransform.position, false, AudioRange.LOW, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
             };
             _enemyAnimationEventHandler.OnAttack = delegate ()
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, false, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
+                _audiomanager.PlayAtPosition(AudioNameEnum.BASHER_ATTACK, _basherTransform.position, false, AudioRange.MEDIUM, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
             };
 
             _stateManager.onStateChanged += HandleStateChanged;
 
-            _idleSound = AudioManager.instance.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, false, AudioRange.LOW, true, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
+            _idleSound = _audiomanager.PlayAtPosition(AudioNameEnum.BASHER_IDLE, _basherTransform.position, true, AudioRange.LOW, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
+            _idleSound.transform.parent = _basherTransform;
+            _idleSoundDefaultVolume = _idleSound.volume;
 
             _patrolBehaviour.InitializePatrolBehaviour();
             _investigationBehaviour.InitializeInvestigationBehaviour();
@@ -91,10 +96,10 @@ namespace Gameplay.Enemy.EnemiesBase
             switch (p_enemyState)
             {
                 case EnemyStateEnum.ATTACKING:
-                    _idleSound.Pause();
+                    _idleSound.volume = 0;
                     break;
                 default:
-                    _idleSound.Play();
+                    _idleSound.volume = _idleSoundDefaultVolume;
                     break;
             }
         }
@@ -173,7 +178,7 @@ namespace Gameplay.Enemy.EnemiesBase
 
             if (!_isViewingPlayer)
             {
-                AudioManager.instance.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM, false, true, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
+                _audiomanager.PlayAtPosition(AudioNameEnum.ENEMY_SPLINTER_LIGHT_GROWL, _basherTransform.position, false, AudioRange.MEDIUM, _basherTransform.GetComponentInParent<CustomObjectId>().uniqueId);
                 _followBehaviour.SprintToPosition(p_lightPosition);
             }
         }
