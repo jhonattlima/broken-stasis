@@ -31,21 +31,19 @@ namespace CoreEvent.GameEvents
             _hasRun = true;
 
             GameHudManager.instance.uiDialogHud.StartDialog(DialogEnum.ACT_03_CONTROL_PANEL_GREETINGS, delegate ()
-            {
-                LoadingView.instance.FadeIn(delegate ()
+            {              
+                AudioManager.instance.Stop(AudioNameEnum.PLAYER_HEARTBEAT);
+                GameHudManager.instance.damageUI.ResetHud();
+                
+                VideoController.instance.PlayVideo(VariablesManager.videoVariables.endCredits, VariablesManager.videoVariables.endCreditsVolume, delegate()
                 {
-                    AudioManager.instance.Stop(AudioNameEnum.PLAYER_HEARTBEAT);
-                    GameHudManager.instance.damageUI.ResetHud();
-
-
-                    LoadingView.instance.FadeOut(delegate ()
-                    {
-                        InputController.GamePlay.InputEnabled = false;
-                    }, VariablesManager.uiVariables.defaultFadeOutSpeed * 0.5f);
-                    
-                    VideoController.instance.PlayVideo(VariablesManager.videoVariables.endCredits, VariablesManager.videoVariables.endCreditsVolume, () => SceneManager.LoadScene(ScenesConstants.MENU));
-
-                }, VariablesManager.uiVariables.defaultFadeInSpeed);
+                    LoadingView.instance.InstantBlackScreen();
+                    SceneManager.LoadScene(ScenesConstants.MENU);
+                }, delegate()
+                {
+                    InputController.GamePlay.InputEnabled = false;
+                    LoadingView.instance.ClearedScreen();
+                });                  
             }
             , false);
         }

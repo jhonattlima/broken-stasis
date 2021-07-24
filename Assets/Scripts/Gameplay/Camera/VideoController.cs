@@ -14,7 +14,8 @@ public enum VideoNameEnum
 public class VideoController : MonoBehaviour
 {
     private VideoPlayer _videoPlayer;
-    private Action _eventToRun;
+    private Action _onFinish;
+    private Action _onStart;
     private static VideoController _instance;
     public static VideoController instance { get { return _instance; } }
     
@@ -30,7 +31,7 @@ public class VideoController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void PlayVideo(VideoClip p_video, float p_volume, Action p_eventToRun)
+    public void PlayVideo(VideoClip p_video, float p_volume, Action p_onFinish, Action p_onStart = null)
     {
         if(_mainCamera == null)
             _mainCamera = Camera.main.gameObject;
@@ -45,8 +46,10 @@ public class VideoController : MonoBehaviour
 
         _videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
         _videoPlayer.loopPointReached += HandleVideoEnd;
+        _videoPlayer.started += HandleVideoStart;
         _videoPlayer.aspectRatio = VideoAspectRatio.FitVertically; 
-        _eventToRun = p_eventToRun;
+        _onFinish = p_onFinish;
+        _onStart = p_onStart;
 
         InputController.GamePlay.MouseEnabled = false;
         InputController.GamePlay.InputEnabled = false;
@@ -54,14 +57,20 @@ public class VideoController : MonoBehaviour
         _videoPlayer.Play();
     }
 
+    private void HandleVideoStart(UnityEngine.Video.VideoPlayer videoPlayer)
+    {
+        _onStart?.Invoke();
+
+        _videoPlayer.started -= HandleVideoStart;
+    }
+
     private void HandleVideoEnd(UnityEngine.Video.VideoPlayer videoPlayer)
     {
+        _onFinish?.Invoke();
         _videoPlayer.Stop();
         _videoPlayer.loopPointReached -= HandleVideoEnd;
 
         InputController.GamePlay.MouseEnabled = true;
         InputController.GamePlay.InputEnabled = true;
-
-        _eventToRun?.Invoke();
     }
 }
