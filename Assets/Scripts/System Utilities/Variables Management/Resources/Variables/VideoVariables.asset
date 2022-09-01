@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f592640a86896e47a9264d198a27cc8, type: 3}
+  m_Name: VideoVariables
+  m_EditorClassIdentifier: 
+  splinterEscape: {fileID: 32900000, guid: 02b0349b5790a044a9e6475b07425e57, type: 3}
+  splinterEscapeVolume: 0.3
+  endCredits: {fileID: 32900000, guid: b70087ee1e96dc847af1fedd487dfdc0, type: 3}
+  endCreditsVolume: 0.3
+  studioIntro: {fileID: 32900000, guid: de24a5fd2af55ca4489bd3ee67bfb6ed, type: 3}
+  studioIntroVolume: 0.3
